@@ -2,17 +2,31 @@
   <div id="app">
     <!-- <img src="./assets/background.png"> -->
     <!-- <router-view/> -->
-    <header>
-      <slot name="main-navigation"></slot>
-      <slot name="product-navigation"></slot>
-    </header>
+
+    <div class="container">
+      <header>
+        <navigation />
+      </header>
+      <main>
+        <slot></slot>
+      </main>
+      <aside>
+        <slot name="product-navigation"></slot>
+      </aside>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+
+  import Navigation from "./components/Navigation";
+
+  export default {
+    name: 'App',
+    components: {
+      Navigation
+    }
+  };
 </script>
 
 <style>
