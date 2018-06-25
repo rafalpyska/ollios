@@ -1,4 +1,5 @@
 <template lang="html">
+
   <nav class="navigation">
     <ul class="navigation__list">
       <li class="navigation__item">
@@ -29,6 +30,7 @@
       </li>
     </ul>
   </nav>
+  
 </template>
 
 <script>
