@@ -1,19 +1,17 @@
 <template lang="html">
-  <div>
-    <h1>Olios</h1>
-    <h2>Newest furniture shop template</h2>
+
+  <div class="">
+    <slot name="title"></slot>
+    <slot name="text"></slot>
   </div>
+
 </template>
 
 <script>
   export default {
     name: "Content"
-  }
+  };
 </script>
 
 <style lang="css">
-  .headings {
-    width: 100%;
-    height: 100%;
-  }
 </style>
