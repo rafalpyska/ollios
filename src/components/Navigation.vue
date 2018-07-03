@@ -3,12 +3,12 @@
   <nav class="navigation">
     <ul class="navigation__list">
       <li class="navigation__item">
-        <a href="" class="navigation__link">
+        <router-link to="/" href="" class="navigation__link">
           <img src="../assets/navigation/logo.png" alt="" class="navigation__icon icon__logo" />
-        </a>
+        </router-link>
       </li>
       <li class="navigation__item">
-        <router-link to="/home" href="" class="navigation__link">
+        <router-link to="/" href="" class="navigation__link">
           <svg class="navigation__icon icon__home" aria-label="Home page">
             <path id="Home" class="cls-1" d="M72,228.743l10,10V254H77v-7a2,2,0,0,0-2-2H69a2,2,0,0,0-2,2v7H62V238.743l10-10m.884-3.359a1.25,1.25,0,0,0-1.768,0l-11.53,11.53A2,2,0,0,0,59,238.329V255a2,2,0,0,0,2,2h7a2,2,0,0,0,2-2v-7h4v7a2,2,0,0,0,2,2h7a2,2,0,0,0,2-2V238.329a2,2,0,0,0-.586-1.415Z" transform="translate(-59 -225.017)"/>
           </svg>

@@ -12,6 +12,21 @@ export default new Router({
       path: '/',
       name: 'App',
       component: ['Categories', 'Home', 'Navigation']
-    }
+    },
+    {
+      path: '/basket',
+      name: 'Basket',
+      component: ['Categories', 'Home', 'Navigation']
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: ['Categories', 'Home', 'Navigation']
+    },
+    {
+      path: '/categories',
+      name: 'Categories',
+      component: ['Categories', 'Home', 'Navigation']
+    },
   ]
 })
