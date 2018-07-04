@@ -1,17 +1,21 @@
 <template lang="html">
-
-  <div class="content">
-    <slot name="title"></slot>
-    <slot name="text"></slot>
-    <button class="btn__view-more">View more</button>
-    <button class="btn__categories-toggle"></button>
-  </div>
-
+  <main class="main">
+    <div class="content">
+      <slot name="title"></slot>
+      <slot name="text"></slot>
+      <button class="btn__view-more">View more</button>
+      <button @click="isActive = !isActive" class="btn__categories-toggle"></button>
+    </div>
+  </main>
 </template>
 
 <script>
   export default {
-    name: "Home"
+    name: "Home",
+    data() {
+      return {
+      }
+    }
   };
 </script>
 
@@ -25,6 +29,7 @@
   border-radius: 2rem;
   margin-top: .75rem;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .btn__categories-toggle {
@@ -36,5 +41,6 @@
   border: 0;
   border-radius: 50%;
   box-shadow: 0 0 1px #888;
+  cursor: pointer;
 }
 </style>

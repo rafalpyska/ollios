@@ -1,13 +1,13 @@
 <template lang="html">
-
-  <nav class="categories">
-    <ul class="categories__list">
-      <li class="categories__item" v-for="category in categories" :key="category.id">
-        <router-link :to="'/categories/' + category.id"class="categories__link" :class="category.class">{{ category.name }}</router-link>
-      </li>
-    </ul>
-
-  </nav>
+  <aside class="aside">
+    <nav class="categories">
+      <ul class="categories__list">
+        <li class="categories__item" v-for="category in categories" :key="category.id">
+          <router-link :to="'/categories/' + category.id"class="categories__link" :class="category.class">{{ category.name }}</router-link>
+        </li>
+      </ul>
+    </nav>
+  </aside>
 </template>
 
 <script>
@@ -31,6 +31,12 @@
 </script>
 
 <style scoped lang="css">
+  /* aside {
+    display: none;
+  } */
+  aside.active {
+    display: block;
+  }
   .categories__list {
     list-style: none;
     margin: 0;

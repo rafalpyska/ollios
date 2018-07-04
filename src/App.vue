@@ -1,22 +1,19 @@
 <template>
+
   <div id="app" v-cloak>
-    <!-- <router-view/> -->
 
     <div class="container">
-      <header class="header">
-        <navigation />
-      </header>
-      <main class="main">
-        <home>
-          <h1 class="title" slot="title">Olios</h1>
-          <h2 class="text" slot="text">Newest furniture shop template</h2>
-        </home>
-      </main>
-      <aside class="aside">
-        <CategoriesMenu />
-      </aside>
+      <Navigation />
+      <home>
+        <h1 class="title" slot="title">Olios</h1>
+        <h2 class="text" slot="text">Newest furniture shop template</h2>
+      </home>
+      <CategoriesMenu :class="{ active: isActive }" />
     </div>
+
+
   </div>
+
 </template>
 
 <script>
@@ -24,17 +21,20 @@
   import Navigation from "./components/Navigation";
   import Home from "./components/Home";
   import CategoriesMenu from "./components/CategoriesMenu";
+  import Search from "./components/Search";
 
   export default {
     name: 'App',
     data() {
       return {
+        isActive: false
       }
     },
     components: {
       Navigation,
       Home,
-      CategoriesMenu
+      CategoriesMenu,
+      Search
     }
   };
 </script>
@@ -52,24 +52,17 @@
     display: flex;
     width: 100%;
     height: 100vh;
-    background-image: url('./assets/background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
   }
 
-  .header {
-    display: flex;
-    width: 8%;
-    flex: 0 0 8%;
-    flex-direction: column;
-    background-color: rgba(255, 255, 255, .9);
-    box-shadow: 4px 0 5px -2px rgb(0, 0, 0, .1);
-  }
+
   .main {
     flex: 1;
     text-align: center;
     text-transform: uppercase;
+    background-image: url('./assets/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
 
   .title,

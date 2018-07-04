@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import CategoriesMenu from '@/components/CategoriesMenu'
 import Home from '@/components/Home'
 import Navigation from '@/components/Navigation'
+import Search from '@/components/Search'
 
 Vue.use(Router)
 
@@ -10,22 +11,22 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'App',
-      component: ['CategoriesMenu', 'Home', 'Navigation']
+      name: 'app',
+      component: ['CategoriesMenu', 'Home']
     },
     {
       path: '/basket',
-      name: 'Basket',
+      name: 'basket',
       component: ['CategoriesMenu', 'Home', 'Navigation']
     },
     {
       path: '/search',
-      name: 'Search',
-      component: ['CategoriesMenu', 'Home', 'Navigation']
+      name: 'search',
+      component: Search
     },
     {
       path: '/categories',
-      name: 'Categories',
+      name: 'categories',
       component: ['CategoriesMenu', 'Home', 'Navigation']
     },
   ]
