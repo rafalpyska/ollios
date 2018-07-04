@@ -1,6 +1,6 @@
 <template>
   <div id="app" v-cloak>
-    <router-view/>
+    <!-- <router-view/> -->
 
     <div class="container">
       <header class="header">
@@ -8,12 +8,12 @@
       </header>
       <main class="main">
         <home>
-          <h1 slot="title">Olios</h1>
-          <h2 slot="text">Newest furniture shop template</h2>
+          <h1 class="title" slot="title">Olios</h1>
+          <h2 class="text" slot="text">Newest furniture shop template</h2>
         </home>
       </main>
       <aside class="aside">
-        <categories />
+        <CategoriesMenu />
       </aside>
     </div>
   </div>
@@ -23,7 +23,7 @@
 
   import Navigation from "./components/Navigation";
   import Home from "./components/Home";
-  import Categories from "./components/Categories";
+  import CategoriesMenu from "./components/CategoriesMenu";
 
   export default {
     name: 'App',
@@ -34,13 +34,14 @@
     components: {
       Navigation,
       Home,
-      Categories
+      CategoriesMenu
     }
   };
 </script>
 
 <style>
   body {
+    font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
   }
@@ -63,10 +64,26 @@
     flex: 0 0 8%;
     flex-direction: column;
     background-color: rgba(255, 255, 255, .9);
+    box-shadow: 4px 0 5px -2px rgb(0, 0, 0, .1);
   }
   .main {
     flex: 1;
+    text-align: center;
+    text-transform: uppercase;
   }
+
+  .title,
+  .text {
+    font-weight: 100;
+    margin: 0;
+    padding: .75rem;
+  }
+
+  .title {
+    margin-top: 5rem;
+    font-size: 8rem;
+  }
+
   .aside {
     display: flex;
     width: 15%;

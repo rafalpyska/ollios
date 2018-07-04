@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Categories from '@/components/Categories'
+import CategoriesMenu from '@/components/CategoriesMenu'
 import Home from '@/components/Home'
 import Navigation from '@/components/Navigation'
 
@@ -11,22 +11,22 @@ export default new Router({
     {
       path: '/',
       name: 'App',
-      component: ['Categories', 'Home', 'Navigation']
+      component: ['CategoriesMenu', 'Home', 'Navigation']
     },
     {
       path: '/basket',
       name: 'Basket',
-      component: ['Categories', 'Home', 'Navigation']
+      component: ['CategoriesMenu', 'Home', 'Navigation']
     },
     {
       path: '/search',
       name: 'Search',
-      component: ['Categories', 'Home', 'Navigation']
+      component: ['CategoriesMenu', 'Home', 'Navigation']
     },
     {
       path: '/categories',
       name: 'Categories',
-      component: ['Categories', 'Home', 'Navigation']
+      component: ['CategoriesMenu', 'Home', 'Navigation']
     },
   ]
 })

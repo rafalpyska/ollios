@@ -1,0 +1,22 @@
+<template lang="html">
+  <div class="container">
+
+  </div>
+</template>
+
+<script>
+
+  export default {
+    name:Search
+  }
+
+</script>
+
+<style scoped lang="css">
+
+.container {
+  flex: 1;
+
+}
+
+</style>
