@@ -9,7 +9,6 @@
         <h2 class="text" slot="text">Newest furniture shop template</h2>
       </home>
       <CategoriesMenu />
-      <!-- v-if="isActive" @toggleCategoriesMenu="isActice = !isActive"  -->
       <!-- <transition name="fade">
         <router-view></router-view>
       </transition> -->
@@ -46,11 +45,20 @@
 
 <style>
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.slide-fade-enter-active {
+  transition: all .3s ease;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.slide-fade-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter {
+  transform: translateX(100%);
   opacity: 0;
+}
+.slide-fade-leave-to {
+  transform: translateX(100%);
 }
   body {
     font-family: 'Lato', sans-serif;

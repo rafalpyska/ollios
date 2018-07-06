@@ -1,39 +1,42 @@
 <template lang="html">
-  <aside class="categories__container">
-    <button @click="categoriesToggle" class="btn__categories-toggle"></button>
-    <nav :class="{ active: isActive }" class="categories">
+  <transition name="slide-fade">
+  <aside v-if="activeOrNot" class="categories__container">
+    <nav class="categories">
       <ul class="categories__list">
         <li class="categories__item" v-for="category in categories" :key="category.id">
           <router-link :to="'/categories/' + category.id" class="categories__link">{{ category.name }} <span class="categories__icons" :class="category.class"></span></router-link>
-
         </li>
       </ul>
       <a class="categories__link-all" href="#">Show all categories</a>
     </nav>
   </aside>
-
+</transition>
 </template>
 
 <script>
+
+  import { EventBus } from "@/event-bus.js";
 
   export default {
     name: "CategoriesMenu",
     data() {
       return {
-        isActive: false,
+        activeOrNot: false,
         categories: [
           { name: 'Living room', id: 1, class: 'icon__living-room'},
           { name: 'Office', id: 2, class: 'icon__office'},
           { name: 'For kids', id: 3, class: 'icon__for-kids'},
           { name: 'Kitchen', id: 4, class: 'icon__kitchen'},
           { name: 'Accesories', id: 5, class: 'icon__accesories'}
-        ],
+        ]
       }
     },
+    created() {
+      EventBus.$on('toggleActive', (active) => {
+        this.activeOrNot = active;
+      });
+    },
     methods: {
-      categoriesToggle() {
-        this.isActive = !this.isActive;
-      }
     }
   };
 </script>
@@ -43,31 +46,21 @@
   .categories__container {
     display: flex;
     flex: 0 0 17%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+
   }
 
-  .btn__categories-toggle {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    width: 4rem;
-    height: 4rem;
-    border: 0;
-    border-radius: 50%;
-    box-shadow: 0 0 1px #888;
-    cursor: pointer;
-  }
   .categories {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, .9);
-  }
-
-  .categories.active {
-    display: flex;
   }
 
   .categories__list {
