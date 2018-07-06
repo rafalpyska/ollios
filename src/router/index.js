@@ -23,11 +23,6 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: Search
-    },
-    {
-      path: '/categories',
-      name: 'categories',
-      component: ['CategoriesMenu', 'Home', 'Navigation']
-    },
+    }
   ]
 })
