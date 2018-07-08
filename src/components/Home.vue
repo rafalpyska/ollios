@@ -41,7 +41,7 @@
     border-radius: 50%;
     box-shadow: 0 0 1px #888;
     cursor: pointer;
-    z-index: 2;
+    z-index: 3;
   }
 
   .btn__view-more {

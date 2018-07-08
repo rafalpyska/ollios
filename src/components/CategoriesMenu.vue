@@ -1,6 +1,6 @@
 <template lang="html">
   <transition name="slide-fade">
-  <aside v-if="activeOrNot" class="categories__container">
+  <aside v-show="activeOrNot" class="categories__container">
     <nav class="categories">
       <ul class="categories__list">
         <li class="categories__item" v-for="category in categories" :key="category.id">
@@ -50,7 +50,8 @@
     position: absolute;
     top: 0;
     right: 0;
-
+    background-color: rgba(255, 255, 255, .9);
+    z-index: 2;
   }
 
   .categories {
@@ -60,7 +61,6 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, .9);
   }
 
   .categories__list {
@@ -122,6 +122,22 @@
     text-decoration: none;
     text-transform: uppercase;
     color: rgba(0, 35, 255, 1);
+  }
+
+  .slide-fade-enter-active {
+    transition: all .4s ease;
+  }
+
+  .slide-fade-leave-active {
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+
+  .slide-fade-enter {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  .slide-fade-leave-to {
+    transform: translateX(100%);
   }
 
 </style>

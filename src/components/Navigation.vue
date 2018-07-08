@@ -48,6 +48,7 @@
     flex: 0 0 auto;
     background-color: rgba(255, 255, 255, .9);
     box-shadow: 4px 0 5px -2px rgb(0, 0, 0, .1);
+    z-index: 3;
   }
 
   .navigation {

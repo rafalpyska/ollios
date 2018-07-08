@@ -9,9 +9,9 @@
         <h2 class="text" slot="text">Newest furniture shop template</h2>
       </home>
       <CategoriesMenu />
-      <!-- <transition name="fade">
+      <transition name="slide-fade">
         <router-view></router-view>
-      </transition> -->
+      </transition>
     </div>
 
 
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import { EventBus } from "@/event-bus.js";
+
   import Navigation from "./components/Navigation";
   import Home from "./components/Home";
   import CategoriesMenu from "./components/CategoriesMenu";
@@ -43,23 +43,20 @@
   };
 </script>
 
-<style>
+<style lang="css">
 
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
+  .slide-fade-enter-active, .slide-fade-leave-active {
+    transition: all .4s ease;
+  }
 
-.slide-fade-leave-active {
-  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
+  .slide-fade-enter {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  .slide-fade-leave-to {
+    transform: translateX(-100%);
+  }
 
-.slide-fade-enter {
-  transform: translateX(100%);
-  opacity: 0;
-}
-.slide-fade-leave-to {
-  transform: translateX(100%);
-}
   body {
     font-family: 'Lato', sans-serif;
     margin: 0;
@@ -72,6 +69,7 @@
     display: flex;
     width: 100%;
     height: 100vh;
+    overflow: hidden;
   }
 
 
