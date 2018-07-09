@@ -7,7 +7,7 @@
           <router-link :to="'/categories/' + category.id" class="categories__link">{{ category.name }} <span class="categories__icons" :class="category.class"></span></router-link>
         </li>
       </ul>
-      <a class="categories__link-all" href="#">Show all categories</a>
+      <router-link :to="'/categories/all'" class="categories__link-all" href="#">Show all categories</router-link>
     </nav>
   </aside>
 </transition>
@@ -124,12 +124,9 @@
     color: rgba(0, 35, 255, 1);
   }
 
-  .slide-fade-enter-active {
-    transition: all .4s ease;
-  }
-
+  .slide-fade-enter-active,
   .slide-fade-leave-active {
-    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    transition: all .4s ease;
   }
 
   .slide-fade-enter {
@@ -137,7 +134,7 @@
     opacity: 0;
   }
   .slide-fade-leave-to {
-    transform: translateX(100%);
+    transform: translateY(-100%);
   }
 
 </style>

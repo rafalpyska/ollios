@@ -9,20 +9,5 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'app',
-      component: ['CategoriesMenu', 'Home']
-    },
-    {
-      path: '/basket',
-      name: 'basket',
-      component: ['CategoriesMenu', 'Home', 'Navigation']
-    },
-    {
-      path: '/search',
-      name: 'search',
-      component: Search
-    }
   ]
 })

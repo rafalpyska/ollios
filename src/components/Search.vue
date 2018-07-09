@@ -1,18 +1,42 @@
 <template lang="html">
-    <div class="search__container">
-      <input class="search__input" type="search" name="search__input" value="">
+  <transition name="slide-fade">
+    <div v-show="isToggle" class="search__container">
+      <input class="search__input" type="search" name="search__input" v-model="searchValue" @input="handleRequest">
       <label class="search__label"for="search__input">Type product that you are looking for</label>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
 
-import Navigation from './Navigation'
+import { EventBus } from "@/event-bus.js";
+import axios from 'axios';
+const API = 'https://jsonplaceholder.typicode.com/photos';
 
 export default {
   name: "Search",
-  component: Navigation
+  data() {
+    return {
+      isToggle: false,
+      searchValue: '',
+    }
+  },
+  created() {
+    EventBus.$on('isActive', (active) => {
+      this.isToggle = active;
+    });
+  },
+  methods: {
+    handleRequest(e) {
+      axios.get(`${API}?title=${this.searchValue}`)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
 };
 
 </script>
@@ -47,6 +71,19 @@ export default {
 
 .search__label {
   color: rgba(177, 177, 177, .9);
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all .4s ease;
+}
+
+.slide-fade-enter {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.slide-fade-leave-to {
+  transform: translateY(-100%);
 }
 
 </style>

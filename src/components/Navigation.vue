@@ -3,29 +3,29 @@
     <nav class="navigation">
       <ul class="navigation__list">
         <li class="navigation__item">
-          <router-link to="/" href="" class="navigation__link">
+          <router-link :to="'/'" class="navigation__button">
             <img src="../assets/navigation/logo.png" alt="" class="navigation__icon icon__logo" />
           </router-link>
         </li>
         <li class="navigation__item">
-          <router-link to="/" href="" class="navigation__link">
+          <router-link :to="'/'" class="navigation__button">
             <span class="navigation__icon icon__home" aria-label="Home page"></span>
           </router-link>
         </li>
         <li class="navigation__item">
-          <router-link to="/basket" href="" class="navigation__link">
+          <button class="navigation__button">
             <span class="navigation__icon icon__basket" aria-label="Basket"></span>
-          </router-link>
+          </button>
         </li>
         <li class="navigation__item margin-auto">
-          <router-link to="/search" href="" class="navigation__link">
+          <button @click="navigationToggle" class="navigation__button">
             <span class="navigation__icon icon__search" aria-label="Search"></span>
-          </router-link>
+          </button>
         </li>
         <li class="navigation__item">
-          <router-link to="/search" href="" class="navigation__link">
+          <button class="navigation__button">
             <span class="navigation__icon icon__download" aria-label="Download"></span>
-          </router-link>
+          </button>
         </li>
       </ul>
     </nav>
@@ -35,8 +35,21 @@
 
 <script>
 
+  import { EventBus } from "@/event-bus.js";
+
   export default {
-    name: "Navigation"
+    name: "Navigation",
+    data() {
+      return {
+        toggle: false
+      }
+    },
+    methods: {
+      navigationToggle() {
+        this.toggle = !this.toggle;
+        EventBus.$emit('isActive', this.toggle);
+      }
+    }
   };
 
 </script>
@@ -77,15 +90,18 @@
     margin-bottom: 5rem;
   }
 
-  .navigation__link {
+  .navigation__button {
     display: flex;
     align-items: center;
     margin-right: 1rem;
     justify-content: flex-end;
+    border: 0;
+    background: none;
+    cursor: pointer;
     opacity: .5;
     transition: .3s opacity;
   }
-  .navigation__link:hover {
+  .navigation__button:hover {
     opacity: 1;
   }
 

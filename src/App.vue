@@ -9,12 +9,8 @@
         <h2 class="text" slot="text">Newest furniture shop template</h2>
       </home>
       <CategoriesMenu />
-      <transition name="slide-fade">
-        <router-view></router-view>
-      </transition>
+      <Search />
     </div>
-
-
   </div>
 
 </template>
@@ -44,18 +40,6 @@
 </script>
 
 <style lang="css">
-
-  .slide-fade-enter-active, .slide-fade-leave-active {
-    transition: all .4s ease;
-  }
-
-  .slide-fade-enter {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  .slide-fade-leave-to {
-    transform: translateX(-100%);
-  }
 
   body {
     font-family: 'Lato', sans-serif;
