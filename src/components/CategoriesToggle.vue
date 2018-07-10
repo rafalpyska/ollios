@@ -36,5 +36,11 @@
     cursor: pointer;
     z-index: 3;
   }
+  .btn__categories-toggle:before {
+    content: '\2630';
+    font-size: 1.5rem;
+    vertical-align: middle;
+    color: rgba(0, 35, 255, .9);
+  }
 
 </style>
