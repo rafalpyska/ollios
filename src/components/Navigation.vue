@@ -101,7 +101,8 @@
     opacity: .5;
     transition: .3s opacity;
   }
-  .navigation__button:hover {
+  .navigation__button:hover,
+  .navigation__button:focus {
     opacity: 1;
   }
 
