@@ -1,5 +1,5 @@
 <template lang="html">
-  <button @click="categoriesToggle" class="btn__categories-toggle"></button>
+  <button @click="categoriesToggle" class="btn__categories-toggle" :class="{ active:isActive }"></button>
 </template>
 
 <script>
@@ -39,8 +39,12 @@
   .btn__categories-toggle:before {
     content: '\2630';
     font-size: 1.5rem;
+    font-weight: 700;
     vertical-align: middle;
     color: rgba(0, 35, 255, .9);
+  }
+  .btn__categories-toggle.active:before {
+    content: '\01D5D1';
   }
 
 </style>
