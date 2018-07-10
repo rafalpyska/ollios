@@ -8,7 +8,7 @@
         <h1 class="title">Olios</h1>
         <h2 class="text">Newest furniture shop template</h2>
         <button class="btn__view-more">View more</button>
-        <button @click="categoriesToggle" class="btn__categories-toggle"></button>
+        <CategoriesToggle />
       </div>
     </main>
 
@@ -21,8 +21,8 @@
 
 <script>
 
-  import { EventBus } from "@/event-bus.js";
   import Navigation from "./Navigation";
+  import CategoriesToggle from "./CategoriesToggle";
   import CategoriesMenu from "./CategoriesMenu";
   import Search from "./Search";
 
@@ -30,37 +30,18 @@
     name: "Home",
     data() {
       return {
-        isActive: false,
       }
     },
     components:{
       Navigation,
+      CategoriesToggle,
       CategoriesMenu,
       Search
-    },
-    methods: {
-      categoriesToggle() {
-        this.isActive = !this.isActive;
-        EventBus.$emit('toggleActive', this.isActive);
-      }
     }
   };
 </script>
 
 <style scoped lang="css">
-
-  .btn__categories-toggle {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    width: 4rem;
-    height: 4rem;
-    border: 0;
-    border-radius: 50%;
-    box-shadow: 0 0 1px #888;
-    cursor: pointer;
-    z-index: 3;
-  }
 
   .btn__view-more {
     border: none;

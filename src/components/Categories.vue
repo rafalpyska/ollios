@@ -1,18 +1,22 @@
 <template lang="html">
   <div class="container">
-    <h1>TEST</h1>
     <Navigation />
+    <h1>TEST</h1>
+    <CategoriesMenu />
+
   </div>
 </template>
 
 <script>
 
   import Navigation from "./Navigation";
+  import CategoriesMenu from "./CategoriesMenu";
 
   export default {
     name: "Categories",
     components: {
-      Navigation
+      Navigation,
+      CategoriesMenu
     }
   };
 </script>
