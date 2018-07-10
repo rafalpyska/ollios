@@ -77,6 +77,7 @@
     padding: 1.5rem 0;
   }
   .categories__link {
+    display: flex;
     align-items: center;
     margin-right: 1rem;
     justify-content: flex-end;
