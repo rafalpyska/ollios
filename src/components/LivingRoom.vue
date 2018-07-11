@@ -2,11 +2,12 @@
   <div class="container">
     <Navigation />
       <main class="main">
+        <h1 v-if="status">{{ status }}</h1>
         <div class="products__container" v-for="item in dataReceived">
           <p>{{ item.name }}</p>
           <p>{{ item.username }}</p>
           <p>${{ item.address.geo.lat}}</p>
-          <!-- <img :src="japs.thumbnailUrl" /> -->
+          <img :src="images" />
         </div>
       </main>
     <CategoriesToggle />
@@ -28,7 +29,9 @@
     name: 'LivingRoom',
     data() {
       return {
-        dataReceived: []
+        status: 'Loading...',
+        dataReceived: [],
+        images: 'http://via.placeholder.com/350x150'
       }
     },
     components: {
@@ -41,6 +44,7 @@
         axios.get(API)
           .then((response) => {
             this.dataReceived = response.data;
+            this.status = '';
           })
           .catch((error) => {
             console.log(error);
@@ -50,9 +54,7 @@
 </script>
 
 <style scoped lang="css">
-  .container {
-    height: 100%;
-  }
+
   .main {
     display: flex;
     flex-wrap: wrap;
@@ -62,8 +64,6 @@
   .products__container {
     display: flex;
     flex-direction: column;
-    width: 20%;
-    height: 10rem;
     margin: 2rem;
     padding: 2rem;
     background-color: rgba(255, 255, 255, .9);
