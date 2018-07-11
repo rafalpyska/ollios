@@ -47,7 +47,7 @@
   .v-leave { opacity: 1; }
   .v-leave-active { transition: opacity 1s }
   .v-leave-to { opacity: 0; }
-  .v-enter { opacity: 0; }
+  .v-enter { opacity: 0; transform: }
   .v-enter-active  { transition: opacity 1s }
   .v-enter-to { opacity: 1; }
 

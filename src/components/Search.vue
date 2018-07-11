@@ -30,7 +30,7 @@ export default {
     handleRequest(e) {
       axios.get(`${API}?title=${this.searchValue}`)
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
         })
         .catch((error) => {
           console.log(error);

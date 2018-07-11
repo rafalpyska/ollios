@@ -4,7 +4,7 @@
     <nav class="categories">
       <ul class="categories__list">
         <li class="categories__item" v-for="category in categories" :key="category.id">
-          <router-link :to="'/categories/' + category.id" class="categories__link">{{ category.name }} <span class="categories__icons" :class="category.class"></span></router-link>
+          <router-link :to="category.route" class="categories__link">{{ category.name }} <span class="categories__icons" :class="category.class"></span></router-link>
         </li>
       </ul>
       <router-link :to="'/categories'" class="categories__link-all" href="#">Show all categories</router-link>
@@ -23,17 +23,20 @@
       return {
         activeOrNot: false,
         categories: [
-          { name: 'Living room', id: 1, class: 'icon__living-room'},
-          { name: 'Office', id: 2, class: 'icon__office'},
-          { name: 'For kids', id: 3, class: 'icon__for-kids'},
-          { name: 'Kitchen', id: 4, class: 'icon__kitchen'},
-          { name: 'Accesories', id: 5, class: 'icon__accesories'}
+          { name: 'Living room', id: 1, route: 'category-living-room', class: 'icon__living-room'},
+          { name: 'Office', id: 2, route: 'category-office', class: 'icon__office'},
+          { name: 'For kids', id: 3, route: 'category-for-kids', class: 'icon__for-kids'},
+          { name: 'Kitchen', id: 4, route: 'category-kitchen', class: 'icon__kitchen'},
+          { name: 'Accesories', id: 5, route: 'category-accesories', class: 'icon__accesories'}
         ]
       }
     },
     created() {
       EventBus.$on('toggleActive', (active) => {
         this.activeOrNot = active;
+      });
+      EventBus.$on('routeChange', (routeFalse) => {
+        this.activeOrNot = routeFalse;
       });
     },
     methods: {

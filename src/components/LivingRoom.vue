@@ -2,7 +2,7 @@
   <div class="container">
     <Navigation />
       <main class="main">
-        <h1>All Categories</h1>
+        <h1>SAMPLE H1</h1>
       </main>
     <CategoriesToggle />
     <CategoriesMenu />
@@ -11,27 +11,34 @@
 
 <script>
 
+  import axios from 'axios';
+  const API = 'https://jsonplaceholder.typicode.com/photos';
+
   import Navigation from "./Navigation";
   import CategoriesToggle from "./CategoriesToggle";
   import CategoriesMenu from "./CategoriesMenu";
   import Search from "./Search";
 
   export default {
-    name: "Categories",
+    name: 'LivingRoom',
     components: {
       Navigation,
       CategoriesToggle,
       CategoriesMenu,
       Search
     }
-  };
+    // ,
+    // created() {
+    //     axios.get(API)
+    //       .then((response) => {
+    //         console.log(response.data);
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    //   }
+    };
 </script>
 
 <style scoped lang="css">
-
-  .main {
-    flex: 1;
-    background-color: rgba(240, 240, 240, 1);
-    text-align: center;
-  }
 </style>

@@ -10,12 +10,6 @@
 
 <script>
 
-  // import Navigation from "./components/Navigation";
-  // import Home from "./components/Home";
-  // import CategoriesMenu from "./components/CategoriesMenu";
-  // import Search from "./components/Search";
-  // import Categories from "./components/Categories";
-
   export default {
     name: 'App'
     // data() {
@@ -25,11 +19,6 @@
     // methods: {
     // },
     // components: {
-    //   Navigation,
-    //   Home,
-    //   CategoriesMenu,
-    //   Search,
-    //   Categories
     // }
   };
 </script>
