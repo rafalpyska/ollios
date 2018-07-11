@@ -50,6 +50,9 @@
 </script>
 
 <style scoped lang="css">
+  .container {
+    height: 100%;
+  }
   .main {
     display: flex;
     flex-wrap: wrap;
