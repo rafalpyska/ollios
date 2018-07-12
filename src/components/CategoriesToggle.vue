@@ -56,8 +56,6 @@
     background-color: rgba(240, 240, 240, 1);
   }
 
-
-
   .btn__categories-toggle:before {
     content: '\2630';
     font-size: 1.5rem;

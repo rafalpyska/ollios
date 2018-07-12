@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import CategoriesMenu from '@/components/CategoriesMenu'
 import Home from '@/components/Home'
+import Main from '@/components/Main'
 import Navigation from '@/components/Navigation'
 import Search from '@/components/Search'
 import Categories from '@/components/Categories'
@@ -13,11 +14,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Home
+      component: Main
     },
     {
       path: '/categories',
-      component: Categories,
+      component: Categories
     },
     {
       path: '/category-living-room',

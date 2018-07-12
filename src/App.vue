@@ -2,7 +2,7 @@
 
   <div id="app">
 
-      <router-view></router-view>
+      <Home />
 
   </div>
 
@@ -10,8 +10,13 @@
 
 <script>
 
+  import Home from "./components/Home";
+
   export default {
-    name: 'App'
+    name: 'App',
+    components: {
+      Home
+    }
     // data() {
     //   return {
     //   }
@@ -25,6 +30,30 @@
 
 <style lang="css">
 
+  html {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  .slide-fade-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  .side-fade-enter-active {
+    opacity: 1;
+    transition: all 1s;
+  }
+
+  .slide-fade-leave-active {
+    transition: all 1s;
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
   body {
     font-family: 'Lato', sans-serif;
     margin: 0;
@@ -35,6 +64,10 @@
     display: flex;
     width: 100%;
     min-height: 100vh;
+  }
+
+  .main {
+    padding-left: 8rem;
   }
 
 </style>

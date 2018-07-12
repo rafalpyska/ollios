@@ -1,29 +1,15 @@
 <template lang="html">
   <div class="container">
-    <Navigation />
-      <main class="main">
-        <h1>All Categories</h1>
-      </main>
-    <CategoriesToggle />
-    <CategoriesMenu />
+    <main class="main">
+      <h1>All Categories</h1>
+    </main>
   </div>
 </template>
 
 <script>
 
-  import Navigation from "./Navigation";
-  import CategoriesToggle from "./CategoriesToggle";
-  import CategoriesMenu from "./CategoriesMenu";
-  import Search from "./Search";
-
   export default {
-    name: "Categories",
-    components: {
-      Navigation,
-      CategoriesToggle,
-      CategoriesMenu,
-      Search
-    }
+    name: "Categories"
   };
 </script>
 

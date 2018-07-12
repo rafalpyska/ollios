@@ -1,15 +1,13 @@
 <template lang="html">
-  <transition class="out-in">
+
     <div class="container" v-cloak>
       <Navigation />
 
       <main class="main">
-        <div class="content">
-          <h1 class="title">Olios</h1>
-          <h2 class="text">Newest furniture shop template</h2>
-          <button class="btn__view-more">View more</button>
-          <CategoriesToggle />
-        </div>
+        <transition name="slide-fade">
+          <router-view></router-view>
+        </transition>
+        <CategoriesToggle />
       </main>
 
       <CategoriesMenu />
@@ -23,9 +21,11 @@
 <script>
 
   import Navigation from "./Navigation";
+  import Main from "./Main";
   import CategoriesToggle from "./CategoriesToggle";
   import CategoriesMenu from "./CategoriesMenu";
   import Search from "./Search";
+  import LivingRoom from "./LivingRoom";
 
   export default {
     name: "Home",
@@ -33,34 +33,18 @@
       return {
       }
     },
-    components:{
+    components: {
       Navigation,
+      Main,
       CategoriesToggle,
       CategoriesMenu,
-      Search
+      Search,
+      LivingRoom
     }
   };
 </script>
 
 <style scoped lang="css">
-
-  .v-leave { opacity: 1; }
-  .v-leave-active { transition: opacity 1s }
-  .v-leave-to { opacity: 0; }
-  .v-enter { opacity: 0; transform: }
-  .v-enter-active  { transition: opacity 1s }
-  .v-enter-to { opacity: 1; }
-
-  .btn__view-more {
-    border: none;
-    color: rgba(255, 255, 255, .9);
-    background-color: rgba(0, 35, 255, .9);
-    padding: 1rem 3rem;
-    border-radius: 2rem;
-    margin-top: .75rem;
-    font-weight: 700;
-    cursor: pointer;
-  }
 
   [v-cloak] {
     display: none;
@@ -76,18 +60,4 @@
     background-position: center center;
   }
 
-  .title,
-  .text {
-    font-weight: 100;
-    margin: 0;
-    padding: .75rem;
-  }
-
-  .title {
-    margin-top: 5rem;
-    font-size: 8rem;
-  }
-  .categories__link {
-    display: flex;
-  }
 </style>
