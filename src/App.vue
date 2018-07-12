@@ -38,22 +38,6 @@
     box-sizing: inherit;
   }
 
-  .slide-fade-enter {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-
-  .side-fade-enter-active {
-    opacity: 1;
-    transition: all 1s;
-  }
-
-  .slide-fade-leave-active {
-    transition: all 1s;
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-
   body {
     font-family: 'Lato', sans-serif;
     margin: 0;

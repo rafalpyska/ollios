@@ -1,19 +1,21 @@
 <template lang="html">
 
     <div class="container" v-cloak>
+
       <Navigation />
 
-      <main class="main">
-        <transition name="slide-fade">
-          <router-view></router-view>
-        </transition>
-        <CategoriesToggle />
-      </main>
+      <transition name="slide-in" mode="out-in">
+        <router-view></router-view>
+      </transition>
+
+      <CategoriesToggle />
 
       <CategoriesMenu />
+
       <Search>
         <router-view></router-view>
       </Search>
+
     </div>
   </transition>
 </template>
@@ -58,6 +60,19 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+  }
+
+  .slide-in-enter-active {
+    transition: all .3s ease;
+  }
+
+  .slide-in-leave-active {
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+
+  .slide-in-enter, .slide-in-leave-to {
+    opacity: 0;
+    transform: translateX(-100%);
   }
 
 </style>

@@ -1,9 +1,11 @@
 <template lang="html">
-  <div class="content">
-    <h1 class="title">Olios</h1>
-    <h2 class="text">Newest furniture shop template</h2>
-    <button class="btn__view-more">View more</button>
-  </div>
+  <main class="main">
+    <div class="content">
+      <h1 class="title">Olios</h1>
+      <h2 class="text">Newest furniture shop template</h2>
+      <button class="btn__view-more">View more</button>
+    </div>
+  </main>
 </template>
 
 <script>
