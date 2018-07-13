@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="container">
     <main class="main">
-      <h1 v-if="status">{{ status }}</h1>
+      <LoadingSpinner v-if="status"/>
       <div class="products__container" v-for="item in dataReceived">
         <p>{{ item.name }}</p>
         <p>{{ item.username }}</p>
@@ -14,6 +14,7 @@
 
 <script>
 
+  import LoadingSpinner from "./LoadingSpinner";
   import axios from 'axios';
   const API = 'https://jsonplaceholder.typicode.com/users';
 
@@ -21,16 +22,19 @@
     name: 'LivingRoom',
     data() {
       return {
-        status: 'Loading...',
+        status: true,
         dataReceived: [],
         images: 'http://via.placeholder.com/350x150'
       }
+    },
+    components: {
+      LoadingSpinner
     },
     created() {
         axios.get(API)
           .then((response) => {
             this.dataReceived = response.data;
-            this.status = '';
+            this.status = false;
           })
           .catch((error) => {
             console.log(error);
