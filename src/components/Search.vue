@@ -1,12 +1,12 @@
 <template lang="html">
   <transition name="slide-fade">
-    <div v-show="isToggle" class="search__container">
+    <section v-show="isToggle" class="search">
       <input class="search__input" type="search" name="search__input" v-model="searchValue" @input="handleRequest">
       <label class="search__label"for="search__input">Type product that you are looking for</label>
       <!-- <div>
           <img v-for="item in results" :src="item.links[0].href" alt="">
       </div> -->
-    </div>
+    </section>
 
 
 
@@ -52,7 +52,6 @@ export default {
 <style scoped lang="scss">
 
   .search {
-    &__container {
     position: absolute;
     top: 0;
     left: 0;
@@ -63,7 +62,6 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, .9);
-    }
     &__input {
       font-family: 'Lato', sans-serif;
       font-size: 4rem;

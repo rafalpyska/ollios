@@ -57,7 +57,7 @@
       display: flex;
       flex: 0 0 17%;
       height: 100%;
-      position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
       background-color: rgba(255, 255, 255, .9);

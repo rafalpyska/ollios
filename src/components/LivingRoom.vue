@@ -1,27 +1,27 @@
 <template lang="html">
   <div class="container">
     <main class="main">
+
+      <section class="section__details">
+        <h1 class="section__title">Products</h1>
+        <p class="section__category">{{ $route.name }}</p>
+      </section>
+
       <LoadingSpinner v-if="status"/>
 
-        <div class="products">
-          <h1>Products</h1>
-          <p>{{ $route.name }}</p>
-        </div>
-
-        <div class="products__container">
-          <div class="products__item" v-for="item in dataReceived" :class="'products__item--' + item.id">
-            <!-- <img :src="image.url" :alt="image.alt" class="products__image"/> -->
+      <section class="products">
+        <div class="products__item" v-for="item in dataReceived" :class="'products__item--' + item.id">
+          <img :src="images" alt="" class="products__image"/>
+          <div>
             <p class="products__name">{{ item.name }}</p>
             <p class="products__description">{{ item.company.catchPhrase }}</p>
             <p class="products__price">${{ item.address.geo.lat}}</p>
           </div>
-      </div>
+        </div>
+      </section>
     </main>
   </div>
 </template>
-
-
-
 
 <script>
 
@@ -35,28 +35,7 @@
       return {
         status: true,
         dataReceived: [],
-        images: [
-          {
-            url: require('../assets/images/blueseat.png'),
-            alt: ''
-          },
-          {
-            url: require('../assets/images/whitetable.png'),
-            alt: ''
-          },
-          {
-            url: require('../assets/images/redseat.png'),
-            alt: ''
-          },
-          {
-            url: require('../assets/images/modernbed.png'),
-            alt: ''
-          },
-          {
-            url: require('../assets/images/darkseat.png'),
-            alt: ''
-          }
-        ]
+        images: 'http://via.placeholder.com/350x150',
       }
     },
     components: {
@@ -75,26 +54,18 @@
     };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
   .main {
     width: 100%;
-    height: 100%;
     padding: 3rem 8rem 3rem 16rem;
     background-color: rgba(240, 240, 240, 1);
   }
   .products {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 0;
-    text-transform: uppercase;
-    &__container {
-      display: grid;
-      grid-template-rows: repeat(2, 50%);
-      grid-template-columns: 20% 1fr 20% 20%;
-      grid-gap: 2rem;
-    }
+    display: grid;
+    grid-template-rows: repeat(2, 50%);
+    grid-template-columns: 23% 1fr 23% 23%;
+    grid-gap: 2rem;
     &__item {
       padding: 2rem;
       background-color: rgba(255, 255, 255, .9);
@@ -103,25 +74,62 @@
       max-width: 100%;
     }
     &__item {
+      align-items: center;
       &--2 {
+        display: flex;
+        justify-content: space-around;
         grid-column: 2/5;
+        & .products__image {
+          order: 2;
+        }
       }
       &--4 {
+        display: flex;
         grid-column: 2/4;
+        & .products__image {
+          order: 2;
+        }
+      }
+      &--6 {
+        display: flex;
+        grid-column: 1/3;
+        & .products__image {
+          order: 2;
+        }
       }
     }
     &__name {
       text-transform: uppercase;
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: 300;
     }
-    &__desciption {
+    &__description {
+      font-size: 1.15rem;
       color: rgba(168, 168, 168, 1);
       font-weight: 100;
     }
     &__price {
+      font-size: 1.15rem;
       color: rgba(0, 35, 255, .9);
       font-weight: 300;
     }
   }
+  .section {
+    &__details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 0;
+      text-transform: uppercase;
+    }
+    &__title {
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    &__category {
+      font-weight: 100;
+    }
+  }
+
+
 </style>

@@ -24,10 +24,8 @@
 
 <style lang="scss">
   .spinner {
-    display: flex;
-    justify-content: center;
-    align-self: center;
     transition: all 0.3s linear;
+    margin: 0 auto;
   }
 
   @keyframes spinner-animation {

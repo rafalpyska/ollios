@@ -31,7 +31,7 @@
 <style scoped lang="scss">
 
   .btn__categories-toggle {
-    position: absolute;
+    position: fixed;
     top: 2rem;
     right: 2rem;
     width: 4rem;
@@ -63,5 +63,5 @@
       }
     }
   }
-  
+
 </style>
