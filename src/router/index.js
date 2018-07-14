@@ -7,6 +7,7 @@ import Navigation from '@/components/Navigation'
 import Search from '@/components/Search'
 import Categories from '@/components/Categories'
 import LivingRoom from '@/components/LivingRoom'
+import ProductDetails from '@/components/ProductDetails'
 
 Vue.use(Router)
 
@@ -43,6 +44,10 @@ export default new Router({
     {
       path: '/category-accesories',
       component: LivingRoom
+    },
+    {
+      path: '/product-details',
+      component: ProductDetails
     }
   ]
 })

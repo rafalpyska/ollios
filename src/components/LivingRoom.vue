@@ -10,14 +10,14 @@
       <LoadingSpinner v-if="status"/>
 
       <section class="products">
-        <div class="products__item" v-for="item in dataReceived" :class="'products__item--' + item.id">
+        <router-link to="/"tag="div" class="products__item" v-for="item in dataReceived" :class="'products__item--' + item.id">
           <img :src="images" alt="" class="products__image"/>
           <div>
             <p class="products__name">{{ item.name }}</p>
             <p class="products__description">{{ item.company.catchPhrase }}</p>
             <p class="products__price">${{ item.address.geo.lat}}</p>
           </div>
-        </div>
+        </router-link>
       </section>
     </main>
   </div>
@@ -68,10 +68,19 @@
     grid-gap: 2rem;
     &__item {
       padding: 2rem;
-      background-color: rgba(255, 255, 255, .9);
+      background-color: rgba(255, 255, 255, .5);
+      cursor: pointer;
+      transition: .3s all;
+      &:hover {
+        background-color: rgba(255, 255, 255, .9);
+      }
+      &:hover .products__image {
+        transform: scale(1.1);
+      }
     }
     &__image {
       max-width: 100%;
+      transition: .3s all;
     }
     &__item {
       align-items: center;
