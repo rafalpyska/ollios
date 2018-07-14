@@ -2,17 +2,26 @@
   <div class="container">
     <main class="main">
       <LoadingSpinner v-if="status"/>
-      <template v-for="image in images">
-        <div class="products__container" v-for="item in dataReceived" :class="'products__item--' + item.id ">
-          <img :src="image.url" :alt="image.alt" class="products__image"/>
-          <p class="products__name">{{ item.name }}</p>
-          <p class="products__description">{{ item.company.catchPhrase }}</p>
-          <p class="products__price">${{ item.address.geo.lat}}</p>
+
+        <div class="products">
+          <h1>Products</h1>
+          <p>{{ $route.name }}</p>
         </div>
-      </template>
+
+        <div class="products__container">
+          <div class="products__item" v-for="item in dataReceived" :class="'products__item--' + item.id">
+            <!-- <img :src="image.url" :alt="image.alt" class="products__image"/> -->
+            <p class="products__name">{{ item.name }}</p>
+            <p class="products__description">{{ item.company.catchPhrase }}</p>
+            <p class="products__price">${{ item.address.geo.lat}}</p>
+          </div>
+      </div>
     </main>
   </div>
 </template>
+
+
+
 
 <script>
 
@@ -36,7 +45,7 @@
             alt: ''
           },
           {
-            url: require('../assets/images/blueseat.png'),
+            url: require('../assets/images/redseat.png'),
             alt: ''
           },
           {
@@ -48,7 +57,6 @@
             alt: ''
           }
         ]
-        // images: 'http://via.placeholder.com/350x150'
       }
     },
     components: {
@@ -70,17 +78,24 @@
 <style scoped lang="scss">
 
   .main {
-    display: grid;
-    grid-template-rows: repeat(2, 50%);
-    grid-template-columns: 20% 1fr 20% 20%;
-    grid-gap: 2rem;
     width: 100%;
     height: 100%;
-    padding: 8rem 8rem 8rem 16rem;
+    padding: 3rem 8rem 3rem 16rem;
     background-color: rgba(240, 240, 240, 1);
   }
   .products {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    text-transform: uppercase;
     &__container {
+      display: grid;
+      grid-template-rows: repeat(2, 50%);
+      grid-template-columns: 20% 1fr 20% 20%;
+      grid-gap: 2rem;
+    }
+    &__item {
       padding: 2rem;
       background-color: rgba(255, 255, 255, .9);
     }

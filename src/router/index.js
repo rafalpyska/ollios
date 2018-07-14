@@ -22,18 +22,22 @@ export default new Router({
     },
     {
       path: '/category-living-room',
+      name: 'Living Room',
       component: LivingRoom
     },
     {
       path: '/category-office',
+      name: 'Office',
       component: LivingRoom
     },
     {
       path: '/category-for-kids',
+      name: 'For kids',
       component: LivingRoom
     },
     {
       path: '/category-kitchen',
+      name: 'Kitchen',
       component: LivingRoom
     },
     {

@@ -3,7 +3,13 @@
     <div v-show="isToggle" class="search__container">
       <input class="search__input" type="search" name="search__input" v-model="searchValue" @input="handleRequest">
       <label class="search__label"for="search__input">Type product that you are looking for</label>
+      <!-- <div>
+          <img v-for="item in results" :src="item.links[0].href" alt="">
+      </div> -->
     </div>
+
+
+
   </transition>
 </template>
 
@@ -11,7 +17,7 @@
 
 import { EventBus } from "@/event-bus.js";
 import axios from 'axios';
-const API = 'https://jsonplaceholder.typicode.com/photos';
+const API = 'https://images-api.nasa.gov/search';
 
 export default {
   name: "Search",
@@ -19,6 +25,7 @@ export default {
     return {
       isToggle: false,
       searchValue: '',
+      results: []
     }
   },
   created() {
@@ -28,9 +35,10 @@ export default {
   },
   methods: {
     handleRequest(e) {
-      axios.get(`${API}?title=${this.searchValue}`)
+      axios.get(`${API}?q=${this.searchValue}&media_type=image`)
         .then((response) => {
-          console.log(response.data);
+          this.results = response.data.collection.items;
+          console.log(response.data.collection.items);
         })
         .catch((error) => {
           console.log(error);
