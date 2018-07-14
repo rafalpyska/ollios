@@ -4,32 +4,32 @@
     "productName": "Read Seat" ,
     "productCategory": "Living Room",
     "productDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "productPrice":  "$45",
-    "productImage":  ,
+    "productPrice": "$45",
+    "productImage": "./assets/images/redseat.png"
   },
   {
     "productId": 11,
     "productName": "White Table",
     "productCategory": "Kitchen" ,
     "productDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "productPrice":  "$350",
-    "productImage":  ,
+    "productPrice": "$350",
+    "productImage": "./assets/images/whitetable.png"
   },
   {
     "productId": 12,
     "productName":  "Blue Seat",
     "productCategory":  "Office",
     "productDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "productPrice":  "$35",
-    "productImage":  ,
+    "productPrice": "$35",
+    "productImage": "./assets/images/blueseat.png"
   },
   {
     "productId": 13,
     "productName": "Modern Bed",
     "productCategory": "Living Room",
     "productDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "productPrice":  "$120",
-    "productImage":  ,
+    "productPrice": "$120",
+    "productImage":  "./assets/images/modernbed.png"
   },
   {
     "productId": 14,
@@ -37,6 +37,6 @@
     "productCategory": "Living Room",
     "productDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "productPrice": "$50",
-    "productImage":  ,
+    "productImage": "./assets/images/darkseat.png"
   }
 ]

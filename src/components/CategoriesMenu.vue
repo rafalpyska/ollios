@@ -44,18 +44,7 @@
   };
 </script>
 
-<style scoped lang="css">
-
-  .categories__container {
-    display: flex;
-    flex: 0 0 17%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgba(255, 255, 255, .9);
-    z-index: 2;
-  }
+<style scoped lang="scss">
 
   .categories {
     display: flex;
@@ -64,61 +53,74 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    &__container {
+      display: flex;
+      flex: 0 0 17%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, .9);
+      z-index: 2;
+    }
+    &__list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-transform: uppercase;
+    }
+    &__item {
+      padding: 1.5rem 0;
+    }
+    &__link {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem;
+      justify-content: flex-end;
+      color: rgba(216, 216, 216, .9);
+      opacity: .7;
+      transition: .3s opacity;
+      &:hover {
+        opacity: 1;
+      }
+      &:link,
+      &:visited {
+        text-decoration: none;
+      }
+    }
+    &__icons {
+      width: 50px;
+      height: 50px;
+      background-position: right center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      align-items: center;
+      margin-left: 1.5rem;
+    }
   }
 
-  .categories__list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-transform: uppercase;
+  .icon {
+    &__living-room {
+      background-image: url('../assets/categories/livingroom.png');
+    }
+    &__office {
+      background-image: url('../assets/categories/office.png');
+    }
+    &__for-kids {
+      background-image: url('../assets/categories/forkids.png');
+    }
+    &__kitchen {
+      background-image: url('../assets/categories/kitchen.png');
+    }
+    &__accesories {
+      background-image: url('../assets/categories/accesories.png');
+    }
   }
-  .categories__item {
-    padding: 1.5rem 0;
-  }
-  .categories__link {
-    display: flex;
-    align-items: center;
-    margin-right: 1rem;
-    justify-content: flex-end;
-    color: rgba(216, 216, 216, .9);
-    opacity: .7;
-    transition: .3s opacity;
-  }
-  .categories__link:hover {
-    opacity: 1;
-  }
-  .categories__link:link,
-  .categories__link:visited {
-    text-decoration: none;
-  }
-  .categories__icons {
-    width: 50px;
-    height: 50px;
-    background-position: right center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    align-items: center;
-    margin-left: 1.5rem;
-  }
-  .icon__living-room {
-    background-image: url('../assets/categories/livingroom.png');
-  }
-  .icon__office {
-    background-image: url('../assets/categories/office.png');
-  }
-  .icon__for-kids {
-    background-image: url('../assets/categories/forkids.png');
-  }
-  .icon__kitchen {
-    background-image: url('../assets/categories/kitchen.png');
-  }
-  .icon__accesories {
-    background-image: url('../assets/categories/accesories.png');
-  }
+
   .categories__link-all:link,
   .categories__link-all:visited {
     padding: 2rem;

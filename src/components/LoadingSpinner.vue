@@ -22,7 +22,7 @@
 
 </script>
 
-<style lang="css">
+<style lang="scss">
   .spinner {
     display: flex;
     justify-content: center;

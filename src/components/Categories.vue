@@ -13,7 +13,7 @@
   };
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 
   .main {
     flex: 1;

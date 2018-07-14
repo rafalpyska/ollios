@@ -46,7 +46,7 @@
   };
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 
   [v-cloak] {
     display: none;

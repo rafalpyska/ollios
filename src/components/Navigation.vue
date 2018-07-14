@@ -54,7 +54,7 @@
 
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 
   .header {
     display: flex;
@@ -62,7 +62,7 @@
     width: 8rem;
     height: 100%;
     background-color: rgba(255, 255, 255, .9);
-    box-shadow: 4px 0 5px -2px rgb(0, 0, 0, .1);
+    box-shadow: 4px 0 5px rgba(0, 0, 0, .1);
     z-index: 3;
   }
 
@@ -70,68 +70,67 @@
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, .9);
+    &__list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-transform: uppercase;
+    }
+    &__item {
+      list-style-type: none;
+      align-self: center;
+      padding: 2.5rem 1.5rem;
+    }
+    &:first-child {
+      margin-bottom: 5rem;
+    }
+    &__button {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem;
+      justify-content: flex-end;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      opacity: .5;
+      transition: .3s opacity;
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+    &__icon {
+      width: 25px;
+      height: 25px;
+      background-position: right center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      align-items: center;
+      margin-left: 1.5rem;
+    }
   }
 
-  .navigation__list {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-transform: uppercase;
+  .icon {
+    &__home {
+      background-image: url('../assets/navigation/home.png');
+    }
+    &__basket {
+      background-image: url('../assets/navigation/basket.png');
+    }
+    &__search {
+      background-image: url('../assets/navigation/search.png');
+    }
+    &__download {
+      background-image: url('../assets/navigation/in.png');
+    }
   }
 
-  .navigation__item {
-    list-style-type: none;
-    align-self: center;
-    padding: 2.5rem 1.5rem;
-  }
-  .navigation__item:first-child {
-    margin-bottom: 5rem;
-  }
-
-  .navigation__button {
-    display: flex;
-    align-items: center;
-    margin-right: 1rem;
-    justify-content: flex-end;
-    border: 0;
-    background: none;
-    cursor: pointer;
-    opacity: .5;
-    transition: .3s opacity;
-  }
-  .navigation__button:hover,
-  .navigation__button:focus {
-    opacity: 1;
-  }
-
-  .navigation__icon {
-    width: 25px;
-    height: 25px;
-    background-position: right center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    align-items: center;
-    margin-left: 1.5rem;
-  }
-
-  .icon__home {
-    background-image: url('../assets/navigation/home.png');
-  }
-  .icon__basket {
-    background-image: url('../assets/navigation/basket.png');
-  }
-  .icon__search {
-    background-image: url('../assets/navigation/search.png');
-  }
-
-  .icon__download {
-    background-image: url('../assets/navigation/in.png');
-  }
   .margin-auto {
     margin-bottom: auto;
   }
+
 </style>

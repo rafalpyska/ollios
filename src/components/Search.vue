@@ -41,49 +41,49 @@ export default {
 
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 
-.search__container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, .9);
-}
+  .search {
+    &__container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, .9);
+    }
+    &__input {
+      font-family: 'Lato', sans-serif;
+      font-size: 4rem;
+      font-weight: 100;
+      text-transform: uppercase;
+      border: 0;
+      border-bottom: 1px solid rgba(177, 177, 177, .9);
+      background-color: transparent;
+      padding: 1.5rem;
+      width: 70%;
+      margin-bottom: 1rem;
+    }
+    &__label {
+      color: rgba(177, 177, 177, .9);
+    }
+  }
 
-.search__input {
-  font-family: 'Lato', sans-serif;
-  font-size: 4rem;
-  font-weight: 100;
-  text-transform: uppercase;
-  border: 0;
-  border-bottom: 1px solid rgba(177, 177, 177, .9);
-  background-color: transparent;
-  padding: 1.5rem;
-  width: 70%;
-  margin-bottom: 1rem;
-}
+  .slide-fade-enter-active,
+  .slide-fade-leave-active {
+    transition: all .4s ease;
+  }
 
-.search__label {
-  color: rgba(177, 177, 177, .9);
-}
-
-.slide-fade-enter-active,
-.slide-fade-leave-active {
-  transition: all .4s ease;
-}
-
-.slide-fade-enter {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-.slide-fade-leave-to {
-  transform: translateY(-100%);
-}
+  .slide-fade-enter {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  .slide-fade-leave-to {
+    transform: translateY(-100%);
+  }
 
 </style>

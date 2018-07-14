@@ -28,7 +28,7 @@
   };
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 
   .btn__categories-toggle {
     position: absolute;
@@ -43,29 +43,25 @@
     cursor: pointer;
     z-index: 3;
     transition: all .3s;
+    &:hover {
+      background-color: rgba(255, 255, 255, 1);
+    }
+    &:before {
+      content: '\2630';
+      font-size: 1.5rem;
+      font-weight: 700;
+      vertical-align: middle;
+      color: rgba(0, 35, 255, .9);
+    }
+    &.active {
+      background-color: rgba(240, 240, 240, .6);
+      &:hover {
+        background-color: rgba(240, 240, 240, 1);
+      }
+      &:before {
+        content: '\01D5D1';
+      }
+    }
   }
-
-  .btn__categories-toggle:hover {
-    background-color: rgba(255, 255, 255, 1);
-  }
-
-  .btn__categories-toggle.active {
-    background-color: rgba(240, 240, 240, .6);
-  }
-  .btn__categories-toggle.active:hover {
-    background-color: rgba(240, 240, 240, 1);
-  }
-
-  .btn__categories-toggle:before {
-    content: '\2630';
-    font-size: 1.5rem;
-    font-weight: 700;
-    vertical-align: middle;
-    color: rgba(0, 35, 255, .9);
-
-  }
-  .btn__categories-toggle.active:before {
-    content: '\01D5D1';
-  }
-
+  
 </style>
