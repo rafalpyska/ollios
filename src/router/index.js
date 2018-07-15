@@ -19,35 +19,42 @@ export default new Router({
     },
     {
       path: '/categories',
-      component: Categories
+      component: Categories,
+      props: true
     },
     {
       path: '/category-living-room',
       name: 'Living Room',
-      component: LivingRoom
+      component: LivingRoom,
+      props: true
     },
     {
       path: '/category-office',
       name: 'Office',
-      component: LivingRoom
+      component: LivingRoom,
+      props: true
     },
     {
       path: '/category-for-kids',
       name: 'For kids',
-      component: LivingRoom
+      component: LivingRoom,
+      props: true
     },
     {
       path: '/category-kitchen',
       name: 'Kitchen',
-      component: LivingRoom
+      component: LivingRoom,
+      props: true
     },
     {
       path: '/category-accesories',
-      component: LivingRoom
+      component: LivingRoom,
+      props: true
     },
     {
       path: '/product-details',
-      component: ProductDetails
+      component: ProductDetails,
+      props: true
     }
   ]
 })

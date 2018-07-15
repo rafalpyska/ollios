@@ -62,6 +62,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, .9);
+    z-index: 2;
     &__input {
       font-family: 'Lato', sans-serif;
       font-size: 4rem;

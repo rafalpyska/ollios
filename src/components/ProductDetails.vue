@@ -7,31 +7,16 @@
         </div>
         <div class="product-details__container">
         <div class="product-details__description">
-
+          <section class="section__details">
+            <h1 class="section__title">Products</h1>
+            <p class="section__category">{{ $route.name }}</p>
+          </section>
         </div>
         <section class="recomended">
 
         </section>
         </div>
       </section>
-
-      <!-- <section class="section__details">
-        <h1 class="section__title">Products</h1>
-        <p class="section__category">{{ $route.name }}</p>
-      </section>
-
-      <LoadingSpinner v-if="status"/>
-
-      <section class="products">
-        <router-link to="/product-details"tag="div" class="products__item" v-for="item in dataReceived" :class="'products__item--' + item.id">
-          <img :src="images" alt="" class="products__image"/>
-          <div>
-            <p class="products__name">{{ item.name }}</p>
-            <p class="products__description">{{ item.company.catchPhrase }}</p>
-            <p class="products__price">${{ item.address.geo.lat}}</p>
-          </div>
-        </router-link>
-      </section> -->
     </main>
   </div>
 </template>
@@ -48,7 +33,7 @@
 
   .main {
     width: 100%;
-    padding-left: 8rem;
+    padding: 0;
   }
 
   .product-details {
@@ -59,6 +44,7 @@
       width: 40%;
       background-color: rgba(255, 255, 255, .9);
       box-shadow: 4px 0 5px -2px rgba(0, 0, 0, .1);
+      z-index: 2;
     }
     &__container {
       display: flex;

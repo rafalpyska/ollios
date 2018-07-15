@@ -10,7 +10,7 @@
       <LoadingSpinner v-if="status"/>
 
       <section class="products">
-        <router-link to="/product-details"tag="figure" class="products__item" v-for="item in dataReceived" :key="item.id" :class="'products__item--' + item.id">
+        <router-link to="/product-details"tag="figure" class="products__item" v-for="item in moreData" :key="item.id" :class="'products__item--' + item.id">
           <img :src="images" alt="" class="products__image"/>
           <div>
             <figcaption class="products__name">{{ item.name }}</figcaption>
@@ -19,6 +19,7 @@
           </div>
         </router-link>
       </section>
+      <button @click="loadMore" class="btn__load-more">Show more products</button>
     </main>
   </div>
 </template>
@@ -35,7 +36,8 @@
       return {
         status: true,
         dataReceived: [],
-        images: 'http://via.placeholder.com/350x150',
+        moreData: [],
+        images: 'http://via.placeholder.com/350x150'
       }
     },
     components: {
@@ -45,16 +47,22 @@
         axios.get(API)
           .then((response) => {
             this.dataReceived = response.data;
+            this.moreData = this.dataReceived.slice(0, 6);
             this.status = false;
           })
           .catch((error) => {
             console.log(error);
           });
+      },
+      methods: {
+        loadMore() {
+          this.moreData = this.dataReceived.slice(0, 20);
+        }
       }
     };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 
   .main {
     width: 100%;
@@ -129,21 +137,17 @@
       margin: .6rem 0;
     }
   }
-  .section {
-    &__details {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2rem 0;
-      text-transform: uppercase;
-    }
-    &__title {
-      font-size: 2.5rem;
-      font-weight: 300;
-    }
-    &__category {
-      font-weight: 100;
-    }
+
+  .btn__load-more {
+    display: block;
+    border: 0;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: none;
+    text-transform: uppercase;
+    color: rgba(0, 35, 255, 1);
+    cursor: pointer;
+    font-size: 1rem;
   }
 
 

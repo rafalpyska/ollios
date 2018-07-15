@@ -14,7 +14,17 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped lang="css">
+
+  .main {
+    flex: 1;
+    text-align: center;
+    text-transform: uppercase;
+    background-image: url('../assets/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 
   .btn__view-more {
     border: none;

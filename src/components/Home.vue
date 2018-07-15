@@ -46,20 +46,27 @@
   };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
   [v-cloak] {
     display: none;
   }
 
-  .main {
-    flex: 1;
-    text-align: center;
-    text-transform: uppercase;
-    background-image: url('../assets/background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+  .section {
+    &__details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 0;
+      text-transform: uppercase;
+    }
+    &__title {
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    &__category {
+      font-weight: 100;
+    }
   }
 
   .slide-in-enter-active {

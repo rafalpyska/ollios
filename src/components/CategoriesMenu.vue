@@ -61,7 +61,7 @@
       top: 0;
       right: 0;
       background-color: rgba(255, 255, 255, .9);
-      z-index: 2;
+      z-index: 3;
     }
     &__list {
       display: flex;
