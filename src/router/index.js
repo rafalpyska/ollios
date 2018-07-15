@@ -55,6 +55,9 @@ export default new Router({
       path: '/product-details',
       component: ProductDetails,
       props: true
+    },
+    {
+      path: '*', redirect: '/'
     }
   ]
 })
