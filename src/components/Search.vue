@@ -44,6 +44,11 @@ export default {
           console.log(error);
         });
     }
+  },
+  watch: {
+    '$route' () {
+      this.isToggle = false;
+    }
   }
 };
 
