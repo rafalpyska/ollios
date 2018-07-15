@@ -7,7 +7,7 @@
         </div>
         <div class="product-details__container">
         <div class="product-details__description">
-          
+
         </div>
         <section class="recomended">
 
@@ -44,7 +44,7 @@
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 
   .main {
     width: 100%;
