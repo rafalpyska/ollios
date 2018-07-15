@@ -36,6 +36,11 @@
     padding: 0;
   }
 
+  .section {
+    &__title {
+      font-size: 1.5rem;
+    }
+  }
   .product-details {
     display: flex;
     width: 100%;
