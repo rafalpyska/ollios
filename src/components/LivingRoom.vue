@@ -10,10 +10,10 @@
       <LoadingSpinner v-if="status"/>
 
       <section class="products">
-        <router-link to="/"tag="div" class="products__item" v-for="item in dataReceived" :class="'products__item--' + item.id">
+        <router-link to="/product-details"tag="figure" class="products__item" v-for="item in dataReceived" :key="item.id" :class="'products__item--' + item.id">
           <img :src="images" alt="" class="products__image"/>
           <div>
-            <p class="products__name">{{ item.name }}</p>
+            <figcaption class="products__name">{{ item.name }}</figcaption>
             <p class="products__description">{{ item.company.catchPhrase }}</p>
             <p class="products__price">${{ item.address.geo.lat}}</p>
           </div>
@@ -58,7 +58,7 @@
 
   .main {
     width: 100%;
-    padding: 3rem 8rem 3rem 16rem;
+    padding: 2rem 8rem 2rem 16rem;
     background-color: rgba(240, 240, 240, 1);
   }
   .products {
@@ -67,6 +67,7 @@
     grid-template-columns: 23% 1fr 23% 23%;
     grid-gap: 2rem;
     &__item {
+      margin: 0;
       padding: 2rem;
       background-color: rgba(255, 255, 255, .5);
       cursor: pointer;
@@ -94,6 +95,7 @@
       }
       &--4 {
         display: flex;
+        justify-content: space-around;
         grid-column: 2/4;
         & .products__image {
           order: 2;
@@ -101,6 +103,7 @@
       }
       &--6 {
         display: flex;
+        justify-content: space-around;
         grid-column: 1/3;
         & .products__image {
           order: 2;
@@ -121,6 +124,9 @@
       font-size: 1.15rem;
       color: rgba(0, 35, 255, .9);
       font-weight: 300;
+    }
+    &__name {
+      margin: .6rem 0;
     }
   }
   .section {
