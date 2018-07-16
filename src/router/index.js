@@ -24,7 +24,7 @@ export default new Router({
     },
     {
       path: '/category-living-room',
-      name: 'Living Room',
+      name: 'LivingRoom',
       component: LivingRoom,
       props: true
     },
@@ -36,7 +36,7 @@ export default new Router({
     },
     {
       path: '/category-for-kids',
-      name: 'For kids',
+      name: 'ForKids',
       component: LivingRoom,
       props: true
     },

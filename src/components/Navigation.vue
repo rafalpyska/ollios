@@ -18,7 +18,7 @@
           </button>
         </li>
         <li class="navigation__item margin-auto">
-          <button @click="navigationToggle" class="navigation__button">
+          <button @click="searchToggle" class="navigation__button">
             <span class="navigation__icon icon__search" aria-label="Search"></span>
           </button>
         </li>
@@ -45,7 +45,7 @@
       }
     },
     methods: {
-      navigationToggle() {
+      searchToggle() {
         this.toggle = !this.toggle;
         EventBus.$emit('isActive', this.toggle);
       }

@@ -28,6 +28,7 @@
 
   import LoadingSpinner from "./LoadingSpinner";
   import axios from 'axios';
+  import { EventBus } from "@/event-bus.js";
   const API = 'https://jsonplaceholder.typicode.com/users';
 
   export default {
@@ -44,22 +45,22 @@
       LoadingSpinner
     },
     created() {
-        axios.get(API)
-          .then((response) => {
-            this.dataReceived = response.data;
-            this.moreData = this.dataReceived.slice(0, 6);
-            this.status = false;
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
-      methods: {
-        loadMore() {
-          this.moreData = this.dataReceived.slice(0, 20);
-        }
+      axios.get(API)
+        .then((response) => {
+          this.dataReceived = response.data;
+          this.moreData = this.dataReceived.slice(0, 6);
+          this.status = false;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    methods: {
+      loadMore() {
+        this.moreData = this.dataReceived.slice(0, 20);
       }
-    };
+    }
+  };
 </script>
 
 <style scoped lang="scss">

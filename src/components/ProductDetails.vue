@@ -23,8 +23,15 @@
 
 <script>
 
+  import { EventBus } from "@/event-bus.js";
+
   export default {
-    name: "ProductDetails"
+    name: "ProductDetails",
+    data() {
+      return {
+        
+      }
+    }
   }
 
 </script>
