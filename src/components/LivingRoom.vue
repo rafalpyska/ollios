@@ -2,18 +2,36 @@
   <div class="container">
     <main class="main">
 
-      <section class="section__details">
+      <section class="section__details" v-show="!detailsOpen">
         <h1 class="section__title">Products</h1>
         <p class="section__category">{{ $route.name }}</p>
       </section>
 
       <LoadingSpinner v-if="status"/>
+      
+      <transition name="slide-in">
+        <section class="products" v-show="!detailsOpen">
 
-      <section class="products">
-        <Product v-for="item in moreData" :item="item" :images="images" class="products__item" :class="'products__item--' + item.id" :key="item.id"/>
-      </section>
+          <Product
+            v-for="item in moreData"
+            :item="item"
+            :images="images"
+            class="products__item"
+            :class="'products__item--' + item.id"
+            :key="item.id"
+            @click.native="handleProductDetails(item)"
+            />
+        </section>
+      </transition>
 
-      <button @click="loadMore" class="btn__load-more">Show more products</button>
+        <ProductDetails
+        v-if="detailsOpen"
+        :item="detailsItem"
+        :images="images"
+        @closeDetails="detailsOpen = false"
+        />
+
+      <button v-show="!detailsOpen" @click="loadMore" class="btn__load-more">Show more products</button>
     </main>
   </div>
 </template>
@@ -24,6 +42,7 @@
   import axios from 'axios';
   import { EventBus } from "@/event-bus.js";
   import Product from "./Product";
+  import ProductDetails from "./ProductDetails";
   const API = 'https://jsonplaceholder.typicode.com/users';
 
   export default {
@@ -33,12 +52,15 @@
         status: true,
         dataReceived: [],
         moreData: [],
+        detailsItem: null,
+        detailsOpen: false,
         images: 'http://via.placeholder.com/350x150'
       }
     },
     components: {
       LoadingSpinner,
-      Product
+      Product,
+      ProductDetails
     },
     created() {
       axios.get(API)
@@ -54,6 +76,10 @@
     methods: {
       loadMore() {
         this.moreData = this.dataReceived.slice(0, 20);
+      },
+      handleProductDetails(item) {
+        this.detailsOpen = true;
+        this.detailsItem = item;
       }
     }
   };

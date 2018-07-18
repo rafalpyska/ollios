@@ -1,40 +1,38 @@
 <template lang="html">
 
-    <router-link to="/product-details" tag="figure">
+    <figure>
       <img :src="images" alt="" class="products__image"/>
       <div>
         <figcaption class="products__name">{{ name }}</figcaption>
         <p class="products__description">{{ description }}</p>
         <p class="products__price">${{ price }}</p>
       </div>
-    </router-link>
+    </figure>
 
 </template>
 
 <script>
 
-import { EventBus } from "@/event-bus.js";
-
-export default {
-  name: "Product",
-  props: {
-    item: {
-      type: Object,
-      required: true,
+  export default {
+    name: "Product",
+    props: {
+      item: {
+        type: Object,
+        required: true
+      },
+      images: {
+        type: String,
+        required: true
+      }
     },
-    images: {
-      type: String,
-      required: true
+    data() {
+      return {
+        name: this.item.name,
+        description: this.item.company.catchPhrase,
+        price: this.item.address.geo.lat
+      }
     }
-  },
-  data() {
-    return {
-      name: this.item.name,
-      description: this.item.company.catchPhrase,
-      price: this.item.address.geo.lat
-    }
-  }
-};
+  };
 </script>
 
 <style lang="scss">
