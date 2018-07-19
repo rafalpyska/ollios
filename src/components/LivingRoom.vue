@@ -9,9 +9,7 @@
 
       <LoadingSpinner v-if="status"/>
 
-      <transition name="slide-in">
         <section class="products">
-
           <Product
             v-for="item in dataToDisplay"
             :item="item"
@@ -22,16 +20,18 @@
             @click.native="handleProductDetails(item)"
             />
         </section>
-      </transition>
 
       <button @click="loadMore" class="btn__load-more">Show more products</button>
     </main>
-    <ProductDetails
-    v-if="isProductDetailsOpen"
-    :item="itemDetails"
-    :images="images"
-    @closeDetails="isProductDetailsOpen = false"
-    />
+
+    <transition name="slide-in">
+      <ProductDetails
+      v-if="isProductDetailsOpen"
+      :item="itemDetails"
+      :images="images"
+      @closeDetails="isProductDetailsOpen = false"/>
+    </transition>
+
   </div>
 </template>
 

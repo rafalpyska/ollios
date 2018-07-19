@@ -9,7 +9,6 @@
       <div class="product-details__description">
         <section class="section__details">
           <h1 class="section__title">Products</h1>
-          <p class="section__category">{{ $route.name }}</p>
         </section>
         <section class="product__description">
           <h2 class="product__name">{{ name }}</h2>
@@ -18,6 +17,7 @@
             <div class="product__price">
               <p>Cost</p>
               <span class="price">${{ price }}</span>
+              <span class="price-previous">${{ previousPrice }}</span>
             </div>
             <div class="product__quantity">
               <label for="quantity">Quantity</label>
@@ -54,7 +54,8 @@
       return {
         name: this.item.name,
         description: this.item.company.catchPhrase,
-        price: this.item.address.geo.lat
+        price: this.item.address.geo.lat,
+        previousPrice: this.item.address.geo.lng
       }
     }
   };
@@ -99,6 +100,8 @@
     &__description {
       height: 100%;
       padding: 2rem 0 0 2rem;
+      color: rgba(168, 168, 168, 1);
+      font-weight: 100;
       }
     }
     &__name {
@@ -109,21 +112,23 @@
     &__description {
 
     }
-    &__price {
-      color: rgba(0, 35, 255, 0.9);
-      &::after {
-        content: '$90';
-        color: rgba(0, 0, 0, 1);
-        text-decoration: line-through;
-      }
-    }
     &__order {
       display: flex;
       align-items: center;
+      & > div {
+        padding: 2rem 3rem 2rem 0;
+      }
     }
     &__quantity {
       display: flex;
       flex-direction: column;
+    }
+  }
+  .price {
+    color: rgba(0, 35, 255, 0.9);
+    &-previous {
+      color: rgba(0, 0, 0, 1);
+      text-decoration: line-through;
     }
   }
   .input__quantity {
