@@ -1,19 +1,19 @@
 <template lang="html">
   <div class="container">
-    <main class="main">
+    <main class="main" v-if="!isProductDetailsOpen">
 
-      <section class="section__details" v-show="!detailsOpen">
+      <section class="section__details">
         <h1 class="section__title">Products</h1>
         <p class="section__category">{{ $route.name }}</p>
       </section>
 
       <LoadingSpinner v-if="status"/>
-      
+
       <transition name="slide-in">
-        <section class="products" v-show="!detailsOpen">
+        <section class="products">
 
           <Product
-            v-for="item in moreData"
+            v-for="item in dataToDisplay"
             :item="item"
             :images="images"
             class="products__item"
@@ -24,15 +24,14 @@
         </section>
       </transition>
 
-        <ProductDetails
-        v-if="detailsOpen"
-        :item="detailsItem"
-        :images="images"
-        @closeDetails="detailsOpen = false"
-        />
-
-      <button v-show="!detailsOpen" @click="loadMore" class="btn__load-more">Show more products</button>
+      <button @click="loadMore" class="btn__load-more">Show more products</button>
     </main>
+    <ProductDetails
+    v-if="isProductDetailsOpen"
+    :item="itemDetails"
+    :images="images"
+    @closeDetails="isProductDetailsOpen = false"
+    />
   </div>
 </template>
 
@@ -51,9 +50,9 @@
       return {
         status: true,
         dataReceived: [],
-        moreData: [],
-        detailsItem: null,
-        detailsOpen: false,
+        dataToDisplay: [],
+        itemDetails: null,
+        isProductDetailsOpen: false,
         images: 'http://via.placeholder.com/350x150'
       }
     },
@@ -66,7 +65,7 @@
       axios.get(API)
         .then((response) => {
           this.dataReceived = response.data;
-          this.moreData = this.dataReceived.slice(0, 6);
+          this.dataToDisplay = this.dataReceived.slice(0, 6);
           this.status = false;
         })
         .catch((error) => {
@@ -75,11 +74,11 @@
     },
     methods: {
       loadMore() {
-        this.moreData = this.dataReceived.slice(0, 20);
+        this.dataToDisplay = this.dataReceived.slice(0, 20);
       },
       handleProductDetails(item) {
-        this.detailsOpen = true;
-        this.detailsItem = item;
+        this.isProductDetailsOpen = true;
+        this.itemDetails = item;
       }
     }
   };

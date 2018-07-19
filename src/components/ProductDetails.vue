@@ -1,37 +1,39 @@
 <template lang="html">
-  <section class="product-details">
-    <div class="product-details__image">
-        <button @click="$emit('closeDetails')" class="btn__product-details-toggle">X</button>
-      <img :src="images" alt="">
-    </div>
-    <div class="product-details__container">
-    <div class="product-details__description">
-      <section class="section__details">
-        <h1 class="section__title">Products</h1>
-        <p class="section__category">{{ $route.name }}</p>
-      </section>
-      <section class="product__description">
-        <h2 class="product__name">{{ name }}</h2>
-        <p class="product__description">{{ description }}</p>
-        <div class="product__order">
-          <div class="product__price">
-            <p>Cost</p>
-            <p>${{ price }}</p>
+  <main class="main-details">
+    <section class="product-details">
+      <div class="product-details__image">
+          <button @click="$emit('closeDetails')" class="btn__product-details-toggle">X</button>
+        <img :src="images" alt="">
+      </div>
+      <div class="product-details__container">
+      <div class="product-details__description">
+        <section class="section__details">
+          <h1 class="section__title">Products</h1>
+          <p class="section__category">{{ $route.name }}</p>
+        </section>
+        <section class="product__description">
+          <h2 class="product__name">{{ name }}</h2>
+          <p class="product__description">{{ description }}</p>
+          <div class="product__order">
+            <div class="product__price">
+              <p>Cost</p>
+              <span class="price">${{ price }}</span>
+            </div>
+            <div class="product__quantity">
+              <label for="quantity">Quantity</label>
+              <input class="input__quantity" type="number" name="quantity" min="1" max="10" value="1">
+            </div>
+            <button class="btn">Add to card</button>
           </div>
-          <div class="product__quantity">
-            <label for="quantity">Quantity</label>
-            <input type="number" name="quantity" min="1" max="10">
-          </div>
-          <button>Add to card</button>
-        </div>
 
+        </section>
+      </div>
+      <section class="recomended">
+        <h2 class="recomended__title">Recomended</h2>
       </section>
-    </div>
-    <section class="recomended">
-      <h2 class="recomended__title">Recomended</h2>
+      </div>
     </section>
-    </div>
-  </section>
+  </main>
 </template>
 
 <script>
@@ -60,6 +62,12 @@
 </script>
 
 <style scoped lang="scss">
+
+  .main-details {
+    width: 100%;
+    padding: 0;
+    padding-left: 8rem;
+  }
 
   .section {
     &__title {
@@ -91,7 +99,7 @@
     &__description {
       height: 100%;
       padding: 2rem 0 0 2rem;
-    }
+      }
     }
     &__name {
       font-size: 3rem;
@@ -101,13 +109,30 @@
     &__description {
 
     }
+    &__price {
+      color: rgba(0, 35, 255, 0.9);
+      &::after {
+        content: '$90';
+        color: rgba(0, 0, 0, 1);
+        text-decoration: line-through;
+      }
+    }
     &__order {
       display: flex;
+      align-items: center;
     }
     &__quantity {
       display: flex;
       flex-direction: column;
     }
+  }
+  .input__quantity {
+    width: 3rem;
+    height: 2rem;
+    border: 0;
+    border-radius: 40%;
+    text-align: center;
+    font-weight: 700;
   }
   .recomended {
     display: flex;
