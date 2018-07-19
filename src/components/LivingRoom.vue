@@ -10,7 +10,7 @@
       <LoadingSpinner v-if="status"/>
 
       <section class="products">
-        <router-link to="/product-details"tag="figure" class="products__item" v-for="item in moreData" :key="item.id" :class="'products__item--' + item.id">
+        <router-link @click.native="passData(item)" to="/product-details"tag="figure" class="products__item" v-for="item in moreData" :key="item.id" :class="'products__item--' + item.id">
           <img :src="images" alt="" class="products__image"/>
           <div>
             <figcaption class="products__name">{{ item.name }}</figcaption>
@@ -58,6 +58,10 @@
     methods: {
       loadMore() {
         this.moreData = this.dataReceived.slice(0, 20);
+      },
+      passData(item) {
+        this.moreData = item;
+        EventBus.$emit('passProps', item);
       }
     }
   };

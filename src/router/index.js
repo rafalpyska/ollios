@@ -29,29 +29,6 @@ export default new Router({
       props: true
     },
     {
-      path: '/category-office',
-      name: 'Office',
-      component: LivingRoom,
-      props: true
-    },
-    {
-      path: '/category-for-kids',
-      name: 'ForKids',
-      component: LivingRoom,
-      props: true
-    },
-    {
-      path: '/category-kitchen',
-      name: 'Kitchen',
-      component: LivingRoom,
-      props: true
-    },
-    {
-      path: '/category-accesories',
-      component: LivingRoom,
-      props: true
-    },
-    {
       path: '/product-details',
       component: ProductDetails,
       props: true

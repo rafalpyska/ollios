@@ -13,7 +13,7 @@
           </section>
         </div>
         <section class="recomended">
-
+          <p>{{ itemsReceived }}</p>
         </section>
         </div>
       </section>
@@ -29,8 +29,14 @@
     name: "ProductDetails",
     data() {
       return {
-        
+        itemsReceived: null
       }
+    },
+    created() {
+      EventBus.$on('passProps', (items) => {
+        this.itemsReceived = items;
+        console.log(this.itemsReceived);
+      });
     }
   }
 
