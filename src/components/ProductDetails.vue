@@ -21,7 +21,7 @@
             </div>
             <div class="product__quantity">
               <label for="quantity">Quantity</label>
-              <input class="input__quantity" type="number" name="quantity" min="1" max="10" value="1">
+              <input v-model="quantity" class="input__quantity" type="number" name="quantity" min="1" max="10">
             </div>
             <button class="btn">Add to card</button>
           </div>
@@ -55,7 +55,13 @@
         name: this.item.name,
         description: this.item.company.catchPhrase,
         price: Math.abs(parseFloat(this.item.address.geo.lat)),
-        previousPrice: Math.abs(parseFloat(this.item.address.geo.lng))
+        previousPrice: Math.abs(parseFloat(this.item.address.geo.lng)),
+        quantity: 1
+      }
+    },
+    methods: {
+      addToBasket() {
+
       }
     }
   };

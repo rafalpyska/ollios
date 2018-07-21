@@ -1,13 +1,12 @@
 <template lang="html">
-    <figure>
 
-
-      <img :src="images" alt="" class="products__image"/>
-      <div>
-        <figcaption class="products__name">{{ name }}</figcaption>
-        <p class="products__description">{{ description }}</p>
-        <p class="products__price">${{ price }}</p>
-      </div>
+  <figure>
+    <img :src="images" alt="" class="products__image"/>
+    <div>
+      <figcaption class="products__name">{{ name }}</figcaption>
+      <p class="products__description">{{ description }}</p>
+      <p class="products__price">${{ price }}</p>
+    </div>
   </figure>
 
 </template>

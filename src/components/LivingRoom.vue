@@ -21,16 +21,14 @@
             />
         </transition-group>
 
-      <button @click="loadMore" class="btn__load-more">Show more products</button>
+      <button v-if="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>
     </main>
 
-    <transition name="slide-in">
       <ProductDetails
       v-if="isProductDetailsOpen"
       :item="itemDetails"
       :images="images"
       @closeDetails="isProductDetailsOpen = false"/>
-    </transition>
 
   </div>
 </template>
@@ -52,6 +50,7 @@
         dataToDisplay: [],
         itemDetails: null,
         isProductDetailsOpen: false,
+        showButton: true,
         images: 'http://via.placeholder.com/350x150'
       }
     },
@@ -74,6 +73,7 @@
     methods: {
       loadMore() {
         this.dataToDisplay = this.dataReceived.slice(0, 20);
+        this.showButton = false;
       },
       handleProductDetails(item) {
         this.isProductDetailsOpen = true;
@@ -106,6 +106,16 @@
     color: rgba(0, 35, 255, 1);
     cursor: pointer;
     font-size: 1rem;
+    transition: all .4s;
   }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .4s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+
+
 
 </style>

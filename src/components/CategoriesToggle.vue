@@ -39,7 +39,7 @@
     background-color: rgba(255, 255, 255, .6);
     border: 0;
     border-radius: 50%;
-    box-shadow: 0 0 1px #888;
+    box-shadow: 0 0 4px #888;
     cursor: pointer;
     z-index: 4;
     transition: all .3s;
@@ -55,6 +55,7 @@
     }
     &.active {
       background-color: rgba(240, 240, 240, .6);
+      box-shadow: 0 0 1px #888;
       &:hover {
         background-color: rgba(240, 240, 240, 1);
       }

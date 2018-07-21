@@ -42,7 +42,6 @@ export default {
       axios.get(`${API}?q=${this.searchValue}`)
         .then((response) => {
           this.results = response.data;
-          console.log(response.data);
         })
         .catch((error) => {
           console.log(error);
