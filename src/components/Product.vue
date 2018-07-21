@@ -1,13 +1,14 @@
 <template lang="html">
-
     <figure>
+
+
       <img :src="images" alt="" class="products__image"/>
       <div>
         <figcaption class="products__name">{{ name }}</figcaption>
         <p class="products__description">{{ description }}</p>
         <p class="products__price">${{ price }}</p>
       </div>
-    </figure>
+  </figure>
 
 </template>
 
@@ -29,7 +30,7 @@
       return {
         name: this.item.name,
         description: this.item.company.catchPhrase,
-        price: this.item.address.geo.lat
+        price: Math.abs(parseFloat(this.item.address.geo.lat))
       }
     }
   };
@@ -100,6 +101,13 @@
     &__name {
       margin: .6rem 0;
     }
+  }
+  .list-enter-active, .list-leave-active {
+    transition: all 1s;
+  }
+  .list-enter, .list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
   }
 
 </style>

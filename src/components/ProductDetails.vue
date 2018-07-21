@@ -54,8 +54,8 @@
       return {
         name: this.item.name,
         description: this.item.company.catchPhrase,
-        price: this.item.address.geo.lat,
-        previousPrice: this.item.address.geo.lng
+        price: Math.abs(parseFloat(this.item.address.geo.lat)),
+        previousPrice: Math.abs(parseFloat(this.item.address.geo.lng))
       }
     }
   };

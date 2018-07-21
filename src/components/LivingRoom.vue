@@ -9,7 +9,7 @@
 
       <LoadingSpinner v-if="status"/>
 
-        <section class="products">
+        <transition-group tag="section" class="products" name="list">
           <Product
             v-for="item in dataToDisplay"
             :item="item"
@@ -19,7 +19,7 @@
             :key="item.id"
             @click.native="handleProductDetails(item)"
             />
-        </section>
+        </transition-group>
 
       <button @click="loadMore" class="btn__load-more">Show more products</button>
     </main>
@@ -39,7 +39,6 @@
 
   import LoadingSpinner from "./LoadingSpinner";
   import axios from 'axios';
-  import { EventBus } from "@/event-bus.js";
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
   const API = 'https://jsonplaceholder.typicode.com/users';
