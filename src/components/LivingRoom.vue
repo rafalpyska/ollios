@@ -24,11 +24,13 @@
       <button v-if="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>
     </main>
 
+    <transition name="fade" mode="out-in">
       <ProductDetails
       v-if="isProductDetailsOpen"
       :item="itemDetails"
       :images="images"
       @closeDetails="isProductDetailsOpen = false"/>
+    </transition>
 
   </div>
 </template>
