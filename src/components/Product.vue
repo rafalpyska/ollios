@@ -1,5 +1,4 @@
 <template lang="html">
-
   <figure>
     <img :src="images" alt="" class="products__image"/>
     <div>
@@ -8,7 +7,6 @@
       <p class="products__price">${{ price }}</p>
     </div>
   </figure>
-
 </template>
 
 <script>

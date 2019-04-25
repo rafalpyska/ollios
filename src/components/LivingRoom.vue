@@ -9,27 +9,27 @@
 
       <LoadingSpinner v-if="status"/>
 
-        <transition-group tag="section" class="products" name="list">
-          <Product
-            v-for="item in dataToDisplay"
-            :item="item"
-            :images="images"
-            class="products__item"
-            :class="'products__item--' + item.id"
-            :key="item.id"
-            @click.native="handleProductDetails(item)"
-            />
-        </transition-group>
+      <transition-group tag="section" class="products" name="list">
+        <Product
+          v-for="item in dataToDisplay"
+          :item="item"
+          :images="images"
+          class="products__item"
+          :class="'products__item--' + item.id"
+          :key="item.id"
+          @click.native="handleProductDetails(item)"
+        />
+      </transition-group>
 
-      <button v-if="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>
+      <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>
     </main>
 
     <transition name="fade" mode="out-in">
       <ProductDetails
-      v-if="isProductDetailsOpen"
-      :item="itemDetails"
-      :images="images"
-      @closeDetails="isProductDetailsOpen = false"/>
+        v-if="isProductDetailsOpen"
+        :item="itemDetails"
+        :images="images"
+        @closeDetails="isProductDetailsOpen = false"/>
     </transition>
 
   </div>
@@ -94,7 +94,7 @@
   }
   .products {
     display: grid;
-    grid-template-rows: repeat(2, 50%);
+    grid-template-rows: repeat(2, 1fr);
     grid-template-columns: 23% 1fr 23% 23%;
     grid-gap: 2rem;
   }

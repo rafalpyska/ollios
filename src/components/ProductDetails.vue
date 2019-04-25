@@ -1,43 +1,42 @@
 <template lang="html">
-  <main class="main-details">
+  <main class="main">
     <section class="product-details">
       <div class="product-details__image">
-          <button @click="$emit('closeDetails')" class="btn__product-details-toggle">X</button>
+        <button @click="$emit('closeDetails')" class="btn__product-details-toggle">X</button>
         <img :src="images" alt="">
       </div>
       <div class="product-details__container">
-      <div class="product-details__description">
-        <section class="section__details">
-          <h1 class="section__title">Products</h1>
-        </section>
-        <section class="product__description">
-          <h2 class="product__name">{{ name }}</h2>
-          <p class="product__description">{{ description }}</p>
-          <div class="product__order">
-            <div class="product__price">
-              <p>Cost</p>
-              <span class="price">${{ price }}</span>
-              <span class="price-previous">${{ previousPrice }}</span>
+        <div class="product-details__description">
+          <section class="section__details">
+            <h1 class="section__title">Products</h1>
+          </section>
+          <section class="product__description">
+            <h2 class="product__name">{{ name }}</h2>
+            <p class="product__description">{{ description }}</p>
+            <div class="product__order">
+              <div class="product__price">
+                <p>Cost</p>
+                <span class="price">${{ price }}</span>
+                <span class="price-previous">${{ previousPrice }}</span>
+              </div>
+              <div class="product__quantity">
+                <label for="quantity">Quantity</label>
+                <input v-model="quantity" id="quantity" class="input__quantity" type="number" name="quantity" min="1"
+                       max="10">
+              </div>
+              <button class="btn">Add to card</button>
             </div>
-            <div class="product__quantity">
-              <label for="quantity">Quantity</label>
-              <input v-model="quantity" class="input__quantity" type="number" name="quantity" min="1" max="10">
-            </div>
-            <button class="btn">Add to card</button>
-          </div>
-
+          </section>
+        </div>
+        <section class="recommended">
+          <h2 class="recommended__title">Recommended</h2>
         </section>
-      </div>
-      <section class="recomended">
-        <h2 class="recomended__title">Recomended</h2>
-      </section>
       </div>
     </section>
   </main>
 </template>
 
 <script>
-
   export default {
     name: "ProductDetails",
     props: {
@@ -145,7 +144,7 @@
     text-align: center;
     font-weight: 700;
   }
-  .recomended {
+  .recommended {
     display: flex;
     align-items: center;
     width: 100%;

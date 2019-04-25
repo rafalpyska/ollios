@@ -1,16 +1,17 @@
 <template lang="html">
   <transition name="slide-fade">
-  <aside v-show="activeOrNot" class="categories__container">
-    <nav class="categories">
-      <ul class="categories__list">
-        <li class="categories__item" v-for="category in categories" :key="category.id">
-          <router-link :to="category.route" class="categories__link">{{ category.name }} <span class="categories__icons" :class="category.class"></span></router-link>
-        </li>
-      </ul>
-      <router-link :to="'/categories'" class="categories__link-all" href="#">Show all categories</router-link>
-    </nav>
-  </aside>
-</transition>
+    <aside v-show="activeOrNot" class="categories__container">
+      <nav class="categories">
+        <ul class="categories__list">
+          <li class="categories__item" v-for="category in categories" :key="category.id">
+            <router-link :to="category.route" class="categories__link">{{ category.name }} <span
+              class="categories__icons" :class="category.class"></span></router-link>
+          </li>
+        </ul>
+        <router-link :to="'/categories'" class="categories__link-all" href="#">Show all categories</router-link>
+      </nav>
+    </aside>
+  </transition>
 </template>
 
 <script>
@@ -42,6 +43,7 @@
     methods: {
     }
   };
+
 </script>
 
 <style scoped lang="scss">

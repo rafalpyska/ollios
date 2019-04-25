@@ -1,23 +1,23 @@
 <template lang="html">
 
-    <div class="container" v-cloak>
+  <div class="container" v-cloak>
 
-      <Navigation />
+    <Navigation/>
 
-      <transition name="slide-in" mode="out-in">
-        <router-view></router-view>
-      </transition>
+    <transition name="slide-in" mode="out-in">
+      <router-view></router-view>
+    </transition>
 
-      <CategoriesToggle />
+    <CategoriesToggle/>
 
-      <CategoriesMenu />
+    <CategoriesMenu/>
 
-      <Search>
-        <router-view></router-view>
-      </Search>
+    <Search>
+      <router-view></router-view>
+    </Search>
 
-    </div>
-  </transition>
+  </div>
+
 </template>
 
 <script>

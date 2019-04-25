@@ -2,17 +2,16 @@
   <transition name="slide-fade">
     <section v-show="isToggle" class="search">
       <input class="search__input" type="search" name="search__input" v-model="searchValue" @input="handleRequest">
-      <label class="search__label"for="search__input">Type product that you are looking for</label>
-      <div class="search__result" v-for="result in results">
-        <p>{{ result.name }}</p>
-        <p>{{ result.company.catchPhrase }}</p>
-        <p>{{ result.address.geo.lat }}</p>
-        </p>
+      <label class="search__label" for="search__input">Type product that you are looking for</label>
+      <div class="search__result-container">
+        <div class="search__result" v-for="result in searchResults">
+          <p>{{ result.name }}</p>
+          <p>{{ result.company.catchPhrase }}</p>
+          <p>{{ result.address.geo.lat }}</p>
+          </p>
+        </div>
       </div>
     </section>
-
-
-
   </transition>
 </template>
 
@@ -29,7 +28,7 @@ export default {
     return {
       isToggle: false,
       searchValue: '',
-      results: []
+      searchResults: []
     }
   },
   created() {
@@ -41,7 +40,7 @@ export default {
     handleRequest: debounce(function() {
       axios.get(`${API}?q=${this.searchValue}`)
         .then((response) => {
-          this.results = response.data;
+          this.searchResults = response.data;
         })
         .catch((error) => {
           console.log(error);
@@ -87,7 +86,9 @@ export default {
       color: rgba(177, 177, 177, .9);
     }
     &__result {
-
+      &-container {
+        display: flex;
+      }
     }
   }
 
