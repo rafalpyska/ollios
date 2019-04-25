@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="container">
-    <main class="main">
+    <main class="main" v-if="!isProductDetailsOpen">
 
       <section class="section__details">
         <h1 class="section__title">Products</h1>
@@ -8,19 +8,30 @@
       </section>
 
       <LoadingSpinner v-if="status"/>
+      
+      <transition-group tag="section" class="products" name="list">
+        <Product
+          v-for="item in dataToDisplay"
+          :item="item"
+          :images="images"
+          class="products__item"
+          :class="'products__item--' + item.id"
+          :key="item.id"
+          @click.native="handleProductDetails(item)"
+        />
+      </transition-group>
 
-      <section class="products">
-        <router-link @click.native="passData(item)" to="/product-details"tag="figure" class="products__item" v-for="item in moreData" :key="item.id" :class="'products__item--' + item.id">
-          <img :src="images" alt="" class="products__image"/>
-          <div>
-            <figcaption class="products__name">{{ item.name }}</figcaption>
-            <p class="products__description">{{ item.company.catchPhrase }}</p>
-            <p class="products__price">${{ item.address.geo.lat}}</p>
-          </div>
-        </router-link>
-      </section>
-      <button @click="loadMore" class="btn__load-more">Show more products</button>
+      <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>
     </main>
+
+    <transition name="fade" mode="out-in">
+      <ProductDetails
+        v-if="isProductDetailsOpen"
+        :item="itemDetails"
+        :images="images"
+        @closeDetails="isProductDetailsOpen = false"/>
+    </transition>
+
   </div>
 </template>
 
@@ -28,7 +39,8 @@
 
   import LoadingSpinner from "./LoadingSpinner";
   import axios from 'axios';
-  import { EventBus } from "@/event-bus.js";
+  import Product from "./Product";
+  import ProductDetails from "./ProductDetails";
   const API = 'https://jsonplaceholder.typicode.com/users';
 
   export default {
@@ -37,18 +49,23 @@
       return {
         status: true,
         dataReceived: [],
-        moreData: [],
+        dataToDisplay: [],
+        itemDetails: null,
+        isProductDetailsOpen: false,
+        showButton: true,
         images: 'http://via.placeholder.com/350x150'
       }
     },
     components: {
-      LoadingSpinner
+      LoadingSpinner,
+      Product,
+      ProductDetails
     },
     created() {
       axios.get(API)
         .then((response) => {
           this.dataReceived = response.data;
-          this.moreData = this.dataReceived.slice(0, 6);
+          this.dataToDisplay = this.dataReceived.slice(0, 6);
           this.status = false;
         })
         .catch((error) => {
@@ -57,11 +74,12 @@
     },
     methods: {
       loadMore() {
-        this.moreData = this.dataReceived.slice(0, 20);
+        this.dataToDisplay = this.dataReceived.slice(0, 20);
+        this.showButton = false;
       },
-      passData(item) {
-        this.moreData = item;
-        EventBus.$emit('passProps', item);
+      handleProductDetails(item) {
+        this.isProductDetailsOpen = true;
+        this.itemDetails = item;
       }
     }
   };
@@ -76,73 +94,10 @@
   }
   .products {
     display: grid;
-    grid-template-rows: repeat(2, 50%);
+    grid-template-rows: repeat(2, 1fr);
     grid-template-columns: 23% 1fr 23% 23%;
     grid-gap: 2rem;
-    &__item {
-      margin: 0;
-      padding: 2rem;
-      background-color: rgba(255, 255, 255, .5);
-      cursor: pointer;
-      transition: .3s all;
-      &:hover {
-        background-color: rgba(255, 255, 255, .9);
-      }
-      &:hover .products__image {
-        transform: scale(1.1);
-      }
-    }
-    &__image {
-      max-width: 100%;
-      transition: .3s all;
-    }
-    &__item {
-      align-items: center;
-      &--2 {
-        display: flex;
-        justify-content: space-around;
-        grid-column: 2/5;
-        & .products__image {
-          order: 2;
-        }
-      }
-      &--4 {
-        display: flex;
-        justify-content: space-around;
-        grid-column: 2/4;
-        & .products__image {
-          order: 2;
-        }
-      }
-      &--6 {
-        display: flex;
-        justify-content: space-around;
-        grid-column: 1/3;
-        & .products__image {
-          order: 2;
-        }
-      }
-    }
-    &__name {
-      text-transform: uppercase;
-      font-size: 2rem;
-      font-weight: 300;
-    }
-    &__description {
-      font-size: 1.15rem;
-      color: rgba(168, 168, 168, 1);
-      font-weight: 100;
-    }
-    &__price {
-      font-size: 1.15rem;
-      color: rgba(0, 35, 255, .9);
-      font-weight: 300;
-    }
-    &__name {
-      margin: .6rem 0;
-    }
   }
-
   .btn__load-more {
     display: block;
     border: 0;
@@ -153,7 +108,16 @@
     color: rgba(0, 35, 255, 1);
     cursor: pointer;
     font-size: 1rem;
+    transition: all .4s;
   }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .4s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+
 
 
 </style>

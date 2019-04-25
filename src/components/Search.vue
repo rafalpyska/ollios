@@ -2,14 +2,16 @@
   <transition name="slide-fade">
     <section v-show="isToggle" class="search">
       <input class="search__input" type="search" name="search__input" v-model="searchValue" @input="handleRequest">
-      <label class="search__label"for="search__input">Type product that you are looking for</label>
-      <!-- <div>
-          <img v-for="item in results" :src="item.links[0].href" alt="">
-      </div> -->
+      <label class="search__label" for="search__input">Type product that you are looking for</label>
+      <div class="search__result-container">
+        <div class="search__result" v-for="result in searchResults">
+          <p>{{ result.name }}</p>
+          <p>{{ result.company.catchPhrase }}</p>
+          <p>{{ result.address.geo.lat }}</p>
+          </p>
+        </div>
+      </div>
     </section>
-
-
-
   </transition>
 </template>
 
@@ -17,7 +19,8 @@
 
 import { EventBus } from "@/event-bus.js";
 import axios from 'axios';
-const API = 'https://images-api.nasa.gov/search';
+import debounce from 'lodash.debounce';
+const API = 'https://jsonplaceholder.typicode.com/users';
 
 export default {
   name: "Search",
@@ -25,7 +28,7 @@ export default {
     return {
       isToggle: false,
       searchValue: '',
-      results: []
+      searchResults: []
     }
   },
   created() {
@@ -34,16 +37,15 @@ export default {
     });
   },
   methods: {
-    handleRequest(e) {
-      axios.get(`${API}?q=${this.searchValue}&media_type=image`)
+    handleRequest: debounce(function() {
+      axios.get(`${API}?q=${this.searchValue}`)
         .then((response) => {
-          this.results = response.data.collection.items;
-          console.log(response.data.collection.items);
+          this.searchResults = response.data;
         })
         .catch((error) => {
           console.log(error);
         });
-    }
+    }, 500),
   },
   watch: {
     '$route' () {
@@ -82,6 +84,11 @@ export default {
     }
     &__label {
       color: rgba(177, 177, 177, .9);
+    }
+    &__result {
+      &-container {
+        display: flex;
+      }
     }
   }
 

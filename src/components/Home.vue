@@ -1,23 +1,23 @@
 <template lang="html">
 
-    <div class="container" v-cloak>
+  <div class="container" v-cloak>
 
-      <Navigation />
+    <Navigation/>
 
-      <transition name="slide-in" mode="out-in">
-        <router-view></router-view>
-      </transition>
+    <transition name="slide-in" mode="out-in">
+      <router-view></router-view>
+    </transition>
 
-      <CategoriesToggle />
+    <CategoriesToggle/>
 
-      <CategoriesMenu />
+    <CategoriesMenu/>
 
-      <Search>
-        <router-view></router-view>
-      </Search>
+    <Search>
+      <router-view></router-view>
+    </Search>
 
-    </div>
-  </transition>
+  </div>
+
 </template>
 
 <script>
@@ -67,6 +67,17 @@
     &__category {
       font-weight: 100;
     }
+  }
+
+  .btn {
+    border: none;
+    color: rgba(255, 255, 255, .9);
+    background-color: rgba(0, 35, 255, .9);
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+    margin-top: .75rem;
+    font-weight: 700;
+    cursor: pointer;
   }
 
   .slide-in-enter-active {
