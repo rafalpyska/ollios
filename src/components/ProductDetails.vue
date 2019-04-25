@@ -62,8 +62,8 @@
       addToBasket() {
 
       }
-    }
-  };
+   }
+ };
 
 </script>
 

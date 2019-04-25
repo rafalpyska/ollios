@@ -8,7 +8,7 @@
       </section>
 
       <LoadingSpinner v-if="status"/>
-
+      
       <transition-group tag="section" class="products" name="list">
         <Product
           v-for="item in dataToDisplay"
