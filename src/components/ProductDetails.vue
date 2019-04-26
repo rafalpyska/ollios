@@ -79,6 +79,7 @@
       display: flex;
       width: 100%;
       min-height: 100%;
+      padding-left: 10rem;
       &__image {
         position: relative;
         display: flex;
