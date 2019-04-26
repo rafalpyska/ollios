@@ -23,7 +23,7 @@
               <input class="input__quantity" id="quantity" max="10" min="1" name="quantity" type="number"
                      v-model="quantity">
             </div>
-            <button @click="addToCart(item, quantity)" class="btn">Add to cart</button>
+            <button @click="addToCart()" class="btn">Add to cart</button>
           </div>
         </section>
       </div>
@@ -59,10 +59,8 @@
       }
     },
     methods: {
-      addToCart(item, quantity) {
-        this.quantity = quantity;
-        this.item = item;
-        EventBus.$emit('update-cart', item, quantity);
+      addToCart() {
+        EventBus.$emit('update-cart', this.item, this.quantity);
       }
     }
   };
@@ -81,8 +79,6 @@
       display: flex;
       width: 100%;
       min-height: 100%;
-      padding: 0 10rem;
-
       &__image {
         position: relative;
         display: flex;

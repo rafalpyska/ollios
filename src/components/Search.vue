@@ -32,7 +32,7 @@ export default {
     }
   },
   created() {
-    EventBus.$on('isActive', (active) => {
+    EventBus.$on('isActiveSearch', (active) => {
       this.isToggle = active;
     });
   },

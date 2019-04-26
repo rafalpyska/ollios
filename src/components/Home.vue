@@ -12,6 +12,8 @@
 
     <CategoriesMenu/>
 
+    <ShoppingCart/>
+
     <Search/>
 
   </div>
@@ -31,6 +33,7 @@
   export default {
     name: "Home",
     components: {
+      ShoppingCart,
       Navigation,
       Main,
       CategoriesToggle,

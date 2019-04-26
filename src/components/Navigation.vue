@@ -13,9 +13,9 @@
           </router-link>
         </li>
         <li class="navigation__item">
-          <router-link :to="'/cart'" class="navigation__button">
+          <button @click="cartToggle" class="navigation__button">
             <span class="navigation__icon icon__basket" aria-label="Basket"></span>
-          </router-link>
+          </button>
         </li>
         <li class="navigation__item margin-auto">
           <button @click="searchToggle" class="navigation__button">
@@ -41,13 +41,18 @@
     name: "Navigation",
     data() {
       return {
-        toggle: false
+        toggleSearch: false,
+        toggleCart: false
       }
     },
     methods: {
       searchToggle() {
-        this.toggle = !this.toggle;
-        EventBus.$emit('isActive', this.toggle);
+        this.toggleSearch = !this.toggleSearch;
+        EventBus.$emit('isActiveSearch', this.toggleSearch);
+      },
+      cartToggle() {
+        this.toggleCart = !this.toggleCart;
+        EventBus.$emit('isActiveCart', this.toggleCart);
       }
     }
   };

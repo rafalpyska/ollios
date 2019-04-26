@@ -1,13 +1,15 @@
 <template lang="html">
-  <section class="container">
-    <ul>
-      <li
-        v-for="(product) of cart"
-      >
-        {{ product.productName }}{{ product.quantity }}
-      </li>
-    </ul>
-  </section>
+  <transition name="slide-fade">
+    <section v-show="isToggle" class="container">
+      <ul>
+        <li
+          v-for="(product) of cart"
+        >
+          {{ product.productName }}{{ product.quantity }}
+        </li>
+      </ul>
+    </section>
+  </transition>
 </template>
 
 <script>
@@ -17,15 +19,18 @@
     name: "ShoppingCart",
     data() {
       return {
+        isToggle: false,
         cart: []
       }
     },
-    beforeMount() {
+    created() {
       EventBus.$on('update-cart', (product, quantity) => {
         let {name: productName} = product;
         let orderDetails = {productName, quantity};
         this.cart.push(orderDetails);
-        console.log(this.cart);
+      });
+      EventBus.$on('isActiveCart', (active) => {
+        this.isToggle = active;
       });
     }
   }
@@ -33,9 +38,29 @@
 
 <style lang="scss" scoped>
   .container {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(240, 240, 240, 1);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, .9);
+    z-index: 2;
+  }
+
+  .slide-fade-enter-active,
+  .slide-fade-leave-active {
+    transition: all .4s ease;
+  }
+
+  .slide-fade-enter {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  .slide-fade-leave-to {
+    transform: translateY(-100%);
   }
 </style>
