@@ -1,13 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import CategoriesMenu from '@/components/CategoriesMenu'
-import Home from '@/components/Home'
 import Main from '@/components/Main'
-import Navigation from '@/components/Navigation'
-import Search from '@/components/Search'
 import Categories from '@/components/Categories'
 import LivingRoom from '@/components/LivingRoom'
 import ProductDetails from '@/components/ProductDetails'
+import ShoppingCart from '@/components/ShoppingCart'
 
 Vue.use(Router)
 
@@ -32,6 +29,12 @@ export default new Router({
       path: '/product-details',
       name: 'ProductDetails',
       component: ProductDetails,
+      props: true
+    },
+    {
+      path: '/cart',
+      name: 'ShoppingCart',
+      component: ShoppingCart,
       props: true
     },
     {

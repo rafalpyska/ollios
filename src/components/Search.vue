@@ -93,9 +93,9 @@ export default {
   }
 
   .slide-fade-enter-active,
-  .slide-fade-leave-active {
-    transition: all .4s ease;
-  }
+    .slide-fade-leave-active {
+      transition: all .4s ease;
+    }
 
   .slide-fade-enter {
     transform: translateY(-100%);

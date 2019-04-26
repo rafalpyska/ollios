@@ -12,9 +12,7 @@
 
     <CategoriesMenu/>
 
-    <Search>
-      <router-view></router-view>
-    </Search>
+    <Search/>
 
   </div>
 
@@ -28,13 +26,10 @@
   import CategoriesMenu from "./CategoriesMenu";
   import Search from "./Search";
   import LivingRoom from "./LivingRoom";
+  import ShoppingCart from "./ShoppingCart";
 
   export default {
     name: "Home",
-    data() {
-      return {
-      }
-    },
     components: {
       Navigation,
       Main,
@@ -42,6 +37,10 @@
       CategoriesMenu,
       Search,
       LivingRoom
+    },
+    data() {
+      return {
+      }
     }
   };
 </script>

@@ -4,7 +4,7 @@
       <ul class="navigation__list">
         <li class="navigation__item">
           <router-link :to="'/'" class="navigation__button">
-            <img src="../assets/navigation/logo.png" alt="" class="navigation__icon icon__logo" />
+            <img src="../assets/navigation/logo.png" alt="" class="navigation__icon icon__logo"/>
           </router-link>
         </li>
         <li class="navigation__item">
@@ -13,9 +13,9 @@
           </router-link>
         </li>
         <li class="navigation__item">
-          <button class="navigation__button">
+          <router-link :to="'/cart'" class="navigation__button">
             <span class="navigation__icon icon__basket" aria-label="Basket"></span>
-          </button>
+          </router-link>
         </li>
         <li class="navigation__item margin-auto">
           <button @click="searchToggle" class="navigation__button">
@@ -35,7 +35,7 @@
 
 <script>
 
-  import { EventBus } from "@/event-bus.js";
+  import {EventBus} from "@/event-bus.js";
 
   export default {
     name: "Navigation",
@@ -63,13 +63,14 @@
     height: 100%;
     background-color: rgba(255, 255, 255, .9);
     box-shadow: 4px 0 5px rgba(0, 0, 0, .1);
-    z-index: 3;
+    z-index: 10;
   }
 
   .navigation {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, .9);
+
     &__list {
       display: flex;
       flex-direction: column;
@@ -80,14 +81,17 @@
       list-style: none;
       text-transform: uppercase;
     }
+
     &__item {
       list-style-type: none;
       align-self: center;
       padding: 2.5rem 1.5rem;
     }
+
     &:first-child {
       margin-bottom: 5rem;
     }
+
     &__button {
       display: flex;
       align-items: center;
@@ -98,11 +102,13 @@
       cursor: pointer;
       opacity: .5;
       transition: .3s opacity;
+
       &:hover,
       &:focus {
         opacity: 1;
       }
     }
+
     &__icon {
       width: 25px;
       height: 25px;
@@ -118,12 +124,15 @@
     &__home {
       background-image: url('../assets/navigation/home.png');
     }
+
     &__basket {
       background-image: url('../assets/navigation/basket.png');
     }
+
     &__search {
       background-image: url('../assets/navigation/search.png');
     }
+
     &__download {
       background-image: url('../assets/navigation/in.png');
     }

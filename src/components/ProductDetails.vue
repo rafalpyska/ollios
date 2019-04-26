@@ -1,42 +1,42 @@
 <template lang="html">
-  <main class="main">
-    <section class="product-details">
-      <div class="product-details__image">
-        <button @click="$emit('closeDetails')" class="btn__product-details-toggle">X</button>
-        <img :src="images" alt="">
-      </div>
-      <div class="product-details__container">
-        <div class="product-details__description">
-          <section class="section__details">
-            <h1 class="section__title">Products</h1>
-          </section>
-          <section class="product__description">
-            <h2 class="product__name">{{ name }}</h2>
-            <p class="product__description">{{ description }}</p>
-            <div class="product__order">
-              <div class="product__price">
-                <p>Cost</p>
-                <span class="price">${{ price }}</span>
-                <span class="price-previous">${{ previousPrice }}</span>
-              </div>
-              <div class="product__quantity">
-                <label for="quantity">Quantity</label>
-                <input v-model="quantity" id="quantity" class="input__quantity" type="number" name="quantity" min="1"
-                       max="10">
-              </div>
-              <button class="btn">Add to card</button>
+  <section class="product-details">
+    <div class="product-details__image">
+      <button @click="$emit('closeDetails')" class="btn__product-details-toggle">X</button>
+      <img :src="images" alt="">
+    </div>
+    <div class="product-details__container">
+      <div class="product-details__description">
+        <section class="section__details">
+          <h1 class="section__title">Products</h1>
+        </section>
+        <section class="product__description">
+          <h2 class="product__name">{{ name }}</h2>
+          <p class="product__description">{{ description }}</p>
+          <div class="product__order">
+            <div class="product__price">
+              <p>Cost</p>
+              <span class="price">${{ price }}</span>
+              <span class="price-previous">${{ previousPrice }}</span>
             </div>
-          </section>
-        </div>
-        <section class="recommended">
-          <h2 class="recommended__title">Recommended</h2>
+            <div class="product__quantity">
+              <label for="quantity">Quantity</label>
+              <input class="input__quantity" id="quantity" max="10" min="1" name="quantity" type="number"
+                     v-model="quantity">
+            </div>
+            <button @click="addToCart(item, quantity)" class="btn">Add to cart</button>
+          </div>
         </section>
       </div>
-    </section>
-  </main>
+      <section class="recommended">
+        <h2 class="recommended__title">Recommended</h2>
+      </section>
+    </div>
+  </section>
 </template>
 
 <script>
+  import {EventBus} from "@/event-bus.js";
+
   export default {
     name: "ProductDetails",
     props: {
@@ -59,83 +59,91 @@
       }
     },
     methods: {
-      addToBasket() {
-
+      addToCart(item, quantity) {
+        this.quantity = quantity;
+        this.item = item;
+        EventBus.$emit('update-cart', item, quantity);
       }
-   }
- };
+    }
+  };
 
 </script>
 
-<style scoped lang="scss">
-
-  .main-details {
-    width: 100%;
-    padding: 0;
-    padding-left: 8rem;
-  }
-
+<style lang="scss" scoped>
   .section {
     &__title {
       font-size: 1.5rem;
     }
   }
+
   .product {
     &-details {
-    display: flex;
-    width: 100%;
-    min-height: 100%;
-    &__image {
-      position: relative;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 40%;
-      background-color: rgba(255, 255, 255, .9);
-      box-shadow: 4px 0 5px -2px rgba(0, 0, 0, .1);
-      z-index: 2;
-    }
-    &__container {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 60%;
-      background-color: rgba(240, 240, 240, 1);
-    }
-    &__description {
-      height: 100%;
-      padding: 2rem 0 0 2rem;
-      color: rgba(168, 168, 168, 1);
-      font-weight: 100;
+      width: 100%;
+      min-height: 100%;
+      padding: 0 10rem;
+
+      &__image {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        background-color: rgba(255, 255, 255, .9);
+        box-shadow: 4px 0 5px -2px rgba(0, 0, 0, .1);
+        z-index: 2;
+      }
+
+      &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 60%;
+        background-color: rgba(240, 240, 240, 1);
+      }
+
+      &__description {
+        height: 100%;
+        padding: 2rem 0 0 2rem;
+        color: rgba(168, 168, 168, 1);
+        font-weight: 100;
       }
     }
+
     &__name {
       font-size: 3rem;
       color: rgba(0, 35, 255, 0.9);
       text-transform: uppercase;
     }
+
     &__description {
 
     }
+
     &__order {
       display: flex;
       align-items: center;
+
       & > div {
         padding: 2rem 3rem 2rem 0;
       }
     }
+
     &__quantity {
       display: flex;
       flex-direction: column;
     }
   }
+
   .price {
     color: rgba(0, 35, 255, 0.9);
+
     &-previous {
       color: rgba(0, 0, 0, 1);
       text-decoration: line-through;
     }
   }
+
   .input__quantity {
     width: 3rem;
     height: 2rem;
@@ -144,6 +152,7 @@
     text-align: center;
     font-weight: 700;
   }
+
   .recommended {
     display: flex;
     align-items: center;
@@ -152,6 +161,7 @@
     padding: 1rem;
     background-color: rgba(255, 255, 255, .9);
     font-size: .7rem;
+
     &__title {
       writing-mode: tb-rl;
       transform: rotate(180deg);
@@ -159,6 +169,7 @@
       text-transform: uppercase;
     }
   }
+
   .btn__product-details-toggle {
     position: absolute;
     top: 1rem;
@@ -170,8 +181,11 @@
     cursor: pointer;
     font-size: 1.5rem;
     transition: .2s all;
+
     &:hover {
       color: rgba(0, 35, 255, 0.9);
     }
   }
+
+
 </style>

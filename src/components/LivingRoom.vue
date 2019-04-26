@@ -8,7 +8,7 @@
       </section>
 
       <LoadingSpinner v-if="status"/>
-      
+
       <transition-group tag="section" class="products" name="list">
         <Product
           v-for="item in dataToDisplay"
@@ -24,13 +24,11 @@
       <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>
     </main>
 
-    <transition name="fade" mode="out-in">
       <ProductDetails
         v-if="isProductDetailsOpen"
         :item="itemDetails"
         :images="images"
         @closeDetails="isProductDetailsOpen = false"/>
-    </transition>
 
   </div>
 </template>
@@ -117,7 +115,5 @@
   .fade-enter, .fade-leave-to {
     opacity: 0;
   }
-
-
 
 </style>
