@@ -16,8 +16,10 @@
           <div class="product__order">
             <div class="product__price">
               <p>Cost</p>
-              <span class="price">${{ price }}</span>
-              <span class="price-previous">${{ previousPrice }}</span>
+              <div class="price__container">
+                <span class="price">${{ price }}</span>
+                <span class="price-previous">${{ previousPrice }}</span>
+              </div>
             </div>
             <div class="product__quantity">
               <label for="quantity">Quantity</label>
@@ -144,8 +146,13 @@
   }
 
   .price {
+    &__container {
+      display: flex;
+      align-items: center;
+    }
+    font-size: 2rem;
     color: rgba(0, 35, 255, 0.9);
-
+    margin-right: .75rem;
     &-previous {
       color: rgba(0, 0, 0, 1);
       text-decoration: line-through;

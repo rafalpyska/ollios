@@ -54,10 +54,6 @@
     display: none;
   }
 
-  body {
-    line-height: 2rem;
-  }
-
   .section {
     &__details {
       display: flex;
@@ -74,6 +70,9 @@
       font-weight: 300;
       color: #c1c1c1;
     }
+  }
+  .products, .product-details {
+    line-height: 30px;
   }
 
   .btn {
