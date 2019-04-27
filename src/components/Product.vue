@@ -1,6 +1,6 @@
 <template lang="html">
   <figure>
-    <img :src="images" alt="" class="products__image"/>
+    <img :src="getImgUrl(image)" :alt="name" class="products__image"/>
     <div>
       <figcaption class="products__name">{{ name }}</figcaption>
       <p class="products__description">{{ description }}</p>
@@ -10,26 +10,24 @@
 </template>
 
 <script>
+  import getImageUrl from '../mixins/getImageUrl';
 
   export default {
     name: "Product",
     props: {
       item: {
-        type: Object,
-        required: true
-      },
-      images: {
-        type: String,
         required: true
       }
     },
     data() {
       return {
-        name: this.item.name,
-        description: this.item.company.catchPhrase,
-        price: Math.abs(parseFloat(this.item.address.geo.lat))
+        name: this.item.title,
+        description: this.item.description,
+        price: this.item.price,
+        image: this.item.image
       }
-    }
+    },
+    mixins: [getImageUrl]
   };
 </script>
 
@@ -39,7 +37,7 @@
     &__item {
       margin: 0;
       padding: 2rem;
-      background-color: rgba(255, 255, 255, .5);
+      background-color: rgba(255, 255, 255, 1);
       cursor: pointer;
       transition: .3s all;
       &:hover {

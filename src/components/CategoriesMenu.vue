@@ -3,8 +3,8 @@
     <aside v-show="activeOrNot" class="categories__container">
       <nav class="categories">
         <ul class="categories__list">
-          <li class="categories__item" v-for="category in categories" :key="category.id">
-            <router-link :to="category.route" class="categories__link">{{ category.name }} <span
+          <li class="categories__item" v-for="category in dataToDisplay" :key="category.id">
+            <router-link :to="category.route" class="categories__link">{{ category.title }} <span
               class="categories__icons" :class="category.class"></span></router-link>
           </li>
         </ul>
@@ -15,24 +15,40 @@
 </template>
 
 <script>
-
+  import axios from 'axios';
   import { EventBus } from "@/event-bus.js";
+  const API = '/static/products.json';
 
   export default {
     name: "CategoriesMenu",
     data() {
       return {
+        data: [],
+        dataToDisplay: [],
         activeOrNot: false,
         categories: [
-          { name: 'Living room', id: 1, route: 'category-living-room', class: 'icon__living-room'},
-          { name: 'Office', id: 2, route: 'category-office', class: 'icon__office'},
-          { name: 'For kids', id: 3, route: 'category-for-kids', class: 'icon__for-kids'},
-          { name: 'Kitchen', id: 4, route: 'category-kitchen', class: 'icon__kitchen'},
-          { name: 'Accesories', id: 5, route: 'category-accesories', class: 'icon__accesories'}
+          {name: 'Living room', id: 1, route: 'category-living-room', class: 'icon__living-room'},
+          {name: 'Office', id: 2, route: 'category-office', class: 'icon__office'},
+          {name: 'For kids', id: 3, route: 'category-for-kids', class: 'icon__for-kids'},
+          {name: 'Kitchen', id: 4, route: 'category-kitchen', class: 'icon__kitchen'},
+          {name: 'Accesories', id: 5, route: 'category-accesories', class: 'icon__accesories'}
         ]
       }
     },
     created() {
+      axios.get(API)
+        .then((response) => {
+          this.data = response.data[0];
+          for (let key in this.data) {
+            if (!this.data.hasOwnProperty(key)) continue;
+            this.dataToDisplay = this.data[key];
+            console.log(this.dataToDisplay);
+          }
+          this.status = false;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       EventBus.$on('toggleActive', (active) => {
         this.activeOrNot = active;
       });
@@ -40,8 +56,7 @@
         this.activeOrNot = routeFalse;
       });
     },
-    methods: {
-    }
+    methods: {}
   };
 
 </script>

@@ -2,7 +2,7 @@
   <section class="product-details">
     <div class="product-details__image">
       <button @click="$emit('closeDetails')" class="btn__product-details-toggle">X</button>
-      <img :src="images" alt="">
+      <img :src="getImgUrl(image)" alt="">
     </div>
     <div class="product-details__container">
       <div class="product-details__description">
@@ -36,6 +36,7 @@
 
 <script>
   import {EventBus} from "@/event-bus.js";
+  import getImageUrl from '../mixins/getImageUrl';
 
   export default {
     name: "ProductDetails",
@@ -43,26 +44,25 @@
       item: {
         type: Object,
         required: true
-      },
-      images: {
-        type: String,
-        required: true
       }
     },
     data() {
       return {
-        name: this.item.name,
-        description: this.item.company.catchPhrase,
-        price: Math.abs(parseFloat(this.item.address.geo.lat)),
-        previousPrice: Math.abs(parseFloat(this.item.address.geo.lng)),
+        name: this.item.title,
+        description: this.item.description,
+        price: this.item.price,
+        image: this.item.image,
+        previousPrice: 'uzupełnić',
+        // previousPrice: Math.abs(parseFloat(this.item.address.geo.lng)).toFixed(2),
         quantity: 1
       }
     },
     methods: {
       addToCart() {
-        EventBus.$emit('update-cart', this.item, this.quantity);
+        EventBus.$emit('update-cart', this.name, this.quantity, this.price);
       }
-    }
+    },
+    mixins: [getImageUrl]
   };
 
 </script>

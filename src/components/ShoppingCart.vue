@@ -1,13 +1,29 @@
 <template lang="html">
   <transition name="slide-fade">
     <section v-show="isToggle" class="container">
-      <ul>
-        <li
-          v-for="(product) of cart"
-        >
-          {{ product.productName }}{{ product.quantity }}
-        </li>
-      </ul>
+      <table>
+        <thead>
+        <tr>
+          <th v-for="item in th">
+            {{ item }}
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(product) of cart">
+          <td>
+            {{ product.title }}
+          </td>
+          <td>
+            {{ product.quantity }}
+          </td>
+          <td>
+            {{ product.price }}
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
     </section>
   </transition>
 </template>
@@ -20,14 +36,15 @@
     data() {
       return {
         isToggle: false,
-        cart: []
+        th: ['Product', 'Quantity', 'Price'],
+        cart: [],
       }
     },
     created() {
-      EventBus.$on('update-cart', (product, quantity) => {
-        let {name: productName} = product;
-        let orderDetails = {productName, quantity};
+      EventBus.$on('update-cart', (title, quantity, price) => {
+        let orderDetails = {title, quantity, price};
         this.cart.push(orderDetails);
+        console.log(this.cart);
       });
       EventBus.$on('isActiveCart', (active) => {
         this.isToggle = active;

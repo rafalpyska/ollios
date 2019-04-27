@@ -13,7 +13,6 @@
         <Product
           v-for="item in dataToDisplay"
           :item="item"
-          :images="images"
           class="products__item"
           :class="'products__item--' + item.id"
           :key="item.id"
@@ -27,7 +26,6 @@
       <ProductDetails
         v-if="isProductDetailsOpen"
         :item="itemDetails"
-        :images="images"
         @closeDetails="isProductDetailsOpen = false"/>
 
   </div>
@@ -39,19 +37,18 @@
   import axios from 'axios';
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
-  const API = 'https://jsonplaceholder.typicode.com/users';
+  const API = '/static/products.json';
 
   export default {
     name: 'LivingRoom',
     data() {
       return {
         status: true,
-        dataReceived: [],
+        data: [],
         dataToDisplay: [],
         itemDetails: null,
         isProductDetailsOpen: false,
         showButton: true,
-        images: 'http://via.placeholder.com/350x150'
       }
     },
     components: {
@@ -62,8 +59,11 @@
     created() {
       axios.get(API)
         .then((response) => {
-          this.dataReceived = response.data;
-          this.dataToDisplay = this.dataReceived.slice(0, 6);
+          this.data = response.data[0].category[0];
+          for (let key in this.data) {
+            if (!this.data.hasOwnProperty(key)) continue;
+            this.dataToDisplay = this.data[key];
+          }
           this.status = false;
         })
         .catch((error) => {
@@ -72,7 +72,6 @@
     },
     methods: {
       loadMore() {
-        this.dataToDisplay = this.dataReceived.slice(0, 20);
         this.showButton = false;
       },
       handleProductDetails(item) {
@@ -90,12 +89,14 @@
     padding: 2rem 8rem 2rem 16rem;
     background-color: rgba(240, 240, 240, 1);
   }
+
   .products {
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: 23% 1fr 23% 23%;
     grid-gap: 2rem;
   }
+
   .btn__load-more {
     display: block;
     border: 0;
@@ -112,6 +113,7 @@
   .fade-enter-active, .fade-leave-active {
     transition: opacity .4s;
   }
+
   .fade-enter, .fade-leave-to {
     opacity: 0;
   }
