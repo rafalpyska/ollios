@@ -26,13 +26,6 @@
         data: [],
         dataToDisplay: [],
         activeOrNot: false,
-        categories: [
-          {name: 'Living room', id: 1, route: 'category-living-room', class: 'icon__living-room'},
-          {name: 'Office', id: 2, route: 'category-office', class: 'icon__office'},
-          {name: 'For kids', id: 3, route: 'category-for-kids', class: 'icon__for-kids'},
-          {name: 'Kitchen', id: 4, route: 'category-kitchen', class: 'icon__kitchen'},
-          {name: 'Accesories', id: 5, route: 'category-accesories', class: 'icon__accesories'}
-        ]
       }
     },
     created() {
@@ -42,7 +35,6 @@
           for (let key in this.data) {
             if (!this.data.hasOwnProperty(key)) continue;
             this.dataToDisplay = this.data[key];
-            console.log(this.dataToDisplay);
           }
           this.status = false;
         })
@@ -72,7 +64,7 @@
     height: 100%;
     &__container {
       display: flex;
-      flex: 0 0 17%;
+      width: 16%;
       height: 100%;
       position: fixed;
       top: 0;
@@ -91,14 +83,14 @@
       text-transform: uppercase;
     }
     &__item {
-      padding: 1.5rem 0;
+      padding: 1.75rem 0;
     }
     &__link {
       display: flex;
       align-items: center;
       margin-right: 1rem;
       justify-content: flex-end;
-      color: rgba(216, 216, 216, .9);
+      color: rgba(193, 193, 193, .9);
       opacity: .7;
       transition: .3s opacity;
       &:hover {

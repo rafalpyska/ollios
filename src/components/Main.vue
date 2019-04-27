@@ -26,17 +26,25 @@ export default {
     background-position: center center;
   }
 
+  .content {
+    margin-top: 8rem;
+  }
+
+  .title {
+    font-size: 12rem;
+    font-weight: 100;
+  }
+
+  .text {
+    font-weight: 300;
+  }
+
   .title,
   .text {
-    font-weight: 100;
     margin: 0;
     padding: .75rem;
   }
 
-  .title {
-    margin-top: 5rem;
-    font-size: 8rem;
-  }
   .categories__link {
     display: flex;
   }

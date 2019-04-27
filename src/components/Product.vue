@@ -3,7 +3,7 @@
     <img :src="getImgUrl(image)" :alt="name" class="products__image"/>
     <div>
       <figcaption class="products__name">{{ name }}</figcaption>
-      <p class="products__description">{{ description }}</p>
+      <p class="products__description">{{ ellipsify(description) }}</p>
       <p class="products__price">${{ price }}</p>
     </div>
   </figure>
@@ -25,6 +25,15 @@
         description: this.item.description,
         price: this.item.price,
         image: this.item.image
+      }
+    },
+    methods: {
+      ellipsify(string) {
+        if(string.length > 100) {
+          return (string.substring(0, 100) + "...");
+        } else {
+          return string;
+        }
       }
     },
     mixins: [getImageUrl]
@@ -86,12 +95,12 @@
     &__description {
       font-size: 1.15rem;
       color: rgba(168, 168, 168, 1);
-      font-weight: 100;
+      font-weight: 300;
     }
     &__price {
       font-size: 1.15rem;
       color: rgba(0, 35, 255, .9);
-      font-weight: 300;
+      font-weight: 700;
     }
     &__name {
       margin: .6rem 0;

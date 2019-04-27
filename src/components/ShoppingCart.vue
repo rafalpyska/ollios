@@ -4,7 +4,7 @@
       <table>
         <thead>
         <tr>
-          <th v-for="item in th">
+          <th rowspan="4" v-for="item in th">
             {{ item }}
           </th>
         </tr>
@@ -41,10 +41,9 @@
       }
     },
     created() {
-      EventBus.$on('update-cart', (title, quantity, price) => {
-        let orderDetails = {title, quantity, price};
+      EventBus.$on('update-cart', (title, quantity, price, id) => {
+        let orderDetails = {title, quantity, price, id};
         this.cart.push(orderDetails);
-        console.log(this.cart);
       });
       EventBus.$on('isActiveCart', (active) => {
         this.isToggle = active;

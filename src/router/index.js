@@ -25,6 +25,30 @@ export default new Router({
       component: LivingRoom,
       props: true
     },
+    // {
+    //   path: '/category-office',
+    //   name: 'Office',
+    //   component: Office,
+    //   props: true
+    // },
+    // {
+    //   path: '/category-for-kids',
+    //   name: 'ForKids',
+    //   component: ForKids,
+    //   props: true
+    // },
+    // {
+    //   path: '/category-kitchen',
+    //   name: 'Kitchen',
+    //   component: Kitchen,
+    //   props: true
+    // },
+    // {
+    //   path: '/category-accesories',
+    //   name: 'Accesories',
+    //   component: Accesories,
+    //   props: true
+    // },
     {
       path: '/product-details',
       name: 'ProductDetails',

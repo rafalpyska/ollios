@@ -8,6 +8,7 @@
       <div class="product-details__description">
         <section class="section__details">
           <h1 class="section__title">Products</h1>
+          <p class="section__category">{{ $route.name }}</p>
         </section>
         <section class="product__description">
           <h2 class="product__name">{{ name }}</h2>
@@ -44,6 +45,10 @@
       item: {
         type: Object,
         required: true
+      },
+      data: {
+        type: Object,
+        required: true
       }
     },
     data() {
@@ -52,14 +57,16 @@
         description: this.item.description,
         price: this.item.price,
         image: this.item.image,
-        previousPrice: 'uzupełnić',
-        // previousPrice: Math.abs(parseFloat(this.item.address.geo.lng)).toFixed(2),
+        id: this.item.id,
+        previousPrice: this.item.price * 2,
         quantity: 1
       }
     },
     methods: {
       addToCart() {
-        EventBus.$emit('update-cart', this.name, this.quantity, this.price);
+        EventBus.$emit('update-cart', this.name, this.quantity, this.price, this.id);
+        let recommended = this.data.products;
+        console.log(recommended);
       }
     },
     mixins: [getImageUrl]
@@ -70,11 +77,15 @@
 <style lang="scss" scoped>
   .section {
     &__title {
-      font-size: 1.5rem;
+      font-size: 2rem;
+      color: rgba(0, 0, 0, 1);
     }
   }
 
   .product {
+    &__description {
+      font-weight: 300;
+    }
     &-details {
       display: flex;
       width: 100%;
@@ -101,7 +112,7 @@
 
       &__description {
         height: 100%;
-        padding: 2rem 0 0 2rem;
+        padding: 2rem 16rem 0 2rem;
         color: rgba(168, 168, 168, 1);
         font-weight: 100;
       }

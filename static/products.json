@@ -1,0 +1,82 @@
+[
+  {
+    "category": {
+      "0": {
+        "title": "Living Room",
+        "id": 1,
+        "icon": "./assets/categories/livingroom.png",
+        "route": "category-living-room",
+        "class": "icon__living-room",
+        "products": {
+          "0": {
+            "title": "Red Seat",
+            "id": 1,
+            "description": "Armless Task Chair with Adjustable Height and Swivel Functionality. Comfortable 2 inches thick cushioned back and seat. 360 degrees swivel functionality. Pneumatic seat height adjustment. Upholstered in an easy to clean fabric. Dual wheel caster for any type of flooring",
+            "price": "45",
+            "image": "images/redseat.png"
+          },
+          "1": {
+            "title": "White Table",
+            "id": 2,
+            "description": "International Concepts Solid Wood Dining Table with Shaker Legs",
+            "price": "350",
+            "image": "images/whitetable.png"
+          },
+          "2": {
+            "title": "Blue Seat",
+            "id": 3,
+            "description": "This contoured office chair from Boss comes with built-in lumbar support and a waterfall seat design to reduce stress to your legs by increasing circulation. Quality construction and easy care fabric guarantee long lasting comfort.",
+            "price": "35",
+            "image": "images/blueseat.png"
+          },
+          "3": {
+            "title": "Modern Bed",
+            "id": 4,
+            "description": "ONE OF A KIND MOST POPULAR MODERN BED. Modern look platform bed frame comes with special curve sideboard design.",
+            "price": "120",
+            "image": "images/modernbed.png"
+          },
+          "4": {
+            "title": "Dark Seat",
+            "id": 5,
+            "description": "Get comfortable at work with this super cool GTRACING chair. The racing car seat appearance offers an attractive look for any location, while smooth contours and comfortable backrest allow for all-day comfort.",
+            "price": "50",
+            "image": "images/darkseat.png"
+          }
+        }
+      },
+      "1": {
+        "title": "Office",
+        "id": 2,
+        "icon": "./assets/categories/office.png",
+        "route": "category-office",
+        "class": "icon__office"
+
+      },
+      "2": {
+        "title": "For kids",
+        "id": 3,
+        "icon": "./assets/categories/forkids.png",
+        "route": "category-for-kids",
+        "class": "icon__for-kids"
+
+      },
+      "3": {
+        "title": "Kitchen",
+        "id": 4,
+        "icon": "./assets/categories/kitchen.png",
+        "route": "category-kitchen",
+        "class": "icon__kitchen"
+
+      },
+      "4": {
+        "title": "Accesories",
+        "id": 5,
+        "icon": "./assets/categories/accesories.png",
+        "route": "category-accesories",
+        "class": "icon__accesories"
+
+      }
+    }
+  }
+]

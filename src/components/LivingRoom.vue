@@ -26,13 +26,13 @@
       <ProductDetails
         v-if="isProductDetailsOpen"
         :item="itemDetails"
+        :data="data"
         @closeDetails="isProductDetailsOpen = false"/>
 
   </div>
 </template>
 
 <script>
-
   import LoadingSpinner from "./LoadingSpinner";
   import axios from 'axios';
   import Product from "./Product";
@@ -69,6 +69,7 @@
         .catch((error) => {
           console.log(error);
         });
+
     },
     methods: {
       loadMore() {
@@ -92,7 +93,6 @@
 
   .products {
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
     grid-template-columns: 23% 1fr 23% 23%;
     grid-gap: 2rem;
   }
@@ -107,6 +107,7 @@
     color: rgba(0, 35, 255, 1);
     cursor: pointer;
     font-size: 1rem;
+    font-weight: 700;
     transition: all .4s;
   }
 

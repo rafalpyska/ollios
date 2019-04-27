@@ -54,6 +54,10 @@
     display: none;
   }
 
+  body {
+    line-height: 2rem;
+  }
+
   .section {
     &__details {
       display: flex;
@@ -67,7 +71,8 @@
       font-weight: 300;
     }
     &__category {
-      font-weight: 100;
+      font-weight: 300;
+      color: #c1c1c1;
     }
   }
 
@@ -79,6 +84,7 @@
     border-radius: 2rem;
     margin-top: .75rem;
     font-weight: 700;
+    text-transform: uppercase;
     cursor: pointer;
   }
 
