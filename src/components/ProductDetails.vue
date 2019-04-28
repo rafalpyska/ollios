@@ -66,9 +66,8 @@
     },
     methods: {
       addToCart() {
-        EventBus.$emit('update-cart', this.name, this.quantity, this.price, this.id);
+        EventBus.$emit('update-cart', this.name, this.quantity, this.price, this.id, this.image);
         let recommended = this.data.products;
-        console.log(recommended);
       }
     },
     mixins: [getImageUrl]
