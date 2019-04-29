@@ -3,8 +3,8 @@
     <section v-show="isToggle" class="container">
       <div class="cart__wrapper">
         <h1>Shopping Cart</h1>
-        <p v-if="!cart.length">Your basket is empty!</p>
-        <div v-if="cart.length" class="cart" v-for="item in cart">
+        <p>Your basket is empty!</p>
+        <div class="cart" v-for="item in cart">
           <div class="cart__image-container">
             <img class="cart__image" :src="getImgUrl(item.image)" alt="">
           </div>
@@ -15,6 +15,7 @@
           </div>
           <div class="cart__product-price">
             <p class="item__price">${{ item.price }}</p>
+            <p class="item__price">Total: ${{ total }}</p>
           </div>
 
         </div>
@@ -33,14 +34,12 @@
     data() {
       return {
         isToggle: false,
-        th: ['Product', 'Quantity', 'Price'],
-        cart: [],
+        cart: null
       }
     },
     created() {
-      EventBus.$on('update-cart', (title, quantity, price, id, image) => {
-        let orderDetails = {title, quantity, price, id, image};
-        this.cart.push(orderDetails);
+      EventBus.$on('update-cart', (item) => {
+        this.cart = item;
       });
       EventBus.$on('isActiveCart', (active) => {
         this.isToggle = active;
@@ -52,6 +51,7 @@
         this.cart.forEach((item) => {
           total += (item.price * item.quantity);
         });
+        return total;
       }
     },
     mixins: [getImageUrl]
@@ -77,32 +77,39 @@
     &:nth-child(odd) {
       background-color: rgba(231, 231, 231, .3);
     }
+
     &__wrapper {
       display: flex;
       align-items: center;
       flex-direction: column;
       width: 75%;
     }
+
     display: flex;
     width: 100%;
     height: 10rem;
     background-color: rgba(255, 255, 255, .9);
+
     &:not(:first-child) {
       margin-top: 1rem;
     }
+
     &__image {
       &-container {
-      width: 30%;
+        width: 30%;
         height: 100%;
       }
+
       max-width: 100%;
       height: 100%;
     }
+
     &__product {
       &-info {
         display: flex;
         flex-direction: column;
       }
+
       &-price {
         display: flex;
         flex-direction: column;
@@ -127,6 +134,7 @@
     transform: translateY(-100%);
     opacity: 0;
   }
+
   .slide-fade-leave-to {
     transform: translateY(-100%);
   }

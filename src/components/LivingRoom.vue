@@ -23,11 +23,11 @@
       <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>
     </main>
 
-      <ProductDetails
-        v-if="isProductDetailsOpen"
-        :item="itemDetails"
-        :data="data"
-        @closeDetails="isProductDetailsOpen = false"/>
+    <ProductDetails
+      v-if="isProductDetailsOpen"
+      :item="itemDetails"
+      :data="data"
+      @closeDetails="isProductDetailsOpen = false"/>
 
   </div>
 </template>
@@ -37,6 +37,7 @@
   import axios from 'axios';
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
+
   const API = '/static/products.json';
 
   export default {

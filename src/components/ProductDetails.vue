@@ -24,9 +24,9 @@
             <div class="product__quantity">
               <label for="quantity">Quantity</label>
               <input class="input__quantity" id="quantity" max="10" min="1" name="quantity" type="number"
-                     v-model="quantity">
+                     v-model.number="item.quantity">
             </div>
-            <button @click="addToCart()" class="btn">Add to cart</button>
+            <button @click="addToCart(item)" class="btn">Add to cart</button>
           </div>
         </section>
       </div>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+  import Vue from 'vue'
   import {EventBus} from "@/event-bus.js";
   import getImageUrl from '../mixins/getImageUrl';
 
@@ -55,19 +56,30 @@
     },
     data() {
       return {
+        cart: [],
         name: this.item.title,
         description: this.item.description,
         price: this.item.price,
         image: this.item.image,
         id: this.item.id,
         previousPrice: this.item.price * 2,
-        quantity: 1
+        quantity: this.item.quantity
       }
     },
     methods: {
-      addToCart() {
-        EventBus.$emit('update-cart', this.name, this.quantity, this.price, this.id, this.image);
-        let recommended = this.data.products;
+      addToCart(productToAdd) {
+        let found = false;
+        this.cart.forEach((item) => {
+          if (item.id === productToAdd.id) {
+            found = true;
+            item.quantity += productToAdd.quantity;
+          }
+        });
+        if (found === false) {
+          this.cart.push(Vue.util.extend({}, productToAdd));
+        }
+        productToAdd.quantity = 1;
+        EventBus.$emit('update-cart', this.cart);
       }
     },
     mixins: [getImageUrl]
@@ -87,11 +99,13 @@
     &__description {
       font-weight: 300;
     }
+
     &-details {
       display: flex;
       width: 100%;
       min-height: 100%;
       padding-left: 10rem;
+
       &__image {
         position: relative;
         display: flex;
@@ -149,9 +163,11 @@
       display: flex;
       align-items: center;
     }
+
     font-size: 2rem;
     color: rgba(0, 35, 255, 0.9);
     margin-right: .75rem;
+
     &-previous {
       color: rgba(0, 0, 0, 1);
       text-decoration: line-through;
