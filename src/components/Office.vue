@@ -7,9 +7,7 @@
         <p class="section__category">{{ $route.name }}</p>
       </section>
 
-      <LoadingSpinner
-        v-if="status"
-      />
+      <LoadingSpinner v-if="status"/>
 
       <transition-group tag="section" class="products" name="list">
         <Product
@@ -28,10 +26,8 @@
     <ProductDetails
       v-if="isProductDetailsOpen"
       :item="itemDetails"
-      :key="itemDetails.id"
       :data="data"
-      @closeDetails="isProductDetailsOpen = false"
-    />
+      @closeDetails="isProductDetailsOpen = false"/>
 
   </div>
 </template>
@@ -64,7 +60,7 @@
     created() {
       axios.get(API)
         .then((response) => {
-          this.data = response.data[0].category[0];
+          this.data = response.data[0].category[1];
           for (let key in this.data) {
             if (!this.data.hasOwnProperty(key)) continue;
             this.dataToDisplay = this.data[key];
@@ -83,7 +79,6 @@
       handleProductDetails(item) {
         this.isProductDetailsOpen = true;
         this.itemDetails = item;
-        console.log(this.itemDetails);
       }
     }
   };

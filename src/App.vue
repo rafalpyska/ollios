@@ -39,6 +39,7 @@
   }
 
   body {
+    position: relative;
     font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
