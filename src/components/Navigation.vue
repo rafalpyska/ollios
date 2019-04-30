@@ -49,10 +49,20 @@
       searchToggle() {
         this.toggleSearch = !this.toggleSearch;
         EventBus.$emit('isActiveSearch', this.toggleSearch);
+        if(this.toggleSearch === true) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = 'auto';
+        }
       },
       cartToggle() {
         this.toggleCart = !this.toggleCart;
         EventBus.$emit('isActiveCart', this.toggleCart);
+        if(this.toggleCart === true) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = 'auto';
+        }
       }
     }
   };
@@ -60,6 +70,9 @@
 </script>
 
 <style scoped lang="scss">
+  .ovHidden {
+    overflow: hidden;
+  }
 
   .header {
     display: flex;

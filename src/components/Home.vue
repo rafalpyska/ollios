@@ -28,6 +28,7 @@
   import CategoriesMenu from "./CategoriesMenu";
   import Search from "./Search";
   import LivingRoom from "./LivingRoom";
+  import Office from "./Office";
   import ShoppingCart from "./ShoppingCart";
 
   export default {
@@ -39,7 +40,8 @@
       CategoriesToggle,
       CategoriesMenu,
       Search,
-      LivingRoom
+      LivingRoom,
+      Office
     },
     data() {
       return {

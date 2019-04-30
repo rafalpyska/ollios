@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Main from '@/components/Main'
 import Categories from '@/components/Categories'
 import LivingRoom from '@/components/LivingRoom'
+import Office from '@/components/Office'
 import ProductDetails from '@/components/ProductDetails'
 import ShoppingCart from '@/components/ShoppingCart'
 
@@ -25,12 +26,12 @@ export default new Router({
       component: LivingRoom,
       props: true
     },
-    // {
-    //   path: '/category-office',
-    //   name: 'Office',
-    //   component: Office,
-    //   props: true
-    // },
+    {
+      path: '/category-office',
+      name: 'Office',
+      component: Office,
+      props: true
+    },
     // {
     //   path: '/category-for-kids',
     //   name: 'ForKids',
