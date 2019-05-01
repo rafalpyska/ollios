@@ -1,5 +1,5 @@
 <template lang="html">
-  <figure>
+  <figure :data-product="name">
     <img :src="getImgUrl(image)" :alt="name" class="products__image"/>
     <div>
       <figcaption class="products__name">{{ name }}</figcaption>

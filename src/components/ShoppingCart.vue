@@ -5,7 +5,7 @@
 
       <transition-group tag="div" class="cart__wrapper" name="list">
         <h1 :key="3213" class="section__title">Shopping Cart</h1>
-        <p :key="3214">Your basket is empty!</p>
+        <p :key="3214" v-if="empty">Your basket is empty!</p>
         <div class="cart" v-for="(item, index) in cart" :key="item.id">
           <div class="cart__image-container">
             <img class="cart__image" :src="getImgUrl(item.image)" alt="">
@@ -48,7 +48,8 @@
     data() {
       return {
         isToggle: false,
-        cart: null
+        cart: null,
+        empty: true
       }
     },
     created() {
@@ -66,6 +67,7 @@
         if (!found) {
           this.cart = this.cart.concat(item)
         }
+        this.empty = false;
       });
       EventBus.$on('isActiveCart', (active) => {
         this.isToggle = active;
@@ -88,6 +90,9 @@
     methods: {
       removeItem(index) {
         this.cart.splice(index, 1);
+        if(this.cart.length === 0) {
+          this.empty = true;
+        }
       },
       close() {
         this.isToggle = false;
