@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="container">
-    <main class="main" v-if="!isProductDetailsOpen">
+    <main class="main" v-if="!isOpened">
 
       <section class="section__details">
         <h1 class="section__title">Products</h1>
@@ -26,11 +26,11 @@
     </main>
 
     <ProductDetails
-      v-if="isProductDetailsOpen"
+      v-if="isOpened"
       :item="itemDetails"
       :key="itemDetails.id"
       :data="data"
-      @closeDetails="isProductDetailsOpen = false"
+      @close="isOpened = false"
     />
 
   </div>
@@ -52,7 +52,7 @@
         data: [],
         dataToDisplay: [],
         itemDetails: null,
-        isProductDetailsOpen: false,
+        isOpened: false,
         showButton: true,
       }
     },
@@ -81,7 +81,7 @@
         this.showButton = false;
       },
       handleProductDetails(item) {
-        this.isProductDetailsOpen = true;
+        this.isOpened = true;
         this.itemDetails = item;
       }
     }

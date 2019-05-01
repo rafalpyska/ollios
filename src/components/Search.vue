@@ -1,6 +1,7 @@
 <template lang="html">
   <transition name="slide-fade">
     <section v-show="isToggle" class="search">
+      <button @click="close()" class="close close-search">X</button>
       <input class="search__input" type="search" name="search__input" v-model="searchValue" @input="handleRequest">
       <label class="search__label" for="search__input">Type product that you are looking for</label>
       <div class="search__result-container">
@@ -46,6 +47,10 @@ export default {
           console.log(error);
         });
     }, 500),
+    close() {
+      this.isToggle = false;
+      EventBus.$emit('searchClosed', this.isToggle);
+    }
   },
   watch: {
     '$route' () {
@@ -69,7 +74,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, .9);
-    z-index: 2;
+    z-index: 10;
     &__input {
       font-family: 'Lato', sans-serif;
       font-size: 4rem;

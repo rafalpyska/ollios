@@ -1,7 +1,7 @@
 <template lang="html">
   <section class="product-details">
     <div class="product-details__image">
-      <button @click="$emit('closeDetails')" class="btn__product-details-toggle">X</button>
+      <button @click="$emit('close')" class="close">X</button>
       <img :src="getImgUrl(image)" alt="">
     </div>
     <div class="product-details__container">
@@ -87,7 +87,7 @@
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .section {
     &__title {
       font-size: 2rem;
@@ -177,10 +177,10 @@
   .input__quantity {
     width: 3rem;
     height: 2rem;
-    border: 0;
     border-radius: 40%;
     text-align: center;
     font-weight: 700;
+    border: 1px solid rgba(0, 35, 255, 0.9);
   }
 
   .recommended {
@@ -199,23 +199,4 @@
       text-transform: uppercase;
     }
   }
-
-  .btn__product-details-toggle {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    width: 25px;
-    height: 25px;
-    background: none;
-    border: 0;
-    cursor: pointer;
-    font-size: 1.5rem;
-    transition: .2s all;
-
-    &:hover {
-      color: rgba(0, 35, 255, 0.9);
-    }
-  }
-
-
 </style>

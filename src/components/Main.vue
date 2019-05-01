@@ -51,8 +51,4 @@ export default {
     padding: .75rem;
   }
 
-  .categories__link {
-    display: flex;
-  }
-
 </style>

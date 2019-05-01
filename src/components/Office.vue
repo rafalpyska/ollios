@@ -27,7 +27,7 @@
       v-if="isProductDetailsOpen"
       :item="itemDetails"
       :data="data"
-      @closeDetails="isProductDetailsOpen = false"/>
+      @closeDetails="isOpened = false"/>
 
   </div>
 </template>
@@ -48,7 +48,7 @@
         data: [],
         dataToDisplay: [],
         itemDetails: null,
-        isProductDetailsOpen: false,
+        isOpened: false,
         showButton: true,
       }
     },

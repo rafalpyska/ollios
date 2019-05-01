@@ -8,7 +8,6 @@
               class="categories__icons" :class="category.class"></span></router-link>
           </li>
         </ul>
-        <router-link :to="'/categories'" class="categories__link-all" href="#">Show all categories</router-link>
       </nav>
     </aside>
   </transition>
@@ -48,7 +47,11 @@
         this.activeOrNot = routeFalse;
       });
     },
-    methods: {}
+    watch: {
+      '$route' () {
+        this.activeOrNot = false;
+      }
+    }
   };
 
 </script>

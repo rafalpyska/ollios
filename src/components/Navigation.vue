@@ -45,6 +45,15 @@
         toggleCart: false
       }
     },
+    created() {
+      EventBus.$on('cartClosed', (closed) => {
+        this.toggleCart = closed;
+      });
+      EventBus.$on('searchClosed', (closed) => {
+        this.toggleSearch = closed;
+      });
+
+    },
     methods: {
       searchToggle() {
         this.toggleSearch = !this.toggleSearch;

@@ -45,6 +45,7 @@
     },
     data() {
       return {
+        isOpened: false,
       }
     }
   };
@@ -87,6 +88,27 @@
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
+  }
+
+  .close {
+    position: absolute;
+    top: 2rem;
+    left: 1rem;
+    width: 25px;
+    height: 25px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: .2s all;
+
+    &:hover {
+      color: rgba(0, 35, 255, 0.9);
+    }
+  }
+
+  .close-cart, .close-search {
+    left: 11rem;
   }
 
   .slide-in-enter-active {
