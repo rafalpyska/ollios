@@ -89,7 +89,9 @@
     },
     methods: {
       removeItem(index) {
+        this.cart[index].quantity = 0;
         this.cart.splice(index, 1);
+
         if(this.cart.length === 0) {
           this.empty = true;
         }

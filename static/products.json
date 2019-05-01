@@ -58,17 +58,17 @@
         "class": "icon__office",
         "products": {
           "0": {
-            "title": "Blue Seat",
+            "title": "Ameriwood Home Dakota L-Shaped Desk",
             "id": 3,
-            "description": "This contoured office chair from Boss comes with built-in lumbar support and a waterfall seat design to reduce stress to your legs by increasing circulation. Quality construction and easy care fabric guarantee long lasting comfort.",
+            "description": "Create the perfect office space with the Ameriwood Home Dakota L-Shaped Desk with Bookshelves. This Desk fits snuggly in a corner to maximize your home office space.",
             "price": "35",
             "image": "images/blueseat.png",
             "quantity": 1
           },
           "1": {
-            "title": "White Table",
+            "title": "HOMFA Bathroom Floor Cabinet",
             "id": 2,
-            "description": "International Concepts Solid Wood Dining Table with Shaker Legs",
+            "description": "The standing storage cabinet is made by the HOMFA. The HOMFA concentrate on the quality, beauty and safe of the products. The most professional designers, the best producers and equipment, can ensure the customer get the best items. We always try our best to improve the quality and let the customers satisfied.",
             "price": "350",
             "image": "images/whitetable.png",
             "quantity": 1

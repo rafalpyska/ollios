@@ -1,13 +1,15 @@
 <template lang="html">
   <div class="container">
-    <main class="main" v-if="!isOpened">
+    <main class="category__main" v-if="!isOpened">
 
       <section class="section__details">
         <h1 class="section__title">Products</h1>
         <p class="section__category">{{ $route.name }}</p>
       </section>
 
-      <LoadingSpinner v-if="status"/>
+      <LoadingSpinner
+        v-if="status"
+      />
 
       <transition-group tag="section" class="products" name="list">
         <Product
@@ -27,7 +29,8 @@
       v-if="isOpened"
       :item="itemDetails"
       :data="data"
-      @close="isOpened = false"/>
+      @close="isOpened = false"
+    />
 
   </div>
 </template>
@@ -86,7 +89,7 @@
 
 <style scoped lang="scss">
 
-  .main {
+  .category__main {
     width: 100%;
     padding: 2rem 8rem 2rem 16rem;
     background-color: rgba(240, 240, 240, 1);
