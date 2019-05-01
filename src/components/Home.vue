@@ -56,9 +56,24 @@
   [v-cloak] {
     display: none;
   }
-  
+
   .ovHidden {
     overflow: hidden;
+  }
+
+  .cart-modal, .search-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 10;
+    font-weight: 300;
   }
 
   .section {

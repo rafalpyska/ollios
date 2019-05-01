@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="container">
-    <main class="main" v-if="!isProductDetailsOpen">
+    <main class="main" v-if="!isOpened">
 
       <section class="section__details">
         <h1 class="section__title">Products</h1>
@@ -20,14 +20,14 @@
         />
       </transition-group>
 
-      <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>
+<!--      <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>-->
     </main>
 
     <ProductDetails
-      v-if="isProductDetailsOpen"
+      v-if="isOpened"
       :item="itemDetails"
       :data="data"
-      @closeDetails="isOpened = false"/>
+      @close="isOpened = false"/>
 
   </div>
 </template>
@@ -49,7 +49,7 @@
         dataToDisplay: [],
         itemDetails: null,
         isOpened: false,
-        showButton: true,
+        // showButton: true,
       }
     },
     components: {
@@ -73,11 +73,11 @@
 
     },
     methods: {
-      loadMore() {
-        this.showButton = false;
-      },
+      // loadMore() {
+      //   this.showButton = false;
+      // },
       handleProductDetails(item) {
-        this.isProductDetailsOpen = true;
+        this.isOpened = true;
         this.itemDetails = item;
       }
     }

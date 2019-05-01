@@ -1,11 +1,12 @@
 <template lang="html">
   <transition name="slide-fade">
-    <section v-show="isToggle" class="container">
+    <section v-show="isToggle" class="cart-modal">
       <button @click="close()" class="close close-cart">X</button>
-      <div class="cart__wrapper">
-        <h1 class="section__title">Shopping Cart</h1>
-        <p>Your basket is empty!</p>
-        <div class="cart" v-for="(item, index) in cart">
+
+      <transition-group tag="div" class="cart__wrapper" name="list">
+        <h1 :key="3213" class="section__title">Shopping Cart</h1>
+        <p :key="3214">Your basket is empty!</p>
+        <div class="cart" v-for="(item, index) in cart" :key="item.id">
           <div class="cart__image-container">
             <img class="cart__image" :src="getImgUrl(item.image)" alt="">
           </div>
@@ -26,12 +27,10 @@
             <Btn @click.native="removeItem(index)">Remove</Btn>
           </div>
         </div>
-        <div class="cart__summary">
-          <p class="item__price">Total: ${{ total }}</p>
-        </div>
+      </transition-group>
+      <div class="cart__summary">
+        <p class="item__price">Total: ${{ total }}</p>
       </div>
-
-
     </section>
   </transition>
 </template>
@@ -80,6 +79,9 @@
             total += (item.price * item.quantity);
           });
           return total;
+        } else {
+          total = '0';
+          return total;
         }
       }
     },
@@ -97,21 +99,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 1);
-    z-index: 10;
-    font-weight: 300;
-  }
-
   .cart {
     &:nth-child(odd) {
       background-color: rgba(231, 231, 231, .3);
@@ -160,7 +147,7 @@
     &__summary {
       display: flex;
       justify-content: flex-end;
-      width: 100%;
+      width: 50%;
     }
   }
   .item {

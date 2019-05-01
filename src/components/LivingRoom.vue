@@ -22,7 +22,7 @@
         />
       </transition-group>
 
-      <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>
+<!--      <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>-->
     </main>
 
     <ProductDetails
@@ -53,7 +53,7 @@
         dataToDisplay: [],
         itemDetails: null,
         isOpened: false,
-        showButton: true,
+        // showButton: true,
       }
     },
     components: {
@@ -77,9 +77,9 @@
 
     },
     methods: {
-      loadMore() {
-        this.showButton = false;
-      },
+      // loadMore() {
+      //   this.showButton = false;
+      // },
       handleProductDetails(item) {
         this.isOpened = true;
         this.itemDetails = item;

@@ -1,6 +1,6 @@
 <template lang="html">
   <transition name="slide-fade">
-    <section v-show="isToggle" class="search">
+    <section v-show="isToggle" class="search-modal">
       <button @click="close()" class="close close-search">X</button>
       <input class="search__input" type="search" name="search__input" v-model="searchValue" @input="handleRequest">
       <label class="search__label" for="search__input">Type product that you are looking for</label>
@@ -64,17 +64,6 @@ export default {
 <style scoped lang="scss">
 
   .search {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, .9);
-    z-index: 10;
     &__input {
       font-family: 'Lato', sans-serif;
       font-size: 4rem;
