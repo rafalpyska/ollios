@@ -11,16 +11,17 @@
           <div class="cart__product-info">
             <p></p>
             <p class="item__title">Product: {{ item.title }}</p>
-            <p class="item__quantity">Quantity: {{ item.quantity }}</p>
+            <label for="cart-quantity">Quantity</label>
+            <input class="input__quantity" id="cart-quantity" max="10" min="1" name="cart-quantity" type="number"
+                   v-model.number="item.quantity">
           </div>
           <div class="cart__product-price">
-            <p class="item__price">${{ item.price }}</p>
-            <p class="item__price">Total: ${{ total }}</p>
+            <p class="item__price">Price for a single item: ${{ item.price }}</p>
           </div>
 
         </div>
       </div>
-
+      <p class="item__price">Total: ${{ total }}</p>
     </section>
   </transition>
 </template>
@@ -39,7 +40,19 @@
     },
     created() {
       EventBus.$on('update-cart', (item) => {
-        this.cart = item;
+        const newItem = item[0];
+        this.cart = this.cart || [];
+        let found = false;
+        this.cart = this.cart.map(oldItem => {
+          if (oldItem.id === newItem.id) {
+            found = true;
+            return newItem;
+          }
+          return oldItem;
+        });
+        if (!found) {
+          this.cart = this.cart.concat(item)
+        }
       });
       EventBus.$on('isActiveCart', (active) => {
         this.isToggle = active;
@@ -48,10 +61,12 @@
     computed: {
       total() {
         let total = 0;
-        this.cart.forEach((item) => {
-          total += (item.price * item.quantity);
-        });
-        return total;
+        if(this.cart && this.cart.length) {
+          this.cart.forEach((item) => {
+            total += (item.price * item.quantity);
+          });
+          return total;
+        }
       }
     },
     mixins: [getImageUrl]

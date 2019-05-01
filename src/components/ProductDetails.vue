@@ -75,7 +75,7 @@
             item.quantity += productToAdd.quantity;
           }
         });
-        if (found === false) {
+        if (!found) {
           this.cart.push(Vue.util.extend({}, productToAdd));
         }
         productToAdd.quantity = 1;

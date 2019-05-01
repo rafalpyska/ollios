@@ -89,10 +89,11 @@
       display: flex;
       align-items: center;
       margin-right: 1rem;
+      padding-right: 2rem;
       justify-content: flex-end;
       color: rgba(193, 193, 193, .9);
       opacity: .7;
-      transition: .3s opacity;
+      transition: .3s all;
       &:hover {
         opacity: 1;
       }
@@ -150,6 +151,13 @@
   }
   .slide-fade-leave-to {
     transform: translateY(-100%);
+  }
+
+  .router-link-active {
+    opacity: 1;
+    font-weight: bold;
+    border-right: 2px solid rgba(193, 193, 193, 1)
+  ;;
   }
 
 </style>

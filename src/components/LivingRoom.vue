@@ -83,7 +83,6 @@
       handleProductDetails(item) {
         this.isProductDetailsOpen = true;
         this.itemDetails = item;
-        console.log(this.itemDetails);
       }
     }
   };
