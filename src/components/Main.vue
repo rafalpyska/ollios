@@ -3,14 +3,20 @@
     <div class="content">
       <h1 class="title">Olios</h1>
       <h2 class="text">Newest furniture shop template</h2>
-      <button class="btn btn__view-more">View more</button>
+      <Btn>
+        View More
+      </Btn>
     </div>
   </main>
 </template>
 
 <script>
+  import Btn from "./Btn"
 export default {
-  name: "Main"
+  name: "Main",
+  components: {
+    Btn
+  }
 }
 </script>
 

@@ -4,21 +4,22 @@
       <div class="cart__wrapper">
         <h1>Shopping Cart</h1>
         <p>Your basket is empty!</p>
-        <div class="cart" v-for="item in cart">
+        <div class="cart" v-for="(item, index) in cart">
           <div class="cart__image-container">
             <img class="cart__image" :src="getImgUrl(item.image)" alt="">
           </div>
-          <div class="cart__product-info">
-            <p></p>
+          <div class="cart__product cart__product-info">
             <p class="item__title">Product: {{ item.title }}</p>
             <label for="cart-quantity">Quantity</label>
             <input class="input__quantity" id="cart-quantity" max="10" min="1" name="cart-quantity" type="number"
                    v-model.number="item.quantity">
           </div>
-          <div class="cart__product-price">
+          <div class="cart__product cart__product-price">
             <p class="item__price">Price for a single item: ${{ item.price }}</p>
           </div>
-
+          <div class="cart__product cart__product-price">
+            <Btn @click.native="removeItem(index)">Remove</Btn>
+          </div>
         </div>
       </div>
       <p class="item__price">Total: ${{ total }}</p>
@@ -29,9 +30,13 @@
 <script>
   import {EventBus} from "@/event-bus.js";
   import getImageUrl from '../mixins/getImageUrl'
+  import Btn from "./Btn"
 
   export default {
     name: "ShoppingCart",
+    components: {
+      Btn
+    },
     data() {
       return {
         isToggle: false,
@@ -69,6 +74,11 @@
         }
       }
     },
+    methods: {
+      removeItem(index) {
+        this.cart.splice(index, 1);
+      }
+    },
     mixins: [getImageUrl]
   }
 </script>
@@ -92,12 +102,11 @@
     &:nth-child(odd) {
       background-color: rgba(231, 231, 231, .3);
     }
-
     &__wrapper {
       display: flex;
       align-items: center;
       flex-direction: column;
-      width: 75%;
+      width: 50%;
     }
 
     display: flex;
@@ -111,7 +120,6 @@
 
     &__image {
       &-container {
-        width: 30%;
         height: 100%;
       }
 
@@ -120,15 +128,12 @@
     }
 
     &__product {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       &-info {
-        display: flex;
-        flex-direction: column;
       }
-
       &-price {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         margin-left: auto;
       }
     }
