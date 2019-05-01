@@ -48,29 +48,30 @@
     created() {
       EventBus.$on('cartClosed', (closed) => {
         this.toggleCart = closed;
+        this.preventScroll(this.toggleCart);
       });
       EventBus.$on('searchClosed', (closed) => {
         this.toggleSearch = closed;
+        this.preventScroll(this.toggleSearch);
       });
 
     },
     methods: {
-      searchToggle() {
-        this.toggleSearch = !this.toggleSearch;
-        EventBus.$emit('isActiveSearch', this.toggleSearch);
-        if(this.toggleSearch === true) {
-          document.body.style.overflow = 'hidden';
-        } else {
-          document.body.style.overflow = 'auto';
-        }
-      },
       cartToggle() {
         this.toggleCart = !this.toggleCart;
         EventBus.$emit('isActiveCart', this.toggleCart);
-        if(this.toggleCart === true) {
-          document.body.style.overflow = 'hidden';
+        this.preventScroll(this.toggleCart);
+      },
+      searchToggle() {
+        this.toggleSearch = !this.toggleSearch;
+        EventBus.$emit('isActiveSearch', this.toggleSearch);
+        this.preventScroll(this.toggleSearch);
+      },
+      preventScroll(item) {
+        if(item === true) {
+          document.body.classList.add('ovHidden');
         } else {
-          document.body.style.overflow = 'auto';
+          document.body.classList.remove('ovHidden');
         }
       }
     }

@@ -56,6 +56,10 @@
   [v-cloak] {
     display: none;
   }
+  
+  .ovHidden {
+    overflow: hidden;
+  }
 
   .section {
     &__details {

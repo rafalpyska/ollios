@@ -3,7 +3,7 @@
     <section v-show="isToggle" class="container">
       <button @click="close()" class="close close-cart">X</button>
       <div class="cart__wrapper">
-        <h1>Shopping Cart</h1>
+        <h1 class="section__title">Shopping Cart</h1>
         <p>Your basket is empty!</p>
         <div class="cart" v-for="(item, index) in cart">
           <div class="cart__image-container">
@@ -26,8 +26,12 @@
             <Btn @click.native="removeItem(index)">Remove</Btn>
           </div>
         </div>
+        <div class="cart__summary">
+          <p class="item__price">Total: ${{ total }}</p>
+        </div>
       </div>
-      <p class="item__price">Total: ${{ total }}</p>
+
+
     </section>
   </transition>
 </template>
@@ -105,6 +109,7 @@
     height: 100%;
     background-color: rgba(255, 255, 255, 1);
     z-index: 10;
+    font-weight: 300;
   }
 
   .cart {
@@ -117,7 +122,6 @@
       flex-direction: column;
       width: 50%;
     }
-
     display: flex;
     width: 100%;
     height: 10rem;
@@ -135,7 +139,6 @@
       max-width: 100%;
       height: 100%;
     }
-
     &__product {
       display: flex;
       flex-direction: column;
@@ -153,6 +156,11 @@
       &-price {
         margin-left: auto;
       }
+    }
+    &__summary {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
     }
   }
   .item {
