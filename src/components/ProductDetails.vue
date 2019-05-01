@@ -29,6 +29,9 @@
             <button @click="addToCart(item)" class="btn">Add to cart</button>
           </div>
         </section>
+        <transition name="fade">
+          <p class="info" v-if="added">Added to basket '{{ name }}'!</p>
+        </transition>
       </div>
       <section class="recommended">
         <h2 class="recommended__title">Recommended</h2>
@@ -57,6 +60,7 @@
     data() {
       return {
         cart: [],
+        added: false,
         name: this.item.title,
         description: this.item.description,
         price: this.item.price,
@@ -79,8 +83,13 @@
           this.cart.push(Vue.util.extend({}, productToAdd));
         }
         productToAdd.quantity = 1;
+        this.added = true;
         EventBus.$emit('update-cart', this.cart);
+        setTimeout(()  => {
+          this.added = false;
+        }, 2500);
       }
+
     },
     mixins: [getImageUrl]
   };
@@ -88,6 +97,12 @@
 </script>
 
 <style lang="scss">
+  .info {
+    color: rgba(0, 35, 255, 0.9);
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
   .section {
     &__title {
       font-size: 2rem;
@@ -198,5 +213,11 @@
       font-weight: 100;
       text-transform: uppercase;
     }
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
   }
 </style>
