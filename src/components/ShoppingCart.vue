@@ -27,10 +27,10 @@
             <Btn @click.native="removeItem(index)">Remove</Btn>
           </div>
         </div>
-      </transition-group>
-      <div class="cart__summary">
+      <div :key="3215" v-if="!empty" class="cart__summary">
         <p class="item__price">Total: ${{ total }}</p>
       </div>
+      </transition-group>
     </section>
   </transition>
 </template>

@@ -3,14 +3,15 @@
     <img :src="getImgUrl(image)" :alt="name" class="products__image"/>
     <div>
       <figcaption class="products__name">{{ name }}</figcaption>
-      <p class="products__description">{{ ellipsify(description) }}</p>
+      <p class="products__description">{{ ellipsify(description, 100) }}</p>
       <p class="products__price">${{ price }}</p>
     </div>
   </figure>
 </template>
 
 <script>
-  import getImageUrl from '../mixins/getImageUrl';
+  import getImageUrl from '../mixins/getImageUrl'
+  import ellipsify from '../mixins/ellipsify'
 
   export default {
     name: "Product",
@@ -36,7 +37,7 @@
         }
       }
     },
-    mixins: [getImageUrl]
+    mixins: [getImageUrl, ellipsify]
   };
 </script>
 

@@ -7,21 +7,21 @@
     <div class="product-details__container">
       <div class="product-details__description">
         <section class="section__details">
-          <h1 class="section__title">Products</h1>
+          <h1 class="heading section__title">Products</h1>
           <p class="section__category">{{ $route.name }}</p>
         </section>
         <section class="product__description">
-          <h2 class="product__name">{{ name }}</h2>
+          <h2 class="heading product__name">{{ name }}</h2>
           <p class="product__description">{{ description }}</p>
           <div class="product__order">
-            <div class="product__price">
-              <p>Cost</p>
+            <div class="product__info product__price">
+              <p class="product__price-title">Cost</p>
               <div class="price__container">
                 <span class="price">${{ price }}</span>
                 <span class="price-previous">${{ previousPrice }}</span>
               </div>
             </div>
-            <div class="product__quantity">
+            <div class="product__info product__quantity">
               <label for="quantity">Quantity</label>
               <input class="input__quantity" id="quantity" max="10" min="1" name="quantity" type="number"
                      v-model.number="item.quantity">
@@ -30,11 +30,23 @@
           </div>
         </section>
         <transition name="fade">
-          <p class="info" v-if="added">Added to basket '{{ name }}'!</p>
+          <p class="info" v-if="added">'{{ name }}' was added to cart!</p>
         </transition>
       </div>
       <section class="recommended">
         <h2 class="recommended__title">Recommended</h2>
+        <div v-for="item in recommendedItems" class="recommended__item">
+
+          <div class="recommended__item-image-container">
+            <img :src="getImgUrl(item.image)" alt="" class="products__image">
+          </div>
+          <div class="recommended__item-info">
+            <p class="recommended__item-title">{{ item.title }}</p>
+            <p class="recommended__item-description">{{ ellipsify(item.description, 50) }}</p>
+          </div>
+
+        </div>
+
       </section>
     </div>
   </section>
@@ -42,8 +54,9 @@
 
 <script>
   import Vue from 'vue'
-  import {EventBus} from "@/event-bus.js";
-  import getImageUrl from '../mixins/getImageUrl';
+  import {EventBus} from "@/event-bus.js"
+  import getImageUrl from '../mixins/getImageUrl'
+  import ellipsify from '../mixins/ellipsify'
 
   export default {
     name: "ProductDetails",
@@ -60,6 +73,8 @@
     data() {
       return {
         cart: [],
+        recommended: [],
+        recommendedItems: [],
         added: false,
         name: this.item.title,
         description: this.item.description,
@@ -70,6 +85,22 @@
         quantity: this.item.quantity
       }
     },
+    created() {
+      for (let key in this.data) {
+        if (!this.data.hasOwnProperty(key)) continue;
+        let obj = this.data[key];
+        this.recommended.push(obj);
+      }
+
+      let randomProducts = this.getRandomArrItems(this.recommended, 3);
+
+      for (let key in randomProducts) {
+        if (!this.data.hasOwnProperty(key)) continue;
+        let obj = randomProducts[key];
+        this.recommendedItems.push(obj);
+      }
+    },
+
     methods: {
       addToCart(productToAdd) {
         let found = false;
@@ -88,15 +119,30 @@
         setTimeout(()  => {
           this.added = false;
         }, 2500);
+      },
+      getRandomArrItems(arr, n) {
+        let result = new Array(n),
+          len = arr.length,
+          taken = new Array(len);
+        if (n > len)
+          throw new RangeError("getRandom: more elements taken than available");
+        while (n--) {
+          let x = Math.floor(Math.random() * len);
+          result[n] = arr[x in taken ? taken[x] : x];
+          taken[x] = --len in taken ? taken[len] : len;
+        }
+        return result;
       }
-
     },
-    mixins: [getImageUrl]
+    mixins: [getImageUrl, ellipsify]
   };
 
 </script>
 
 <style lang="scss">
+  .heading {
+    line-height: 55px;
+  }
   .info {
     color: rgba(0, 35, 255, 0.9);
     font-weight: 300;
@@ -115,6 +161,14 @@
       font-weight: 300;
     }
 
+    &__info {
+      margin-right: 2.5rem;
+    }
+
+    &__order {
+      margin-top: 2rem;
+    }
+
     &-details {
       display: flex;
       width: 100%;
@@ -131,6 +185,11 @@
         box-shadow: 4px 0 5px -2px rgba(0, 0, 0, .1);
         z-index: 2;
       }
+      &__price {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
 
       &__container {
         display: flex;
@@ -138,6 +197,11 @@
         justify-content: space-between;
         width: 60%;
         background-color: rgba(240, 240, 240, 1);
+      }
+      &__quantity {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       &__description {
@@ -160,11 +224,6 @@
 
     &__order {
       display: flex;
-      align-items: center;
-
-      & > div {
-        padding: 2rem 3rem 2rem 0;
-      }
     }
 
     &__quantity {
@@ -172,6 +231,11 @@
       flex-direction: column;
     }
   }
+
+  .product__price-title {
+    margin: 0;
+  }
+
 
   .price {
     &__container {
@@ -200,18 +264,40 @@
 
   .recommended {
     display: flex;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 35%;
     padding: 1rem;
     background-color: rgba(255, 255, 255, .9);
     font-size: .7rem;
-
     &__title {
       writing-mode: tb-rl;
       transform: rotate(180deg);
-      font-weight: 100;
+      font-size: 1.35rem;
+      font-weight: 300;
       text-transform: uppercase;
+    }
+    &__item {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      width: 25%;
+      padding: 0 1rem;
+      &-image {
+        &-container {
+          width: 200px;
+          height: 200px;
+        }
+      }
+      &-title {
+        font-size: 1.15rem;
+      }
+      &-description {
+        font-size: .85rem;
+        font-weight: 300;
+        color: rgba(168, 168, 168, 1);
+      }
     }
   }
   .fade-enter-active, .fade-leave-active {

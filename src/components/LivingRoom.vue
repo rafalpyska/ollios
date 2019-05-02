@@ -29,7 +29,7 @@
       v-if="isOpened"
       :item="itemDetails"
       :key="itemDetails.id"
-      :data="data"
+      :data="dataToDisplay"
       @close="isOpened = false"
     />
 
