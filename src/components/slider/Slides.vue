@@ -29,7 +29,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   #slides {
     width: 100%;
     height: 100%;

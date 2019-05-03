@@ -67,4 +67,43 @@
   }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .recommended {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, .9);
+    font-size: .7rem;
+    &__title {
+      writing-mode: tb-rl;
+      transform: rotate(180deg);
+      font-size: 1.35rem;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+    &__item {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      width: 25%;
+      padding: 0 1rem;
+      &-image {
+        &-container {
+          width: 200px;
+          height: 200px;
+        }
+      }
+      &-title {
+        font-size: 1.15rem;
+      }
+      &-description {
+        font-size: .85rem;
+        font-weight: 300;
+        color: rgba(168, 168, 168, 1);
+      }
+    }
+  }
+</style>

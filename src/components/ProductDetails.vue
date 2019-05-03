@@ -26,7 +26,7 @@
               <input class="input__quantity" id="quantity" max="10" min="1" name="quantity" type="number"
                      v-model.number="item.quantity">
             </div>
-            <button @click="addToCart(item)" class="btn">Add to cart</button>
+            <Btn @click.native="addToCart(item)" class="btn">Add to cart</Btn>
           </div>
         </section>
         <transition name="fade">
@@ -42,6 +42,7 @@
 
 <script>
   import Vue from 'vue'
+  import Btn from './Btn'
   import {EventBus} from "@/event-bus.js"
   import getImageUrl from '../mixins/getImageUrl'
   import ellipsify from '../mixins/ellipsify'
@@ -50,6 +51,7 @@
   export default {
     name: "ProductDetails",
     components: {
+      Btn,
       RecommendedProducts
     },
     props: {
@@ -135,8 +137,8 @@
     &-details {
       display: flex;
       width: 100%;
-      min-height: 100%;
-      padding-left: 10rem;
+      height: 100vh;
+      padding-left: 8em;
 
       &__image {
         position: relative;
@@ -225,44 +227,6 @@
     border: 1px solid rgba(0, 35, 255, 0.9);
   }
 
-  .recommended {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, .9);
-    font-size: .7rem;
-    &__title {
-      writing-mode: tb-rl;
-      transform: rotate(180deg);
-      font-size: 1.35rem;
-      font-weight: 300;
-      text-transform: uppercase;
-    }
-    &__item {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      width: 25%;
-      padding: 0 1rem;
-      &-image {
-        &-container {
-          width: 200px;
-          height: 200px;
-        }
-      }
-      &-title {
-        font-size: 1.15rem;
-      }
-      &-description {
-        font-size: .85rem;
-        font-weight: 300;
-        color: rgba(168, 168, 168, 1);
-      }
-    }
-  }
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
   }
