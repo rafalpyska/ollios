@@ -78,6 +78,7 @@
 
   .category__main {
     width: 100%;
+    min-height: 100vh;
     padding: 2rem 8rem 2rem 16rem;
     background-color: rgba(240, 240, 240, 1);
   }

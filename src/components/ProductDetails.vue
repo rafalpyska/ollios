@@ -1,8 +1,10 @@
 <template lang="html">
   <section class="product-details">
-    <div class="product-details__image">
+    <div class="product-details__image-container">
       <button @click="$emit('close')" class="close">X</button>
-      <img :src="getImgUrl(image)" alt="">
+      <img :src="getImgUrl(image)" alt="" class="product-details__image">
+      <button @click="zoomIn" class="btn__zoom btn__zoom--in">+</button>
+      <button @click="zoomOut" class="btn__zoom btn__zoom--out">-</button>
     </div>
     <div class="product-details__container">
       <div class="product-details__description">
@@ -97,7 +99,14 @@
         setTimeout(()  => {
           this.added = false;
         }, 2500);
+      },
+      zoomIn() {
+        document.querySelector('.product-details__image').classList.add('zoom-in');
+      },
+      zoomOut() {
+        document.querySelector('.product-details__image').classList.remove('zoom-in');
       }
+
     },
     mixins: [getImageUrl, ellipsify]
   };
@@ -105,6 +114,37 @@
 </script>
 
 <style lang="scss">
+  .btn {
+    &__zoom {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 25px;
+      height: 25px;
+      font-size: 1rem;
+      background-color: transparent;
+      color: rgba(0, 35, 255, 0.9);
+      border: 2px solid rgba(0, 35, 255, 0.9);
+      border-radius: 50%;
+
+      &--in {
+        bottom: 2rem;
+        left: 2rem;
+      }
+
+      &--out {
+        bottom: 2rem;
+        left: 6rem;
+      }
+    }
+  }
+
+  .zoom {
+    &-in {
+      transform: scale(1.2)!important;
+    }
+  }
+
   .heading {
     line-height: 55px;
   }
@@ -141,14 +181,18 @@
       padding-left: 8em;
 
       &__image {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40%;
-        background-color: rgba(255, 255, 255, .9);
-        box-shadow: 4px 0 5px -2px rgba(0, 0, 0, .1);
-        z-index: 2;
+        &-container {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40%;
+          background-color: rgba(255, 255, 255, .9);
+          box-shadow: 4px 0 5px -2px rgba(0, 0, 0, .1);
+          z-index: 2;
+        }
+        transform: scale(1);
+        transition: .3s all;
       }
       &__price {
         display: flex;

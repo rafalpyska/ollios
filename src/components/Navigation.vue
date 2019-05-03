@@ -22,11 +22,6 @@
             <span class="navigation__icon icon__search" aria-label="Search"></span>
           </button>
         </li>
-        <li class="navigation__item">
-          <button class="navigation__button">
-            <span class="navigation__icon icon__download" aria-label="Download"></span>
-          </button>
-        </li>
       </ul>
     </nav>
   </header>
@@ -159,10 +154,6 @@
 
     &__search {
       background-image: url('../assets/navigation/search.png');
-    }
-
-    &__download {
-      background-image: url('../assets/navigation/in.png');
     }
   }
 

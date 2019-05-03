@@ -15,6 +15,11 @@
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
+    transform: scale(1);
+    transition: .3s all;
+    &:hover {
+      transform: scale(1.03);
+    }
   }
 </style>
 

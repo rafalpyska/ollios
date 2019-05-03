@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '@/components/Main'
 import Categories from '@/components/Categories'
+import AboutUs from '@/components/AboutUs'
 import LivingRoom from '@/components/LivingRoom'
 import Office from '@/components/Office'
 import ForKids from '@/components/ForKids'
@@ -21,6 +22,12 @@ export default new Router({
     {
       path: '/categories',
       component: Categories,
+      props: true
+    },
+    ,
+    {
+      path: '/about-us',
+      component: AboutUs,
       props: true
     },
     {

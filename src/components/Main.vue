@@ -27,13 +27,13 @@
             id: 0,
             title: 'Ollios',
             subtitle: 'Newest furniture shop',
-            url: 'background.png'
+            url: 'background2.jpg'
           },
           {
             id: 1,
             title: 'Ollios',
             subtitle: 'The coolest furniture shop in the world',
-            url: 'background2.jpg'
+            url: 'background.png'
           },
           {
             id: 2,

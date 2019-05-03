@@ -1,7 +1,7 @@
 <template lang="html">
   <figure :data-product="name">
     <img :src="getImgUrl(image)" :alt="name" class="products__image"/>
-    <div>
+    <div class="products__info">
       <figcaption class="products__name">{{ name }}</figcaption>
       <p class="products__description">{{ ellipsify(description, 100) }}</p>
       <p class="products__price">${{ price }}</p>

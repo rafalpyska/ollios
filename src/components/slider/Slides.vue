@@ -5,7 +5,9 @@
         <h1 class="title">{{ image.title }}</h1>
         <h2 class="subtitle">{{ image.subtitle }}</h2>
         <Btn>
+          <router-link :to="'/about-us'" class="btn__view-more">
           View More
+          </router-link>
         </Btn>
       </div>
     </main>
@@ -30,6 +32,14 @@
 </script>
 
 <style lang="scss" scoped>
+  .btn__view-more {
+    &:link,
+    &:visited {
+      color: rgba(255, 255, 255, 1);
+      text-decoration: none;
+    }
+  }
+
   #slides {
     width: 100%;
     height: 100%;
@@ -48,7 +58,7 @@
 
   .title {
     font-size: 12rem;
-    font-weight: 100;
+    font-weight: 300;
   }
 
   .subtitle {
