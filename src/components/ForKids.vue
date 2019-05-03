@@ -28,7 +28,7 @@
     <ProductDetails
       v-if="isOpened"
       :item="itemDetails"
-      :data="data"
+      :dataToDisplay="dataToDisplay"
       @close="isOpened = false"
     />
 

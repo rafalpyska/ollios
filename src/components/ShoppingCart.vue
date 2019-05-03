@@ -154,7 +154,7 @@
     &__summary {
       display: flex;
       justify-content: flex-end;
-      width: 50%;
+      width: 100%;
     }
   }
   .item {
