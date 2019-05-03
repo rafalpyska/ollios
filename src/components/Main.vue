@@ -1,54 +1,60 @@
 <template lang="html">
-  <main class="main">
-    <div class="content">
-      <h1 class="title">Olios</h1>
-      <h2 class="text">Newest furniture shop template</h2>
-      <Btn>
-        View More
-      </Btn>
-    </div>
-  </main>
+    <Slides :image="images[chosenImage]"/>
+
 </template>
 
 <script>
-  import Btn from "./Btn"
-export default {
-  name: "Main",
-  components: {
-    Btn
+  import Slides from './slider/Slides'
+
+  export default {
+    name: "Main",
+    components: {
+      Slides
+    },
+    data() {
+      return {
+        images: [
+          {
+            id: 0,
+            title: 'Ollios',
+            subtitle: 'Newest furniture shop template',
+            url: 'background.png'
+          },
+          {
+            id: 1,
+            title: 'Ollios',
+            subtitle: 'Newest furniture shop template',
+            url: 'background2.jpg'
+          },
+          {
+            id: 2,
+            title: 'Ollios',
+            subtitle: 'Newest furniture shop template',
+            url: 'background3.jpg'
+          }
+        ],
+        chosenImage: 0
+      }
+    },
+    created() {
+      setInterval(() => {
+        this.move();
+      }, 5000);
+    },
+    methods: {
+      move() {
+        let flag = this.chosenImage;
+        flag++;
+        if(flag >= this.images.length) {
+          flag = 0;
+        }
+        this.chosenImage = flag;
+
+      }
+    }
   }
-}
 </script>
 
 <style scoped lang="css">
-
-  .main {
-    flex: 1;
-    text-align: center;
-    text-transform: uppercase;
-    background-image: url('../assets/background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-
-  .content {
-    margin-top: 8rem;
-  }
-
-  .title {
-    font-size: 12rem;
-    font-weight: 100;
-  }
-
-  .text {
-    font-weight: 300;
-  }
-
-  .title,
-  .text {
-    margin: 0;
-    padding: .75rem;
-  }
 
 </style>
