@@ -17,14 +17,6 @@
     components: {
       Home
     }
-    // data() {
-    //   return {
-    //   }
-    // },
-    // methods: {
-    // },
-    // components: {
-    // }
   };
 </script>
 
@@ -42,17 +34,6 @@
     font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
-  }
-
-  .container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-  }
-
-  .main {
-    padding-left: 8rem;
   }
 
 </style>

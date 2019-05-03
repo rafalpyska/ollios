@@ -29,7 +29,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   #slides {
     width: 100%;
     height: 100%;
@@ -43,9 +43,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-  }
-
-  .content {
+    padding-left: 8rem;
   }
 
   .title {
