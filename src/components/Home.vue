@@ -5,7 +5,11 @@
     <Navigation/>
 
     <transition name="slide-in" mode="out-in">
-      <router-view></router-view>
+      <router-view
+        v-if="!status"
+        :categories="categories"
+        :products="products"
+        />
     </transition>
 
     <CategoriesToggle/>
@@ -21,7 +25,7 @@
 </template>
 
 <script>
-
+  import axios from 'axios';
   import Navigation from "./Navigation";
   import Main from "./Main";
   import CategoriesToggle from "./CategoriesToggle";
@@ -30,6 +34,8 @@
   import LivingRoom from "./LivingRoom";
   import Office from "./Office";
   import ShoppingCart from "./ShoppingCart";
+
+  const API = '/static/products.json';
 
   export default {
     name: "Home",
@@ -45,7 +51,28 @@
     },
     data() {
       return {
-        isOpened: false,
+        categories: null,
+        products: null,
+        status: true
+      }
+    },
+    mounted() {
+      axios.get(API)
+        .then((response) => {
+          this.categories = response.data[0];
+          this.products = this.getProductsInfo();
+          this.status = false;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    methods: {
+      getProductsInfo() {
+        return Object.values(this.categories.category).map(category => {
+          let myProducts;
+          return myProducts = Object.values(category.products);
+        }).flat()
       }
     }
   };

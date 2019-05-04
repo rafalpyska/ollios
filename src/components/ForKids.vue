@@ -30,6 +30,7 @@
       :item="itemDetails"
       :key="itemDetails.id"
       :dataToDisplay="dataToDisplay"
+      :products="products"
     />
 
   </div>
@@ -37,19 +38,28 @@
 
 <script>
   import LoadingSpinner from "./LoadingSpinner";
-  import axios from 'axios';
   import {EventBus} from "@/event-bus.js";
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
 
-  const API = '/static/products.json';
-
   export default {
     name: 'ForKids',
+    props: {
+      categories: {
+        type: Object,
+        required: true
+      },
+      products: {
+        type: Array,
+        required: true
+      }
+    },
     data() {
       return {
-        status: true,
-        data: [],
+        categoriesList: null,
+        productsList: null,
+        productsParsed: null,
+        status: false,
         dataToDisplay: [],
         itemDetails: null,
         isOpened: false,
@@ -62,18 +72,12 @@
       ProductDetails
     },
     created() {
-      axios.get(API)
-        .then((response) => {
-          this.data = response.data[0].category[2];
-          for (let key in this.data) {
-            if (!this.data.hasOwnProperty(key)) continue;
-            this.dataToDisplay = this.data[key];
-          }
-          this.status = false;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      this.categoriesList = this.categories.category[2];
+      this.productsList = this.products;
+      for (let key in this.categoriesList) {
+        if (!this.categoriesList.hasOwnProperty(key)) continue;
+        this.dataToDisplay = this.categoriesList[key];
+      }
       EventBus.$on('detailsClosed', (closed) => {
         this.isOpened = closed;
       });

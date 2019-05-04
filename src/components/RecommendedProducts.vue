@@ -24,29 +24,18 @@
     name: "RecommendedProducts",
     props: {
       products: {
-        type: Object,
+        type: Array,
         required: true
       }
     },
     data() {
       return {
-        recommended: [],
-        recommendedItems: []
+        recommendedItems: null
       }
     },
     created() {
-      for (let key in this.products) {
-        if (!this.products.hasOwnProperty(key)) continue;
-        let obj = this.products[key];
-        this.recommended.push(obj);
-        }
-      let randomProducts = this.getRandomArrItems(this.recommended, 3);
+      this.recommendedItems = this.getRandomArrItems(this.products, 3);
 
-      for (let key in randomProducts) {
-        if (!this.products.hasOwnProperty(key)) continue;
-        let obj = randomProducts[key];
-        this.recommendedItems.push(obj);
-      }
     },
     methods: {
       getRandomArrItems(arr, n) {

@@ -2,15 +2,13 @@
   <transition name="slide-fade">
     <section v-show="isToggle" class="search-modal">
       <button @click="close()" class="close close-search">X</button>
-      <input class="search__input" type="search" name="search__input" v-model="searchValue" @input="handleRequest">
+      <input class="search__input" type="search" name="search__input" v-model="searchValue">
       <label class="search__label" for="search__input">Type product that you are looking for</label>
       <div class="search__result-container">
-        <div class="search__result" v-for="result in searchResults">
-          <p>{{ result.name }}</p>
-          <p>{{ result.company.catchPhrase }}</p>
-          <p>{{ result.address.geo.lat }}</p>
-          </p>
-        </div>
+<!--        <div class="search__result" v-for="result in filteredData">-->
+<!--          <p>{{ result.title }}</p>-->
+<!--          <p>{{ result.description }}</p>-->
+<!--        </div>-->
       </div>
     </section>
   </transition>
@@ -21,32 +19,36 @@
 import { EventBus } from "@/event-bus.js";
 import axios from 'axios';
 import debounce from 'lodash.debounce';
-const API = 'https://jsonplaceholder.typicode.com/users';
+
+const API = '/static/products.json';
 
 export default {
   name: "Search",
   data() {
     return {
+      categories: null,
+      products: null,
       isToggle: false,
-      searchValue: '',
-      searchResults: []
+      searchValue: ''
     }
   },
   created() {
+    EventBus.$on('requestedData', (categories, products) => {
+      this.categories = categories;
+      this.products = products;
+    });
     EventBus.$on('isActiveSearch', (active) => {
       this.isToggle = active;
     });
   },
+  computed: {
+    // filteredData() {
+    //   return this.products.filter((item) => {
+    //     return item.title.toLowerCase().match(this.searchValue.toLowerCase());
+    //   })
+    // }
+  },
   methods: {
-    handleRequest: debounce(function() {
-      axios.get(`${API}?q=${this.searchValue}`)
-        .then((response) => {
-          this.searchResults = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }, 500),
     close() {
       this.isToggle = false;
       EventBus.$emit('searchClosed', this.isToggle);

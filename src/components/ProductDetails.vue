@@ -37,7 +37,7 @@
         </transition>
       </div>
       <RecommendedProducts
-      :products="dataToDisplay"
+      :products="products"
       />
     </div>
   </section>
@@ -65,6 +65,10 @@
       },
       dataToDisplay: {
         type: Object,
+        required: true
+      },
+      products: {
+        type: Array,
         required: true
       }
     },
