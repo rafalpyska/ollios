@@ -167,18 +167,4 @@
     margin-left: 10px;
   }
 
-  .slide-fade-enter-active,
-  .slide-fade-leave-active {
-    transition: all .4s ease;
-  }
-
-  .slide-fade-enter {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-
-  .slide-fade-leave-to {
-    transform: translateY(-100%);
-  }
-
 </style>

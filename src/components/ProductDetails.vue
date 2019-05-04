@@ -1,7 +1,8 @@
 <template lang="html">
+  <transition name="slide-fade" mode="in-out">
   <section class="product-details">
     <div class="product-details__image-container">
-      <button @click="$emit('close')" class="close">X</button>
+      <button @click="close()" class="close">X</button>
       <img :src="getImgUrl(image)" alt="" class="product-details__image">
       <button @click="zoomIn" class="btn__zoom btn__zoom--in">+</button>
       <button @click="zoomOut" class="btn__zoom btn__zoom--out">-</button>
@@ -40,6 +41,7 @@
       />
     </div>
   </section>
+  </transition>
 </template>
 
 <script>
@@ -68,6 +70,7 @@
     },
     data() {
       return {
+        isToggle: false,
         cart: [],
         recommended: [],
         recommendedItems: [],
@@ -81,7 +84,16 @@
         quantity: this.item.quantity
       }
     },
+    created() {
+      EventBus.$on('isActiveDetails', (active) => {
+        this.isToggle = active;
+      });
+    },
     methods: {
+      close() {
+        this.isToggle = false;
+        EventBus.$emit('detailsClosed', this.isToggle);
+      },
       addToCart(productToAdd) {
         let found = false;
         this.cart.forEach((item) => {
@@ -106,7 +118,6 @@
       zoomOut() {
         document.querySelector('.product-details__image').classList.remove('zoom-in');
       }
-
     },
     mixins: [getImageUrl, ellipsify]
   };
@@ -175,10 +186,13 @@
     }
 
     &-details {
+      position: fixed;
+      top: 0;
+      left: 0;
       display: flex;
       width: 100%;
       height: 100vh;
-      padding-left: 8em;
+      z-index: 10;
 
       &__image {
         &-container {
@@ -187,7 +201,7 @@
           justify-content: center;
           align-items: center;
           width: 40%;
-          background-color: rgba(255, 255, 255, .9);
+          background-color: rgba(255, 255, 255, 1);
           box-shadow: 4px 0 5px -2px rgba(0, 0, 0, .1);
           z-index: 2;
         }
@@ -271,10 +285,4 @@
     border: 1px solid rgba(0, 35, 255, 0.9);
   }
 
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-  }
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-  }
 </style>

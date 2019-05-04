@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="container">
-    <main class="category__main" v-if="!isOpened">
+    <main class="category__main">
 
       <section class="section__details">
         <h1 class="section__title">Products</h1>
@@ -22,14 +22,14 @@
         />
       </transition-group>
 
-<!--      <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>-->
+      <!--      <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>-->
     </main>
 
     <ProductDetails
       v-if="isOpened"
       :item="itemDetails"
+      :key="itemDetails.id"
       :dataToDisplay="dataToDisplay"
-      @close="isOpened = false"
     />
 
   </div>
@@ -38,13 +38,14 @@
 <script>
   import LoadingSpinner from "./LoadingSpinner";
   import axios from 'axios';
+  import {EventBus} from "@/event-bus.js";
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
 
   const API = '/static/products.json';
 
   export default {
-    name: 'LivingRoom',
+    name: 'Office',
     data() {
       return {
         status: true,
@@ -73,7 +74,9 @@
         .catch((error) => {
           console.log(error);
         });
-
+      EventBus.$on('detailsClosed', (closed) => {
+        this.isOpened = closed;
+      });
     },
     methods: {
       // loadMore() {
@@ -81,46 +84,13 @@
       // },
       handleProductDetails(item) {
         this.isOpened = true;
+        EventBus.$emit('isActiveDetails', this.isOpened);
         this.itemDetails = item;
       }
     }
   };
 </script>
 
-<style scoped lang="scss">
-
-  .category__main {
-    width: 100%;
-    padding: 2rem 8rem 2rem 16rem;
-    background-color: rgba(240, 240, 240, 1);
-  }
-
-  .products {
-    display: grid;
-    grid-template-columns: 23% 1fr 23% 23%;
-    grid-gap: 2rem;
-  }
-
-  .btn__load-more {
-    display: block;
-    border: 0;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: none;
-    text-transform: uppercase;
-    color: rgba(0, 35, 255, 1);
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 700;
-    transition: all .4s;
-  }
-
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .4s;
-  }
-
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-  }
+<style lang="scss">
 
 </style>

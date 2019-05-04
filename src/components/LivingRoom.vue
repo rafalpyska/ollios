@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="container">
-    <main class="category__main" v-if="!isOpened">
+    <main class="category__main">
 
       <section class="section__details">
         <h1 class="section__title">Products</h1>
@@ -30,7 +30,6 @@
       :item="itemDetails"
       :key="itemDetails.id"
       :dataToDisplay="dataToDisplay"
-      @close="isOpened = false"
     />
 
   </div>
@@ -39,6 +38,7 @@
 <script>
   import LoadingSpinner from "./LoadingSpinner";
   import axios from 'axios';
+  import {EventBus} from "@/event-bus.js";
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
 
@@ -74,7 +74,9 @@
         .catch((error) => {
           console.log(error);
         });
-
+      EventBus.$on('detailsClosed', (closed) => {
+        this.isOpened = closed;
+      });
     },
     methods: {
       // loadMore() {
@@ -82,6 +84,7 @@
       // },
       handleProductDetails(item) {
         this.isOpened = true;
+        EventBus.$emit('isActiveDetails', this.isOpened);
         this.itemDetails = item;
       }
     }

@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="container">
-    <main class="category__main" v-if="!isOpened">
+    <main class="category__main">
 
       <section class="section__details">
         <h1 class="section__title">Products</h1>
@@ -28,8 +28,8 @@
     <ProductDetails
       v-if="isOpened"
       :item="itemDetails"
+      :key="itemDetails.id"
       :dataToDisplay="dataToDisplay"
-      @close="isOpened = false"
     />
 
   </div>
@@ -38,13 +38,14 @@
 <script>
   import LoadingSpinner from "./LoadingSpinner";
   import axios from 'axios';
+  import {EventBus} from "@/event-bus.js";
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
 
   const API = '/static/products.json';
 
   export default {
-    name: 'LivingRoom',
+    name: 'Kitchen',
     data() {
       return {
         status: true,
@@ -63,7 +64,7 @@
     created() {
       axios.get(API)
         .then((response) => {
-          this.data = response.data[0].category[1];
+          this.data = response.data[0].category[3];
           for (let key in this.data) {
             if (!this.data.hasOwnProperty(key)) continue;
             this.dataToDisplay = this.data[key];
@@ -73,7 +74,9 @@
         .catch((error) => {
           console.log(error);
         });
-
+      EventBus.$on('detailsClosed', (closed) => {
+        this.isOpened = closed;
+      });
     },
     methods: {
       // loadMore() {
@@ -81,6 +84,7 @@
       // },
       handleProductDetails(item) {
         this.isOpened = true;
+        EventBus.$emit('isActiveDetails', this.isOpened);
         this.itemDetails = item;
       }
     }
@@ -90,3 +94,4 @@
 <style lang="scss">
 
 </style>
+

@@ -103,14 +103,6 @@
     transition: all .4s;
   }
 
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .4s;
-  }
-
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-  }
-
   .section {
     &__details {
       display: flex;
@@ -153,6 +145,14 @@
     left: 11rem;
   }
 
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .4s;
+  }
+
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+
   .slide-in-enter-active {
     transition: all .3s ease;
   }
@@ -164,6 +164,20 @@
   .slide-in-enter, .slide-in-leave-to {
     opacity: 0;
     transform: translateX(-100%);
+  }
+
+  .slide-fade-enter-active,
+  .slide-fade-leave-active {
+    transition: all .4s ease;
+  }
+
+  .slide-fade-enter {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  .slide-fade-leave-to {
+    transform: translateY(-100%);
   }
 
 </style>

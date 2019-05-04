@@ -30,7 +30,8 @@
 
 <script>
 
-  import {EventBus} from "@/event-bus.js";
+  import {EventBus} from "@/event-bus.js"
+  import preventScroll from "../mixins/preventScroll"
 
   export default {
     name: "Navigation",
@@ -62,14 +63,8 @@
         EventBus.$emit('isActiveSearch', this.toggleSearch);
         this.preventScroll(this.toggleSearch);
       },
-      preventScroll(item) {
-        if(item === true) {
-          document.body.classList.add('ovHidden');
-        } else {
-          document.body.classList.remove('ovHidden');
-        }
-      }
-    }
+    },
+    mixins: [preventScroll]
   };
 
 </script>

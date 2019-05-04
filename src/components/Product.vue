@@ -63,6 +63,7 @@
     }
     &__item {
       align-items: center;
+      cursor: pointer;
       &--2 {
         display: flex;
         justify-content: space-around;
