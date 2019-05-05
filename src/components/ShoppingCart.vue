@@ -65,8 +65,7 @@
           }
         });
         if (!found) {
-          this.cart = this.cart.JSON.parse(JSON.stringify(item));
-          // concat(item)
+          this.cart = this.cart.concat(item)
         }
         this.empty = false;
       });
