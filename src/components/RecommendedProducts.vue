@@ -1,7 +1,7 @@
 <template lang="html">
   <section class="recommended">
     <h2 class="recommended__title">Recommended</h2>
-    <div v-for="item in recommendedItems" class="recommended__item">
+    <div v-for="item in recommendedItems" @click="handleProductDetails(item)" class="recommended__item">
 
       <div class="recommended__item-image-container">
         <img :src="getImgUrl(item.image)" alt="" class="products__image">
@@ -10,17 +10,31 @@
         <p class="recommended__item-title">{{ item.title }}</p>
         <p class="recommended__item-description">{{ ellipsify(item.description, 50) }}</p>
       </div>
-
     </div>
+
+    <!-- Circular References Between Components - components are
+    each other’s descendent and ancestor in the render tree -->
+    <ProductDetails
+      v-if="isOpened"
+      :item="recommendedItemDetails"
+      :key="recommendedItemDetails.id"
+      :products="products"
+    />
+
   </section>
 </template>
 
 <script>
   import getImageUrl from '../mixins/getImageUrl'
   import ellipsify from '../mixins/ellipsify'
+  import {EventBus} from "@/event-bus.js";
+  import ProductDetails from "./ProductDetails";
 
   export default {
     name: "RecommendedProducts",
+    components: {
+      ProductDetails
+    },
     props: {
       products: {
         type: Array,
@@ -29,8 +43,13 @@
     },
     data() {
       return {
-        recommendedItems: null
+        recommendedItems: null,
+        recommendedItemDetails: null,
+        isOpened: false,
       }
+    },
+    beforeCreate: function () {
+      this.$options.components.ProductDetails = require('./ProductDetails.vue').default
     },
     created() {
       this.recommendedItems = this.getRandomArrItems(this.products, 3);
@@ -49,6 +68,11 @@
           taken[x] = --len in taken ? taken[len] : len;
         }
         return result;
+      },
+      handleProductDetails(item) {
+        this.isOpened = true;
+        EventBus.$emit('isActiveDetails', this.isOpened);
+        this.recommendedItemDetails = item;
       }
     },
     mixins: [getImageUrl, ellipsify]
@@ -78,6 +102,7 @@
       align-items: center;
       width: 25%;
       padding: 0 1rem;
+      cursor: pointer;
       &-image {
         &-container {
           width: 200px;

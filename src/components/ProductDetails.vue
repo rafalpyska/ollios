@@ -63,10 +63,6 @@
         type: Object,
         required: true
       },
-      dataToDisplay: {
-        type: Object,
-        required: true
-      },
       products: {
         type: Array,
         required: true
