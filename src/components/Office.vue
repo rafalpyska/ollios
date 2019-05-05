@@ -55,7 +55,7 @@
     },
     data() {
       return {
-        categoriesList: null,
+        category: null,
         productsList: null,
         productsParsed: null,
         status: false,
@@ -73,9 +73,9 @@
     created() {
       this.categoriesList = this.categories.category[1];
       this.productsList = this.products;
-      for (let key in this.categoriesList) {
-        if (!this.categoriesList.hasOwnProperty(key)) continue;
-        this.dataToDisplay = this.categoriesList[key];
+      for (let key in this.category) {
+        if (!this.category.hasOwnProperty(key)) continue;
+        this.dataToDisplay = this.category[key];
       }
       EventBus.$on('detailsClosed', (closed) => {
         this.isOpened = closed;

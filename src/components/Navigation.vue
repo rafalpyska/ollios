@@ -17,11 +17,6 @@
             <span class="navigation__icon icon__basket" aria-label="Basket"></span>
           </button>
         </li>
-        <li class="navigation__item margin-auto">
-          <button @click="searchToggle" class="navigation__button">
-            <span class="navigation__icon icon__search" aria-label="Search"></span>
-          </button>
-        </li>
       </ul>
     </nav>
   </header>
@@ -37,7 +32,6 @@
     name: "Navigation",
     data() {
       return {
-        toggleSearch: false,
         toggleCart: false
       }
     },
@@ -46,23 +40,13 @@
         this.toggleCart = closed;
         this.preventScroll(this.toggleCart);
       });
-      EventBus.$on('searchClosed', (closed) => {
-        this.toggleSearch = closed;
-        this.preventScroll(this.toggleSearch);
-      });
-
     },
     methods: {
       cartToggle() {
         this.toggleCart = !this.toggleCart;
         EventBus.$emit('isActiveCart', this.toggleCart);
         this.preventScroll(this.toggleCart);
-      },
-      searchToggle() {
-        this.toggleSearch = !this.toggleSearch;
-        EventBus.$emit('isActiveSearch', this.toggleSearch);
-        this.preventScroll(this.toggleSearch);
-      },
+      }
     },
     mixins: [preventScroll]
   };

@@ -18,19 +18,17 @@
 
     <ShoppingCart/>
 
-    <Search/>
-
   </div>
 
 </template>
 
 <script>
   import axios from 'axios';
+  import {EventBus} from "@/event-bus.js";
   import Navigation from "./Navigation";
   import Main from "./Main";
   import CategoriesToggle from "./CategoriesToggle";
   import CategoriesMenu from "./CategoriesMenu";
-  import Search from "./Search";
   import LivingRoom from "./LivingRoom";
   import Office from "./Office";
   import ShoppingCart from "./ShoppingCart";
@@ -45,7 +43,6 @@
       Main,
       CategoriesToggle,
       CategoriesMenu,
-      Search,
       LivingRoom,
       Office
     },
@@ -62,6 +59,7 @@
           this.categories = response.data[0];
           this.products = this.getProductsInfo();
           this.status = false;
+          EventBus.$emit('products', this.products);
         })
         .catch((error) => {
           console.log(error);
@@ -88,7 +86,7 @@
     overflow: hidden;
   }
 
-  .cart-modal, .search-modal {
+  .cart-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -143,6 +141,7 @@
       font-weight: 300;
     }
     &__category {
+      font-size: 1rem;
       font-weight: 300;
       color: #c1c1c1;
     }
@@ -205,6 +204,33 @@
 
   .slide-fade-leave-to {
     transform: translateY(-100%);
+  }
+
+  .list-enter-active,
+  .list-leave-active,
+  .list-move {
+    transition: 500ms cubic-bezier(0.59, 0.12, 0.34, 0.95);
+    transition-property: opacity, transform;
+  }
+
+  .list-enter {
+    opacity: 0;
+    transform: translateX(50px) scaleY(0.5);
+  }
+
+  .list-enter-to {
+    opacity: 1;
+    transform: translateX(0) scaleY(1);
+  }
+
+  .list-leave-active {
+    position: absolute;
+  }
+
+  .list-leave-to {
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: center top;
   }
 
 </style>

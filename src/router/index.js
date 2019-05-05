@@ -24,7 +24,6 @@ export default new Router({
       component: Categories,
       props: true
     },
-    ,
     {
       path: '/about-us',
       component: AboutUs,
@@ -64,12 +63,6 @@ export default new Router({
       path: '/product-details',
       name: 'ProductDetails',
       component: ProductDetails,
-      props: true
-    },
-    {
-      path: '/cart',
-      name: 'ShoppingCart',
-      component: ShoppingCart,
       props: true
     },
     {

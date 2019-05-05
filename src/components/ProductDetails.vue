@@ -175,6 +175,7 @@
 
   .product {
     &__description {
+      font-size: 1.15rem;
       font-weight: 300;
     }
 

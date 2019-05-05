@@ -10,10 +10,16 @@
       <LoadingSpinner
         v-if="status"
       />
+<!--      <Search/>-->
+
+      <section class="search">
+      <input class="search__input" id="search-input" type="search" name="search__input" v-model="searchValue">
+      <label class="search__label" for="search-input">Type product that you are looking for</label>
+      </section>
 
       <transition-group tag="section" class="products" name="list">
         <Product
-          v-for="item in dataToDisplay"
+          v-for="item in filteredData"
           :item="item"
           class="products__item"
           :class="'products__item--' + item.id"
@@ -41,9 +47,16 @@
   import {EventBus} from "@/event-bus.js";
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
+  import Search from "./Search";
 
   export default {
     name: 'LivingRoom',
+    components: {
+      Search,
+      LoadingSpinner,
+      Product,
+      ProductDetails
+    },
     props: {
       categories: {
         type: Object,
@@ -56,36 +69,41 @@
     },
     data() {
       return {
-        categoriesList: null,
-        productsList: null,
-        productsParsed: null,
+        categoryObj: null,
         status: false,
         dataToDisplay: [],
         itemDetails: null,
         isOpened: false,
-        // showButton: true,
+        searchValue: '',
+        categoryArr: [],
+        categoryProductsArr: null
       }
     },
-    components: {
-      LoadingSpinner,
-      Product,
-      ProductDetails
-    },
     created() {
-      this.categoriesList = this.categories.category[0];
-      this.productsList = this.products;
-      for (let key in this.categoriesList) {
-        if (!this.categoriesList.hasOwnProperty(key)) continue;
-        this.dataToDisplay = this.categoriesList[key];
+      this.categoryObj = this.categories.category[0];
+      for (let key in this.categoryObj) {
+        if (!this.categoryObj.hasOwnProperty(key)) continue;
+        this.dataToDisplay = this.categoryObj[key];
+        this.categoryArr.push(this.dataToDisplay);
+        let [,,,,,item] = this.categoryArr;
+        if(item) {
+          this.categoryProductsArr = Object.values(item);
+        }
       }
       EventBus.$on('detailsClosed', (closed) => {
         this.isOpened = closed;
       });
     },
+    computed: {
+      filteredData() {
+        if(this.categoryProductsArr) {
+          return this.categoryProductsArr.filter((item) => {
+            return item.title.toLowerCase().match(this.searchValue.toLowerCase());
+          })
+        }
+      }
+    },
     methods: {
-      // loadMore() {
-      //   this.showButton = false;
-      // },
       handleProductDetails(item) {
         this.isOpened = true;
         EventBus.$emit('isActiveDetails', this.isOpened);
@@ -96,5 +114,29 @@
 </script>
 
 <style lang="scss">
+
+  .search {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    &__input {
+      font-family: 'Lato', sans-serif;
+      font-size: 4rem;
+      font-weight: 100;
+      text-transform: uppercase;
+      border: 0;
+      border-bottom: 1px solid rgba(177, 177, 177, .9);
+      background-color: transparent;
+      padding: 1.5rem;
+      width: 70%;
+      margin-bottom: 1rem;
+      &:focus {
+        outline: 2px solid rgba(0, 35, 255, 1);
+      }
+    }
+    &__label {
+      color: rgba(177, 177, 177, .9);
+    }
+  }
 
 </style>
