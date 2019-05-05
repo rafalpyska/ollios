@@ -53,16 +53,16 @@
       }
     },
     created() {
+      // TODO: `Fix bug when 3 or more items are added to cart on instant click`
       EventBus.$on('update-cart', (item) => {
         const newItem = item[0];
         this.cart = this.cart || [];
         let found = false;
-        this.cart = this.cart.map(oldItem => {
-          if (oldItem.id === newItem.id) {
+        this.cart.forEach((item) => {
+          if (item.id === newItem.id) {
             found = true;
-            return newItem;
+            item.quantity += newItem.quantity;
           }
-          return oldItem;
         });
         if (!found) {
           this.cart = this.cart.concat(item)

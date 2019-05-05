@@ -103,7 +103,7 @@
         this.cart.forEach((item) => {
           if (item.id === productToAdd.id) {
             found = true;
-            item.quantity += productToAdd.quantity;
+            // item.quantity += productToAdd.quantity;
           }
         });
         if (!found) {
@@ -111,10 +111,11 @@
         }
         productToAdd.quantity = 1;
         this.added = true;
-        EventBus.$emit('update-cart', this.cart);
         setTimeout(()  => {
           this.added = false;
         }, 2500);
+        EventBus.$emit('update-cart', this.cart);
+
       },
       zoomIn() {
         document.querySelector('.product-details__image').classList.add('zoom-in');
