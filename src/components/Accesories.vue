@@ -29,7 +29,6 @@
       v-if="isOpened"
       :item="itemDetails"
       :key="itemDetails.id"
-      :dataToDisplay="dataToDisplay"
       :products="products"
     />
 
