@@ -20,6 +20,7 @@
         required: true
       }
     },
+    mixins: [getImageUrl, ellipsify],
     data() {
       return {
         name: this.item.title,
@@ -37,7 +38,6 @@
         }
       }
     },
-    mixins: [getImageUrl, ellipsify]
   };
 </script>
 

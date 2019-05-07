@@ -13,16 +13,16 @@
         isActive: false,
       }
     },
-    methods: {
-      categoriesToggle() {
-        this.isActive = !this.isActive;
-        EventBus.$emit('toggleActive', this.isActive);
-      }
-    },
     watch: {
       '$route' () {
         this.isActive = false;
         EventBus.$emit('routeChange', this.isActive);
+      }
+    },
+    methods: {
+      categoriesToggle() {
+        this.isActive = !this.isActive;
+        EventBus.$emit('toggleActive', this.isActive);
       }
     }
   };

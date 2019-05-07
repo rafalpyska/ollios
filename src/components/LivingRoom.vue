@@ -7,7 +7,7 @@
         <p class="section__category">{{ $route.name }}</p>
       </section>
 
-      <LoadingSpinner
+      <AppLoadingSpinner
         v-if="status"
       />
 <!--      <Search/>-->
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-  import LoadingSpinner from "./LoadingSpinner";
+  import AppLoadingSpinner from "./AppLoadingSpinner";
   import {EventBus} from "@/event-bus.js";
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
@@ -53,7 +53,7 @@
     name: 'LivingRoom',
     components: {
       Search,
-      LoadingSpinner,
+      AppLoadingSpinner,
       Product,
       ProductDetails
     },
@@ -79,6 +79,15 @@
         categoryProductsArr: null
       }
     },
+    computed: {
+      filteredData() {
+        if(this.categoryProductsArr) {
+          return this.categoryProductsArr.filter((item) => {
+            return item.title.toLowerCase().match(this.searchValue.toLowerCase());
+          })
+        }
+      }
+    },
     created() {
       this.categoryObj = this.categories.category[0];
       for (let key in this.categoryObj) {
@@ -93,15 +102,6 @@
       EventBus.$on('detailsClosed', (closed) => {
         this.isOpened = closed;
       });
-    },
-    computed: {
-      filteredData() {
-        if(this.categoryProductsArr) {
-          return this.categoryProductsArr.filter((item) => {
-            return item.title.toLowerCase().match(this.searchValue.toLowerCase());
-          })
-        }
-      }
     },
     methods: {
       handleProductDetails(item) {

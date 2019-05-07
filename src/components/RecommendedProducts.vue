@@ -41,6 +41,7 @@
         required: true
       }
     },
+    mixins: [getImageUrl, ellipsify],
     data() {
       return {
         recommendedItems: null,
@@ -74,8 +75,7 @@
         EventBus.$emit('isActiveDetails', this.isOpened);
         this.recommendedItemDetails = item;
       }
-    },
-    mixins: [getImageUrl, ellipsify]
+    }
   }
 </script>
 

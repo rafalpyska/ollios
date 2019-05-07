@@ -3,12 +3,12 @@
     <nav class="navigation">
       <ul class="navigation__list">
         <li class="navigation__item">
-          <router-link :to="'/'" class="navigation__button">
+          <router-link :to="{ name: 'home' }" class="navigation__button">
             <img src="../assets/navigation/logo.png" alt="" class="navigation__icon icon__logo"/>
           </router-link>
         </li>
         <li class="navigation__item">
-          <router-link :to="'/'" class="navigation__button">
+          <router-link :to="{ name: 'home' }" class="navigation__button">
             <span class="navigation__icon icon__home" aria-label="Home page"></span>
           </router-link>
         </li>
@@ -30,6 +30,7 @@
 
   export default {
     name: "Navigation",
+    mixins: [preventScroll],
     data() {
       return {
         toggleCart: false
@@ -47,8 +48,7 @@
         EventBus.$emit('isActiveCart', this.toggleCart);
         this.preventScroll(this.toggleCart);
       }
-    },
-    mixins: [preventScroll]
+    }
   };
 
 </script>

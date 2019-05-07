@@ -4,6 +4,12 @@
   </button>
 </template>
 
+<script>
+  export default {
+    name: "AppButton"
+  }
+</script>
+
 <style lang="scss">
   .btn {
     border: none;

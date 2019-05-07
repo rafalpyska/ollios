@@ -27,6 +27,11 @@
         activeOrNot: false,
       }
     },
+    watch: {
+      '$route' () {
+        this.activeOrNot = false;
+      }
+    },
     created() {
       axios.get(API)
         .then((response) => {
@@ -46,11 +51,6 @@
       EventBus.$on('routeChange', (routeFalse) => {
         this.activeOrNot = routeFalse;
       });
-    },
-    watch: {
-      '$route' () {
-        this.activeOrNot = false;
-      }
     }
   };
 

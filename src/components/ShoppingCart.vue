@@ -2,7 +2,6 @@
   <transition name="slide-fade">
     <section v-show="isToggle" class="cart-modal">
       <button @click="close()" class="close close-cart">X</button>
-
       <transition-group tag="div" class="cart__wrapper" name="list">
         <h1 :key="3213" class="section__title">Shopping Cart</h1>
         <p :key="3214" v-if="empty">Your basket is empty!</p>
@@ -24,54 +23,36 @@
             <p class="item__price">Price for a single item: ${{ item.price }}</p>
           </div>
           <div class="cart__product cart__product-price">
-            <Btn @click.native="removeItem(index)">Remove</Btn>
+            <AppButton @click.native="removeItem(index)">Remove</AppButton>
           </div>
         </div>
-      <div :key="3215" v-if="!empty" class="cart__summary">
-        <p class="item__price">Total: ${{ total }}</p>
-      </div>
+        <div :key="3215" v-if="!empty" class="cart__summary">
+          <p class="item__price">Total: ${{ total }}</p>
+        </div>
       </transition-group>
     </section>
   </transition>
 </template>
 
+
+
 <script>
   import {EventBus} from "@/event-bus.js";
   import getImageUrl from '../mixins/getImageUrl'
-  import Btn from "./Btn"
+  import AppButton from "./AppButton"
 
   export default {
     name: "ShoppingCart",
     components: {
-      Btn
+      AppButton
     },
+    mixins: [getImageUrl],
     data() {
       return {
         isToggle: false,
         cart: null,
         empty: true
       }
-    },
-    created() {
-      // TODO: `Fix bug when 3 or more items are added to cart on instant click`
-      EventBus.$on('update-cart', (item) => {
-        const newItem = item[0];
-        this.cart = this.cart || [];
-        let found = false;
-        this.cart.forEach((item) => {
-          if (item.id === newItem.id) {
-            found = true;
-            item.quantity += newItem.quantity;
-          }
-        });
-        if (!found) {
-          this.cart = this.cart.concat(item)
-        }
-        this.empty = false;
-      });
-      EventBus.$on('isActiveCart', (active) => {
-        this.isToggle = active;
-      });
     },
     computed: {
       total() {
@@ -87,6 +68,29 @@
         }
       }
     },
+    created() {
+      // TODO: `Fix bug when 3 or more items are added to cart on instant click`
+      EventBus.$on('update-cart', (item) => {
+        const newItem = item[0];
+        this.cart = this.cart || [];
+        let found = false;
+        this.cart = this.cart.map(oldItem => {
+          if (oldItem.id === newItem.id) {
+            found = true;
+            newItem.quantity += oldItem.quantity;
+            return newItem;
+          }
+          return oldItem;
+        });
+        if (!found) {
+          this.cart = this.cart.concat(item)
+        }
+        this.empty = false;
+      });
+      EventBus.$on('isActiveCart', (active) => {
+        this.isToggle = active;
+      });
+    },
     methods: {
       removeItem(index) {
         this.cart[index].quantity = 0;
@@ -100,8 +104,7 @@
         this.isToggle = false;
         EventBus.$emit('cartClosed', this.isToggle);
       }
-    },
-    mixins: [getImageUrl]
+    }
   }
 </script>
 

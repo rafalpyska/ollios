@@ -11,6 +11,7 @@
           "0": {
             "title": "Red Seat",
             "id": 1,
+            "route": "red-seat",
             "description": "Armless Task Chair with Adjustable Height and Swivel Functionality. Comfortable 2 inches thick cushioned back and seat. 360 degrees swivel functionality. Pneumatic seat height adjustment. Upholstered in an easy to clean fabric. Dual wheel caster for any type of flooring",
             "price": "45",
             "image": "images/redseat.png",
@@ -19,6 +20,7 @@
           "1": {
             "title": "White Table",
             "id": 2,
+            "route": "white-table",
             "description": "International Concepts Solid Wood Dining Table with Shaker Legs",
             "price": "358",
             "image": "images/whitetable.png",
@@ -27,6 +29,7 @@
           "2": {
             "title": "Blue Seat",
             "id": 3,
+            "route": "blue-seat",
             "description": "This contoured office chair from Boss comes with built-in lumbar support and a waterfall seat design to reduce stress to your legs by increasing circulation. Quality construction and easy care fabric guarantee long lasting comfort.",
             "price": "35",
             "image": "images/blueseat.png",
@@ -35,6 +38,7 @@
           "3": {
             "title": "Modern Bed",
             "id": 4,
+            "route": "modern-bed",
             "description": "One of a kind popular modern bed. Modern look platform bed frame comes with special curve sideboard design.",
             "price": "124",
             "image": "images/modernbed.png",
@@ -43,6 +47,7 @@
           "4": {
             "title": "Dark Seat",
             "id": 5,
+            "route": "dark-seat",
             "description": "Get comfortable at work with this super cool GTRACING chair. The racing car seat appearance offers an attractive look for any location, while smooth contours and comfortable backrest allow for all-day comfort.",
             "price": "57",
             "image": "images/darkseat.png",
@@ -60,6 +65,7 @@
           "0": {
             "title": "Ameriwood Home Dakota L-Shaped Desk",
             "id": 6,
+            "route": "amhomdak-desk",
             "description": "Create the perfect office space with the Ameriwood Home Dakota L-Shaped Desk with Bookshelves. This Desk fits snuggly in a corner to maximize your home office space.",
             "price": "35",
             "image": "images/blueseat.png",
@@ -68,6 +74,7 @@
           "1": {
             "title": "HOMFA Bathroom Floor Cabinet",
             "id": 7,
+            "route": "homfa-cabinet",
             "description": "The standing storage cabinet is made by the HOMFA. The HOMFA concentrate on the quality, beauty and safe of the products. The most professional designers, the best producers and equipment, can ensure the customer get the best items. We always try our best to improve the quality and let the customers satisfied.",
             "price": "350",
             "image": "images/whitetable.png",
@@ -76,6 +83,7 @@
           "2": {
             "title": "Red Seat 2",
             "id": 8,
+            "route": "red-seat2",
             "description": "Armless Task Chair with Adjustable Height and Swivel Functionality. Comfortable 2 inches thick cushioned back and seat. 360 degrees swivel functionality. Pneumatic seat height adjustment. Upholstered in an easy to clean fabric. Dual wheel caster for any type of flooring",
             "price": "46",
             "image": "images/redseat.png",
@@ -84,6 +92,7 @@
           "3": {
             "title": "Dark Seat 2",
             "id": 9,
+            "route": "dark-seat2",
             "description": "Get comfortable at work with this super cool GTRACING chair. The racing car seat appearance offers an attractive look for any location, while smooth contours and comfortable backrest allow for all-day comfort.",
             "price": "53",
             "image": "images/darkseat.png",
@@ -92,6 +101,7 @@
           "4": {
             "title": "Modern Bed 2",
             "id": 10,
+            "route": "modern-bed2",
             "description": "ONE OF A KIND MOST POPULAR MODERN BED. Modern look platform bed frame comes with special curve sideboard design.",
             "price": "125",
             "image": "images/modernbed.png",
@@ -109,6 +119,7 @@
           "0": {
             "title": "Red Seat 3",
             "id": 11,
+            "route": "red-seat3",
             "description": "Armless Task Chair with Adjustable Height and Swivel Functionality. Comfortable 2 inches thick cushioned back and seat. 360 degrees swivel functionality. Pneumatic seat height adjustment. Upholstered in an easy to clean fabric. Dual wheel caster for any type of flooring",
             "price": "43",
             "image": "images/redseat.png",
@@ -117,6 +128,7 @@
           "1": {
             "title": "White Table 3",
             "id": 12,
+            "route": "white-table3",
             "description": "International Concepts Solid Wood Dining Table with Shaker Legs",
             "price": "350",
             "image": "images/whitetable.png",
@@ -125,6 +137,7 @@
           "2": {
             "title": "Blue Seat 3",
             "id": 13,
+            "route": "blue-seat3",
             "description": "This contoured office chair from Boss comes with built-in lumbar support and a waterfall seat design to reduce stress to your legs by increasing circulation. Quality construction and easy care fabric guarantee long lasting comfort.",
             "price": "37",
             "image": "images/blueseat.png",
@@ -133,6 +146,7 @@
           "3": {
             "title": "Modern Bed 3",
             "id": 14,
+            "route": "modern-bed3",
             "description": "ONE OF A KIND MOST POPULAR MODERN BED. Modern look platform bed frame comes with special curve sideboard design.",
             "price": "120",
             "image": "images/modernbed.png",
@@ -141,6 +155,7 @@
           "4": {
             "title": "Dark Seat 3",
             "id": 15,
+            "route": "dark-seat3",
             "description": "Get comfortable at work with this super cool GTRACING chair. The racing car seat appearance offers an attractive look for any location, while smooth contours and comfortable backrest allow for all-day comfort.",
             "price": "50",
             "image": "images/darkseat.png",
@@ -158,6 +173,7 @@
           "0": {
             "title": "White Table 4",
             "id": 16,
+            "route": "white-table4",
             "description": "International Concepts Solid Wood Dining Table with Shaker Legs",
             "price": "350",
             "image": "images/whitetable.png",
@@ -166,6 +182,7 @@
           "1": {
             "title": "Blue Seat 4",
             "id": 17,
+            "route": "blue-seat4",
             "description": "This contoured office chair from Boss comes with built-in lumbar support and a waterfall seat design to reduce stress to your legs by increasing circulation. Quality construction and easy care fabric guarantee long lasting comfort.",
             "price": "30",
             "image": "images/blueseat.png",
@@ -174,6 +191,7 @@
           "2": {
             "title": "Red Seat 4",
             "id": 18,
+            "route": "red-seat4",
             "description": "Armless Task Chair with Adjustable Height and Swivel Functionality. Comfortable 2 inches thick cushioned back and seat. 360 degrees swivel functionality. Pneumatic seat height adjustment. Upholstered in an easy to clean fabric. Dual wheel caster for any type of flooring",
             "price": "42",
             "image": "images/redseat.png",
@@ -182,6 +200,7 @@
           "3": {
             "title": "Dark Seat 4",
             "id": 19,
+            "route": "blue-seat4",
             "description": "Get comfortable at work with this super cool GTRACING chair. The racing car seat appearance offers an attractive look for any location, while smooth contours and comfortable backrest allow for all-day comfort.",
             "price": "51",
             "image": "images/darkseat.png",
@@ -190,6 +209,7 @@
           "4": {
             "title": "Modern Bed 4",
             "id": 20,
+            "route": "modern-bed4",
             "description": "ONE OF A KIND MOST POPULAR MODERN BED. Modern look platform bed frame comes with special curve sideboard design.",
             "price": "122",
             "image": "images/modernbed.png",
@@ -208,6 +228,7 @@
           "0": {
             "title": "Red Seat 5",
             "id": 21,
+            "route": "red-seat5",
             "description": "Armless Task Chair with Adjustable Height and Swivel Functionality. Comfortable 2 inches thick cushioned back and seat. 360 degrees swivel functionality. Pneumatic seat height adjustment. Upholstered in an easy to clean fabric. Dual wheel caster for any type of flooring",
             "price": "48",
             "image": "images/redseat.png",
@@ -216,6 +237,7 @@
           "1": {
             "title": "White Table 5",
             "id": 22,
+            "route": "white-table5",
             "description": "International Concepts Solid Wood Dining Table with Shaker Legs",
             "price": "353",
             "image": "images/whitetable.png",
@@ -224,6 +246,7 @@
           "2": {
             "title": "Blue Seat 5",
             "id": 23,
+            "route": "blue-seat5",
             "description": "This contoured office chair from Boss comes with built-in lumbar support and a waterfall seat design to reduce stress to your legs by increasing circulation. Quality construction and easy care fabric guarantee long lasting comfort.",
             "price": "39",
             "image": "images/blueseat.png",
@@ -232,6 +255,7 @@
           "3": {
             "title": "Modern Bed 5",
             "id": 24,
+            "route": "modern-bed5",
             "description": "ONE OF A KIND MOST POPULAR MODERN BED. Modern look platform bed frame comes with special curve sideboard design.",
             "price": "123",
             "image": "images/modernbed.png",
@@ -240,6 +264,7 @@
           "4": {
             "title": "Dark Seat 5",
             "id": 25,
+            "route": "dark-seat5",
             "description": "Get comfortable at work with this super cool GTRACING chair. The racing car seat appearance offers an attractive look for any location, while smooth contours and comfortable backrest allow for all-day comfort.",
             "price": "56",
             "image": "images/darkseat.png",

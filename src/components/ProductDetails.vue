@@ -27,9 +27,9 @@
             <div class="product__info product__quantity">
               <label for="quantity">Quantity</label>
               <input class="input__quantity" id="quantity" max="10" min="1" name="quantity" type="number"
-                     v-model.number="item.quantity">
+                     v-model.number="quantityProduct">
             </div>
-            <Btn @click.native="addToCart(item)" class="btn">Add to cart</Btn>
+            <AppButton @click.native="addToCart(item)" class="btn">Add to cart</AppButton>
           </div>
         </section>
         <transition name="fade">
@@ -46,7 +46,7 @@
 
 <script>
   import Vue from 'vue'
-  import Btn from './Btn'
+  import AppButton from './AppButton'
   import {EventBus} from "@/event-bus.js"
   import getImageUrl from '../mixins/getImageUrl'
   import ellipsify from '../mixins/ellipsify'
@@ -55,7 +55,7 @@
   export default {
     name: "ProductDetails",
     components: {
-      Btn,
+      AppButton,
       RecommendedProducts
     },
     props: {
@@ -81,7 +81,8 @@
         image: this.item.image,
         id: this.item.id,
         previousPrice: this.item.price * 2,
-        quantity: this.item.quantity
+        quantity: this.item.quantity,
+        quantityProduct: 1
       }
     },
     created() {
@@ -99,18 +100,18 @@
         this.cart.forEach((item) => {
           if (item.id === productToAdd.id) {
             found = true;
-            // item.quantity += productToAdd.quantity;
+            item.quantity += this.quantityProduct;
           }
         });
         if (!found) {
+          productToAdd.quantity = this.quantityProduct;
           this.cart.push(Vue.util.extend({}, productToAdd));
+          EventBus.$emit('update-cart', this.cart);
         }
-        productToAdd.quantity = 1;
         this.added = true;
-        setTimeout(()  => {
+        setTimeout(() => {
           this.added = false;
         }, 2500);
-        EventBus.$emit('update-cart', this.cart);
 
       },
       zoomIn() {

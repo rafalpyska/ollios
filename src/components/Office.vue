@@ -36,13 +36,18 @@
 </template>
 
 <script>
-  import LoadingSpinner from "./LoadingSpinner";
+  import AppLoadingSpinner from "./AppLoadingSpinner";
   import {EventBus} from "@/event-bus.js";
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
 
   export default {
     name: 'Office',
+    components: {
+      AppLoadingSpinner,
+      Product,
+      ProductDetails
+    },
     props: {
       categories: {
         type: Object,
@@ -64,11 +69,6 @@
         isOpened: false,
         // showButton: true,
       }
-    },
-    components: {
-      LoadingSpinner,
-      Product,
-      ProductDetails
     },
     created() {
       this.categoriesList = this.categories.category[1];

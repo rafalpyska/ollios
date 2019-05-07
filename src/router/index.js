@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from '@/components/Main'
+import Home from '@/components/Home'
 import Categories from '@/components/Categories'
 import AboutUs from '@/components/AboutUs'
 import LivingRoom from '@/components/LivingRoom'
@@ -9,7 +9,6 @@ import ForKids from '@/components/ForKids'
 import Kitchen from '@/components/Kitchen'
 import Accesories from '@/components/Accesories'
 import ProductDetails from '@/components/ProductDetails'
-import ShoppingCart from '@/components/ShoppingCart'
 
 Vue.use(Router)
 
@@ -17,7 +16,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Main
+      name: 'home',
+      component: Home
     },
     {
       path: '/categories',

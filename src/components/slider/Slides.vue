@@ -4,25 +4,25 @@
       <div class="content">
         <h1 class="title">{{ image.title }}</h1>
         <h2 class="subtitle">{{ image.subtitle }}</h2>
-        <Btn>
+        <AppButton>
           <router-link :to="'/about-us'" class="btn__view-more">
           View More
           </router-link>
-        </Btn>
+        </AppButton>
       </div>
     </main>
   </transition-group>
 </template>
 
 <script>
-  import Btn from "../Btn"
+  import AppButton from "../AppButton"
 
   export default {
     name: "Slides",
-    props: ["image"],
     components: {
-      Btn
+      AppButton
     },
+    props: ["image"],
     computed: {
       setBackgroundImage() {
         return { backgroundImage : "url("+ require("../../assets/" + this.image.url)+")"};
