@@ -18,14 +18,14 @@
       </section>
 
       <transition-group tag="section" class="products" name="list">
-        <Product
-          v-for="item in filteredData"
-          :item="item"
-          class="products__item"
-          :class="'products__item--' + item.id"
-          :key="item.id"
-          @click.native="handleProductDetails(item)"
-        />
+          <Product
+            v-for="item in filteredData"
+            :item="item"
+            class="products__item"
+            :class="'products__item--' + item.id"
+            :key="item.id"
+            @click.native="handleProductDetails(item)"
+          />
       </transition-group>
 
 <!--      <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>-->
@@ -102,6 +102,9 @@
       EventBus.$on('detailsClosed', (closed) => {
         this.isOpened = closed;
       });
+    },
+    beforeDestroy() {
+      EventBus.$off('detailsClosed');
     },
     methods: {
       handleProductDetails(item) {

@@ -42,6 +42,9 @@
         this.preventScroll(this.toggleCart);
       });
     },
+    beforeDestroy() {
+      EventBus.$off('cartClosed');
+    },
     methods: {
       cartToggle() {
         this.toggleCart = !this.toggleCart;

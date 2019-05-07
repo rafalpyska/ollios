@@ -90,6 +90,9 @@
         this.isToggle = active;
       });
     },
+    beforeDestroy() {
+      EventBus.$off('isActiveDetails');
+    },
     methods: {
       close() {
         this.isToggle = false;

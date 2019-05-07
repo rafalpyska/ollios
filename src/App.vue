@@ -62,6 +62,9 @@
           console.log(error);
         });
     },
+    beforeDestroy() {
+      EventBus.$off('products', this.products);
+    },
     methods: {
       getProductsInfo() {
         return Object.values(this.categories.category).map(category => {
@@ -122,7 +125,21 @@
   .products {
     display: grid;
     grid-template-columns: 23% 1fr 23% 23%;
-    grid-gap: 2rem;
+    grid-gap: 3rem;
+    pointer-events: none;
+    & > * {
+      pointer-events: auto;
+      transition: .3s opacity, .3s transform;
+    }
+    &:hover > *,
+    &:focus-within > * {
+      opacity: 0.4;
+    }
+    &:hover > :hover,
+    &:focus-within > :focus {
+      transform: scale(1.02);
+      opacity: 1;
+    }
   }
 
   .btn__load-more {

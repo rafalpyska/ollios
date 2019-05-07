@@ -44,6 +44,7 @@
     width: 100%;
     height: 100%;
   }
+
   .main {
     width: 100%;
     height: 100vh;
@@ -70,13 +71,16 @@
     margin: 0;
     padding: .75rem;
   }
+
   .fade-move {
     transition: all 2s;
   }
+
   .fade-enter-active {
     animation-name: fadeEnter;
     animation-duration: 2s;
   }
+
   .fade-leave-active {
     position: absolute;
     animation-name: fadeLeave;

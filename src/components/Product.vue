@@ -49,13 +49,6 @@
       padding: 2rem;
       background-color: rgba(255, 255, 255, 1);
       cursor: pointer;
-      transition: .3s all;
-      &:hover {
-        background-color: rgba(255, 255, 255, .9);
-      }
-      &:hover .products__image {
-        transform: scale(1.1);
-      }
     }
     &__image {
       max-width: 100%;

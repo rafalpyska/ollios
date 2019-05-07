@@ -91,6 +91,10 @@
         this.isToggle = active;
       });
     },
+    beforeDestroy() {
+      EventBus.$off('update-cart');
+      EventBus.$off('isActiveCart');
+    },
     methods: {
       removeItem(index) {
         this.cart[index].quantity = 0;

@@ -51,6 +51,10 @@
       EventBus.$on('routeChange', (routeFalse) => {
         this.activeOrNot = routeFalse;
       });
+    },
+    beforeDestroy() {
+      EventBus.$off('toggleActive');
+      EventBus.$off('routeChange');
     }
   };
 
