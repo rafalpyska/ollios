@@ -24,18 +24,14 @@
           class="products__item"
           :class="'products__item--' + item.id"
           :key="item.id"
-          @click.native="handleProductDetails(item)"
         />
       </transition-group>
-
-      <!--      <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>-->
     </main>
 
-    <ProductDetails
-      v-if="isOpened"
-      :item="itemDetails"
-      :key="itemDetails.id"
-      :dataToDisplay="dataToDisplay"
+    <router-view
+      v-for="item in dataToDisplay"
+      :item="item"
+      :key="item.id"
       :products="products"
     />
 
@@ -44,7 +40,6 @@
 
 <script>
   import AppLoadingSpinner from "./AppLoadingSpinner";
-  import {EventBus} from "@/event-bus.js";
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
   import Search from "./Search";
@@ -73,7 +68,6 @@
         status: false,
         dataToDisplay: [],
         itemDetails: null,
-        isOpened: false,
         searchValue: '',
         categoryArr: [],
         categoryProductsArr: null
@@ -99,17 +93,9 @@
           this.categoryProductsArr = Object.values(item);
         }
       }
-      EventBus.$on('detailsClosed', (closed) => {
-        this.isOpened = closed;
-      });
-    },
-    beforeDestroy() {
-      EventBus.$off('detailsClosed');
     },
     methods: {
       handleProductDetails(item) {
-        this.isOpened = true;
-        EventBus.$emit('isActiveDetails', this.isOpened);
         this.itemDetails = item;
       }
     }

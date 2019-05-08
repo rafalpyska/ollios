@@ -33,30 +33,65 @@ export default new Router({
       path: '/category-living-room',
       name: 'LivingRoom',
       component: LivingRoom,
+      children: [
+        {
+          path: ':product',
+          component: ProductDetails,
+          props: true
+        }
+      ],
       props: true
     },
     {
       path: '/category-office',
       name: 'Office',
       component: Office,
+      children: [
+        {
+          path: ':product',
+          component: ProductDetails,
+          props: true
+        }
+      ],
       props: true
     },
     {
       path: '/category-for-kids',
       name: 'ForKids',
       component: ForKids,
+      children: [
+        {
+          path: ':product',
+          component: ProductDetails,
+          props: true
+        }
+      ],
       props: true
     },
     {
       path: '/category-kitchen',
       name: 'Kitchen',
       component: Kitchen,
+      children: [
+        {
+          path: ':product',
+          component: ProductDetails,
+          props: true
+        }
+      ],
       props: true
     },
     {
       path: '/category-accesories',
       name: 'Accesories',
       component: Accesories,
+      children: [
+        {
+          path: ':product',
+          component: ProductDetails,
+          props: true
+        }
+      ],
       props: true
     },
     {

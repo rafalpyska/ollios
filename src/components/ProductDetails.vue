@@ -1,6 +1,6 @@
 <template lang="html">
   <transition name="slide-fade" mode="in-out">
-  <section class="product-details">
+  <section v-if="this.$route.params.product === routeItem" class="product-details">
     <div class="product-details__image-container">
       <button @click="close()" class="close">X</button>
       <img :src="getImgUrl(image)" alt="" class="product-details__image">
@@ -11,7 +11,7 @@
       <div class="product-details__description">
         <section class="section__details">
           <h1 class="heading section__title">Products</h1>
-          <p class="section__category">{{ $route.name }}</p>
+          <p class="section__category">{{ routeItem }}</p>
         </section>
         <section class="product__description">
           <h2 class="heading product__name">{{ name }}</h2>
@@ -70,7 +70,6 @@
     },
     data() {
       return {
-        isToggle: false,
         cart: [],
         recommended: [],
         recommendedItems: [],
@@ -82,21 +81,13 @@
         id: this.item.id,
         previousPrice: this.item.price * 2,
         quantity: this.item.quantity,
-        quantityProduct: 1
+        quantityProduct: 1,
+        routeItem: this.item.route
       }
-    },
-    created() {
-      EventBus.$on('isActiveDetails', (active) => {
-        this.isToggle = active;
-      });
-    },
-    beforeDestroy() {
-      EventBus.$off('isActiveDetails');
     },
     methods: {
       close() {
-        this.isToggle = false;
-        EventBus.$emit('detailsClosed', this.isToggle);
+        this.$router.go(-1);
       },
       addToCart(productToAdd) {
         let found = false;

@@ -31,13 +31,19 @@
       <!--      <button v-show="showButton" ref="btnLoadMore" @click="loadMore" class="btn__load-more">Show more products</button>-->
     </main>
 
-    <ProductDetails
-      v-if="isOpened"
+    <router-view
       :item="itemDetails"
-      :key="itemDetails.id"
       :dataToDisplay="dataToDisplay"
       :products="products"
     />
+
+<!--    <ProductDetails-->
+<!--      v-if="isOpened"-->
+<!--      :item="itemDetails"-->
+<!--      :key="itemDetails.id"-->
+<!--      :dataToDisplay="dataToDisplay"-->
+<!--      :products="products"-->
+<!--    />-->
 
   </div>
 </template>
@@ -73,7 +79,6 @@
         status: false,
         dataToDisplay: [],
         itemDetails: null,
-        isOpened: false,
         searchValue: '',
         categoryArr: [],
         categoryProductsArr: null
@@ -99,12 +104,6 @@
           this.categoryProductsArr = Object.values(item);
         }
       }
-      EventBus.$on('detailsClosed', (closed) => {
-        this.isOpened = closed;
-      });
-    },
-    beforeDestroy() {
-      EventBus.$off('detailsClosed');
     },
     methods: {
       handleProductDetails(item) {

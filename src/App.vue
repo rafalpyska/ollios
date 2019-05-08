@@ -55,6 +55,10 @@
         .then((response) => {
           this.categories = response.data[0];
           this.products = this.getProductsInfo();
+
+          // for(let i = 0; i < this.products.length; i++) {
+          //
+          // }
           this.status = false;
           EventBus.$emit('products', this.products);
         })
@@ -139,6 +143,9 @@
     &:focus-within > :focus {
       transform: scale(1.02);
       opacity: 1;
+    }
+    &:hover > :focus:not(:hover) {
+      transform: scale(1.01);
     }
   }
 

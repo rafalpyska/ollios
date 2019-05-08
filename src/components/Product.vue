@@ -1,12 +1,12 @@
 <template lang="html">
-  <figure :data-product="name">
-    <img :src="getImgUrl(image)" :alt="name" class="products__image"/>
+  <router-link :to="{ path: this.$route.path + '/' + routeProduct }" tag="figure" :data-product="nameProduct">
+    <img :src="getImgUrl(imageProduct)" :alt="nameProduct" class="products__image"/>
     <div class="products__info">
-      <figcaption class="products__name">{{ name }}</figcaption>
-      <p class="products__description">{{ ellipsify(description, 100) }}</p>
-      <p class="products__price">${{ price }}</p>
+      <figcaption class="products__name">{{ nameProduct }}</figcaption>
+      <p class="products__description">{{ ellipsify(descriptionProduct, 100) }}</p>
+      <p class="products__price">${{ priceProduct }}</p>
     </div>
-  </figure>
+  </router-link>
 </template>
 
 <script>
@@ -17,16 +17,18 @@
     name: "Product",
     props: {
       item: {
+        type: Object,
         required: true
       }
     },
     mixins: [getImageUrl, ellipsify],
     data() {
       return {
-        name: this.item.title,
-        description: this.item.description,
-        price: this.item.price,
-        image: this.item.image
+        nameProduct: this.item.title,
+        descriptionProduct: this.item.description,
+        priceProduct: this.item.price,
+        imageProduct: this.item.image,
+        routeProduct: this.item.route
       }
     },
     methods: {

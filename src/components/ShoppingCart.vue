@@ -69,7 +69,6 @@
       }
     },
     created() {
-      // TODO: `Fix bug when 3 or more items are added to cart on instant click`
       EventBus.$on('update-cart', (item) => {
         const newItem = item[0];
         this.cart = this.cart || [];
