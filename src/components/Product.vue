@@ -19,6 +19,10 @@
       item: {
         type: Object,
         required: true
+      },
+      categories: {
+        type: Object,
+        required: true
       }
     },
     mixins: [getImageUrl, ellipsify],

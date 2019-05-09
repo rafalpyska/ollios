@@ -1,5 +1,6 @@
 <template lang="html">
   <transition name="slide-fade" mode="in-out">
+    // How to avoid so many router-views in vue dev tools?
   <section v-if="this.$route.params.product === routeItem" class="product-details">
     <div class="product-details__image-container">
       <button @click="close()" class="close">X</button>
@@ -11,7 +12,7 @@
       <div class="product-details__description">
         <section class="section__details">
           <h1 class="heading section__title">Products</h1>
-          <p class="section__category">{{ routeItem }}</p>
+          <p class="section__category">Product id {{ id }}</p>
         </section>
         <section class="product__description">
           <h2 class="heading product__name">{{ name }}</h2>
@@ -82,12 +83,13 @@
         previousPrice: this.item.price * 2,
         quantity: this.item.quantity,
         quantityProduct: 1,
-        routeItem: this.item.route
+        routeItem: this.item.route,
+        parentRoute: this.$route.matched[0].path
       }
     },
     methods: {
       close() {
-        this.$router.go(-1);
+        this.$router.push(this.parentRoute);
       },
       addToCart(productToAdd) {
         let found = false;

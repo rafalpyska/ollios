@@ -55,10 +55,6 @@
         .then((response) => {
           this.categories = response.data[0];
           this.products = this.getProductsInfo();
-
-          // for(let i = 0; i < this.products.length; i++) {
-          //
-          // }
           this.status = false;
           EventBus.$emit('products', this.products);
         })

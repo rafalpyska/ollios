@@ -3,11 +3,6 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Categories from '@/components/Categories'
 import AboutUs from '@/components/AboutUs'
-import LivingRoom from '@/components/LivingRoom'
-import Office from '@/components/Office'
-import ForKids from '@/components/ForKids'
-import Kitchen from '@/components/Kitchen'
-import Accesories from '@/components/Accesories'
 import ProductDetails from '@/components/ProductDetails'
 
 Vue.use(Router)
@@ -20,11 +15,6 @@ export default new Router({
       component: Home
     },
     {
-      path: '/categories',
-      component: Categories,
-      props: true
-    },
-    {
       path: '/about-us',
       component: AboutUs,
       props: true
@@ -32,7 +22,7 @@ export default new Router({
     {
       path: '/category-living-room',
       name: 'LivingRoom',
-      component: LivingRoom,
+      component: Categories,
       children: [
         {
           path: ':product',
@@ -45,7 +35,7 @@ export default new Router({
     {
       path: '/category-office',
       name: 'Office',
-      component: Office,
+      component: Categories,
       children: [
         {
           path: ':product',
@@ -58,7 +48,7 @@ export default new Router({
     {
       path: '/category-for-kids',
       name: 'ForKids',
-      component: ForKids,
+      component: Categories,
       children: [
         {
           path: ':product',
@@ -71,7 +61,7 @@ export default new Router({
     {
       path: '/category-kitchen',
       name: 'Kitchen',
-      component: Kitchen,
+      component: Categories,
       children: [
         {
           path: ':product',
@@ -84,7 +74,7 @@ export default new Router({
     {
       path: '/category-accesories',
       name: 'Accesories',
-      component: Accesories,
+      component: Categories,
       children: [
         {
           path: ':product',

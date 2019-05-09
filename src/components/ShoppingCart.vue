@@ -27,7 +27,7 @@
           </div>
         </div>
         <div :key="3215" v-if="!empty" class="cart__summary">
-          <p class="item__price">Total: ${{ total }}</p>
+          <p class="item__price">Total: ${{ totalPrice }}</p>
         </div>
       </transition-group>
     </section>
@@ -55,7 +55,7 @@
       }
     },
     computed: {
-      total() {
+      totalPrice() {
         let total = 0;
         if(this.cart && this.cart.length) {
           this.cart.forEach((item) => {
