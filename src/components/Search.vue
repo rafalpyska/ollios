@@ -1,17 +1,26 @@
 <template lang="html">
   <transition name="slide-fade">
-    <section class="search-modal">
+    <section class="search">
       <button @click="close()" class="close close-search">X</button>
-      <input class="search__input" id="search-input" type="search" name="search__input" v-model="searchValue">
-      <label class="search__label" for="search-input">Type product that you are looking for</label>
-      <div class="search__result-container">
-        <div v-if="filterProducts.length < products.length" class="search__result">
-          <article class="products__item" v-for="product in filterProducts">
-            <p>{{ product.title }}</p>
-            <p>{{ product.description }}</p>
-          </article>
-        </div>
-      </div>
+      <form class="search__controls">
+        <input class="search__input" id="search-input" type="search" name="search__input" v-model="searchValue">
+        <label class="search__label" for="search-input">Type product that you are looking for</label>
+      </form>
+      <transition-group
+          v-if="filterProducts.length < products.length"
+          tag="section"
+          class="products"
+          name="list"
+        >
+        <Product
+          v-for="item in filterProducts"
+          :item="item"
+          class="products__item"
+          :class="'products__item--' + item.id"
+          :key="item.id"
+          :categories="categories"
+        />
+        </transition-group>
     </section>
   </transition>
 </template>
@@ -50,13 +59,6 @@
 
 </script>
 
-<style lang="scss">
-  .products {
-    &__item {
-      margin: 0;
-      padding: 2rem;
-      background-color: rgba(255, 255, 255, 1);
-      cursor: pointer;
-    }
-  }
+<style scoped lang="scss">
+
 </style>

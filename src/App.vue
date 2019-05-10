@@ -119,6 +119,15 @@
   }
 
   .search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem 8rem 2rem 16rem;
+    background-color: rgba(240, 240, 240, .5);;
+    font-weight: 300;
     &__input {
       font-family: 'Lato', sans-serif;
       font-size: 4rem;
@@ -134,10 +143,15 @@
     &__label {
       color: rgba(177, 177, 177, .9);
     }
-    &__result {
-      &-container {
-        display: flex;
-      }
+    &__controls,
+    &-local {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 3rem;
+    }
+    &__controls {
+      width: 100%;
+      align-items: center;
     }
   }
 

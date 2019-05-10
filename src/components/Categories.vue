@@ -12,7 +12,7 @@
       />
       <!--      <Search/>-->
 
-      <section class="search">
+      <section class="search-local">
         <input class="search__input" id="search-input" type="search" name="search__input" v-model="searchValue">
         <label class="search__label" for="search-input">Type product that you are looking for</label>
       </section>
@@ -48,13 +48,11 @@
   import AppLoadingSpinner from "./AppLoadingSpinner";
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
-  import Search from "./Search";
   import filterProducts from "../mixins/filterProducts";
 
   export default {
     name: 'Categories',
     components: {
-      Search,
       AppLoadingSpinner,
       Product,
       ProductDetails
@@ -90,11 +88,5 @@
 </script>
 
 <style lang="scss">
-
-  .search {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 3rem;
-  }
 
 </style>
