@@ -26,6 +26,9 @@
     &:hover {
       transform: scale(1.03);
     }
+    &:disabled {
+      background-color: rgba(0, 35, 255, .4);
+    }
   }
 </style>
 

@@ -5,7 +5,6 @@
       v-for="item in recommendedItems"
       :to="{ path:  item.category + '/' + item.route }"
       tag="div"
-
       :key="item.id"
       class="recommended__item">
 
@@ -48,9 +47,6 @@
     data() {
       return {
         recommendedItems: null,
-        recommendedItemDetails: null,
-        isOpened: false,
-
       }
     },
     created() {

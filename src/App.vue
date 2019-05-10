@@ -1,6 +1,6 @@
 <template>
 
-  <div id="app" v-cloak>
+  <section id="app" v-cloak>
 
     <Navigation/>
 
@@ -18,7 +18,7 @@
 
     <ShoppingCart/>
 
-  </div>
+  </section>
 
 </template>
 
@@ -31,6 +31,7 @@
   import CategoriesToggle from "./components/CategoriesToggle";
   import CategoriesMenu from "./components/CategoriesMenu";
   import ShoppingCart from "./components/ShoppingCart";
+  import Search from "./components/Search";
 
   const API = '/static/products.json';
 
@@ -41,7 +42,8 @@
       Home,
       CategoriesToggle,
       CategoriesMenu,
-      ShoppingCart
+      ShoppingCart,
+      Search
     },
     data() {
       return {
@@ -51,6 +53,7 @@
       }
     },
     mounted() {
+      // Fetch categories and products
       axios.get(API)
         .then((response) => {
           this.categories = response.data[0];
@@ -62,9 +65,6 @@
           console.log(error);
         });
     },
-    beforeDestroy() {
-      EventBus.$off('products', this.products);
-    },
     methods: {
       getProductsInfo() {
         return Object.values(this.categories.category).map(category => {
@@ -72,7 +72,7 @@
           return myProducts = Object.values(category.products);
         }).flat()
       }
-    }
+    },
   };
 </script>
 
@@ -100,19 +100,45 @@
     overflow: hidden;
   }
 
-  .cart-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 1);
-    z-index: 10;
-    font-weight: 300;
+  .search,
+  .cart {
+    &-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 1);
+      z-index: 10;
+      font-weight: 300;
+    }
+  }
+
+  .search {
+    &__input {
+      font-family: 'Lato', sans-serif;
+      font-size: 4rem;
+      font-weight: 100;
+      text-transform: uppercase;
+      border: 0;
+      border-bottom: 1px solid rgba(177, 177, 177, .9);
+      background-color: transparent;
+      padding: 1.5rem;
+      width: 70%;
+      margin-bottom: 1rem;
+    }
+    &__label {
+      color: rgba(177, 177, 177, .9);
+    }
+    &__result {
+      &-container {
+        display: flex;
+      }
+    }
   }
 
   .category__main {

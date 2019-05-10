@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="container">
+  <section class="search__container">
     <main class="category__main">
 
       <section class="section__details">
@@ -17,9 +17,14 @@
         <label class="search__label" for="search-input">Type product that you are looking for</label>
       </section>
 
-      <transition-group tag="section" class="products" name="list">
+      <transition-group
+        tag="section"
+        class="products"
+        name="list"
+        @before-leave="beforeLeave"
+      >
         <Product
-          v-for="item in filteredData"
+          v-for="item in filterProducts"
           v-if="item.category === $route.fullPath"
           :item="item"
           class="products__item"
@@ -36,7 +41,7 @@
       :key="item.id"
       :products="products"
     />
-  </div>
+  </section>
 </template>
 
 <script>
@@ -44,6 +49,7 @@
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
   import Search from "./Search";
+  import filterProducts from "../mixins/filterProducts";
 
   export default {
     name: 'Categories',
@@ -63,6 +69,7 @@
         required: true
       }
     },
+    mixins: [filterProducts],
     data() {
       return {
         status: false,
@@ -70,13 +77,13 @@
         searchValue: '',
       }
     },
-    computed: {
-      filteredData() {
-        if(this.products) {
-          return this.products.filter((item) => {
-            return item.title.toLowerCase().match(this.searchValue.toLowerCase());
-          })
-        }
+    methods: {
+      beforeLeave(el) {
+        const {marginLeft, marginTop, width, height} = window.getComputedStyle(el);
+        el.style.left = `${el.offsetLeft - parseFloat(marginLeft, 10)}px`;
+        el.style.top = `${el.offsetTop - parseFloat(marginTop, 10)}px`;
+        el.style.width = width;
+        el.style.height = height;
       }
     }
   };
@@ -87,25 +94,7 @@
   .search {
     display: flex;
     flex-direction: column;
-    margin-bottom: 2rem;
-    &__input {
-      font-family: 'Lato', sans-serif;
-      font-size: 4rem;
-      font-weight: 100;
-      text-transform: uppercase;
-      border: 0;
-      border-bottom: 1px solid rgba(177, 177, 177, .9);
-      background-color: transparent;
-      padding: 1.5rem;
-      width: 70%;
-      margin-bottom: 1rem;
-      &:focus {
-        outline: 2px solid rgba(0, 35, 255, 1);
-      }
-    }
-    &__label {
-      color: rgba(177, 177, 177, .9);
-    }
+    margin-bottom: 3rem;
   }
 
 </style>

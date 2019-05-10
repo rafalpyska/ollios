@@ -34,8 +34,6 @@
   </transition>
 </template>
 
-
-
 <script>
   import {EventBus} from "@/event-bus.js";
   import getImageUrl from '../mixins/getImageUrl'

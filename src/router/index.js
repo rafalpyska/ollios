@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Categories from '@/components/Categories'
 import AboutUs from '@/components/AboutUs'
 import ProductDetails from '@/components/ProductDetails'
+import Search from '@/components/Search'
 
 Vue.use(Router)
 
@@ -88,6 +89,12 @@ export default new Router({
       path: '/product-details',
       name: 'ProductDetails',
       component: ProductDetails,
+      props: true
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: Search,
       props: true
     },
     {

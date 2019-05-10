@@ -1,11 +1,11 @@
 <template lang="html">
-  <router-link :to="{ path: this.$route.path + '/' + routeProduct }" tag="figure" :data-product="nameProduct">
+  <router-link :to="{ path: this.$route.path + '/' + routeProduct }" tag="article" :data-product="nameProduct">
     <img :src="getImgUrl(imageProduct)" :alt="nameProduct" class="products__image"/>
-    <div class="products__info">
-      <figcaption class="products__name">{{ nameProduct }}</figcaption>
+    <article class="products__info">
+      <p class="products__name">{{ nameProduct }}</p>
       <p class="products__description">{{ ellipsify(descriptionProduct, 100) }}</p>
       <p class="products__price">${{ priceProduct }}</p>
-    </div>
+    </article>
   </router-link>
 </template>
 
@@ -43,7 +43,7 @@
           return string;
         }
       }
-    },
+    }
   };
 </script>
 

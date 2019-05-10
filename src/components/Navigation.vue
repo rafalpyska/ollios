@@ -17,6 +17,12 @@
             <span class="navigation__icon icon__basket" aria-label="Basket"></span>
           </button>
         </li>
+        <li class="navigation__item">
+          <router-link :to="{ name: 'search' }" class="navigation__button">
+            <span class="navigation__icon icon__search" aria-label="Search"></span>
+          </router-link>
+        </li>
+
       </ul>
     </nav>
   </header>
@@ -33,7 +39,8 @@
     mixins: [preventScroll],
     data() {
       return {
-        toggleCart: false
+        toggleCart: false,
+        toggleSearch: false
       }
     },
     created() {
@@ -50,7 +57,7 @@
         this.toggleCart = !this.toggleCart;
         EventBus.$emit('isActiveCart', this.toggleCart);
         this.preventScroll(this.toggleCart);
-      }
+      },
     }
   };
 

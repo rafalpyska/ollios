@@ -1,6 +1,6 @@
 <template lang="html">
   <transition name="slide-fade" mode="in-out">
-    // How to avoid so many router-views in vue dev tools?
+    // How to avoid so many router-views displaying in vue dev tools? It causes performance issues.
   <section v-if="this.$route.params.product === routeItem" class="product-details">
     <div class="product-details__image-container">
       <button @click="close()" class="close">X</button>
@@ -30,12 +30,16 @@
               <input class="input__quantity" id="quantity" max="10" min="1" name="quantity" type="number"
                      v-model.number="quantityProduct">
             </div>
-            <AppButton @click.native="addToCart(item)" class="btn">Add to cart</AppButton>
+            <AppButton @click.native="addToCart(item)" :disabled="quantityProduct > 10" class="btn">Add to cart</AppButton>
           </div>
         </section>
         <transition name="fade">
           <p class="info" v-if="added">'{{ name }}' was added to cart!</p>
         </transition>
+        <transition name="fade">
+          <p class="info" v-if="quantityProduct > 10">You cannot buy more than 10 items! </p>
+        </transition>
+
       </div>
       <RecommendedProducts
       :products="products"
@@ -93,6 +97,9 @@
       },
       addToCart(productToAdd) {
         let found = false;
+        if(this.quantityProduct > 10) {
+          this.quantityProduct = 10;
+        }
         this.cart.forEach((item) => {
           if (item.id === productToAdd.id) {
             found = true;
@@ -194,6 +201,7 @@
       z-index: 10;
 
       &__image {
+        max-width: 100%;
         &-container {
           position: relative;
           display: flex;

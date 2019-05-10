@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="slider">
+  <section class="slider">
     <Slides :image="images[chosenImage]"/>
     <div class="pagination">
       <div
@@ -9,14 +9,14 @@
 
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
   import Slides from './slider/Slides'
 
   export default {
-    name: "Main",
+    name: "Home",
     components: {
       Slides
     },
