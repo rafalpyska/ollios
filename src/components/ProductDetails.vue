@@ -41,7 +41,7 @@
         </transition>
 
       </div>
-      <RecommendedProducts
+      <ProductRecommended
       :products="products"
       />
     </div>
@@ -55,13 +55,13 @@
   import {EventBus} from "@/event-bus.js"
   import getImageUrl from '../mixins/getImageUrl'
   import ellipsify from '../mixins/ellipsify'
-  import RecommendedProducts from "./RecommendedProducts";
+  import ProductRecommended from "./ProductRecommended";
 
   export default {
     name: "ProductDetails",
     components: {
       AppButton,
-      RecommendedProducts
+      ProductRecommended
     },
     props: {
       item: {
@@ -192,7 +192,7 @@
     }
 
     &-details {
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       display: flex;

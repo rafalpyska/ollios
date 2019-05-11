@@ -80,6 +80,9 @@
     padding: 1rem;
     background-color: rgba(255, 255, 255, .9);
     font-size: .7rem;
+    @media only screen and (max-width: 48em) {
+      display: none;
+    }
     &__title {
       writing-mode: tb-rl;
       transform: rotate(180deg);
