@@ -52,6 +52,11 @@
       padding: 2rem;
       background-color: rgba(255, 255, 255, 1);
       cursor: pointer;
+      &:last-child {
+        @media only screen and (max-width: 48em) {
+          margin-bottom: 8rem;
+        }
+      }
     }
     &__name {
       text-transform: uppercase;

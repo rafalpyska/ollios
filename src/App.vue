@@ -80,6 +80,9 @@
 
   html {
     box-sizing: border-box;
+    @media only screen and (max-width: 48em) {
+      font-size: 85%;
+    }
   }
 
   *, *:before, *:after {
@@ -131,6 +134,9 @@
     @media only screen and (max-width: 62em) {
       padding: 2rem 6rem 2rem 6rem;
     }
+    @media only screen and (max-width: 48em) {
+      padding: 2rem 3rem 2rem 3rem;
+    }
     &__input {
       font-family: 'Lato', sans-serif;
       font-size: 4rem;
@@ -144,6 +150,7 @@
       margin-bottom: 1rem;
       @media only screen and (max-width: 62em) {
         width: 100%;
+        padding: 0;
       }
       &:focus {
         outline: 2px solid rgba(0, 35, 255, 1);
@@ -170,7 +177,10 @@
     padding: 2rem 8rem 2rem 16rem;
     background-color: rgba(240, 240, 240, 1);
     @media only screen and (max-width: 62em) {
-      padding: 2rem 6rem 2rem 6rem;
+      padding: 2rem 6rem;
+    }
+    @media only screen and (max-width: 48em) {
+      padding: 2rem 3rem;
     }
 
   }
@@ -223,10 +233,16 @@
      align-items: center;
      padding: 2rem 0;
      text-transform: uppercase;
+    @media only screen and (max-width: 48em) {
+      flex-direction: column;
+    }
    }
   &__title {
      font-size: 2.5rem;
      font-weight: 300;
+    @media only screen and (max-width: 48em) {
+      margin: 0;
+    }
    }
   &__category {
      font-size: 1rem;
@@ -257,6 +273,9 @@
 
   .close-cart, .close-search {
     left: 11rem;
+    @media only screen and (max-width: 48em) {
+      left: 2rem;
+    }
   }
 
   .fade-enter-active, .fade-leave-active {

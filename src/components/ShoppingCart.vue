@@ -119,6 +119,9 @@
       align-items: center;
       flex-direction: column;
       width: 50%;
+      @media only screen and (max-width: 48em) {
+        width: 100%;
+      }
     }
     display: flex;
     width: 100%;
