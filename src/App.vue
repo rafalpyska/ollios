@@ -192,6 +192,9 @@
     font-size: 1.5rem;
     transition: .2s all;
     z-index: 12;
+    @media only screen and (max-width: 48em) {
+      font-size: 2.15rem;
+    }
 
     &:hover {
       color: rgba(0, 35, 255, 0.9);

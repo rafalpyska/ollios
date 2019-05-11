@@ -25,6 +25,9 @@
     transform: scale(1);
     cursor: pointer;
     transition: .3s all;
+    @media only screen and (max-width: 48em) {
+      width: 10rem;
+    }
     &:hover {
       transform: scale(1.03);
     }

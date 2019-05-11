@@ -1,7 +1,6 @@
 <template>
   <transition-group name="fade" mode="out-in" tag="div" id="slides">
-    <main :key="image.id" class="main" :style="setBackgroundImage">
-      <div class="content">
+      <div :key="image.id" :style="setBackgroundImage" class="content">
         <h1 class="title">{{ image.title }}</h1>
         <h2 class="subtitle">{{ image.subtitle }}</h2>
         <AppButton>
@@ -10,7 +9,6 @@
           </router-link>
         </AppButton>
       </div>
-    </main>
   </transition-group>
 </template>
 
@@ -42,15 +40,10 @@
     }
   }
 
-  #slides {
-    width: 100%;
-    height: 100%;
-  }
-
-  .main {
+  .content {
     width: 100%;
     height: 100vh;
-    flex: 1;
+    flex: 1;;
     text-align: center;
     text-transform: uppercase;
     background-size: cover;
@@ -62,22 +55,28 @@
     }
   }
 
-  .title {
-    font-size: 12rem;
-    font-weight: 300;
-    @media only screen and (max-width: 62em) {
-      font-size: 7rem;
-    }
-  }
-
-  .subtitle {
-    font-weight: 300;
+  #slides {
+    width: 100%;
+    height: 100%;
   }
 
   .title,
   .subtitle {
     margin: 0;
     padding: .75rem;
+  }
+
+  .title {
+    font-size: 12rem;
+    font-weight: 300;
+    @media only screen and (max-width: 62em) {
+      padding-top: 8rem;
+      font-size: 7rem;
+    }
+  }
+
+  .subtitle {
+    font-weight: 300;
   }
 
   .fade-move {
