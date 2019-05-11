@@ -5,8 +5,8 @@
     <div class="product-details__image-container">
       <button @click="close()" class="close">X</button>
       <img :src="getImgUrl(image)" alt="" class="product-details__image">
-      <button v-if="this.isMobile()" @click="zoomIn" class="btn__zoom btn__zoom--in">+</button>
-      <button v-if="this.isMobile()" @click="zoomOut" class="btn__zoom btn__zoom--out">-</button>
+      <button @click="zoomIn" class="btn__zoom btn__zoom--in">+</button>
+      <button  @click="zoomOut" class="btn__zoom btn__zoom--out">-</button>
     </div>
     <div class="product-details__container">
       <div class="product-details__description">
@@ -42,7 +42,6 @@
 
       </div>
       <RecommendedProducts
-        v-if="this.isMobile()"
       :products="products"
       />
     </div>
@@ -57,7 +56,6 @@
   import getImageUrl from '../mixins/getImageUrl'
   import ellipsify from '../mixins/ellipsify'
   import RecommendedProducts from "./RecommendedProducts";
-  import isMobile from "../mixins/isMobile";
 
   export default {
     name: "ProductDetails",
@@ -75,7 +73,7 @@
         required: true
       }
     },
-    mixins: [getImageUrl, ellipsify, isMobile],
+    mixins: [getImageUrl, ellipsify],
     data() {
       return {
         cart: [],

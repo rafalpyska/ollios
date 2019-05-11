@@ -81,7 +81,7 @@
   html {
     box-sizing: border-box;
     @media only screen and (max-width: 48em) {
-      font-size: 85%;
+      font-size: 75%;
     }
   }
 
@@ -274,7 +274,7 @@
   .close-cart, .close-search {
     left: 11rem;
     @media only screen and (max-width: 48em) {
-      left: 2rem;
+      left: 0;
     }
   }
 

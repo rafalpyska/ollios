@@ -104,17 +104,18 @@
       text-transform: uppercase;
       @media only screen and (max-width: 62em) {
         flex-direction: row;
-        justify-content: center;
       }
     }
 
     &__item {
+      display: flex;
       list-style-type: none;
       align-self: center;
       padding: 2.5rem 1.5rem;
       @media only screen and (max-width: 62em) {
         width: 100%;
         padding: 2.5rem .5rem;
+        justify-content: center;
       }
     }
 
