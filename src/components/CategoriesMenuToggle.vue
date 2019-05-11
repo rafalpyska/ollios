@@ -41,7 +41,7 @@
     border-radius: 50%;
     box-shadow: 0 0 4px #888;
     cursor: pointer;
-    z-index: 4;
+    z-index: 10;
     transition: all .3s;
     @media only screen and (max-width: 62em) {
       z-index: 12;

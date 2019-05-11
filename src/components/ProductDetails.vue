@@ -146,11 +146,17 @@
       &--in {
         bottom: 2rem;
         left: 2rem;
+        @media only screen and (max-width: 48em) {
+          display: none;
+        }
       }
 
       &--out {
         bottom: 2rem;
         left: 6rem;
+        @media only screen and (max-width: 48em) {
+          display: none;
+        }
       }
     }
   }
@@ -199,8 +205,10 @@
       width: 100%;
       height: 100vh;
       z-index: 10;
+      padding-left: 8rem;
       @media only screen and (max-width: 62em) {
         flex-direction: column;
+        padding-left: 0;
       }
 
       &__image {
@@ -219,6 +227,7 @@
         }
         transform: scale(1);
         transition: .3s all;
+        max-width: 100%;
       }
       &__price {
         display: flex;
@@ -247,6 +256,10 @@
         padding: 2rem 16rem 0 2rem;
         color: rgba(168, 168, 168, 1);
         font-weight: 100;
+        @media only screen and (max-width: 90.625em) {
+          margin-bottom: 8rem;
+          padding: 2rem 4rem 2rem 2rem;
+        }
         @media only screen and (max-width: 62em) {
           margin-bottom: 8rem;
           padding: 2rem 2rem 0 2rem;
