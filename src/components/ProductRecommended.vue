@@ -80,8 +80,8 @@
     padding: 1rem;
     background-color: rgba(255, 255, 255, .9);
     font-size: .7rem;
-    @media only screen and (max-width: 48em) {
-      display: none;
+    @media only screen and (max-width: 62em) {
+      flex-direction: column;
     }
     &__title {
       writing-mode: tb-rl;
@@ -89,6 +89,11 @@
       font-size: 1.35rem;
       font-weight: 300;
       text-transform: uppercase;
+      @media only screen and (max-width: 62em) {
+        writing-mode: unset;
+        transform: rotate(360deg);
+
+      }
     }
     &__item {
       display: flex;
@@ -98,6 +103,17 @@
       width: 25%;
       padding: 0 1rem;
       cursor: pointer;
+      @media only screen and (max-width: 62em) {
+        width: 100%;
+      }
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+      &:last-child {
+        @media only screen and (max-width: 62em) {
+          margin-bottom: 8rem;
+        }
+      }
       &-image {
         &-container {
           width: 200px;

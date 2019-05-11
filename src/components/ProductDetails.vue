@@ -203,7 +203,7 @@
       left: 0;
       display: flex;
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
       z-index: 10;
       padding-left: 8rem;
       @media only screen and (max-width: 62em) {
@@ -257,11 +257,11 @@
         color: rgba(168, 168, 168, 1);
         font-weight: 100;
         @media only screen and (max-width: 90.625em) {
-          margin-bottom: 8rem;
+          margin-bottom: 6rem;
           padding: 2rem 4rem 2rem 2rem;
         }
         @media only screen and (max-width: 62em) {
-          margin-bottom: 8rem;
+          margin-bottom: 2rem;
           padding: 2rem 2rem 0 2rem;
         }
       }
