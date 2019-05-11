@@ -57,7 +57,7 @@
       background-color: rgba(255, 255, 255, 1);
       cursor: pointer;
       &:last-child {
-        @media only screen and (max-width: 48em) {
+        @media only screen and (max-width: 62em) {
           margin-bottom: 8rem;
         }
       }
