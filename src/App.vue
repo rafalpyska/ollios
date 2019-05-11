@@ -235,6 +235,7 @@
      text-transform: uppercase;
     @media only screen and (max-width: 48em) {
       flex-direction: column;
+      padding: 2rem 0 0;
     }
    }
   &__title {

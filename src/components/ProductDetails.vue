@@ -248,6 +248,7 @@
         color: rgba(168, 168, 168, 1);
         font-weight: 100;
         @media only screen and (max-width: 62em) {
+          margin-bottom: 8rem;
           padding: 2rem 2rem 0 2rem;
         }
       }
@@ -257,10 +258,9 @@
       font-size: 3rem;
       color: rgba(0, 35, 255, 0.9);
       text-transform: uppercase;
-    }
-
-    &__description {
-
+      @media only screen and (max-width: 48em) {
+        margin-top: 0;
+      }
     }
 
     &__order {
