@@ -5,6 +5,7 @@ import Categories from '@/components/Categories'
 import AboutUs from '@/components/AboutUs'
 import ProductDetails from '@/components/ProductDetails'
 import Search from '@/components/Search'
+import NotFound from "../components/NotFound";
 
 Vue.use(Router)
 
@@ -26,9 +27,10 @@ export default new Router({
       component: Categories,
       children: [
         {
+          //How to redirect if dynamic route doesn't match product name?
           path: ':product',
           component: ProductDetails,
-          props: true
+          props: true,
         }
       ],
       props: true
@@ -98,7 +100,8 @@ export default new Router({
       props: true
     },
     {
-      path: '*', redirect: '/'
+      path: '*',
+      component: NotFound
     }
   ]
 })

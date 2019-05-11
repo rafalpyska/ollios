@@ -12,7 +12,7 @@
       />
     </transition>
 
-    <CategoriesToggle/>
+    <CategoriesMenuToggle/>
 
     <CategoriesMenu/>
 
@@ -28,7 +28,7 @@
   import {EventBus} from "@/event-bus.js";
   import Navigation from "./components/Navigation";
   import Home from "./components/Home";
-  import CategoriesToggle from "./components/CategoriesToggle";
+  import CategoriesMenuToggle from "./components/CategoriesMenuToggle";
   import CategoriesMenu from "./components/CategoriesMenu";
   import ShoppingCart from "./components/ShoppingCart";
   import Search from "./components/Search";
@@ -40,7 +40,7 @@
     components: {
       Navigation,
       Home,
-      CategoriesToggle,
+      CategoriesMenuToggle,
       CategoriesMenu,
       ShoppingCart,
       Search
@@ -139,6 +139,9 @@
       padding: 1.5rem;
       width: 70%;
       margin-bottom: 1rem;
+      &:focus {
+        outline: 2px solid rgba(0, 35, 255, 1);
+      }
     }
     &__label {
       color: rgba(177, 177, 177, .9);
@@ -164,7 +167,7 @@
 
   .products {
     display: grid;
-    grid-template-columns: 23% 1fr 23% 23%;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 3rem;
     pointer-events: none;
     & > * {

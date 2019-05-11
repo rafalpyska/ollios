@@ -43,6 +43,10 @@
     cursor: pointer;
     z-index: 4;
     transition: all .3s;
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 3pt 2pt rgba(0, 35, 255, 1);;
+    }
     &:hover {
       background-color: rgba(255, 255, 255, 1);
     }

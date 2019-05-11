@@ -18,7 +18,6 @@
           class="products__item"
           :class="'products__item--' + item.id"
           :key="item.id"
-          :categories="categories"
         />
         </transition-group>
     </section>
@@ -35,10 +34,6 @@
       Product
     },
     props: {
-      categories :{
-        type: Object,
-        required: true
-      },
       products :{
         type: Array,
         required: true

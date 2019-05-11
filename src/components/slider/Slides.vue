@@ -31,10 +31,12 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+
   .btn__view-more {
     &:link,
     &:visited {
+      display: inline-block;
       color: rgba(255, 255, 255, 1);
       text-decoration: none;
     }

@@ -114,7 +114,6 @@
       cursor: pointer;
       opacity: .5;
       transition: .3s opacity;
-
       &:hover,
       &:focus {
         opacity: 1;

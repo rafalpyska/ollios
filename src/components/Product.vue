@@ -19,10 +19,6 @@
       item: {
         type: Object,
         required: true
-      },
-      categories: {
-        type: Object,
-        required: true
       }
     },
     mixins: [getImageUrl, ellipsify],
@@ -63,30 +59,6 @@
     &__item {
       align-items: center;
       cursor: pointer;
-      &--2 {
-        display: flex;
-        justify-content: space-around;
-        grid-column: 2/5;
-        & .products__image {
-          order: 2;
-        }
-      }
-      &--4 {
-        display: flex;
-        justify-content: space-around;
-        grid-column: 2/4;
-        & .products__image {
-          order: 2;
-        }
-      }
-      &--6 {
-        display: flex;
-        justify-content: space-around;
-        grid-column: 1/3;
-        & .products__image {
-          order: 2;
-        }
-      }
     }
     &__name {
       text-transform: uppercase;

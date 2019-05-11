@@ -1,6 +1,6 @@
 <template lang="html">
   <transition name="slide-fade">
-    <aside v-show="activeOrNot" class="categories__container">
+    <aside v-show="active" class="categories__container">
       <nav class="categories">
         <ul class="categories__list">
           <li class="categories__item" v-for="category in dataToDisplay" :key="category.id">
@@ -24,12 +24,12 @@
       return {
         data: [],
         dataToDisplay: [],
-        activeOrNot: false,
+        active: false,
       }
     },
     watch: {
       '$route' () {
-        this.activeOrNot = false;
+        this.active = false;
       }
     },
     created() {
@@ -46,10 +46,10 @@
           console.log(error);
         });
       EventBus.$on('toggleActive', (active) => {
-        this.activeOrNot = active;
+        this.active = active;
       });
       EventBus.$on('routeChange', (routeFalse) => {
-        this.activeOrNot = routeFalse;
+        this.active = routeFalse;
       });
     },
     beforeDestroy() {

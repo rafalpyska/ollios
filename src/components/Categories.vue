@@ -12,10 +12,10 @@
       />
       <!--      <Search/>-->
 
-      <section class="search-local">
+      <form class="search-local">
         <input class="search__input" id="search-input" type="search" name="search__input" v-model="searchValue">
         <label class="search__label" for="search-input">Type product that you are looking for</label>
-      </section>
+      </form>
 
       <transition-group
         tag="section"
@@ -25,12 +25,11 @@
       >
         <Product
           v-for="item in filterProducts"
+          :key="item.id"
           v-if="item.category === $route.fullPath"
           :item="item"
           class="products__item"
           :class="'products__item--' + item.id"
-          :key="item.id"
-          :categories="categories"
         />
       </transition-group>
     </main>
