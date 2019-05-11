@@ -12,12 +12,14 @@
 
 <style lang="scss">
   .btn {
+    align-self: flex-end;
+    width: 11rem;
+    height: 2.6rem;
     margin-top: .75rem;
-    padding: 1rem 3rem;
     font-weight: 700;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, .9);
-    background-color: rgba(0, 35, 255, .9);
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 35, 255, 0.9);
     border: none;
     border-radius: 2rem;
     transform: scale(1);

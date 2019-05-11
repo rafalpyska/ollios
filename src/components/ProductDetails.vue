@@ -26,7 +26,7 @@
               </div>
             </div>
             <div class="product__info product__quantity">
-              <label for="quantity">Quantity</label>
+              <label for="quantity" class="product__price-title">Quantity</label>
               <input class="input__quantity" id="quantity" max="10" min="1" name="quantity" type="number"
                      v-model.number="quantityProduct">
             </div>
@@ -192,7 +192,6 @@
     }
 
     &__info {
-      margin-right: 2.5rem;
     }
 
     &__order {
@@ -247,11 +246,6 @@
           width: 100%;
         }
       }
-      &__quantity {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
 
       &__description {
         height: 100%;
@@ -285,37 +279,40 @@
     &__quantity {
       display: flex;
       flex-direction: column;
+      margin-left: 6rem;
+      margin-right: 3rem;
+    }
+    &__price-title,
+    &__quantity-title {
+      margin: 0 0 1rem 0;
+      font-weight: 400;
+      color: rgba(0, 0, 0, .9)
     }
   }
 
-  .product__price-title {
-    margin: 0;
-  }
-
-
   .price {
+    font-size: 2rem;
+    font-weight: 400;
+    color: rgba(0, 35, 255, 0.9);
+    margin-right: .75rem;
     &__container {
       display: flex;
       align-items: center;
     }
-
-    font-size: 2rem;
-    color: rgba(0, 35, 255, 0.9);
-    margin-right: .75rem;
-
     &-previous {
+      font-weight: 400;
       color: rgba(0, 0, 0, 1);
       text-decoration: line-through;
     }
   }
 
   .input__quantity {
-    width: 3rem;
-    height: 2rem;
+    width: 3.6rem;
+    height: 2.6rem;
     border-radius: 40%;
     text-align: center;
     font-weight: 700;
-    border: 1px solid rgba(0, 35, 255, 0.9);
+    border: 1px solid transparent;
   }
 
   .recommended {
