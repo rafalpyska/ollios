@@ -22,6 +22,13 @@
           :key="item.id"
         />
         </transition-group>
+
+      <router-view
+        v-for="item in products"
+        :item="item"
+        :key="item.id"
+        :products="products"
+      />
     </section>
   </transition>
 </template>

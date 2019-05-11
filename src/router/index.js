@@ -127,6 +127,13 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: Search,
+      children: [
+        {
+          path: '/:products',
+          component: ProductDetails,
+          props: true,
+        }
+      ],
       props: true
     },
     {

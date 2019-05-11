@@ -1,5 +1,5 @@
 <template lang="html">
-  <router-link :to="{ path: this.$route.path + '/' + routeProduct }" tag="article" :data-product="nameProduct">
+  <router-link :to="{ path: this.item.category + '/' + routeProduct }" tag="article" :data-product="nameProduct">
     <img :src="getImgUrl(imageProduct)" :alt="nameProduct" class="products__image"/>
     <article class="products__info">
       <p class="products__name">{{ nameProduct }}</p>
