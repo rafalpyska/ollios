@@ -75,14 +75,24 @@
     height: 100%;
     background-color: rgba(255, 255, 255, .9);
     box-shadow: 4px 0 5px rgba(0, 0, 0, .1);
-    z-index: 10;
+    z-index: 11;
+    @media only screen and (max-width: 62em) {
+      width: 100%;
+      height: auto;
+      bottom: 0;
+    }
   }
 
   .navigation {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, .9);
-
+    &:first-child {
+      margin-bottom: 5rem;
+      @media only screen and (max-width: 62em) {
+        margin-bottom: 0;
+      }
+    }
     &__list {
       display: flex;
       flex-direction: column;
@@ -92,6 +102,10 @@
       padding: 0;
       list-style: none;
       text-transform: uppercase;
+      @media only screen and (max-width: 62em) {
+        flex-direction: row;
+        justify-content: center;
+      }
     }
 
     &__item {
@@ -100,9 +114,7 @@
       padding: 2.5rem 1.5rem;
     }
 
-    &:first-child {
-      margin-bottom: 5rem;
-    }
+
 
     &__button {
       display: flex;

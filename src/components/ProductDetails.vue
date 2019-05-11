@@ -5,8 +5,8 @@
     <div class="product-details__image-container">
       <button @click="close()" class="close">X</button>
       <img :src="getImgUrl(image)" alt="" class="product-details__image">
-      <button @click="zoomIn" class="btn__zoom btn__zoom--in">+</button>
-      <button @click="zoomOut" class="btn__zoom btn__zoom--out">-</button>
+      <button v-if="this.isMobile()" @click="zoomIn" class="btn__zoom btn__zoom--in">+</button>
+      <button v-if="this.isMobile()" @click="zoomOut" class="btn__zoom btn__zoom--out">-</button>
     </div>
     <div class="product-details__container">
       <div class="product-details__description">
@@ -42,6 +42,7 @@
 
       </div>
       <RecommendedProducts
+        v-if="this.isMobile()"
       :products="products"
       />
     </div>
@@ -56,6 +57,7 @@
   import getImageUrl from '../mixins/getImageUrl'
   import ellipsify from '../mixins/ellipsify'
   import RecommendedProducts from "./RecommendedProducts";
+  import isMobile from "../mixins/isMobile";
 
   export default {
     name: "ProductDetails",
@@ -73,6 +75,7 @@
         required: true
       }
     },
+    mixins: [getImageUrl, ellipsify, isMobile],
     data() {
       return {
         cart: [],
@@ -123,13 +126,12 @@
       zoomOut() {
         document.querySelector('.product-details__image').classList.remove('zoom-in');
       }
-    },
-    mixins: [getImageUrl, ellipsify]
+    }
   };
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   .btn {
     &__zoom {
       position: absolute;
@@ -188,7 +190,7 @@
     }
 
     &__order {
-      margin-top: 2rem;
+      margin: 2rem 0;
     }
 
     &-details {
@@ -199,9 +201,11 @@
       width: 100%;
       height: 100vh;
       z-index: 10;
+      @media only screen and (max-width: 62em) {
+        flex-direction: column;
+      }
 
       &__image {
-        max-width: 100%;
         &-container {
           position: relative;
           display: flex;
@@ -211,6 +215,9 @@
           background-color: rgba(255, 255, 255, 1);
           box-shadow: 4px 0 5px -2px rgba(0, 0, 0, .1);
           z-index: 2;
+          @media only screen and (max-width: 62em) {
+            width: 100%;
+          }
         }
         transform: scale(1);
         transition: .3s all;
@@ -227,6 +234,9 @@
         justify-content: space-between;
         width: 60%;
         background-color: rgba(240, 240, 240, 1);
+        @media only screen and (max-width: 62em) {
+          width: 100%;
+        }
       }
       &__quantity {
         display: flex;
@@ -239,6 +249,9 @@
         padding: 2rem 16rem 0 2rem;
         color: rgba(168, 168, 168, 1);
         font-weight: 100;
+        @media only screen and (max-width: 62em) {
+          padding: 2rem 2rem 0 2rem;
+        }
       }
     }
 

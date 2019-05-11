@@ -31,6 +31,12 @@ export default new Router({
           path: ':product',
           component: ProductDetails,
           props: true,
+          children: [
+            {
+              path: ':*',
+              component: NotFound
+            }
+          ]
         }
       ],
       props: true
@@ -43,7 +49,13 @@ export default new Router({
         {
           path: ':product',
           component: ProductDetails,
-          props: true
+          props: true,
+          children: [
+            {
+              path: ':*',
+              component: NotFound
+            }
+          ]
         }
       ],
       props: true
@@ -56,7 +68,13 @@ export default new Router({
         {
           path: ':product',
           component: ProductDetails,
-          props: true
+          props: true,
+          children: [
+            {
+              path: ':*',
+              component: NotFound
+            }
+          ]
         }
       ],
       props: true
@@ -69,20 +87,32 @@ export default new Router({
         {
           path: ':product',
           component: ProductDetails,
-          props: true
+          props: true,
+          children: [
+            {
+              path: ':*',
+              component: NotFound
+            }
+          ]
         }
       ],
       props: true
     },
     {
-      path: '/category-accesories',
-      name: 'Accesories',
+      path: '/category-accessories',
+      name: 'Accessories',
       component: Categories,
       children: [
         {
           path: ':product',
           component: ProductDetails,
-          props: true
+          props: true,
+          children: [
+            {
+              path: ':*',
+              component: NotFound
+            }
+          ]
         }
       ],
       props: true

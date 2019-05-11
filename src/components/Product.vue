@@ -47,17 +47,10 @@
 
   .products {
     &__item {
+      align-items: center;
       margin: 0;
       padding: 2rem;
       background-color: rgba(255, 255, 255, 1);
-      cursor: pointer;
-    }
-    &__image {
-      max-width: 100%;
-      transition: .3s all;
-    }
-    &__item {
-      align-items: center;
       cursor: pointer;
     }
     &__name {

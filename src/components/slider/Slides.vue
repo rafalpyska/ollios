@@ -57,11 +57,17 @@
     background-repeat: no-repeat;
     background-position: center center;
     padding-left: 8rem;
+    @media only screen and (max-width: 62em) {
+      padding-left: 0;
+    }
   }
 
   .title {
     font-size: 12rem;
     font-weight: 300;
+    @media only screen and (max-width: 62em) {
+      font-size: 7rem;
+    }
   }
 
   .subtitle {

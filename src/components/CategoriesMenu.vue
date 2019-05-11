@@ -71,13 +71,18 @@
     height: 100%;
     &__container {
       display: flex;
-      width: 16%;
       height: 100%;
       position: fixed;
       top: 0;
       right: 0;
       background-color: rgba(255, 255, 255, .9);
+      padding: 0 2rem;
       z-index: 3;
+      @media only screen and (max-width: 62em) {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 1);
+        z-index: 11;
+      }
     }
     &__list {
       display: flex;
@@ -88,9 +93,17 @@
       padding: 0;
       list-style: none;
       text-transform: uppercase;
+      @media only screen and (max-width: 62em) {
+        width: 100%;
+      }
     }
     &__item {
+      display: flex;
+      justify-content: flex-end;
       padding: 1.75rem 0;
+      @media only screen and (max-width: 62em) {
+        justify-content: center;
+      }
     }
     &__link {
       display: flex;
@@ -133,8 +146,8 @@
     &__kitchen {
       background-image: url('../assets/categories/kitchen.png');
     }
-    &__accesories {
-      background-image: url('../assets/categories/accesories.png');
+    &__accessories {
+      background-image: url('../assets/categories/accessories.png');
     }
   }
 

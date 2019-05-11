@@ -128,6 +128,9 @@
     padding: 2rem 8rem 2rem 16rem;
     background-color: rgba(240, 240, 240, .5);;
     font-weight: 300;
+    @media only screen and (max-width: 62em) {
+      padding: 2rem 6rem 2rem 6rem;
+    }
     &__input {
       font-family: 'Lato', sans-serif;
       font-size: 4rem;
@@ -139,6 +142,9 @@
       padding: 1.5rem;
       width: 70%;
       margin-bottom: 1rem;
+      @media only screen and (max-width: 62em) {
+        width: 100%;
+      }
       &:focus {
         outline: 2px solid rgba(0, 35, 255, 1);
       }
@@ -163,6 +169,10 @@
     min-height: 100vh;
     padding: 2rem 8rem 2rem 16rem;
     background-color: rgba(240, 240, 240, 1);
+    @media only screen and (max-width: 62em) {
+      padding: 2rem 6rem 2rem 6rem;
+    }
+
   }
 
   .products {
@@ -170,6 +180,10 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 3rem;
     pointer-events: none;
+    &__image {
+      max-width: 100%;
+      transition: .3s all;
+    }
     & > * {
       pointer-events: auto;
       transition: .3s opacity, .3s transform;
@@ -235,7 +249,7 @@
     cursor: pointer;
     font-size: 1.5rem;
     transition: .2s all;
-
+    z-index: 12;
   &:hover {
      color: rgba(0, 35, 255, 0.9);
    }
