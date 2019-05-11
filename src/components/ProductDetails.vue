@@ -41,9 +41,11 @@
         </transition>
 
       </div>
-      <ProductRecommended
-      :products="products"
-      />
+      <section class="recommended__wrapper">
+        <ProductRecommended
+          :products="products"
+        />
+      </section>
     </div>
   </section>
   </transition>
@@ -314,6 +316,13 @@
     text-align: center;
     font-weight: 700;
     border: 1px solid rgba(0, 35, 255, 0.9);
+  }
+
+  .recommended {
+    &__wrapper {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
   }
 
 </style>
