@@ -46,6 +46,10 @@
 <style lang="scss">
 
   .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 3rem;
+    pointer-events: none;
     &__item {
       align-items: center;
       margin: 0;
@@ -58,10 +62,15 @@
         }
       }
     }
+    &__image {
+      max-width: 100%;
+      transition: .3s all;
+    }
     &__name {
-      text-transform: uppercase;
+      margin: .6rem 0;
       font-size: 2rem;
       font-weight: 300;
+      text-transform: uppercase;
     }
     &__description {
       font-size: 1.15rem;
@@ -73,16 +82,22 @@
       color: rgba(0, 35, 255, .9);
       font-weight: 700;
     }
-    &__name {
-      margin: .6rem 0;
+    & > * {
+      pointer-events: auto;
+      transition: .3s opacity, .3s transform;
     }
-  }
-  .list-enter-active, .list-leave-active {
-    transition: all 1s;
-  }
-  .list-enter, .list-leave-to {
-    opacity: 0;
-    transform: translateY(30px);
+    &:hover > *,
+    &:focus-within > * {
+      opacity: 0.4;
+    }
+    &:hover > :hover,
+    &:focus-within > :focus {
+      transform: scale(1.02);
+      opacity: 1;
+    }
+    &:hover > :focus:not(:hover) {
+      transform: scale(1.01);
+    }
   }
 
 </style>

@@ -1,6 +1,6 @@
 <template lang="html">
-  <transition name="slide-fade" mode="in-out">
-    // How to avoid so many router-views displaying in vue dev tools? It causes performance issues.
+  <transition name="slide-fade">
+<!--    How to avoid so many router-views displaying in vue dev tools? It causes performance issues.-->
   <section v-if="this.$route.params.product === routeItem" class="product-details">
     <div class="product-details__image-container">
       <button @click="close()" class="close">X</button>

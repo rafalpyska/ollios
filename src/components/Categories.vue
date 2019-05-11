@@ -7,11 +7,6 @@
         <p class="section__category">{{ $route.name }}</p>
       </section>
 
-      <AppLoadingSpinner
-        v-if="status"
-      />
-      <!--      <Search/>-->
-
       <form class="search-local">
         <input class="search__input" id="search-input" type="search" name="search__input" v-model="searchValue">
         <label class="search__label" for="search-input">Type product that you are looking for</label>
@@ -44,15 +39,14 @@
 </template>
 
 <script>
-  import AppLoadingSpinner from "./AppLoadingSpinner";
   import Product from "./Product";
   import ProductDetails from "./ProductDetails";
   import filterProducts from "../mixins/filterProducts";
+  import transitionFix from "../mixins/transitionFix";
 
   export default {
     name: 'Categories',
     components: {
-      AppLoadingSpinner,
       Product,
       ProductDetails
     },
@@ -66,26 +60,29 @@
         required: true
       }
     },
-    mixins: [filterProducts],
+    mixins: [filterProducts, transitionFix],
     data() {
       return {
         status: false,
         itemDetails: null,
         searchValue: '',
       }
-    },
-    methods: {
-      beforeLeave(el) {
-        const {marginLeft, marginTop, width, height} = window.getComputedStyle(el);
-        el.style.left = `${el.offsetLeft - parseFloat(marginLeft, 10)}px`;
-        el.style.top = `${el.offsetTop - parseFloat(marginTop, 10)}px`;
-        el.style.width = width;
-        el.style.height = height;
-      }
     }
   };
 </script>
 
 <style lang="scss">
+
+  .products, .product-details {
+    line-height: 30px;
+  }
+
+  .search {
+    &-local {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 3rem;
+    }
+  }
 
 </style>

@@ -4,6 +4,10 @@
 
     <Navigation/>
 
+    <AppLoadingSpinner
+      v-if="status"
+    />
+
     <transition name="slide-in" mode="out-in">
       <router-view
         v-if="!status"
@@ -26,6 +30,7 @@
 
   import axios from 'axios';
   import {EventBus} from "@/event-bus.js";
+  import AppLoadingSpinner from "./components/AppLoadingSpinner";
   import Navigation from "./components/Navigation";
   import Home from "./components/Home";
   import CategoriesMenuToggle from "./components/CategoriesMenuToggle";
@@ -38,6 +43,7 @@
   export default {
     name: "App",
     components: {
+      AppLoadingSpinner,
       Navigation,
       Home,
       CategoriesMenuToggle,
@@ -47,9 +53,9 @@
     },
     data() {
       return {
+        status: true,
         categories: null,
-        products: null,
-        status: true
+        products: null
       }
     },
     mounted() {
@@ -58,8 +64,8 @@
         .then((response) => {
           this.categories = response.data[0];
           this.products = this.getProductsInfo();
-          this.status = false;
           EventBus.$emit('products', this.products);
+          setTimeout( () => this.status = false, 500);
         })
         .catch((error) => {
           console.log(error);
@@ -103,6 +109,32 @@
     overflow: hidden;
   }
 
+  .section {
+    &__details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 0;
+      text-transform: uppercase;
+      @media only screen and (max-width: 48em) {
+        flex-direction: column;
+        padding: 2rem 0 0;
+      }
+    }
+    &__title {
+      font-size: 2.5rem;
+      font-weight: 300;
+      @media only screen and (max-width: 48em) {
+        margin: 0;
+      }
+    }
+    &__category {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #c1c1c1;
+    }
+  }
+
   .search,
   .cart {
     &-modal {
@@ -121,56 +153,6 @@
     }
   }
 
-  .search {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 100vh;
-    padding: 2rem 8rem 2rem 16rem;
-    background-color: rgba(240, 240, 240, .5);;
-    font-weight: 300;
-    @media only screen and (max-width: 62em) {
-      padding: 2rem 6rem 2rem 6rem;
-    }
-    @media only screen and (max-width: 48em) {
-      padding: 2rem 3rem 2rem 3rem;
-    }
-    &__input {
-      font-family: 'Lato', sans-serif;
-      font-size: 4rem;
-      font-weight: 100;
-      text-transform: uppercase;
-      border: 0;
-      border-bottom: 1px solid rgba(177, 177, 177, .9);
-      background-color: transparent;
-      padding: 1.5rem;
-      width: 70%;
-      margin-bottom: 1rem;
-      @media only screen and (max-width: 62em) {
-        width: 100%;
-        padding: 0;
-      }
-      &:focus {
-        outline: 2px solid rgba(0, 35, 255, 1);
-      }
-    }
-    &__label {
-      color: rgba(177, 177, 177, .9);
-    }
-    &__controls,
-    &-local {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 3rem;
-    }
-    &__controls {
-      width: 100%;
-      align-items: center;
-    }
-  }
-
   .category__main {
     width: 100%;
     min-height: 100vh;
@@ -183,33 +165,6 @@
       padding: 2rem 3rem;
     }
 
-  }
-
-  .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 3rem;
-    pointer-events: none;
-    &__image {
-      max-width: 100%;
-      transition: .3s all;
-    }
-    & > * {
-      pointer-events: auto;
-      transition: .3s opacity, .3s transform;
-    }
-    &:hover > *,
-    &:focus-within > * {
-      opacity: 0.4;
-    }
-    &:hover > :hover,
-    &:focus-within > :focus {
-      transform: scale(1.02);
-      opacity: 1;
-    }
-    &:hover > :focus:not(:hover) {
-      transform: scale(1.01);
-    }
   }
 
   .btn__load-more {
@@ -226,35 +181,6 @@
     transition: all .4s;
   }
 
-  .section {
-  &__details {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     padding: 2rem 0;
-     text-transform: uppercase;
-    @media only screen and (max-width: 48em) {
-      flex-direction: column;
-      padding: 2rem 0 0;
-    }
-   }
-  &__title {
-     font-size: 2.5rem;
-     font-weight: 300;
-    @media only screen and (max-width: 48em) {
-      margin: 0;
-    }
-   }
-  &__category {
-     font-size: 1rem;
-     font-weight: 300;
-     color: #c1c1c1;
-   }
-  }
-  .products, .product-details {
-    line-height: 30px;
-  }
-
   .close {
     position: absolute;
     top: 2rem;
@@ -267,15 +193,43 @@
     font-size: 1.5rem;
     transition: .2s all;
     z-index: 12;
-  &:hover {
-     color: rgba(0, 35, 255, 0.9);
-   }
+
+    &:hover {
+      color: rgba(0, 35, 255, 0.9);
+    }
   }
 
   .close-cart, .close-search {
     left: 11rem;
     @media only screen and (max-width: 48em) {
       left: 0;
+    }
+  }
+
+  .search {
+    &__input {
+      font-family: 'Lato', sans-serif;
+      font-size: 4rem;
+      font-weight: 100;
+      text-transform: uppercase;
+      border: 0;
+      border-bottom: 1px solid rgba(177, 177, 177, .9);
+      background-color: transparent;
+      padding: 1.5rem;
+      width: 70%;
+      margin-bottom: 1rem;
+      @media only screen and (max-width: 62em) {
+        width: 100%;
+        padding: 0;
+      }
+
+      &:focus {
+        outline: 2px solid rgba(0, 35, 255, 1);
+      }
+    }
+
+    &__label {
+      color: rgba(177, 177, 177, .9);
     }
   }
 
@@ -302,7 +256,7 @@
 
   .slide-fade-enter-active,
   .slide-fade-leave-active {
-    transition: all .4s ease;
+    transition: all .5s ease;
   }
 
   .slide-fade-enter {
@@ -317,13 +271,13 @@
   .list-enter-active,
   .list-leave-active,
   .list-move {
-    transition: 500ms cubic-bezier(0.59, 0.12, 0.34, 0.95);
+    transition: 1s cubic-bezier(0.59, 0.12, 0.34, 0.95);
     transition-property: opacity, transform;
   }
 
   .list-enter {
     opacity: 0;
-    transform: translateX(50px) scaleY(0.5);
+    transform: translateX(50px) scaleY(0.6);
   }
 
   .list-enter-to {

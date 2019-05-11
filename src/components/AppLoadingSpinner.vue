@@ -1,5 +1,8 @@
 <template lang="html">
-  <div class="spinner" :style="spinner__styles"></div>
+  <section class="loading">
+    <div class="spinner" :style="spinner__styles"></div>
+  </section>
+
 </template>
 
 <script>
@@ -12,8 +15,8 @@
           'border-radius': '100%',
           'border': '4px solid rgba(255, 255, 255, .9)',
           'border-top': '4px solid rgba(0, 35, 255, .9)',
-          'width': '50px',
-          'height': '50px',
+          'width': '100px',
+          'height': '100px',
           'animation': 'spinner-animation 0.8s linear infinite'
         }
       }
@@ -23,6 +26,13 @@
 </script>
 
 <style lang="scss">
+  .loading {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(240, 240, 240, 1);
+  }
   .spinner {
     transition: all 0.3s linear;
     margin: 0 auto;

@@ -2,7 +2,8 @@
   <transition name="slide-fade">
     <section class="search">
       <button @click="close()" class="close close-search">X</button>
-      <form class="search__controls">
+<!--      Prevent doesn't work-->
+      <form @submit.prevent class="search__controls">
         <input class="search__input" id="search-input" type="search" name="search__input" v-model="searchValue">
         <label class="search__label" for="search-input">Type product that you are looking for</label>
       </form>
@@ -11,6 +12,7 @@
           tag="section"
           class="products"
           name="list"
+          @before-leave="beforeLeave"
         >
         <Product
           v-for="item in filterProducts"
@@ -27,6 +29,7 @@
 <script>
   import filterProducts from "../mixins/filterProducts";
   import Product from "./Product"
+  import transitionFix from "../mixins/transitionFix";
 
   export default {
     name: "Search",
@@ -39,7 +42,7 @@
         required: true
       }
     },
-    mixins: [filterProducts],
+    mixins: [filterProducts, transitionFix],
     data() {
       return {
         searchValue: ''
@@ -54,6 +57,33 @@
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+
+  .search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem 8rem 2rem 16rem;
+    background-color: rgba(240, 240, 240, .5);;
+    font-weight: 300;
+    @media only screen and (max-width: 62em) {
+      padding: 2rem 6rem 2rem 6rem;
+    }
+    @media only screen and (max-width: 48em) {
+      padding: 2rem 3rem 2rem 3rem;
+    }
+    &__controls {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 3rem;
+    }
+    &__controls {
+      width: 100%;
+      align-items: center;
+    }
+  }
 
 </style>
