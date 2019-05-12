@@ -195,6 +195,10 @@
       &-container {
         margin-top: 29rem;
         margin-bottom: 24rem;
+        @media only screen and (max-width: 120em) {
+          margin-top: 9rem;
+          margin-bottom: 4rem;
+        }
       }
     }
 
@@ -212,7 +216,7 @@
       left: 0;
       display: flex;
       width: 100%;
-      min-height: 100vh;
+      height: 100vh;
       z-index: 10;
       padding-left: 14.5rem;
       @media only screen and (max-width: 62em) {
