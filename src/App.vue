@@ -209,7 +209,7 @@
   }
 
   .close-cart, .close-search {
-    left: 11rem;
+    left: 24rem;
     @media only screen and (max-width: 48em) {
       left: 0;
     }

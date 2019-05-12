@@ -113,10 +113,10 @@
       padding-right: 2rem;
       justify-content: flex-end;
       color: rgba(193, 193, 193, .9);
-      opacity: .7;
+      transform: scale(1);
       transition: .3s all;
       &:hover {
-        opacity: 1;
+        transform: scale(1.075);
       }
       &:link,
       &:visited {
@@ -162,10 +162,8 @@
   }
 
   .router-link-active {
-    opacity: 1;
     font-weight: bold;
-    border-right: 2px solid rgba(193, 193, 193, 1)
-  ;;
+    border-right: 3px solid rgba(0, 35, 255, 0.9);
   }
 
 </style>

@@ -73,7 +73,7 @@
     align-items: center;
     width: 100%;
     min-height: 100vh;
-    padding: 2rem 8rem 2rem 16rem;
+    padding: 2rem 8rem 2rem 14.5rem;
     background-color: rgba(240, 240, 240, .5);;
     font-weight: 300;
     @media only screen and (max-width: 62em) {

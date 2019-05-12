@@ -137,9 +137,9 @@
       position: absolute;
       display: flex;
       justify-content: center;
-      width: 3rem;
-      height: 3rem;
-      font-size: 2rem;
+      width: 4rem;
+      height: 4rem;
+      font-size: 3rem;
       background-color: transparent;
       color: rgba(0, 35, 255, 0.9);
       border: 2px solid rgba(0, 35, 255, 0.9);
