@@ -87,9 +87,13 @@
   html {
     box-sizing: border-box;
     font-size: 62.5%;
+    @media only screen and (max-width: 120em) {
+      font-size: 56.5%;
+    }
     @media only screen and (max-width: 48em) {
       font-size: 75%;
     }
+
   }
 
   *, *:before, *:after {
@@ -184,14 +188,14 @@
 
   .close {
     position: absolute;
-    top: 2rem;
-    left: 1rem;
-    width: 25px;
-    height: 25px;
+    top: 4.25rem;
+    left: 8rem;
+    width: 3rem;
+    height: 3rem;
     background: none;
     border: 0;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 3rem;
     transition: .2s all;
     z-index: 12;
     @media only screen and (max-width: 48em) {

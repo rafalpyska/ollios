@@ -32,13 +32,13 @@
             </div>
             <AppButton @click.native="addToCart(item)" :disabled="quantityProduct > 10" class="btn">Add to cart</AppButton>
           </div>
+          <transition name="fade">
+            <p class="info" v-if="added">'{{ name }}' was added to cart!</p>
+          </transition>
+          <transition name="fade">
+            <p class="info" v-if="quantityProduct > 10">You cannot buy more than 10 items! </p>
+          </transition>
         </section>
-        <transition name="fade">
-          <p class="info" v-if="added">'{{ name }}' was added to cart!</p>
-        </transition>
-        <transition name="fade">
-          <p class="info" v-if="quantityProduct > 10">You cannot buy more than 10 items! </p>
-        </transition>
 
       </div>
       <section class="recommended__wrapper">
@@ -137,25 +137,25 @@
       position: absolute;
       display: flex;
       justify-content: center;
-      width: 25px;
-      height: 25px;
-      font-size: 1rem;
+      width: 3rem;
+      height: 3rem;
+      font-size: 2rem;
       background-color: transparent;
       color: rgba(0, 35, 255, 0.9);
       border: 2px solid rgba(0, 35, 255, 0.9);
       border-radius: 50%;
 
       &--in {
-        bottom: 2rem;
-        left: 2rem;
+        bottom: 4.25rem;
+        left: 8rem;
         @media only screen and (max-width: 48em) {
           display: none;
         }
       }
 
       &--out {
-        bottom: 2rem;
-        left: 6rem;
+        bottom: 4.25rem;
+        left: 13rem;
         @media only screen and (max-width: 48em) {
           display: none;
         }
@@ -174,6 +174,7 @@
   }
   .info {
     color: rgba(0, 35, 255, 0.9);
+    font-size: 1.8rem;
     font-weight: 300;
     text-transform: uppercase;
   }
@@ -213,7 +214,7 @@
       width: 100%;
       min-height: 100vh;
       z-index: 10;
-      padding-left: 8rem;
+      padding-left: 14.5rem;
       @media only screen and (max-width: 62em) {
         flex-direction: column;
         padding-left: 0;
