@@ -320,15 +320,6 @@
     }
   }
 
-  .input__quantity {
-    padding: 1rem 1rem;
-    border: 1px solid transparent;
-    border-radius: 2.5rem;
-    text-align: center;
-    font-weight: 700;
-    font-size: 2rem;
-  }
-
   .recommended {
     &__wrapper {
       width: 100%;

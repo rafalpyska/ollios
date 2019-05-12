@@ -91,7 +91,7 @@
       font-size: 50.5%;
     }
     @media only screen and (max-width: 105em) {
-      font-size: 44.5%;
+      font-size: 42.5%;
     }
     @media only screen and (max-width: 48em) {
       font-size: 30%;
@@ -214,6 +214,15 @@
     @media only screen and (max-width: 48em) {
       left: 0;
     }
+  }
+
+  .input__quantity {
+    padding: 1rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 2.5rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 2rem;
   }
 
   .search {

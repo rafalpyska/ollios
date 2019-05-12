@@ -15,7 +15,7 @@
             </div>
             <div class="cart__product cart__product-quantity">
               <label for="cart-quantity">Quantity</label>
-              <input class="input__quantity" id="cart-quantity" max="10" min="1" name="cart-quantity" type="number"
+              <input class="input__quantity input__quantity--cart" id="cart-quantity" max="10" min="1" name="cart-quantity" type="number"
                      v-model.number="item.quantity">
             </div>
           </div>
@@ -175,8 +175,9 @@
     }
   }
 
-  .input__quantity {
-    margin-left: 10px;
+  .input__quantity--cart {
+    margin-left: 2rem;
+    border: 1px solid rgba(0, 35, 255, 0.9);
   }
 
 </style>
