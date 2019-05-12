@@ -223,6 +223,13 @@
     text-align: center;
     font-weight: 700;
     font-size: 2rem;
+    -moz-appearance:textfield;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
   }
 
   .search {
