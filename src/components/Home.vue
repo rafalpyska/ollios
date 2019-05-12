@@ -47,9 +47,9 @@
       }
     },
     created() {
-      // this.intervalObject = setInterval(() => {
-      //   this.move();
-      // }, 5000)
+      this.intervalObject = setInterval(() => {
+        this.move();
+      }, 5000)
     },
     methods: {
       pagination(id) {

@@ -193,8 +193,8 @@
       font-weight: 300;
       margin-bottom: 8.5rem;
       &-container {
-        margin-top: 29rem;
-        margin-bottom: 24rem;
+        margin-top: 15rem;
+        margin-bottom: 11rem;
         @media only screen and (max-width: 120em) {
           margin-top: 9rem;
           margin-bottom: 4rem;
@@ -259,14 +259,9 @@
         }
       }
       &__description {
-        height: 100%;
         padding: 8rem 37rem 0 12.5rem;
         color: rgba(168, 168, 168, 1);
         font-weight: 100;
-        @media only screen and (max-width: 90.625em) {
-          margin-bottom: 6rem;
-          padding: 2rem 4rem 2rem 2rem;
-        }
         @media only screen and (max-width: 62em) {
           margin-bottom: 2rem;
           padding: 2rem 2rem 0 2rem;
