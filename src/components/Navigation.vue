@@ -125,7 +125,7 @@
     &__button {
       display: flex;
       align-items: center;
-      margin-right: 1rem;
+      margin: 0;
       justify-content: flex-end;
       border: 0;
       background: none;
@@ -146,7 +146,6 @@
       background-repeat: no-repeat;
       background-size: contain;
       align-items: center;
-      margin-left: 1.5rem;
     }
   }
 

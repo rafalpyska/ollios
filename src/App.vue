@@ -124,6 +124,7 @@
       margin-bottom: 5rem;
       @media only screen and (max-width: 48em) {
         flex-direction: column;
+        align-items: flex-start;
         padding: 2rem 0 0;
       }
     }
