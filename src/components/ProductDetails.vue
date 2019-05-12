@@ -206,6 +206,8 @@
     }
 
     &__order {
+      display: flex;
+      flex-wrap: wrap;
       margin: 2rem 0;
       font-size: 1.8rem;
     }
@@ -280,10 +282,6 @@
       @media only screen and (max-width: 48em) {
         margin-top: 0;
       }
-    }
-
-    &__order {
-      display: flex;
     }
 
     &__quantity {

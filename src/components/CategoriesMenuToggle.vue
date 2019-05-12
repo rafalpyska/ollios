@@ -46,6 +46,9 @@
     @media only screen and (max-width: 62em) {
       z-index: 12;
     }
+    @media only screen and (max-width: 34.125em) {
+      top: 2rem;
+    }
     &:focus {
       outline: none;
       box-shadow: 0 0 3pt 2pt rgba(0, 35, 255, 1);;
