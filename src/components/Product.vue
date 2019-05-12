@@ -63,6 +63,9 @@
       padding: 2rem;
       background-color: rgba(255, 255, 255, 1);
       cursor: pointer;
+      @media only screen and (max-width: 48em) {
+        padding: 2rem 5rem 0 5rem;
+      }
       &:last-child {
         @media only screen and (max-width: 62em) {
           margin-bottom: 8rem;

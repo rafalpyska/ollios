@@ -30,7 +30,7 @@
               <input class="input__quantity" id="quantity" max="10" min="1" name="quantity" type="number"
                      v-model.number="quantityProduct">
             </div>
-            <AppButton @click.native="addToCart(item)" :disabled="quantityProduct > 10" class="btn">Add to cart</AppButton>
+            <AppButton @click.native="addToCart(item)" :disabled="quantityProduct > 10" class="btn__add-to-cart">Add to cart</AppButton>
           </div>
           <transition name="fade">
             <p class="info" v-if="added">'{{ name }}' was added to cart!</p>
@@ -289,6 +289,12 @@
       flex-direction: column;
       margin-left: 15rem;
       margin-right: 5rem;
+      @media only screen and (max-width: 48em) {
+        margin-left: 7rem;
+      }
+      @media only screen and (max-width: 34.125em) {
+        margin-left: 2rem;
+      }
     }
     &__price-title,
     &__quantity-title {
@@ -296,6 +302,12 @@
       margin: 0 0 2.5rem 0;
       font-weight: 400;
       color: rgba(0, 0, 0, .9)
+    }
+  }
+
+  .btn__add-to-cart {
+    @media only screen and (max-width: 34.125em) {
+      margin-top: 4rem;
     }
   }
 
