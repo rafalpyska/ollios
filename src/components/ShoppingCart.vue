@@ -119,6 +119,9 @@
       align-items: center;
       flex-direction: column;
       width: 50%;
+      @media only screen and (max-width: 62em) {
+        width: 75%;
+      }
       @media only screen and (max-width: 48em) {
         width: 100%;
       }
@@ -172,6 +175,9 @@
   .item {
     &__title {
       font-weight: 700;
+    }
+    &__price {
+      font-size: 1.8rem;
     }
   }
 

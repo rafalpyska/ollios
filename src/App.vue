@@ -94,7 +94,6 @@
       font-size: 42.5%;
     }
     @media only screen and (max-width: 48em) {
-      font-size: 30%;
     }
   }
 
@@ -166,12 +165,11 @@
     padding: 8rem 40rem 2rem 40rem;
     background-color: rgba(240, 240, 240, 1);
     @media only screen and (max-width: 62em) {
-      padding: 2rem 6rem;
+      padding: 8rem 17rem 8rem 17rem;
     }
-    @media only screen and (max-width: 48em) {
-      padding: 2rem 3rem;
+    @media only screen and (max-width: 34.125em) {
+      padding: 8rem 12rem 8rem 13rem;
     }
-
   }
 
   .btn__load-more {
@@ -217,6 +215,7 @@
   }
 
   .input__quantity {
+    width: 10rem;
     padding: 1rem 1rem;
     border: 1px solid transparent;
     border-radius: 2.5rem;

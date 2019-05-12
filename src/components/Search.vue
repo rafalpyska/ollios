@@ -77,7 +77,7 @@
     background-color: rgba(240, 240, 240, .5);;
     font-weight: 300;
     @media only screen and (max-width: 62em) {
-      padding: 2rem 6rem 2rem 6rem;
+      padding: 8rem 22rem 0 12.5rem;
     }
     @media only screen and (max-width: 48em) {
       padding: 2rem 3rem 2rem 3rem;
@@ -90,6 +90,9 @@
     &__controls {
       width: 100%;
       align-items: center;
+      @media only screen and (max-width: 62em) {
+        margin-top: 10rem;
+      }
     }
   }
 

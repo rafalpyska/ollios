@@ -148,7 +148,7 @@
       &--in {
         bottom: 4.25rem;
         left: 8rem;
-        @media only screen and (max-width: 48em) {
+        @media only screen and (max-width: 62em) {
           display: none;
         }
       }
@@ -156,7 +156,7 @@
       &--out {
         bottom: 4.25rem;
         left: 13rem;
-        @media only screen and (max-width: 48em) {
+        @media only screen and (max-width: 62em) {
           display: none;
         }
       }
@@ -262,9 +262,12 @@
         padding: 8rem 37rem 0 12.5rem;
         color: rgba(168, 168, 168, 1);
         font-weight: 100;
+        @media only screen and (max-width: 89.5em) {
+          padding: 8rem 22rem 0 12.5rem;
+        }
         @media only screen and (max-width: 62em) {
           margin-bottom: 2rem;
-          padding: 2rem 2rem 0 2rem;
+          padding: 8rem 10rem 8rem 10rem;
         }
       }
     }
