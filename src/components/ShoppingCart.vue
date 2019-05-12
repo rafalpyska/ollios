@@ -4,7 +4,7 @@
       <button @click="close()" class="close close-cart">X</button>
       <transition-group tag="div" class="cart__wrapper" name="list">
         <h1 :key="3213" class="section__title">Shopping Cart</h1>
-        <p :key="3214" v-if="empty">Your basket is empty!</p>
+        <p :key="3214" class="cart__empty" v-if="empty">Your basket is empty!</p>
         <div class="cart" v-for="(item, index) in cart" :key="item.id">
           <div class="cart__image-container">
             <img class="cart__image" :src="getImgUrl(item.image)" alt="">
@@ -125,13 +125,16 @@
     }
     display: flex;
     width: 100%;
-    height: 10rem;
+    height: 20rem;
+    font-size: 1.8rem;
     background-color: rgba(255, 255, 255, .9);
 
     &:not(:first-child) {
       margin-top: 1rem;
     }
-
+    &__empty {
+      font-size: 1.8rem;
+    }
     &__image {
       &-container {
         height: 100%;

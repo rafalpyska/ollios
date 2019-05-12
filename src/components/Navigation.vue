@@ -71,7 +71,7 @@
   .header {
     display: flex;
     position: fixed;
-    width: 8rem;
+    width: 14.5rem;
     height: 100%;
     background-color: rgba(255, 255, 255, .9);
     box-shadow: 4px 0 5px rgba(0, 0, 0, .1);
@@ -111,15 +111,13 @@
       display: flex;
       list-style-type: none;
       align-self: center;
-      padding: 2.5rem 1.5rem;
+      margin: 4.25rem 0;
       @media only screen and (max-width: 62em) {
         width: 100%;
         padding: 2.5rem .5rem;
         justify-content: center;
       }
     }
-
-
 
     &__button {
       display: flex;
@@ -138,8 +136,8 @@
     }
 
     &__icon {
-      width: 25px;
-      height: 25px;
+      width: 3rem;
+      height: 3rem;
       background-position: right center;
       background-repeat: no-repeat;
       background-size: contain;
@@ -149,6 +147,11 @@
   }
 
   .icon {
+    &__logo {
+      width: 3.5rem;
+      height: 3.5rem;
+      margin-bottom: 10.25rem;
+    }
     &__home {
       background-image: url('../assets/navigation/home.png');
     }

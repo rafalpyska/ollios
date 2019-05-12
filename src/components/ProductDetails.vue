@@ -14,7 +14,7 @@
           <h1 class="heading section__title">Products</h1>
           <p class="section__category">Product id {{ id }}</p>
         </section>
-        <section class="product__description">
+        <section class="product__description-container">
           <h2 class="heading product__name">{{ name }}</h2>
           <p class="product__description">{{ description }}</p>
           <div class="product__order">
@@ -180,15 +180,21 @@
 
   .section {
     &__title {
-      font-size: 2rem;
+      margin: 0;
+      font-size: 4.8rem;
       color: rgba(0, 0, 0, 1);
     }
   }
 
   .product {
     &__description {
-      font-size: 1.15rem;
+      font-size: 2.4rem;
       font-weight: 300;
+      margin-bottom: 8.5rem;
+      &-container {
+        margin-top: 29rem;
+        margin-bottom: 24rem;
+      }
     }
 
     &__info {
@@ -196,6 +202,7 @@
 
     &__order {
       margin: 2rem 0;
+      font-size: 1.8rem;
     }
 
     &-details {
@@ -246,10 +253,9 @@
           width: 100%;
         }
       }
-
       &__description {
         height: 100%;
-        padding: 2rem 16rem 0 2rem;
+        padding: 8rem 37rem 0 12.5rem;
         color: rgba(168, 168, 168, 1);
         font-weight: 100;
         @media only screen and (max-width: 90.625em) {
@@ -264,7 +270,8 @@
     }
 
     &__name {
-      font-size: 3rem;
+      font-size: 7.2rem;
+      font-weight: 300;
       color: rgba(0, 35, 255, 0.9);
       text-transform: uppercase;
       @media only screen and (max-width: 48em) {
@@ -279,19 +286,20 @@
     &__quantity {
       display: flex;
       flex-direction: column;
-      margin-left: 6rem;
-      margin-right: 3rem;
+      margin-left: 15rem;
+      margin-right: 5rem;
     }
     &__price-title,
     &__quantity-title {
-      margin: 0 0 1rem 0;
+      text-transform: uppercase;
+      margin: 0 0 2.5rem 0;
       font-weight: 400;
       color: rgba(0, 0, 0, .9)
     }
   }
 
   .price {
-    font-size: 2rem;
+    font-size: 4.8rem;
     font-weight: 400;
     color: rgba(0, 35, 255, 0.9);
     margin-right: .75rem;
@@ -300,6 +308,7 @@
       align-items: center;
     }
     &-previous {
+      font-size: 2.4rem;
       font-weight: 400;
       color: rgba(0, 0, 0, 1);
       text-decoration: line-through;
@@ -307,12 +316,12 @@
   }
 
   .input__quantity {
-    width: 3.6rem;
-    height: 2.6rem;
-    border-radius: 40%;
+    padding: 1rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 2.5rem;
     text-align: center;
     font-weight: 700;
-    border: 1px solid transparent;
+    font-size: 2rem;
   }
 
   .recommended {

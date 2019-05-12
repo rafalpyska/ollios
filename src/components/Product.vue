@@ -1,10 +1,16 @@
 <template lang="html">
   <router-link :to="{ path: this.item.category + '/' + routeProduct }" tag="article" :data-product="nameProduct">
-    <img :src="getImgUrl(imageProduct)" :alt="nameProduct" class="products__image"/>
+    <img :src="getImgUrl(this.item.image)" :alt="nameProduct" class="products__image"/>
     <article class="products__info">
-      <p class="products__name">{{ nameProduct }}</p>
-      <p class="products__description">{{ ellipsify(descriptionProduct, 100) }}</p>
-      <p class="products__price">${{ priceProduct }}</p>
+      <slot name="title" :item="item">
+        <p class="products__name">{{ this.item.title }}</p>
+      </slot>
+      <slot name="description" :item="item">
+        <p class="products__description">{{ ellipsify(this.item.description, 100) }}</p>
+      </slot>
+      <slot name="price" :item="item">
+<!--        <p class="products__price">${{ this.item.price }}</p>-->
+      </slot>
     </article>
   </router-link>
 </template>
@@ -47,8 +53,9 @@
 
   .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+    grid-auto-rows: 1fr;
+    grid-gap: 4rem;
     pointer-events: none;
     &__item {
       align-items: center;
@@ -68,17 +75,17 @@
     }
     &__name {
       margin: .6rem 0;
-      font-size: 2rem;
+      font-size: 3rem;
       font-weight: 300;
       text-transform: uppercase;
     }
     &__description {
-      font-size: 1.15rem;
+      font-size: 1.8rem;
       color: rgba(168, 168, 168, 1);
       font-weight: 300;
     }
     &__price {
-      font-size: 1.15rem;
+      font-size: 1.8rem;
       color: rgba(0, 35, 255, .9);
       font-weight: 700;
     }

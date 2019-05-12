@@ -47,9 +47,9 @@
       }
     },
     created() {
-      this.intervalObject = setInterval(() => {
-        this.move();
-      }, 5000)
+      // this.intervalObject = setInterval(() => {
+      //   this.move();
+      // }, 5000)
     },
     methods: {
       pagination(id) {
@@ -92,7 +92,7 @@
       border-radius: 100px;
       display: inline-block;
       cursor: pointer;
-      margin: 0 4px;
+      margin: 0 4.5rem;
       transition: .3s;
       &:not(:last-child) {
         margin-right: 1rem;

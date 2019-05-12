@@ -25,7 +25,9 @@
           :item="item"
           class="products__item"
           :class="'products__item--' + item.id"
-        />
+        >
+          <p slot="price" slot-scope="props" class="products__price">${{ props.item.price }}</p>
+        </Product>
       </transition-group>
     </main>
 
@@ -81,7 +83,7 @@
     &-local {
       display: flex;
       flex-direction: column;
-      margin-bottom: 3rem;
+      margin-bottom: 6rem;
     }
   }
 

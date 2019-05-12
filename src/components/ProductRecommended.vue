@@ -1,21 +1,19 @@
 <template lang="html">
   <section class="recommended">
     <h2 class="recommended__title">Recommended</h2>
-    <router-link
+    <transition-group
+      tag="section"
+      class="products"
+      name="list"
+    >
+    <Product
       v-for="item in recommendedItems"
-      :to="{ path:  item.category + '/' + item.route }"
-      tag="div"
+      :item="item"
+      class="products__item"
+      :class="'products__item--' + item.id"
       :key="item.id"
-      class="recommended__item">
-
-      <div class="recommended__item-image-container">
-        <img :src="getImgUrl(item.image)" alt="" class="products__image">
-      </div>
-      <div class="recommended__item-info">
-        <p class="recommended__item-title">{{ item.title }}</p>
-        <p class="recommended__item-description">{{ ellipsify(item.description, 50) }}</p>
-      </div>
-    </router-link>
+    >
+    </Product>
 
     <router-view
       v-for="item in products"
@@ -23,7 +21,7 @@
       :key="item.id"
       :products="products"
     />
-
+    </transition-group>
   </section>
 </template>
 
@@ -31,10 +29,12 @@
   import getImageUrl from '../mixins/getImageUrl'
   import ellipsify from '../mixins/ellipsify'
   import ProductDetails from "./ProductDetails";
+  import Product from "./Product";
 
   export default {
     name: "RecommendedProducts",
     components: {
+      Product,
       ProductDetails
     },
     props: {
@@ -74,10 +74,9 @@
 <style lang="scss" scoped>
   .recommended {
     display: flex;
-    justify-content: space-around;
     align-items: center;
     width: 100%;
-    padding: 1rem;
+    padding: 7.5rem 0;
     background-color: rgba(255, 255, 255, .9);
     font-size: .7rem;
     @media only screen and (max-width: 62em) {
@@ -86,9 +85,10 @@
     &__title {
       writing-mode: tb-rl;
       transform: rotate(180deg);
-      font-size: 1.35rem;
+      font-size: 3.66rem;
       font-weight: 300;
       text-transform: uppercase;
+      padding: 0 8rem;
       @media only screen and (max-width: 62em) {
         writing-mode: unset;
         transform: rotate(360deg);

@@ -67,7 +67,7 @@
   }
 
   .title {
-    font-size: 12rem;
+    font-size: 22rem;
     font-weight: 300;
     @media only screen and (max-width: 62em) {
       padding-top: 8rem;
@@ -76,6 +76,7 @@
   }
 
   .subtitle {
+    font-size: 3.6rem;
     font-weight: 300;
   }
 

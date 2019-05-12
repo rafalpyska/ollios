@@ -86,6 +86,7 @@
 
   html {
     box-sizing: border-box;
+    font-size: 62.5%;
     @media only screen and (max-width: 48em) {
       font-size: 75%;
     }
@@ -114,22 +115,23 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 2rem 0;
       text-transform: uppercase;
+      margin-bottom: 5rem;
       @media only screen and (max-width: 48em) {
         flex-direction: column;
         padding: 2rem 0 0;
       }
     }
     &__title {
-      font-size: 2.5rem;
+      font-size: 7.2rem;
       font-weight: 300;
+      margin: 0;
       @media only screen and (max-width: 48em) {
-        margin: 0;
+
       }
     }
     &__category {
-      font-size: 1rem;
+      font-size: 1.8rem;
       font-weight: 300;
       color: #c1c1c1;
     }
@@ -155,7 +157,7 @@
   .category__main {
     width: 100%;
     min-height: 100vh;
-    padding: 2rem 8rem 2rem 16rem;
+    padding: 8rem 40rem 2rem 40rem;
     background-color: rgba(240, 240, 240, 1);
     @media only screen and (max-width: 62em) {
       padding: 2rem 6rem;
@@ -231,6 +233,7 @@
     }
 
     &__label {
+      font-size: 1.8rem;
       color: rgba(177, 177, 177, .9);
     }
   }

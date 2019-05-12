@@ -69,6 +69,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    font-size: 1.8rem;
     &__container {
       display: flex;
       height: 100%;
@@ -76,8 +77,8 @@
       top: 0;
       right: 0;
       background-color: rgba(255, 255, 255, .9);
-      padding: 0 2rem;
-      z-index: 3;
+      padding: 0 7rem;
+      z-index: 10;
       @media only screen and (max-width: 62em) {
         width: 100%;
         background-color: rgba(255, 255, 255, 1);
@@ -100,7 +101,7 @@
     &__item {
       display: flex;
       justify-content: flex-end;
-      padding: 1.75rem 0;
+      margin: 3.75rem 0;
       @media only screen and (max-width: 62em) {
         justify-content: center;
       }
@@ -123,13 +124,13 @@
       }
     }
     &__icons {
-      width: 50px;
-      height: 50px;
+      width: 5rem;
+      height: 5rem;
       background-position: right center;
       background-repeat: no-repeat;
       background-size: contain;
       align-items: center;
-      margin-left: 1.5rem;
+      margin-left: 3rem;
     }
   }
 

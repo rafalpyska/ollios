@@ -32,16 +32,16 @@
 
   .btn__categories-toggle {
     position: fixed;
-    top: 2rem;
-    right: 2rem;
-    width: 4rem;
-    height: 4rem;
+    top: 8rem;
+    right: 5rem;
+    width: 8.5rem;
+    height: 8.5rem;
     background-color: rgba(255, 255, 255, .6);
     border: 0;
     border-radius: 50%;
     box-shadow: 0 0 4px #888;
     cursor: pointer;
-    z-index: 10;
+    z-index: 11;
     transition: all .3s;
     @media only screen and (max-width: 62em) {
       z-index: 12;
@@ -55,7 +55,7 @@
     }
     &:before {
       content: '\2630';
-      font-size: 1.5rem;
+      font-size: 2.5rem;
       font-weight: 700;
       vertical-align: middle;
       color: rgba(0, 35, 255, .9);
