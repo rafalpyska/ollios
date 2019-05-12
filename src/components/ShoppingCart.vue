@@ -124,6 +124,7 @@
       }
       @media only screen and (max-width: 48em) {
         width: 100%;
+        padding: 0 2rem;
       }
     }
     display: flex;

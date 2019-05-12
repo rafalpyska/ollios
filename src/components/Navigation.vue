@@ -8,7 +8,7 @@
           </router-link>
         </li>
         <li class="navigation__item">
-          <router-link :to="{ name: 'home' }" class="navigation__button">
+          <router-link :to="{ name: 'home' }" exact class="navigation__button">
             <span aria-label="Home page"></span>
             <svg class="navigation__icon icon__home"
                  xmlns="http://www.w3.org/2000/svg"

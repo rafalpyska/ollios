@@ -200,9 +200,8 @@
     transition: .2s all;
     z-index: 12;
     @media only screen and (max-width: 48em) {
-      font-size: 3.15rem;
+      font-size: 3.5rem;
     }
-
     &:hover {
       color: rgba(0, 35, 255, 0.9);
     }
@@ -211,7 +210,7 @@
   .close-cart, .close-search {
     left: 24rem;
     @media only screen and (max-width: 48em) {
-      left: 0;
+      left: 2rem;
     }
   }
 
