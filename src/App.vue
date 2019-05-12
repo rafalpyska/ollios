@@ -90,8 +90,11 @@
     @media only screen and (max-width: 120em) {
       font-size: 50.5%;
     }
+    @media only screen and (max-width: 105em) {
+      font-size: 44.5%;
+    }
     @media only screen and (max-width: 48em) {
-      font-size: 75%;
+      font-size: 30%;
     }
   }
 
