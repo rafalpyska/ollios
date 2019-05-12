@@ -199,7 +199,7 @@
     transition: .2s all;
     z-index: 12;
     @media only screen and (max-width: 48em) {
-      font-size: 2.15rem;
+      font-size: 3.15rem;
     }
 
     &:hover {
