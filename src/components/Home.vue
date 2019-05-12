@@ -96,6 +96,9 @@
       cursor: pointer;
       margin: 0 4.5rem;
       transition: .3s;
+      @media only screen and (max-width: 48em) {
+        border: 2px solid rgba(0, 35, 255, .9);
+      }
       &:not(:last-child) {
         margin-right: 1rem;
       }

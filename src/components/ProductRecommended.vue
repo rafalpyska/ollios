@@ -76,6 +76,7 @@
     display: flex;
     align-items: center;
     width: 100%;
+    padding: 2rem 0;
     background-color: rgba(255, 255, 255, .9);
     font-size: .7rem;
     @media only screen and (max-width: 62em) {

@@ -195,7 +195,7 @@
       &-container {
         margin-top: 15rem;
         margin-bottom: 11rem;
-        @media only screen and (max-width: 120em) {
+        @media only screen and (max-width: 160em) {
           margin-top: 9rem;
           margin-bottom: 4rem;
         }
