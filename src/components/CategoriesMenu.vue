@@ -106,9 +106,6 @@
       display: flex;
       justify-content: flex-end;
       margin: 3.75rem 0;
-      @media only screen and (max-width: 64em) {
-        justify-content: center;
-      }
     }
 
     &__link {

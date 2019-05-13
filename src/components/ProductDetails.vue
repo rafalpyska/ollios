@@ -187,6 +187,9 @@
       margin: 0;
       font-size: 4.8rem;
       color: var(--black);
+      @media only screen and (max-width: 90em) {
+        font-size: 4rem;
+      }
     }
   }
 
@@ -277,7 +280,7 @@
         padding: 8rem 37rem 0 12.5rem;
         color: rgba(168, 168, 168, 1);
         font-weight: 100;
-        @media only screen and (max-width: 89.5em) {
+        @media only screen and (max-width: 90em) {
           padding: 5rem 22rem 0 12.5rem;
         }
         @media only screen and (max-width: 64em) {
@@ -286,7 +289,7 @@
         }
         @media only screen and (max-width: 48em) {
           margin-bottom: 2rem;
-          padding: 8rem;
+          padding: 6rem;
         }
       }
     }
@@ -296,8 +299,8 @@
       font-weight: 300;
       color: var(--blue);
       text-transform: uppercase;
-      @media only screen and (max-width: 48em) {
-        font-size: 6.2rem;
+      @media only screen and (max-width: 90em) {
+        font-size: 6rem;
         margin-top: 0;
       }
       @media only screen and (max-width: 34.125em) {

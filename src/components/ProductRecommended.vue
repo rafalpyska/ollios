@@ -9,8 +9,7 @@
       <Product
         v-for="item in recommendedItems"
         :item="item"
-        class="products__item"
-        :class="'products__item--' + item.id"
+        :class="`products__item products__item--${item.id} recommended__products`"
         :key="item.id"
       >
       </Product>
@@ -72,6 +71,9 @@
 </script>
 
 <style lang="scss" scoped>
+  .products__image {
+    max-width: 40%;
+  }
   .recommended {
     display: flex;
     align-items: center;
@@ -81,6 +83,7 @@
     font-size: .7rem;
     @media only screen and (max-width: 64em) {
       flex-direction: column;
+      padding: 2rem;
     }
 
     &__title {
@@ -90,7 +93,7 @@
       font-weight: 300;
       text-transform: uppercase;
       padding: 0 8rem;
-      @media only screen and (max-width: 89.5em) {
+      @media only screen and (max-width: 90em) {
         padding: 0 4rem;
       }
       @media only screen and (max-width: 64em) {
@@ -140,4 +143,5 @@
       }
     }
   }
+
 </style>

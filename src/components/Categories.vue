@@ -23,8 +23,7 @@
           :key="item.id"
           v-if="item.category === $route.fullPath"
           :item="item"
-          class="products__item"
-          :class="'products__item--' + item.id"
+          :class="`products__item products__item--${item.id}`"
         >
           <p slot="price" slot-scope="props" class="products__price">${{ props.item.price }}</p>
         </Product>
@@ -80,6 +79,9 @@
     @media only screen and (max-width: 105em) {
       line-height: 25px;
     }
+  }
+  .products__image {
+    max-width: 100%;
   }
 
   .search {
