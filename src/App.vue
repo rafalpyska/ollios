@@ -136,13 +136,16 @@
         align-items: flex-start;
         padding: 2rem 0 0;
       }
+      @media only screen and (max-width: 34.125em) {
+        display: none;
+      }
     }
     &__title {
       font-size: 7.2rem;
       font-weight: 300;
       margin: 0;
       @media only screen and (max-width: 48em) {
-
+        font-size: 5.2rem;
       }
     }
     &__category {
@@ -178,8 +181,13 @@
       padding: 8rem 17rem 8rem 17rem;
     }
     @media only screen and (max-width: 34.125em) {
-      padding: 8rem 12rem 8rem 13rem;
+      padding: 8rem 13rem 8rem 13rem;
     }
+    @media only screen and (max-width: 25em) {
+      padding: 8rem 10rem 8rem 10rem;
+    }
+
+
   }
 
   .btn__load-more {

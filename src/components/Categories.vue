@@ -77,6 +77,9 @@
 
   .products, .product-details {
     line-height: 30px;
+    @media only screen and (max-width: 48em) {
+      line-height: 25px;
+    }
   }
 
   .search {

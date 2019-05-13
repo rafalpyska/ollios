@@ -53,7 +53,7 @@
 
   .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     grid-auto-rows: 1fr;
     grid-gap: 4rem;
     pointer-events: none;
@@ -72,6 +72,9 @@
         @media only screen and (max-width: 62em) {
           margin-bottom: 8rem;
         }
+      }
+      &:not(:last-child) {
+        border-bottom: 1px dashed var(--blue);
       }
     }
 

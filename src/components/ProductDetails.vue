@@ -195,7 +195,9 @@
       font-size: 2.4rem;
       font-weight: 300;
       margin-bottom: 8.5rem;
-
+      @media only screen and (max-width: 48em) {
+        font-size: 2rem;
+      }
       &-container {
         margin-top: 15rem;
         margin-bottom: 11rem;
@@ -287,7 +289,11 @@
       color: var(--blue);
       text-transform: uppercase;
       @media only screen and (max-width: 48em) {
+        font-size: 6.2rem;
         margin-top: 0;
+      }
+      @media only screen and (max-width: 34.125em) {
+        font-size: 5.2rem;
       }
     }
 
@@ -324,7 +330,9 @@
     font-weight: 400;
     color: var(--blue);
     margin-right: .75rem;
-
+    @media only screen and (max-width: 48em) {
+      font-size: 4rem;
+    }
     &__container {
       display: flex;
       align-items: center;
@@ -335,6 +343,9 @@
       font-weight: 400;
       color: var(--black);
       text-decoration: line-through;
+      @media only screen and (max-width: 48em) {
+        font-size: 2.2rem;
+      }
     }
   }
 
