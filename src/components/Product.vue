@@ -127,4 +127,7 @@
     }
   }
 
+  .recommended__products .products__image {
+    max-width: 40%;
+  }
 </style>
