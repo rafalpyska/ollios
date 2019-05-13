@@ -244,6 +244,7 @@
           z-index: 2;
           @media only screen and (max-width: 62em) {
             width: 100%;
+            min-height: 45rem;
           }
         }
 
