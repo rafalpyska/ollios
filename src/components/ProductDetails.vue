@@ -248,7 +248,9 @@
           background-color: rgba(255, 255, 255, 1);
           box-shadow: 4px 0 5px -2px var(--shadow);
           z-index: 2;
+          overflow: hidden;
           @media only screen and (max-width: 64em) {
+            min-height: 55rem;
             width: 100%;
           }
         }
@@ -290,6 +292,7 @@
         @media only screen and (max-width: 48em) {
           margin-bottom: 2rem;
           padding: 6rem;
+          min-height: 60rem;
         }
       }
     }

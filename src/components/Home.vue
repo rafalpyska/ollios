@@ -88,6 +88,9 @@
     @media only screen and (max-width: 64em) {
       bottom: 12rem;
     }
+    @media only screen and (max-width: 34.125em) {
+      display: none;
+    }
 
     &__dot {
       position: relative;

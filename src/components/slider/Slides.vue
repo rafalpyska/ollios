@@ -83,6 +83,9 @@
   .subtitle {
     font-size: 3.6rem;
     font-weight: 300;
+    @media only screen and (max-width: 34.125em) {
+      font-size: 2.5rem;
+    }
   }
 
   .fade-move {
