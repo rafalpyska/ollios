@@ -4,7 +4,7 @@
       <nav class="categories">
         <ul class="categories__list">
           <li class="categories__item" v-for="category in dataToDisplay" :key="category.id">
-            <router-link :to="category.route" class="categories__link">{{ category.title }} <span
+            <router-link :to="'/'+category.route" class="categories__link">{{ category.title }} <span
               class="categories__icons" :class="category.class"></span></router-link>
           </li>
         </ul>

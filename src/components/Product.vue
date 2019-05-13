@@ -57,6 +57,9 @@
     grid-auto-rows: 1fr;
     grid-gap: 4rem;
     pointer-events: none;
+    @media only screen and (max-width: 25em) {
+      grid-auto-rows: .5fr;
+    }
 
     &__item {
       align-items: center;

@@ -295,6 +295,9 @@
       @media only screen and (max-width: 34.125em) {
         font-size: 5.2rem;
       }
+      @media only screen and (max-width: 25em) {
+        font-size: 4rem;
+      }
     }
 
     &__quantity {
