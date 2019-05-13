@@ -69,6 +69,7 @@
       background-color: var(--white);
       cursor: pointer;
       @media only screen and (max-width: 34.125em) {
+        display: flex;
         grid-column: 1 / -1;
       }
       @media only screen and (max-width: 48em) {
