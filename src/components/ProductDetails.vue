@@ -251,6 +251,7 @@
       }
 
       &__description {
+        height: auto;
         padding: 8rem 37rem 0 12.5rem;
         color: rgba(168, 168, 168, 1);
         font-weight: 100;

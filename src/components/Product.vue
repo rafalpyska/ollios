@@ -69,7 +69,6 @@
       background-color: var(--white);
       cursor: pointer;
       @media only screen and (max-width: 34.125em) {
-        display: flex;
         grid-column: 1 / -1;
       }
       @media only screen and (max-width: 48em) {
@@ -133,5 +132,9 @@
 
   .recommended__products .products__image {
     max-width: 40%;
+  }
+
+  .recommended__products {
+    text-align: center;
   }
 </style>
