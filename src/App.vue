@@ -85,7 +85,7 @@
 <style lang="scss">
 
   :root {
-    --white: rgba(255, 255, 255, .9);
+    --white: rgba(255, 255, 255, 1);
     --blue: rgba(0, 35, 255, 1);
     --blue-disabled: rgba(0, 35, 255, .4);
     --gray: rgba(240, 240, 240, 1);

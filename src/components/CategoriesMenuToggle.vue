@@ -46,6 +46,10 @@
     @media only screen and (max-width: 62em) {
       z-index: 12;
     }
+    @media only screen and (max-width: 48em) {
+      width: 7rem;
+      height: 7rem;
+    }
     @media only screen and (max-width: 34.125em) {
       top: 2rem;
     }
