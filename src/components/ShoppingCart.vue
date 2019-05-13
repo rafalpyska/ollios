@@ -139,6 +139,9 @@
     height: 20rem;
     font-size: 1.8rem;
     background-color: rgba(255, 255, 255, .9);
+    @media only screen and (max-width: 48em) {
+      flex-wrap: wrap;
+    }
 
     &:not(:first-child) {
       margin-top: 1rem;
@@ -167,6 +170,9 @@
       padding: 0 1rem;
 
       &-info {
+        @media only screen and (max-width: 48em) {
+          order: 1;
+        }
       }
 
       &-quantity {
@@ -179,6 +185,9 @@
 
       &-price {
         margin-left: auto;
+        @media only screen and (max-width: 48em) {
+          order: 3;
+        }
       }
     }
 

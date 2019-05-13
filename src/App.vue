@@ -171,7 +171,7 @@
       width: 100%;
       height: 100%;
       background-color: var(--white);
-      z-index: 11;
+      z-index: 12;
       font-weight: 300;
     }
   }
@@ -210,7 +210,7 @@
 
   .close {
     position: absolute;
-    top: 4.25rem;
+    top: 8rem;
     left: 8rem;
     width: 3rem;
     height: 3rem;
@@ -222,6 +222,10 @@
     z-index: 12;
     @media only screen and (max-width: 48em) {
       font-size: 3.5rem;
+    }
+    @media only screen and (max-width: 34.125em) {
+      top: 3.5rem;
+      left: 4rem;
     }
     &:hover {
       color: rgba(0, 35, 255, 0.9);

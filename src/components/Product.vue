@@ -53,7 +53,7 @@
 
   .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
     grid-auto-rows: 1fr;
     grid-gap: 4rem;
     height: 100%;
