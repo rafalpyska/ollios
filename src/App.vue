@@ -144,9 +144,13 @@
       font-size: 7.2rem;
       font-weight: 300;
       margin: 0;
-      @media only screen and (max-width: 48em) {
+      @media only screen and (max-width: 64em) {
         font-size: 5.2rem;
       }
+      @media only screen and (max-width: 48em) {
+        font-size: 4.5rem;
+      }
+
     }
     &__category {
       font-size: 1.8rem;
@@ -177,7 +181,7 @@
     min-height: 100vh;
     padding: 8rem 40rem 2rem 40rem;
     background-color: var(--gray);
-    @media only screen and (max-width: 62em) {
+    @media only screen and (max-width: 64em) {
       padding: 8rem 17rem 8rem 17rem;
     }
     @media only screen and (max-width: 34.125em) {
@@ -260,7 +264,7 @@
       padding: 1.5rem;
       width: 70%;
       margin-bottom: 1rem;
-      @media only screen and (max-width: 62em) {
+      @media only screen and (max-width: 64em) {
         width: 100%;
         padding: 0;
       }

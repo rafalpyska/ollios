@@ -118,7 +118,7 @@
     background-color: rgba(255, 255, 255, .9);
     box-shadow: 4px 0 5px var(--shadow);
     z-index: 11;
-    @media only screen and (max-width: 62em) {
+    @media only screen and (max-width: 64em) {
       width: 100%;
       height: auto;
       bottom: 0;
@@ -132,7 +132,7 @@
 
     &:first-child {
       margin-bottom: 5rem;
-      @media only screen and (max-width: 62em) {
+      @media only screen and (max-width: 64em) {
         margin-bottom: 0;
       }
     }
@@ -146,7 +146,7 @@
       padding: 0;
       list-style: none;
       text-transform: uppercase;
-      @media only screen and (max-width: 62em) {
+      @media only screen and (max-width: 64em) {
         flex-direction: row;
       }
     }
@@ -156,7 +156,7 @@
       list-style-type: none;
       align-self: center;
       margin: 4.25rem 0;
-      @media only screen and (max-width: 62em) {
+      @media only screen and (max-width: 64em) {
         width: 100%;
         padding: 2.5rem .5rem;
         justify-content: center;
@@ -199,7 +199,7 @@
       width: 3.5rem;
       height: 3.5rem;
       margin-bottom: 10.25rem;
-      @media only screen and (max-width: 62em) {
+      @media only screen and (max-width: 64em) {
         margin-bottom: 0;
       }
     }

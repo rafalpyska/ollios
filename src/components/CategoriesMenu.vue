@@ -81,7 +81,7 @@
       background-color: rgba(255, 255, 255, .9);
       padding: 0 7rem;
       z-index: 10;
-      @media only screen and (max-width: 62em) {
+      @media only screen and (max-width: 64em) {
         width: 100%;
         background-color: var(--white);
         z-index: 11;
@@ -97,7 +97,7 @@
       padding: 0;
       list-style: none;
       text-transform: uppercase;
-      @media only screen and (max-width: 62em) {
+      @media only screen and (max-width: 64em) {
         width: 100%;
       }
     }
@@ -106,7 +106,7 @@
       display: flex;
       justify-content: flex-end;
       margin: 3.75rem 0;
-      @media only screen and (max-width: 62em) {
+      @media only screen and (max-width: 64em) {
         justify-content: center;
       }
     }

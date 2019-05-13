@@ -76,11 +76,10 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 100%;
     padding: 2rem 0;
     background-color: rgba(255, 255, 255, .9);
     font-size: .7rem;
-    @media only screen and (max-width: 62em) {
+    @media only screen and (max-width: 64em) {
       flex-direction: column;
     }
 
@@ -91,7 +90,10 @@
       font-weight: 300;
       text-transform: uppercase;
       padding: 0 8rem;
-      @media only screen and (max-width: 62em) {
+      @media only screen and (max-width: 89.5em) {
+        padding: 0 4rem;
+      }
+      @media only screen and (max-width: 64em) {
         writing-mode: unset;
         transform: rotate(360deg);
 
@@ -106,7 +108,7 @@
       width: 25%;
       padding: 0 1rem;
       cursor: pointer;
-      @media only screen and (max-width: 62em) {
+      @media only screen and (max-width: 64em) {
         width: 100%;
       }
 
@@ -115,7 +117,7 @@
       }
 
       &:last-child {
-        @media only screen and (max-width: 62em) {
+        @media only screen and (max-width: 64em) {
           margin-bottom: 8rem;
         }
       }

@@ -85,7 +85,7 @@
     height: 15px;
     margin: auto;
     text-align: center;
-    @media only screen and (max-width: 62em) {
+    @media only screen and (max-width: 64em) {
       bottom: 12rem;
     }
 

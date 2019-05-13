@@ -43,7 +43,7 @@
     cursor: pointer;
     z-index: 11;
     transition: all .3s;
-    @media only screen and (max-width: 62em) {
+    @media only screen and (max-width: 64em) {
       z-index: 12;
     }
     @media only screen and (max-width: 48em) {

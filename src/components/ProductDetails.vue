@@ -43,11 +43,11 @@
           </section>
 
         </div>
-        <section class="recommended__wrapper">
+
           <ProductRecommended
             :products="products"
           />
-        </section>
+
       </div>
     </section>
   </transition>
@@ -150,7 +150,7 @@
       &--in {
         bottom: 4.25rem;
         left: 8rem;
-        @media only screen and (max-width: 62em) {
+        @media only screen and (max-width: 64em) {
           display: none;
         }
       }
@@ -158,7 +158,7 @@
       &--out {
         bottom: 4.25rem;
         left: 13rem;
-        @media only screen and (max-width: 62em) {
+        @media only screen and (max-width: 64em) {
           display: none;
         }
       }
@@ -230,7 +230,7 @@
       height: 100vh;
       z-index: 10;
       padding-left: 14.5rem;
-      @media only screen and (max-width: 62em) {
+      @media only screen and (max-width: 64em) {
         flex-direction: column;
         padding-left: 0;
       }
@@ -245,9 +245,8 @@
           background-color: rgba(255, 255, 255, 1);
           box-shadow: 4px 0 5px -2px var(--shadow);
           z-index: 2;
-          @media only screen and (max-width: 62em) {
+          @media only screen and (max-width: 64em) {
             width: 100%;
-            min-height: 45rem;
           }
         }
 
@@ -268,7 +267,7 @@
         justify-content: space-between;
         width: 60%;
         background-color: rgba(240, 240, 240, 1);
-        @media only screen and (max-width: 62em) {
+        @media only screen and (max-width: 64em) {
           width: 100%;
         }
       }
@@ -279,9 +278,9 @@
         color: rgba(168, 168, 168, 1);
         font-weight: 100;
         @media only screen and (max-width: 89.5em) {
-          padding: 8rem 22rem 0 12.5rem;
+          padding: 5rem 22rem 0 12.5rem;
         }
-        @media only screen and (max-width: 62em) {
+        @media only screen and (max-width: 64em) {
           margin-bottom: 2rem;
           padding: 8rem 10rem;
         }

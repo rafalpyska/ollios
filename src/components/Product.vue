@@ -53,9 +53,10 @@
 
   .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
     grid-auto-rows: 1fr;
     grid-gap: 4rem;
+    height: 100%;
     pointer-events: none;
     @media only screen and (max-width: 25em) {
       grid-auto-rows: .5fr;
@@ -72,14 +73,14 @@
       }
 
       &:last-child {
-        @media only screen and (max-width: 62em) {
+        @media only screen and (max-width: 64em) {
           margin-bottom: 8rem;
         }
       }
     }
 
     &__image {
-      max-width: 100%;
+      max-width: 40%;
       transition: .3s all;
     }
 

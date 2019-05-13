@@ -77,7 +77,7 @@
 
   .products, .product-details {
     line-height: 30px;
-    @media only screen and (max-width: 48em) {
+    @media only screen and (max-width: 105em) {
       line-height: 25px;
     }
   }
