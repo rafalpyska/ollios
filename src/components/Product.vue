@@ -73,9 +73,6 @@
           margin-bottom: 8rem;
         }
       }
-      &:not(:last-child) {
-        border-bottom: 1px dashed var(--blue);
-      }
     }
 
     &__image {
