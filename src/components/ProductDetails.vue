@@ -205,6 +205,9 @@
           margin-top: 9rem;
           margin-bottom: 4rem;
         }
+        @media only screen and (max-width: 48em) {
+          margin: 4rem 0;
+        }
       }
     }
 
@@ -271,6 +274,7 @@
       }
 
       &__description {
+        height: auto;
         padding: 8rem 37rem 0 12.5rem;
         color: rgba(168, 168, 168, 1);
         font-weight: 100;
@@ -279,7 +283,11 @@
         }
         @media only screen and (max-width: 62em) {
           margin-bottom: 2rem;
-          padding: 8rem 10rem 8rem 10rem;
+          padding: 8rem 10rem;
+        }
+        @media only screen and (max-width: 48em) {
+          margin-bottom: 2rem;
+          padding: 8rem;
         }
       }
     }
