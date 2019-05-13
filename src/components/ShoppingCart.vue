@@ -22,6 +22,7 @@
           </div>
           <div class="cart__product cart__product-price">
             <p class="item__price">Price for a single item: ${{ item.price }}</p>
+
           </div>
           <div class="cart__product cart__product-price">
             <AppButton @click.native="removeItem(index)">Remove</AppButton>
@@ -81,10 +82,13 @@
           return oldItem;
         });
         if (!found) {
-          this.cart = this.cart.concat(item)
+          this.cart = this.cart.concat(item);
+          EventBus.$emit('productsInBasket', this.cart);
+          // console.log(this.cart.length);
         }
         this.empty = false;
       });
+
       EventBus.$on('isActiveCart', (active) => {
         this.isToggle = active;
       });
