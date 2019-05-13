@@ -32,9 +32,10 @@
     align-items: center;
     width: 100%;
     height: 100vh;
-    background-color: rgba(240, 240, 240, 1);
+    background-color: var(--gray);
     z-index: 12;
   }
+
   .spinner {
     transition: all 0.3s linear;
     margin: 0 auto;

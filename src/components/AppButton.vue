@@ -19,7 +19,7 @@
     font-weight: 700;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.9);
-    background-color: rgba(0, 35, 255, 0.9);
+    background-color: var(--blue);
     border: none;
     border-radius: 2.5rem;
     transform: scale(1);
@@ -29,8 +29,9 @@
     &:hover {
       transform: scale(1.03);
     }
+
     &:disabled {
-      background-color: rgba(0, 35, 255, .4);
+      background-color: var(--blue-disabled)
     }
   }
 </style>

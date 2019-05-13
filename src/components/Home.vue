@@ -6,7 +6,6 @@
         v-for="image in images" :key="image.id"
         @click="pagination(image.id)"
         class="pagination__dot">
-
       </div>
     </div>
   </section>
@@ -47,9 +46,9 @@
       }
     },
     created() {
-      // this.intervalObject = setInterval(() => {
-      //   this.move();
-      // }, 5000)
+      this.intervalObject = setInterval(() => {
+        this.move();
+      }, 5000)
     },
     methods: {
       pagination(id) {
@@ -62,20 +61,23 @@
       move() {
         let flag = this.chosenImage;
         flag++;
-        if(flag >= this.images.length) {
+        if (flag >= this.images.length) {
           flag = 0;
         }
         this.chosenImage = flag;
       }
     }
   }
+
 </script>
 
 <style scoped lang="scss">
   .slider {
+    position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
   }
+
   .pagination {
     position: absolute;
     bottom: 5rem;
@@ -86,6 +88,7 @@
     @media only screen and (max-width: 62em) {
       bottom: 12rem;
     }
+
     &__dot {
       position: relative;
       width: 12px;
@@ -97,20 +100,22 @@
       margin: 0 4.5rem;
       transition: .3s;
       @media only screen and (max-width: 48em) {
-        border: 2px solid rgba(0, 35, 255, .9);
+        border: 2px solid var(--blue);
       }
+
       &:not(:last-child) {
         margin-right: 1rem;
       }
+
       &--active {
-        border-color:  rgba(0, 35, 255, .9);
-        background: rgba(0, 35, 255, .9);
+        border-color: var(--blue);
+        background: var(--blue);
       }
 
       &:hover {
         transition: .3s;
-        border-color:  rgba(0, 35, 255, .9);
-        background: rgba(0, 35, 255, .9);
+        border-color: var(--blue);
+        background: var(--blue);
 
         &:before {
           top: -48px;

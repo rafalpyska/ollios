@@ -15,7 +15,8 @@
             </div>
             <div class="cart__product cart__product-quantity">
               <label for="cart-quantity">Quantity</label>
-              <input class="input__quantity input__quantity--cart" id="cart-quantity" max="10" min="1" name="cart-quantity" type="number"
+              <input class="input__quantity input__quantity--cart" id="cart-quantity" max="10" min="1"
+                     name="cart-quantity" type="number"
                      v-model.number="item.quantity">
             </div>
           </div>
@@ -55,7 +56,7 @@
     computed: {
       totalPrice() {
         let total = 0;
-        if(this.cart && this.cart.length) {
+        if (this.cart && this.cart.length) {
           this.cart.forEach((item) => {
             total += (item.price * item.quantity);
           });
@@ -97,7 +98,7 @@
         this.cart[index].quantity = 0;
         this.cart.splice(index, 1);
 
-        if(this.cart.length === 0) {
+        if (this.cart.length === 0) {
           this.empty = true;
         }
       },
@@ -114,6 +115,7 @@
     &:nth-child(odd) {
       background-color: rgba(231, 231, 231, .3);
     }
+
     &__wrapper {
       display: flex;
       align-items: center;
@@ -127,6 +129,7 @@
         padding: 0 2rem;
       }
     }
+
     display: flex;
     width: 100%;
     height: 20rem;
@@ -136,9 +139,11 @@
     &:not(:first-child) {
       margin-top: 1rem;
     }
+
     &__empty {
       font-size: 1.8rem;
     }
+
     &__image {
       &-container {
         height: 100%;
@@ -146,16 +151,20 @@
           display: none;
         }
       }
+
       max-width: 100%;
       height: 100%;
     }
+
     &__product {
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 0 1rem;
+
       &-info {
       }
+
       &-quantity {
         display: flex;
         flex-direction: row;
@@ -163,20 +172,24 @@
         align-self: baseline;
 
       }
+
       &-price {
         margin-left: auto;
       }
     }
+
     &__summary {
       display: flex;
       justify-content: flex-end;
       width: 100%;
     }
   }
+
   .item {
     &__title {
       font-weight: 700;
     }
+
     &__price {
       font-size: 1.8rem;
     }
@@ -184,7 +197,7 @@
 
   .input__quantity--cart {
     margin-left: 2rem;
-    border: 1px solid rgba(0, 35, 255, 0.9);
+    border: 1px solid var(--blue);
   }
 
 </style>

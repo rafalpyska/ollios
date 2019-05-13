@@ -2,18 +2,18 @@
   <transition name="slide-fade">
     <section class="search">
       <button @click="close()" class="close close-search">X</button>
-<!--      Prevent doesn't work-->
+      <!--      Prevent doesn't work on one input-->
       <form @submit.prevent class="search__controls">
         <input class="search__input" id="search-input" type="search" name="search__input" v-model="searchValue">
         <label class="search__label" for="search-input">Type product that you are looking for</label>
       </form>
       <transition-group
-          v-if="filterProducts.length < products.length"
-          tag="section"
-          class="products"
-          name="list"
-          @before-leave="beforeLeave"
-        >
+        v-if="filterProducts.length < products.length"
+        tag="section"
+        class="products"
+        name="list"
+        @before-leave="beforeLeave"
+      >
         <Product
           v-for="item in filterProducts"
           :item="item"
@@ -21,7 +21,7 @@
           :class="'products__item--' + item.id"
           :key="item.id"
         />
-        </transition-group>
+      </transition-group>
 
       <router-view
         v-for="item in products"
@@ -44,7 +44,7 @@
       Product
     },
     props: {
-      products :{
+      products: {
         type: Array,
         required: true
       }
@@ -82,11 +82,13 @@
     @media only screen and (max-width: 48em) {
       padding: 2rem 3rem 2rem 3rem;
     }
+
     &__controls {
       display: flex;
       flex-direction: column;
       margin-bottom: 3rem;
     }
+
     &__controls {
       width: 100%;
       align-items: center;

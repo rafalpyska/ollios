@@ -84,6 +84,15 @@
 
 <style lang="scss">
 
+  :root {
+    --white: rgba(255, 255, 255, .9);
+    --blue: rgba(0, 35, 255, 1);
+    --blue-disabled: rgba(0, 35, 255, .4);
+    --gray: rgba(240, 240, 240, 1);
+    --black: rgba(0, 0, 0, .9);
+    --shadow: rgba(0, 0, 0, .2);
+  }
+
   html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -154,7 +163,7 @@
       align-items: center;
       width: 100%;
       height: 100%;
-      background-color: rgba(255, 255, 255, 1);
+      background-color: var(--white);
       z-index: 11;
       font-weight: 300;
     }
@@ -164,7 +173,7 @@
     width: 100%;
     min-height: 100vh;
     padding: 8rem 40rem 2rem 40rem;
-    background-color: rgba(240, 240, 240, 1);
+    background-color: var(--gray);
     @media only screen and (max-width: 62em) {
       padding: 8rem 17rem 8rem 17rem;
     }
@@ -180,7 +189,7 @@
     padding: 2rem;
     background: none;
     text-transform: uppercase;
-    color: rgba(0, 35, 255, 1);
+    color: var(--blue);
     cursor: pointer;
     font-size: 1rem;
     font-weight: 700;
@@ -249,7 +258,7 @@
       }
 
       &:focus {
-        outline: 2px solid rgba(0, 35, 255, 1);
+        outline: 2px solid var(--blue);
       }
     }
 

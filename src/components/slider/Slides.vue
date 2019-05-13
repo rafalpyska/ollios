@@ -1,14 +1,14 @@
 <template>
   <transition-group name="fade" mode="out-in" tag="div" id="slides">
-      <div :key="image.id" :style="setBackgroundImage" class="content">
-        <h1 class="title">{{ image.title }}</h1>
-        <h2 class="subtitle">{{ image.subtitle }}</h2>
-        <AppButton>
-          <router-link :to="'/about-us'" class="btn__view-more">
+    <div :key="image.id" :style="setBackgroundImage" class="content">
+      <h1 class="title">{{ image.title }}</h1>
+      <h2 class="subtitle">{{ image.subtitle }}</h2>
+      <AppButton>
+        <router-link :to="'/about-us'" class="btn__view-more">
           View More
-          </router-link>
-        </AppButton>
-      </div>
+        </router-link>
+      </AppButton>
+    </div>
   </transition-group>
 </template>
 
@@ -20,10 +20,15 @@
     components: {
       AppButton
     },
-    props: ["image"],
+    props: {
+      image: {
+        type: Object,
+        required: true
+      }
+    },
     computed: {
       setBackgroundImage() {
-        return { backgroundImage : "url("+ require("../../assets/" + this.image.url)+")"};
+        return {backgroundImage: "url(" + require("../../assets/" + this.image.url) + ")"};
       }
     }
   }
@@ -35,14 +40,14 @@
     &:link,
     &:visited {
       display: inline-block;
-      color: rgba(255, 255, 255, 1);
+      color: var(--white);
       text-decoration: none;
     }
   }
 
   .content {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     flex: 1;;
     text-align: center;
     text-transform: uppercase;
@@ -57,7 +62,7 @@
 
   #slides {
     width: 100%;
-    height: 100vh;
+    height: 100%;
   }
 
   .title,

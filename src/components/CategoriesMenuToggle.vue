@@ -4,7 +4,7 @@
 
 <script>
 
-  import { EventBus } from "@/event-bus.js";
+  import {EventBus} from "@/event-bus.js";
 
   export default {
     name: "CategoriesToggle",
@@ -14,7 +14,7 @@
       }
     },
     watch: {
-      '$route' () {
+      '$route'() {
         this.isActive = false;
         EventBus.$emit('routeChange', this.isActive);
       }
@@ -49,26 +49,32 @@
     @media only screen and (max-width: 34.125em) {
       top: 2rem;
     }
+
     &:focus {
       outline: none;
-      box-shadow: 0 0 3pt 2pt rgba(0, 35, 255, 1);;
+      box-shadow: 0 0 3pt 2pt var(--blue);
     }
+
     &:hover {
-      background-color: rgba(255, 255, 255, 1);
+      background-color: var(--white);
     }
+
     &:before {
       content: '\2630';
       font-size: 2.5rem;
       font-weight: 700;
       vertical-align: middle;
-      color: rgba(0, 35, 255, .9);
+      color: var(--blue);
     }
+
     &.active {
       background-color: rgba(240, 240, 240, .6);
       box-shadow: 0 0 1px #888;
+
       &:hover {
-        background-color: rgba(240, 240, 240, 1);
+        background-color: var(--gray);
       }
+
       &:before {
         content: '\01D5D1';
       }

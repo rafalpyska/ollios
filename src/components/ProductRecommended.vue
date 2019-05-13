@@ -6,21 +6,21 @@
       class="products"
       name="list"
     >
-    <Product
-      v-for="item in recommendedItems"
-      :item="item"
-      class="products__item"
-      :class="'products__item--' + item.id"
-      :key="item.id"
-    >
-    </Product>
+      <Product
+        v-for="item in recommendedItems"
+        :item="item"
+        class="products__item"
+        :class="'products__item--' + item.id"
+        :key="item.id"
+      >
+      </Product>
 
-    <router-view
-      v-for="item in products"
-      :item="item"
-      :key="item.id"
-      :products="products"
-    />
+      <router-view
+        v-for="item in products"
+        :item="item"
+        :key="item.id"
+        :products="products"
+      />
     </transition-group>
   </section>
 </template>
@@ -82,6 +82,7 @@
     @media only screen and (max-width: 62em) {
       flex-direction: column;
     }
+
     &__title {
       writing-mode: tb-rl;
       transform: rotate(180deg);
@@ -95,6 +96,7 @@
 
       }
     }
+
     &__item {
       display: flex;
       justify-content: center;
@@ -106,23 +108,28 @@
       @media only screen and (max-width: 62em) {
         width: 100%;
       }
+
       &:not(:last-child) {
         margin-bottom: 2rem;
       }
+
       &:last-child {
         @media only screen and (max-width: 62em) {
           margin-bottom: 8rem;
         }
       }
+
       &-image {
         &-container {
           width: 200px;
           height: 200px;
         }
       }
+
       &-title {
         font-size: 1.15rem;
       }
+
       &-description {
         font-size: .85rem;
         font-weight: 300;

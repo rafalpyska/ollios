@@ -1,53 +1,55 @@
 <template lang="html">
   <transition name="slide-fade">
-<!--    How to avoid so many router-views displaying in vue dev tools? It causes performance issues.-->
-  <section v-if="this.$route.params.product === routeItem" class="product-details">
-    <div class="product-details__image-container">
-      <button @click="close()" class="close">X</button>
-      <img :src="getImgUrl(image)" alt="" class="product-details__image">
-      <button @click="zoomIn" class="btn__zoom btn__zoom--in">+</button>
-      <button  @click="zoomOut" class="btn__zoom btn__zoom--out">-</button>
-    </div>
-    <div class="product-details__container">
-      <div class="product-details__description">
-        <section class="section__details">
-          <h1 class="heading section__title">Products</h1>
-          <p class="section__category">Product id {{ id }}</p>
-        </section>
-        <section class="product__description-container">
-          <h2 class="heading product__name">{{ name }}</h2>
-          <p class="product__description">{{ description }}</p>
-          <div class="product__order">
-            <div class="product__info product__price">
-              <p class="product__price-title">Cost</p>
-              <div class="price__container">
-                <span class="price">${{ price }}</span>
-                <span class="price-previous">${{ previousPrice }}</span>
-              </div>
-            </div>
-            <div class="product__info product__quantity">
-              <label for="quantity" class="product__price-title">Quantity</label>
-              <input class="input__quantity" id="quantity" max="10" min="1" name="quantity" type="number"
-                     v-model.number="quantityProduct">
-            </div>
-            <AppButton @click.native="addToCart(item)" :disabled="quantityProduct > 10" class="btn__add-to-cart">Add to cart</AppButton>
-          </div>
-          <transition name="fade">
-            <p class="info" v-if="added">'{{ name }}' was added to cart!</p>
-          </transition>
-          <transition name="fade">
-            <p class="info" v-if="quantityProduct > 10">You cannot buy more than 10 items! </p>
-          </transition>
-        </section>
-
+    <!--    How to avoid so many router-views displaying in vue dev tools? It causes performance issues.-->
+    <section v-if="this.$route.params.product === routeItem" class="product-details">
+      <div class="product-details__image-container">
+        <button @click="close()" class="close">X</button>
+        <img :src="getImgUrl(image)" alt="" class="product-details__image">
+        <button @click="zoomIn" class="btn__zoom btn__zoom--in">+</button>
+        <button @click="zoomOut" class="btn__zoom btn__zoom--out">-</button>
       </div>
-      <section class="recommended__wrapper">
-        <ProductRecommended
-          :products="products"
-        />
-      </section>
-    </div>
-  </section>
+      <div class="product-details__container">
+        <div class="product-details__description">
+          <section class="section__details">
+            <h1 class="heading section__title">Products</h1>
+            <p class="section__category">Product id {{ id }}</p>
+          </section>
+          <section class="product__description-container">
+            <h2 class="heading product__name">{{ name }}</h2>
+            <p class="product__description">{{ description }}</p>
+            <div class="product__order">
+              <div class="product__info product__price">
+                <p class="product__price-title">Cost</p>
+                <div class="price__container">
+                  <span class="price">${{ price }}</span>
+                  <span class="price-previous">${{ previousPrice }}</span>
+                </div>
+              </div>
+              <div class="product__info product__quantity">
+                <label for="quantity" class="product__price-title">Quantity</label>
+                <input class="input__quantity" id="quantity" max="10" min="1" name="quantity" type="number"
+                       v-model.number="quantityProduct">
+              </div>
+              <AppButton @click.native="addToCart(item)" :disabled="quantityProduct > 10" class="btn__add-to-cart">Add
+                to cart
+              </AppButton>
+            </div>
+            <transition name="fade">
+              <p class="info" v-if="added">'{{ name }}' was added to cart!</p>
+            </transition>
+            <transition name="fade">
+              <p class="info" v-if="quantityProduct > 10">You cannot buy more than 10 items! </p>
+            </transition>
+          </section>
+
+        </div>
+        <section class="recommended__wrapper">
+          <ProductRecommended
+            :products="products"
+          />
+        </section>
+      </div>
+    </section>
   </transition>
 </template>
 
@@ -100,7 +102,7 @@
       },
       addToCart(productToAdd) {
         let found = false;
-        if(this.quantityProduct > 10) {
+        if (this.quantityProduct > 10) {
           this.quantityProduct = 10;
         }
         this.cart.forEach((item) => {
@@ -141,8 +143,8 @@
       height: 4rem;
       font-size: 3rem;
       background-color: transparent;
-      color: rgba(0, 35, 255, 0.9);
-      border: 2px solid rgba(0, 35, 255, 0.9);
+      color: var(--blue);
+      border: 2px solid var(--blue);
       border-radius: 50%;
 
       &--in {
@@ -165,15 +167,16 @@
 
   .zoom {
     &-in {
-      transform: scale(1.2)!important;
+      transform: scale(1.2) !important;
     }
   }
 
   .heading {
     line-height: 55px;
   }
+
   .info {
-    color: rgba(0, 35, 255, 0.9);
+    color: var(--blue);
     font-size: 1.8rem;
     font-weight: 300;
     text-transform: uppercase;
@@ -183,7 +186,7 @@
     &__title {
       margin: 0;
       font-size: 4.8rem;
-      color: rgba(0, 0, 0, 1);
+      color: var(--black);
     }
   }
 
@@ -192,6 +195,7 @@
       font-size: 2.4rem;
       font-weight: 300;
       margin-bottom: 8.5rem;
+
       &-container {
         margin-top: 15rem;
         margin-bottom: 11rem;
@@ -234,16 +238,18 @@
           align-items: center;
           width: 40%;
           background-color: rgba(255, 255, 255, 1);
-          box-shadow: 4px 0 5px -2px rgba(0, 0, 0, .1);
+          box-shadow: 4px 0 5px -2px var(--shadow);
           z-index: 2;
           @media only screen and (max-width: 62em) {
             width: 100%;
           }
         }
+
         transform: scale(1);
         transition: .3s all;
         max-width: 100%;
       }
+
       &__price {
         display: flex;
         flex-direction: column;
@@ -260,6 +266,7 @@
           width: 100%;
         }
       }
+
       &__description {
         padding: 8rem 37rem 0 12.5rem;
         color: rgba(168, 168, 168, 1);
@@ -277,7 +284,7 @@
     &__name {
       font-size: 7.2rem;
       font-weight: 300;
-      color: rgba(0, 35, 255, 0.9);
+      color: var(--blue);
       text-transform: uppercase;
       @media only screen and (max-width: 48em) {
         margin-top: 0;
@@ -296,12 +303,13 @@
         margin-left: 2rem;
       }
     }
+
     &__price-title,
     &__quantity-title {
       text-transform: uppercase;
       margin: 0 0 2.5rem 0;
       font-weight: 400;
-      color: rgba(0, 0, 0, .9)
+      color: var(--black);
     }
   }
 
@@ -314,16 +322,18 @@
   .price {
     font-size: 4.8rem;
     font-weight: 400;
-    color: rgba(0, 35, 255, 0.9);
+    color: var(--blue);
     margin-right: .75rem;
+
     &__container {
       display: flex;
       align-items: center;
     }
+
     &-previous {
       font-size: 2.4rem;
       font-weight: 400;
-      color: rgba(0, 0, 0, 1);
+      color: var(--black);
       text-decoration: line-through;
     }
   }

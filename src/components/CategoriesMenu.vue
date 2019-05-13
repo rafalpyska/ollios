@@ -15,7 +15,8 @@
 
 <script>
   import axios from 'axios';
-  import { EventBus } from "@/event-bus.js";
+  import {EventBus} from "@/event-bus.js";
+
   const API = '/static/products.json';
 
   export default {
@@ -28,7 +29,7 @@
       }
     },
     watch: {
-      '$route' () {
+      '$route'() {
         this.active = false;
       }
     },
@@ -70,6 +71,7 @@
     width: 100%;
     height: 100%;
     font-size: 1.8rem;
+
     &__container {
       display: flex;
       height: 100%;
@@ -81,10 +83,11 @@
       z-index: 10;
       @media only screen and (max-width: 62em) {
         width: 100%;
-        background-color: rgba(255, 255, 255, 1);
+        background-color: var(--white);
         z-index: 11;
       }
     }
+
     &__list {
       display: flex;
       flex-direction: column;
@@ -98,6 +101,7 @@
         width: 100%;
       }
     }
+
     &__item {
       display: flex;
       justify-content: flex-end;
@@ -106,6 +110,7 @@
         justify-content: center;
       }
     }
+
     &__link {
       display: flex;
       align-items: center;
@@ -115,14 +120,17 @@
       color: rgba(193, 193, 193, .9);
       transform: scale(1);
       transition: .3s all;
+
       &:hover {
         transform: scale(1.075);
       }
+
       &:link,
       &:visited {
         text-decoration: none;
       }
     }
+
     &__icons {
       width: 5rem;
       height: 5rem;
@@ -138,15 +146,19 @@
     &__living-room {
       background-image: url('../assets/categories/livingroom.png');
     }
+
     &__office {
       background-image: url('../assets/categories/office.png');
     }
+
     &__for-kids {
       background-image: url('../assets/categories/forkids.png');
     }
+
     &__kitchen {
       background-image: url('../assets/categories/kitchen.png');
     }
+
     &__accessories {
       background-image: url('../assets/categories/accessories.png');
     }
@@ -158,12 +170,12 @@
     margin-bottom: 2rem;
     text-decoration: none;
     text-transform: uppercase;
-    color: rgba(0, 35, 255, 1);
+    color: var(--blue);
   }
 
   .router-link-active {
     font-weight: bold;
-    border-right: 3px solid rgba(0, 35, 255, 0.9);
+    border-right: 3px solid var(----blue);
   }
 
 </style>
