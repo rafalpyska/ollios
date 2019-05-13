@@ -68,6 +68,9 @@
       padding: 2rem;
       background-color: var(--white);
       cursor: pointer;
+      @media only screen and (max-width: 34.125em) {
+        grid-column: 1 / -1;
+      }
       @media only screen and (max-width: 48em) {
         padding: 2rem 5rem 0 5rem;
       }
