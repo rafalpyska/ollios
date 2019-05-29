@@ -16,10 +16,10 @@
       >
         <Product
           v-for="item in filterProducts"
+          :key="item.id"
           :item="item"
           class="products__item"
           :class="'products__item--' + item.id"
-          :key="item.id"
         />
       </transition-group>
 
@@ -34,8 +34,8 @@
 </template>
 
 <script>
-  import filterProducts from "../mixins/filterProducts";
   import Product from "./Product"
+  import filterProducts from "../mixins/filterProducts";
   import transitionFix from "../mixins/transitionFix";
 
   export default {

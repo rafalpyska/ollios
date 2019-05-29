@@ -8,8 +8,8 @@
       </section>
 
       <form class="search-local">
-        <input class="search__input" id="search-input" type="search" name="search__input" v-model="searchValue">
-        <label class="search__label" for="search-input">Type product that you are looking for</label>
+        <input class="search__input" id="search-input-local" type="search" name="search__input" v-model="searchValue">
+        <label class="search__label" for="search-input-local">Type product that you are looking for</label>
       </form>
 
       <transition-group
@@ -64,7 +64,6 @@
     mixins: [filterProducts, transitionFix],
     data() {
       return {
-        status: false,
         itemDetails: null,
         searchValue: '',
       }

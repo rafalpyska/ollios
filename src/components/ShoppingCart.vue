@@ -50,23 +50,32 @@
     data() {
       return {
         isToggle: false,
+        total: 0,
         cart: null,
         empty: true
       }
     },
     computed: {
       totalPrice() {
-        let total = 0;
+        this.total = 0;
         if (this.cart && this.cart.length) {
           this.cart.forEach((item) => {
-            total += (item.price * item.quantity);
+            this.total += (item.price * item.quantity);
           });
-          return total;
+          return this.total;
         } else {
-          total = '0';
-          return total;
+          this.total = 0;
+          return this.total;
         }
       }
+    },
+    watch: {
+      cart: {
+        handler() {
+          localStorage.setItem('cart', JSON.stringify(this.cart));
+        },
+        deep: true,
+      },
     },
     created() {
       EventBus.$on('update-cart', (item) => {
@@ -84,7 +93,6 @@
         if (!found) {
           this.cart = this.cart.concat(item);
           EventBus.$emit('productsInBasket', this.cart);
-          // console.log(this.cart.length);
         }
         this.empty = false;
       });
@@ -93,15 +101,19 @@
         this.isToggle = active;
       });
     },
+    mounted() {
+      if (localStorage.getItem('cart')) {
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+      }
+    },
     beforeDestroy() {
       EventBus.$off('update-cart');
       EventBus.$off('isActiveCart');
     },
     methods: {
       removeItem(index) {
-        this.cart[index].quantity = 0;
         this.cart.splice(index, 1);
-
+        EventBus.$emit('productsInBasket', this.cart);
         if (this.cart.length === 0) {
           this.empty = true;
         }

@@ -61,11 +61,11 @@
     mounted() {
       // Fetch categories and products
       axios.get(API)
-        .then((response) => {
-          this.categories = response.data[0];
+        .then(( { data } ) => {
+          this.categories = data[0];
           this.products = this.getProductsInfo();
           EventBus.$emit('products', this.products);
-          setTimeout( () => this.status = false, 500);
+          setTimeout(() => this.status = false, 500);
         })
         .catch((error) => {
           console.log(error);
@@ -140,6 +140,7 @@
         display: none;
       }
     }
+
     &__title {
       font-size: 7.2rem;
       font-weight: 300;
@@ -152,6 +153,7 @@
       }
 
     }
+
     &__category {
       font-size: 1.8rem;
       font-weight: 300;
@@ -227,6 +229,7 @@
       top: 3.5rem;
       left: 4rem;
     }
+
     &:hover {
       color: rgba(0, 35, 255, 0.9);
     }
@@ -247,7 +250,8 @@
     text-align: center;
     font-weight: 700;
     font-size: 2rem;
-    -moz-appearance:textfield;
+    -moz-appearance: textfield;
+
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
       -webkit-appearance: none;

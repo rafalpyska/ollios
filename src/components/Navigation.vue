@@ -82,6 +82,14 @@
         toggleSearch: false
       }
     },
+    watch: {
+      productsInBasket: {
+        handler() {
+          localStorage.setItem('productsInBasket', JSON.stringify(this.productsInBasket));
+        },
+        deep: true,
+      },
+    },
     created() {
       EventBus.$on('cartClosed', (closed) => {
         this.toggleCart = closed;
@@ -90,6 +98,11 @@
       EventBus.$on('productsInBasket', (item) => {
         this.productsInBasket = item;
       });
+    },
+    mounted() {
+      if (localStorage.getItem('cart')) {
+        this.productsInBasket = JSON.parse(localStorage.getItem('productsInBasket'));
+      }
     },
     beforeDestroy() {
       EventBus.$off('cartClosed');
