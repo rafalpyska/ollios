@@ -105,6 +105,7 @@
       if (localStorage.getItem('cart')) {
         this.cart = JSON.parse(localStorage.getItem('cart'));
       }
+      localStorage.length >= 0 ? this.empty = false : this.empty = true;
     },
     beforeDestroy() {
       EventBus.$off('update-cart');
