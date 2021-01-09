@@ -4,8 +4,9 @@
       <nav class="categories">
         <ul class="categories__list">
           <li class="categories__item" v-for="category in dataToDisplay" :key="category.id">
-            <router-link :to="'/'+category.route" class="categories__link">{{ category.title }} <span
-              class="categories__icons" :class="category.class"></span></router-link>
+            <router-link :to="'/'+category.route" class="categories__link">{{ category.title }}
+              <img class="categories__icons" :class="category.class" :src="category.icon" alt="image">
+              </router-link>
           </li>
         </ul>
       </nav>
@@ -131,9 +132,6 @@
     &__icons {
       width: 5rem;
       height: 5rem;
-      background-position: right center;
-      background-repeat: no-repeat;
-      background-size: contain;
       align-items: center;
       margin-left: 3rem;
     }
@@ -141,23 +139,23 @@
 
   .icon {
     &__living-room {
-      background-image: url('../assets/categories/livingroom.png');
+
     }
 
     &__office {
-      background-image: url('../assets/categories/office.png');
+
     }
 
     &__for-kids {
-      background-image: url('../assets/categories/forkids.png');
+
     }
 
     &__kitchen {
-      background-image: url('../assets/categories/kitchen.png');
+
     }
 
     &__accessories {
-      background-image: url('../assets/categories/accessories.png');
+
     }
   }
 
