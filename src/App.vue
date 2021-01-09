@@ -34,7 +34,7 @@
   import Navigation from "./components/Navigation";
   import CategoriesMenuToggle from "./components/CategoriesMenuToggle";
   import CategoriesMenu from "./components/CategoriesMenu";
-  import ShoppingCart from "./components/ShoppingCart";
+  import ShoppingCart from "@/components/ShoppingCart";
 
   const API = '/static/products.json';
 

@@ -9,7 +9,6 @@
         <p class="products__description">{{ ellipsify(this.item.description, 100) }}</p>
       </slot>
       <slot name="price" :item="item">
-
       </slot>
     </article>
   </router-link>
@@ -74,7 +73,6 @@
       @media only screen and (max-width: 48em) {
         padding: 2rem 5rem 0 5rem;
       }
-
       &:last-child {
         @media only screen and (max-width: 64em) {
           margin-bottom: 8rem;

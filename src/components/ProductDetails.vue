@@ -230,7 +230,7 @@
       left: 0;
       display: flex;
       width: 100%;
-      height: 100vh;
+      height: 100%;
       z-index: 10;
       padding-left: 14.5rem;
       @media only screen and (max-width: 64em) {
@@ -242,7 +242,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        width: 60%;
+        flex: 1 1 60%;
         background-color: rgba(240, 240, 240, 1);
         @media only screen and (max-width: 64em) {
           display: inline-block;
@@ -274,7 +274,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          width: 40%;
+          flex: 1 1 40%;
           background-color: rgba(255, 255, 255, 1);
           box-shadow: 4px 0 5px -2px var(--shadow);
           z-index: 2;
