@@ -36,7 +36,7 @@
   import CategoriesMenu from "./components/CategoriesMenu";
   import ShoppingCart from "@/components/ShoppingCart";
 
-  const API = '/static/products.json';
+  const API = 'products.json';
 
   export default {
     name: "App",
@@ -70,7 +70,9 @@
     methods: {
       getProductsInfo() {
         return Object.values(this.categories.category).map(category => {
+          /*eslint-disable */
           let myProducts;
+          /*eslint-enable */
           return myProducts = Object.values(category.products);
         }).flat()
       }

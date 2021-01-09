@@ -1,6 +1,8 @@
 import Vue from 'vue'
-import App from './App'
+import App from './App.vue'
+import './registerServiceWorker'
 import router from './router'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -12,9 +14,8 @@ Object.defineProperty(Array.prototype, 'flat', {
   }
 });
 
-/* eslint-disable no-new */
 new Vue({
-  el: '#app',
   router,
+  store,
   render: h => h(App)
-})
+}).$mount('#app')

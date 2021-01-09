@@ -20,7 +20,7 @@
   import axios from 'axios';
   import {EventBus} from "@/event-bus.js";
   import getImageUrl from '../mixins/getImageUrl';
-  const API = '/static/products.json';
+  const API = 'products.json';
 
   export default {
     name: "CategoriesMenu",
@@ -42,7 +42,9 @@
         .then((response) => {
           this.data = response.data[0];
           for (let key in this.data) {
+            /*eslint-disable */
             if (!this.data.hasOwnProperty(key)) continue;
+            /*eslint-enable */
             this.dataToDisplay = this.data[key];
           }
           this.status = false;
