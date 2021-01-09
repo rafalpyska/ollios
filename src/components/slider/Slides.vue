@@ -3,10 +3,8 @@
     <div :key="image.id" :style="setBackgroundImage" class="content">
       <h1 class="title">{{ image.title }}</h1>
       <h2 class="subtitle">{{ image.subtitle }}</h2>
-      <AppButton>
-        <router-link :to="'/about-us'" class="btn__view-more">
-          View More
-        </router-link>
+      <AppButton :to="'/about-us'" class="btn__view-more">
+        View More
       </AppButton>
     </div>
   </transition-group>
@@ -37,9 +35,10 @@
 <style lang="scss">
 
   .btn__view-more {
+    font-size: 1.75rem;
+    padding: 1.5rem 5rem;
     &:link,
     &:visited {
-      display: inline-block;
       color: var(--white);
       text-decoration: none;
     }
@@ -48,7 +47,7 @@
   .content {
     width: 100%;
     height: 100%;
-    flex: 1;;
+    flex: 1;
     text-align: center;
     text-transform: uppercase;
     background-size: cover;
@@ -83,6 +82,7 @@
   .subtitle {
     font-size: 3.6rem;
     font-weight: 300;
+    margin-bottom: 3rem;
     @media only screen and (max-width: 34.125em) {
       font-size: 2.5rem;
     }

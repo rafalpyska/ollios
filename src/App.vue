@@ -245,7 +245,7 @@
     border-radius: 2.5rem;
     text-align: center;
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.75rem;
     -moz-appearance: textfield;
 
     &::-webkit-inner-spin-button,
