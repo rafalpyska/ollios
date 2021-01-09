@@ -34,6 +34,8 @@
 
 <style lang="scss">
   .btn {
+    font-size: 1.75rem;
+    padding: 1.5rem 5rem;
     align-self: flex-end;
     margin-top: .75rem;
     font-weight: 700;

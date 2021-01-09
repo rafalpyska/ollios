@@ -337,6 +337,7 @@
   }
 
   .btn__add-to-cart {
+    padding: 1rem 5rem;
     @media only screen and (max-width: 34.125em) {
       margin-top: 4rem;
     }
