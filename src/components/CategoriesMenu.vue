@@ -4,8 +4,11 @@
       <nav class="categories">
         <ul class="categories__list">
           <li class="categories__item" v-for="category in dataToDisplay" :key="category.id">
-            <router-link :to="'/'+category.route" class="categories__link">{{ category.title }} <span
-              class="categories__icons" :class="category.class"></span></router-link>
+            <router-link :to="'/'+category.route" class="categories__link">{{ category.title }}
+              
+              <object class="categories__icons" :class="category.class" :data="getImgUrl(category.icon)" fill="#fff"></object>
+
+              </router-link>
           </li>
         </ul>
       </nav>
@@ -16,7 +19,7 @@
 <script>
   import axios from 'axios';
   import {EventBus} from "@/event-bus.js";
-
+  import getImageUrl from '../mixins/getImageUrl';
   const API = '/static/products.json';
 
   export default {
@@ -33,6 +36,7 @@
         this.active = false;
       }
     },
+    mixins: [getImageUrl],
     created() {
       axios.get(API)
         .then((response) => {
@@ -114,7 +118,7 @@
       margin-right: 1rem;
       padding-right: 2rem;
       justify-content: flex-end;
-      color: rgba(193, 193, 193, .9);
+      color: rgba(0, 0, 0, .9);
       transform: scale(1);
       transition: .3s all;
 
@@ -131,33 +135,9 @@
     &__icons {
       width: 5rem;
       height: 5rem;
-      background-position: right center;
-      background-repeat: no-repeat;
-      background-size: contain;
       align-items: center;
       margin-left: 3rem;
-    }
-  }
-
-  .icon {
-    &__living-room {
-      background-image: url('../assets/categories/livingroom.png');
-    }
-
-    &__office {
-      background-image: url('../assets/categories/office.png');
-    }
-
-    &__for-kids {
-      background-image: url('../assets/categories/forkids.png');
-    }
-
-    &__kitchen {
-      background-image: url('../assets/categories/kitchen.png');
-    }
-
-    &__accessories {
-      background-image: url('../assets/categories/accessories.png');
+      fill: white;
     }
   }
 

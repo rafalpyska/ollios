@@ -1,21 +1,43 @@
 <template lang="html">
-  <button class="btn">
+  <component
+    :is="type"
+    :to="to"
+    class="btn">
     <slot>Button</slot>
-  </button>
+  </component>
 </template>
 
 <script>
   export default {
-    name: "AppButton"
+    name: "AppButton",
+    props: {
+      to: {
+        required: false
+      },
+      btnType: {
+        type: String
+      },
+      disabled: {
+        type: Boolean
+      }
+    },
+    computed: {
+      type() {
+        if (this.to) {
+          return 'router-link';
+        }
+        return 'button';
+      }
+   }
   }
 </script>
 
 <style lang="scss">
   .btn {
-    min-width: 10rem;
+    font-size: 1.75rem;
+    padding: 1.5rem 5rem;
     align-self: flex-end;
     margin-top: .75rem;
-    padding: 1.5rem 5rem;
     font-weight: 700;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.9);

@@ -2,7 +2,6 @@
   <transition name="slide-fade">
     <section class="search">
       <button @click="close()" class="close close-search">X</button>
-      <!--      Prevent doesn't work on one input-->
       <form @submit.prevent class="search__controls">
         <input class="search__input" id="search-input" type="search" name="search__input" v-model="searchValue">
         <label class="search__label" for="search-input">Type product that you are looking for</label>

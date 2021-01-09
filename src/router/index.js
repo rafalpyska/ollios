@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
+import Home from '@/views/Home'
 import Categories from '@/components/Categories'
 import AboutUs from '@/components/AboutUs'
 import ProductDetails from '@/components/ProductDetails'

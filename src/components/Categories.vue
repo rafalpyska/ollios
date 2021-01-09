@@ -7,7 +7,7 @@
         <p class="section__category">{{ $route.name }}</p>
       </section>
 
-      <form class="search-local">
+      <form class="search-local" @submit.prevent>
         <input class="search__input" id="search-input-local" type="search" name="search__input" v-model="searchValue">
         <label class="search__label" for="search-input-local">Type product that you are looking for</label>
       </form>
@@ -41,15 +41,13 @@
 
 <script>
   import Product from "./Product";
-  import ProductDetails from "./ProductDetails";
   import filterProducts from "../mixins/filterProducts";
   import transitionFix from "../mixins/transitionFix";
 
   export default {
     name: 'Categories',
     components: {
-      Product,
-      ProductDetails
+      Product
     },
     props: {
       categories: {

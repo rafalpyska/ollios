@@ -32,11 +32,9 @@
   import {EventBus} from "@/event-bus.js";
   import AppLoadingSpinner from "./components/AppLoadingSpinner";
   import Navigation from "./components/Navigation";
-  import Home from "./components/Home";
   import CategoriesMenuToggle from "./components/CategoriesMenuToggle";
   import CategoriesMenu from "./components/CategoriesMenu";
-  import ShoppingCart from "./components/ShoppingCart";
-  import Search from "./components/Search";
+  import ShoppingCart from "@/components/ShoppingCart";
 
   const API = '/static/products.json';
 
@@ -45,11 +43,9 @@
     components: {
       AppLoadingSpinner,
       Navigation,
-      Home,
       CategoriesMenuToggle,
       CategoriesMenu,
-      ShoppingCart,
-      Search
+      ShoppingCart
     },
     data() {
       return {
@@ -157,7 +153,7 @@
     &__category {
       font-size: 1.8rem;
       font-weight: 300;
-      color: #c1c1c1;
+      color: rgba(0, 0, 0, 1);
     }
   }
 
@@ -249,7 +245,7 @@
     border-radius: 2.5rem;
     text-align: center;
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.75rem;
     -moz-appearance: textfield;
 
     &::-webkit-inner-spin-button,
@@ -264,7 +260,7 @@
     &__input {
       font-family: 'Lato', sans-serif;
       font-size: 4rem;
-      font-weight: 100;
+      font-weight: 300;
       text-transform: uppercase;
       border: 0;
       border-bottom: 1px solid rgba(177, 177, 177, .9);
@@ -284,7 +280,7 @@
 
     &__label {
       font-size: 1.8rem;
-      color: rgba(177, 177, 177, .9);
+      color: rgba(0, 0, 0, .7);
     }
   }
 

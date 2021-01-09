@@ -1,12 +1,10 @@
 <template>
-  <transition-group name="fade" mode="out-in" tag="div" id="slides">
-    <div :key="image.id" :style="setBackgroundImage" class="content">
-      <h1 class="title">{{ image.title }}</h1>
-      <h2 class="subtitle">{{ image.subtitle }}</h2>
-      <AppButton>
-        <router-link :to="'/about-us'" class="btn__view-more">
-          View More
-        </router-link>
+  <transition-group name="fade" mode="out-in" tag="div" id="slides" class="slider__slides-container">
+    <div :key="image.id" :style="setBackgroundImage" class="slider__slide">
+      <h1 class="slider__title">{{ image.title }}</h1>
+      <h2 class="slider__subtitle">{{ image.subtitle }}</h2>
+      <AppButton :to="'/about-us'" class="btn__view-more">
+        View More
       </AppButton>
     </div>
   </transition-group>
@@ -39,52 +37,52 @@
   .btn__view-more {
     &:link,
     &:visited {
-      display: inline-block;
       color: var(--white);
       text-decoration: none;
     }
   }
 
-  .content {
-    width: 100%;
-    height: 100%;
-    flex: 1;;
-    text-align: center;
-    text-transform: uppercase;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    padding-left: 8rem;
-    @media only screen and (max-width: 64em) {
-      padding-left: 0;
+  .slider {
+    &__slides {
+      &-container {
+        width: 100%;
+        height: 100%;
+      }
     }
-  }
-
-  #slides {
-    width: 100%;
-    height: 100%;
-  }
-
-  .title,
-  .subtitle {
-    margin: 0;
-    padding: .75rem;
-  }
-
-  .title {
-    font-size: 22rem;
-    font-weight: 300;
-    @media only screen and (max-width: 64em) {
-      padding-top: 8rem;
-      font-size: 7rem;
+    &__slide {
+      width: 100%;
+      height: 100%;
+      flex: 1;
+      text-align: center;
+      text-transform: uppercase;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      padding-left: 8rem;
+      @media only screen and (max-width: 64em) {
+        padding-left: 0;
+      }
     }
-  }
-
-  .subtitle {
-    font-size: 3.6rem;
-    font-weight: 300;
-    @media only screen and (max-width: 34.125em) {
-      font-size: 2.5rem;
+    &__title,
+    &__subtitle {
+      margin: 0;
+      padding: .75rem;
+    }
+    &__title {
+      font-size: 22rem;
+      font-weight: 300;
+      @media only screen and (max-width: 64em) {
+        padding-top: 8rem;
+        font-size: 7rem;
+      }
+    }
+    &__subtitle {
+      font-size: 3.6rem;
+      font-weight: 300;
+      margin-bottom: 3rem;
+      @media only screen and (max-width: 34.125em) {
+        font-size: 2.5rem;
+      }
     }
   }
 

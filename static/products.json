@@ -4,7 +4,7 @@
       "0": {
         "title": "Living Room",
         "id": 1,
-        "icon": "./assets/categories/livingroom.png",
+        "icon": "categories/livingroom.svg",
         "route": "category-living-room",
         "class": "icon__living-room",
         "products": {
@@ -63,7 +63,7 @@
       "1": {
         "title": "Office",
         "id": 2,
-        "icon": "./assets/categories/office.png",
+        "icon": "categories/office.svg",
         "route": "category-office",
         "class": "icon__office",
         "products": {
@@ -122,7 +122,7 @@
       "2": {
         "title": "For kids",
         "id": 3,
-        "icon": "./assets/categories/forkids.png",
+        "icon": "categories/forkids.svg",
         "route": "category-for-kids",
         "class": "icon__for-kids",
         "products": {
@@ -181,7 +181,7 @@
       "3": {
         "title": "Kitchen",
         "id": 4,
-        "icon": "./assets/categories/kitchen.png",
+        "icon": "categories/kitchen.svg",
         "route": "category-kitchen",
         "class": "icon__kitchen",
         "products": {
@@ -241,7 +241,7 @@
       "4": {
         "title": "Accessories",
         "id": 5,
-        "icon": "./assets/categories/accessories.png",
+        "icon": "categories/accessories.svg",
         "route": "category-accessories",
         "class": "icon__accessories",
         "products": {

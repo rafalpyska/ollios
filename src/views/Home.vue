@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import Slides from './slider/Slides'
+  import Slides from '@/components/slider/Slides'
 
   export default {
     name: "Home",
