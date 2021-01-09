@@ -99,7 +99,7 @@
 
     &__description {
       font-size: 1.8rem;
-      color: rgba(168, 168, 168, 1);
+      color: rgba(0, 0, 0, .8);
       font-weight: 300;
     }
 

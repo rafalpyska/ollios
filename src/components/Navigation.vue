@@ -221,7 +221,7 @@
     &__home,
     &__basket,
     &__search {
-      fill: rgb(216, 216, 216);
+      fill: rgba(0, 0, 0, .9);
       transition: .3s all;
     }
     &__home {

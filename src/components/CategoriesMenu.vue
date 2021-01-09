@@ -5,7 +5,9 @@
         <ul class="categories__list">
           <li class="categories__item" v-for="category in dataToDisplay" :key="category.id">
             <router-link :to="'/'+category.route" class="categories__link">{{ category.title }}
-              <img class="categories__icons" :class="category.class" :src="category.icon" alt="image">
+              
+              <object class="categories__icons" :class="category.class" :data="getImgUrl(category.icon)" fill="#fff"></object>
+
               </router-link>
           </li>
         </ul>
@@ -17,7 +19,7 @@
 <script>
   import axios from 'axios';
   import {EventBus} from "@/event-bus.js";
-
+  import getImageUrl from '../mixins/getImageUrl';
   const API = '/static/products.json';
 
   export default {
@@ -34,6 +36,7 @@
         this.active = false;
       }
     },
+    mixins: [getImageUrl],
     created() {
       axios.get(API)
         .then((response) => {
@@ -115,7 +118,7 @@
       margin-right: 1rem;
       padding-right: 2rem;
       justify-content: flex-end;
-      color: rgba(193, 193, 193, .9);
+      color: rgba(0, 0, 0, .9);
       transform: scale(1);
       transition: .3s all;
 
@@ -134,28 +137,7 @@
       height: 5rem;
       align-items: center;
       margin-left: 3rem;
-    }
-  }
-
-  .icon {
-    &__living-room {
-
-    }
-
-    &__office {
-
-    }
-
-    &__for-kids {
-
-    }
-
-    &__kitchen {
-
-    }
-
-    &__accessories {
-
+      fill: white;
     }
   }
 

@@ -253,7 +253,7 @@
       &__description {
         height: auto;
         padding: 8rem 37rem 0 12.5rem;
-        color: rgba(168, 168, 168, 1);
+        color: rgba(0, 0, 0, .9);
         font-weight: 100;
         @media only screen and (max-width: 90em) {
           padding: 5rem 22rem 0 12.5rem;
@@ -371,6 +371,19 @@
       width: 100%;
       background-color: rgba(255, 255, 255, 0.9);
     }
+  }
+  .slide-fade-enter-active,
+  .slide-fade-leave-active {
+    transition: all .5s ease;
+  }
+
+  .slide-fade-enter {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  .slide-fade-leave-to {
+    transform: translateY(-100%);
   }
 
 </style>

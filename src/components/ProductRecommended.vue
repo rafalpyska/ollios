@@ -27,14 +27,12 @@
 <script>
   import getImageUrl from '../mixins/getImageUrl'
   import ellipsify from '../mixins/ellipsify'
-  import ProductDetails from "./ProductDetails";
   import Product from "./Product";
 
   export default {
     name: "RecommendedProducts",
     components: {
-      Product,
-      ProductDetails
+      Product
     },
     props: {
       products: {
