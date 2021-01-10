@@ -1,4 +1,5 @@
-# weeklywebdevchallange10
+# Ollios - Weekly Web Dev Challange 10
+https://ollios.netlify.com/
 
 ## Project setup
 ```
