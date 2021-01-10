@@ -4,16 +4,12 @@
 
     <Navigation/>
 
-    <AppLoadingSpinner
-      v-if="status"
-    />
+    <!-- <AppLoadingSpinner
+      v-if="productsLoadingStatus"
+    /> -->
 
     <transition name="slide-in" mode="out-in">
-      <router-view
-        v-if="!status"
-        :categories="categories"
-        :products="products"
-      />
+      <router-view/>
     </transition>
 
     <CategoriesMenuToggle/>
@@ -27,9 +23,6 @@
 </template>
 
 <script>
-
-  import axios from 'axios';
-  import {EventBus} from "@/event-bus.js";
   import AppLoadingSpinner from "./components/AppLoadingSpinner";
   import Navigation from "./components/Navigation";
   import CategoriesMenuToggle from "./components/CategoriesMenuToggle";
@@ -46,37 +39,7 @@
       CategoriesMenuToggle,
       CategoriesMenu,
       ShoppingCart
-    },
-    data() {
-      return {
-        status: true,
-        categories: null,
-        products: null
-      }
-    },
-    mounted() {
-      // Fetch categories and products
-      axios.get(API)
-        .then(( { data } ) => {
-          this.categories = data[0];
-          this.products = this.getProductsInfo();
-          EventBus.$emit('products', this.products);
-          setTimeout(() => this.status = false, 500);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    methods: {
-      getProductsInfo() {
-        return Object.values(this.categories.category).map(category => {
-          /*eslint-disable */
-          let myProducts;
-          /*eslint-enable */
-          return myProducts = Object.values(category.products);
-        }).flat()
-      }
-    },
+    }
   };
 </script>
 

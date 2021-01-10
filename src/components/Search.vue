@@ -6,7 +6,7 @@
         <input class="search__input" id="search-input" type="search" name="search__input" v-model="searchValue">
         <label class="search__label" for="search-input">Type product that you are looking for</label>
       </form>
-      <transition-group
+      <!-- <transition-group
         v-if="filterProducts.length < products.length"
         tag="section"
         class="products"
@@ -20,7 +20,7 @@
           class="products__item"
           :class="'products__item--' + item.id"
         />
-      </transition-group>
+      </transition-group> -->
 
       <router-view
         v-for="item in products"
@@ -33,15 +33,11 @@
 </template>
 
 <script>
-  import Product from "./Product"
   import filterProducts from "../mixins/filterProducts";
   import transitionFix from "../mixins/transitionFix";
 
   export default {
     name: "Search",
-    components: {
-      Product
-    },
     props: {
       products: {
         type: Array,

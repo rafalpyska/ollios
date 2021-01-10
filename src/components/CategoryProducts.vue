@@ -1,49 +1,65 @@
 <template lang="html">
-  <router-link :to="{ path: this.item.category + '/' + routeProduct }" tag="article" :data-product="nameProduct">
-    <img :src="getImgUrl(this.item.image)" :alt="nameProduct" class="products__image"/>
-    <article class="products__info">
-      <slot name="title" :item="item">
-        <p class="products__name">{{ this.item.title }}</p>
-      </slot>
-      <slot name="description" :item="item">
-        <p class="products__description">{{ ellipsify(this.item.description, 100) }}</p>
-      </slot>
-      <slot name="price" :item="item">
-      </slot>
-    </article>
-  </router-link>
+  <section class="search__container">
+    <main class="category__main">
+
+      <div class="section__details">
+        <h1 class="section__title">Products</h1>
+        <p class="section__category">{{ $route.name }}</p>
+      </div>
+
+      <form class="search-local" @submit.prevent>
+        <input class="search__input" id="search-input-local" type="search" name="search__input" v-model="searchValue">
+        <label class="search__label" for="search-input-local">Type product that you are looking for</label>
+      </form>
+
+        <transition-group
+          tag="section"
+          class="products"
+          name="list"
+          v-for="products in singleCategory"
+        >
+          <router-link to="/japs" tag="article" :data-product="product.title"  v-for="product in products.products" :key="product.id">
+            <img :src="product.image.url" class="products__image"/>
+            <div class="products__info">
+              <slot name="title">
+                <p class="products__name">{{ product.title }}</p>
+              </slot>
+              <slot name="description">
+                <p class="products__description">{{ product.description }}</p>
+              </slot>
+              <slot name="price">
+              </slot>
+            </div>
+          </router-link>
+        </transition-group>
+
+      <router-view/>
+    </main>
+
+  </section>
 </template>
 
 <script>
-  import getImageUrl from '../mixins/getImageUrl'
-  import ellipsify from '../mixins/ellipsify'
+  import { mapGetters } from 'vuex';
 
   export default {
-    name: "Product",
+    name: "CategoryProduct",
     props: {
-      item: {
-        type: Object,
+      categorySlug: {
+        type: String,
         required: true
       }
     },
-    mixins: [getImageUrl, ellipsify],
     data() {
       return {
-        nameProduct: this.item.title,
-        descriptionProduct: this.item.description,
-        priceProduct: this.item.price,
-        imageProduct: this.item.image,
-        routeProduct: this.item.route
+        searchValue: ''
       }
     },
-    methods: {
-      ellipsify(string) {
-        if (string.length > 100) {
-          return (string.substring(0, 100) + "...");
-        } else {
-          return string;
-        }
-      }
+    computed: {
+      ...mapGetters(['singleCategoryLoadingStatus', 'singleCategoryError', 'singleCategory'])
+    },
+    async created() {
+      await this.$store.dispatch('fetchSingleCategory', this.categorySlug);
     }
   };
 </script>

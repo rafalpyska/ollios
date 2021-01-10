@@ -1,7 +1,7 @@
 <template lang="html">
   <section class="recommended">
     <h2 class="recommended__title">Recommended</h2>
-    <transition-group
+    <!-- <transition-group
       tag="section"
       class="products"
       name="list"
@@ -20,20 +20,16 @@
         :key="item.id"
         :products="products"
       />
-    </transition-group>
+    </transition-group> -->
   </section>
 </template>
 
 <script>
   import getImageUrl from '../mixins/getImageUrl'
   import ellipsify from '../mixins/ellipsify'
-  import Product from "./Product";
 
   export default {
     name: "RecommendedProducts",
-    components: {
-      Product
-    },
     props: {
       products: {
         type: Array,

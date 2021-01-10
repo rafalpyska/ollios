@@ -3,11 +3,9 @@
     <aside v-show="active" class="categories__container">
       <nav class="categories">
         <ul class="categories__list">
-          <li class="categories__item" v-for="category in dataToDisplay" :key="category.id">
-            <router-link :to="'/'+category.route" class="categories__link">{{ category.title }}
-              
-              <object class="categories__icons" :class="category.class" :data="getImgUrl(category.icon)" fill="#fff"></object>
-
+          <li class="categories__item" v-for="category in categories" :key="category.id">
+            <router-link :to="{ name: 'CategoryProducts', params: { categorySlug: category.slug } }" class="categories__link">{{ category.title }}        
+              <!-- <object class="categories__icons" :class="category.class" :data="getImgUrl(category.icon)" fill="#fff"></object> -->
               </router-link>
           </li>
         </ul>
@@ -17,17 +15,14 @@
 </template>
 
 <script>
-  import axios from 'axios';
+  import { mapGetters } from 'vuex';
   import {EventBus} from "@/event-bus.js";
   import getImageUrl from '../mixins/getImageUrl';
-  const API = 'products.json';
 
   export default {
     name: "CategoriesMenu",
     data() {
       return {
-        data: [],
-        dataToDisplay: [],
         active: false,
       }
     },
@@ -37,21 +32,16 @@
       }
     },
     mixins: [getImageUrl],
-    created() {
-      axios.get(API)
-        .then((response) => {
-          this.data = response.data[0];
-          for (let key in this.data) {
-            /*eslint-disable */
-            if (!this.data.hasOwnProperty(key)) continue;
-            /*eslint-enable */
-            this.dataToDisplay = this.data[key];
-          }
-          this.status = false;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    computed: {
+      ...mapGetters([
+        'categoriesLoadingStatus',
+        'categoriesError',
+        'categories'
+      ])
+    },
+    async created() {
+      if (this.products && this.products.length > 0) return;
+      await this.$store.dispatch('fetchCategories');
       EventBus.$on('toggleActive', (active) => {
         this.active = active;
       });

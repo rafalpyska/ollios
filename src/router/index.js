@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
-import Categories from '@/components/Categories'
+import Categories from '@/views/Categories'
 import AboutUs from '@/components/AboutUs'
+import CategoryProducts from '@/components/CategoryProducts'
 import ProductDetails from '@/components/ProductDetails'
 import Search from '@/components/Search'
 import NotFound from "../components/NotFound";
@@ -22,106 +23,24 @@ export default new Router({
       props: true
     },
     {
-      path: '/category-living-room',
-      name: 'LivingRoom',
+      path: '/category',
+      name: 'Categories',
       component: Categories,
       children: [
         {
-          //How to redirect if dynamic route doesn't match product name?
-          path: ':product',
-          component: ProductDetails,
+          path: ':categorySlug',
+          component: CategoryProducts,
+          name: "CategoryProducts",
           props: true,
-          children: [
-            {
-              path: ':*',
-              component: NotFound
-            }
-          ]
         }
       ],
       props: true
     },
     {
-      path: '/category-office',
-      name: 'Office',
-      component: Categories,
-      children: [
-        {
-          path: ':product',
-          component: ProductDetails,
-          props: true,
-          children: [
-            {
-              path: ':*',
-              component: NotFound
-            }
-          ]
-        }
-      ],
-      props: true
-    },
-    {
-      path: '/category-for-kids',
-      name: 'ForKids',
-      component: Categories,
-      children: [
-        {
-          path: ':product',
-          component: ProductDetails,
-          props: true,
-          children: [
-            {
-              path: ':*',
-              component: NotFound
-            }
-          ]
-        }
-      ],
-      props: true
-    },
-    {
-      path: '/category-kitchen',
-      name: 'Kitchen',
-      component: Categories,
-      children: [
-        {
-          path: ':product',
-          component: ProductDetails,
-          props: true,
-          children: [
-            {
-              path: ':*',
-              component: NotFound
-            }
-          ]
-        }
-      ],
-      props: true
-    },
-    {
-      path: '/category-accessories',
-      name: 'Accessories',
-      component: Categories,
-      children: [
-        {
-          path: ':product',
-          component: ProductDetails,
-          props: true,
-          children: [
-            {
-              path: ':*',
-              component: NotFound
-            }
-          ]
-        }
-      ],
-      props: true
-    },
-    {
-      path: '/product-details',
-      name: 'ProductDetails',
+      path: '/:productID',
       component: ProductDetails,
-      props: true
+      name: "ProductDetails",
+      props: true,
     },
     {
       path: '/search',
