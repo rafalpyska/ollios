@@ -16,8 +16,6 @@
 
     <CategoriesMenu/>
 
-    <ShoppingCart/>
-
   </section>
 
 </template>
@@ -27,9 +25,6 @@
   import Navigation from "./components/Navigation";
   import CategoriesMenuToggle from "./components/CategoriesMenuToggle";
   import CategoriesMenu from "./components/CategoriesMenu";
-  import ShoppingCart from "@/components/ShoppingCart";
-
-  const API = 'products.json';
 
   export default {
     name: "App",
@@ -37,8 +32,7 @@
       AppLoadingSpinner,
       Navigation,
       CategoriesMenuToggle,
-      CategoriesMenu,
-      ShoppingCart
+      CategoriesMenu
     }
   };
 </script>
@@ -52,33 +46,6 @@
     --gray: rgba(240, 240, 240, 1);
     --black: rgba(0, 0, 0, .9);
     --shadow: rgba(0, 0, 0, .2);
-  }
-
-  html {
-    box-sizing: border-box;
-    font-size: 62.5%;
-    @media only screen and (max-width: 160.000em) {
-      font-size: 50.5%;
-    }
-    @media only screen and (max-width: 105em) {
-      font-size: 42.5%;
-    }
-    @media only screen and (max-width: 48em) {
-    }
-  }
-
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-
-  body {
-    font-family: 'Lato', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-
-  [v-cloak] {
-    display: none;
   }
 
   .ovHidden {
@@ -121,24 +88,6 @@
       color: rgba(0, 0, 0, 1);
     }
   }
-
-  .cart {
-    &-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      background-color: var(--white);
-      z-index: 12;
-      font-weight: 300;
-    }
-  }
-
   .category__main {
     width: 100%;
     min-height: 100vh;

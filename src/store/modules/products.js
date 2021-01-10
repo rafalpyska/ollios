@@ -60,6 +60,17 @@ export default {
         .catch(error => {
           commit('SET_PRODUCTS_ERROR', error);
         });
+    },
+    async fetchSingleProduct({ commit }, productSlug) {
+      commit('SET_SINGLE_PRODUCT_LOADING', true);
+      return await axios.get(`http://localhost:1337/products?slug=${productSlug}`)
+      .then(( { data } ) => {
+        commit('SET_SINGLE_PRODUCT', data);
+        commit("SET_SINGLE_PRODUCT_LOADING", false);
+      })
+      .catch(error => {
+        commit('SET_SINGLE_PRODUCT_ERROR', error);
+      });
     }
   }
 }

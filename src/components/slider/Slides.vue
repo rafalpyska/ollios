@@ -69,7 +69,7 @@
       padding: .75rem;
     }
     &__title {
-      font-size: 22rem;
+      font-size: 14rem;
       font-weight: 300;
       @media only screen and (max-width: 64em) {
         padding-top: 8rem;
@@ -77,7 +77,7 @@
       }
     }
     &__subtitle {
-      font-size: 3.6rem;
+      font-size: 3rem;
       font-weight: 300;
       margin-bottom: 3rem;
       @media only screen and (max-width: 34.125em) {

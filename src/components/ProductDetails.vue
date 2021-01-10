@@ -1,10 +1,9 @@
 <template lang="html">
   <transition name="slide-fade">
-    <!--    How to avoid so many router-views displaying in vue dev tools? It causes performance issues.-->
-    <section v-if="this.$route.params.product === routeItem" class="product-details">
+    <section class="product-details" v-for="product in singleProduct" :key="product.id">
       <div class="product-details__image-container">
         <button @click="close()" class="close">X</button>
-        <img :src="getImgUrl(image)" alt="" class="product-details__image">
+        <img :src="`http://localhost:1337${product.image.url}`" alt="" class="product-details__image">
         <button @click="zoomIn" class="btn__zoom btn__zoom--in">+</button>
         <button @click="zoomOut" class="btn__zoom btn__zoom--out">-</button>
       </div>
@@ -12,115 +11,87 @@
         <div class="product-details__description">
           <section class="section__details">
             <h1 class="heading section__title">Products</h1>
-            <p class="section__category">Product id {{ id }}</p>
+            <p class="section__category">Product id {{ product.id }}</p>
           </section>
           <section class="product__description-container">
-            <h2 class="heading product__name">{{ name }}</h2>
-            <p class="product__description">{{ description }}</p>
+            <h2 class="heading product__name">{{ product.title }}</h2>
+            <p class="product__description">{{ product.description }}</p>
             <div class="product__order">
               <div class="product__info product__price">
                 <p class="product__price-title">Cost</p>
                 <div class="price__container">
-                  <span class="price">${{ price }}</span>
-                  <span class="price-previous">${{ previousPrice }}</span>
+                  <span class="price">${{ product.price }}</span>
+                  <!-- <span class="price-previous">${{ previousPrice }}</span> -->
                 </div>
               </div>
               <div class="product__info product__quantity">
                 <label for="quantity" class="product__price-title">Quantity</label>
                 <input class="input__quantity" id="quantity" max="10" min="1" name="quantity" type="number"
-                       v-model.number="quantityProduct">
+                       v-model.number="quantity">
               </div>
-              <AppButton @click.native="addToCart(item)" :disabled="quantityProduct > 10" class="btn__add-to-cart">Add
+              <AppButton @click.native="addToCart()" :disabled="quantity > 10" class="btn__add-to-cart">Add
                 to cart
               </AppButton>
             </div>
-            <transition name="fade">
+            <!-- <transition name="fade">
               <p class="info" v-if="added">'{{ name }}' was added to cart!</p>
             </transition>
             <transition name="fade">
-              <p class="info" v-if="quantityProduct > 10">You cannot buy more than 10 items! </p>
-            </transition>
+              <p class="info" v-if="quantity > 10">You cannot buy more than 10 items! </p>
+            </transition> -->
           </section>
-
         </div>
 
-          <ProductRecommended
+          <!-- <ProductRecommended
             :products="products"
-          />
-
+          /> -->
       </div>
     </section>
   </transition>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   import Vue from 'vue'
   import AppButton from './AppButton'
-  import {EventBus} from "@/event-bus.js"
-  import getImageUrl from '../mixins/getImageUrl'
-  import ellipsify from '../mixins/ellipsify'
-  import ProductRecommended from "./ProductRecommended";
+  // import ProductRecommended from "./ProductRecommended";
 
   export default {
     name: "ProductDetails",
     components: {
-      AppButton,
-      ProductRecommended
+      AppButton
+      // ProductRecommended
     },
     props: {
-      item: {
-        type: Object,
-        required: true
-      },
-      products: {
-        type: Array,
+      productSlug: {
+        type: String,
         required: true
       }
     },
-    mixins: [getImageUrl, ellipsify],
     data() {
       return {
-        cart: [],
-        recommended: [],
-        recommendedItems: [],
-        added: false,
-        name: this.item.title,
-        description: this.item.description,
-        price: this.item.price,
-        image: this.item.image,
-        id: this.item.id,
-        previousPrice: this.item.price * 2,
-        quantity: this.item.quantity,
-        quantityProduct: 1,
-        routeItem: this.item.route,
-        parentRoute: this.$route.matched[0].path
+        quantity: 1
       }
+    },
+    computed: {
+      ...mapGetters([
+        'singleProductLoadingStatus',
+        'singleProductError',
+        'singleProduct'
+      ]),
+    },
+    async created() {
+      await this.$store.dispatch('fetchSingleProduct', this.productSlug);
     },
     methods: {
       close() {
-        this.$router.push(this.parentRoute);
+        this.$router.go(-1);
       },
-      addToCart(productToAdd) {
-        let found = false;
-        if (this.quantityProduct > 10) {
-          this.quantityProduct = 10;
-        }
-        this.cart.forEach((item) => {
-          if (item.id === productToAdd.id) {
-            found = true;
-            item.quantity += this.quantityProduct;
-          }
-        });
-        if (!found) {
-          productToAdd.quantity = this.quantityProduct;
-          this.cart.push(Vue.util.extend({}, productToAdd));
-          EventBus.$emit('update-cart', this.cart);
-        }
-        this.added = true;
-        setTimeout(() => {
-          this.added = false;
-        }, 2500);
-
+      addToCart() {
+        this.$store.dispatch('addItemToCart', {
+          product: this.singleProduct,
+          quantity: this.quantity,
+      });
       },
       zoomIn() {
         document.querySelector('.product-details__image').classList.add('zoom-in');
@@ -136,7 +107,6 @@
 <style scoped lang="scss">
   .btn {
     &__zoom {
-      position: absolute;
       display: flex;
       justify-content: center;
       width: 4rem;
@@ -369,7 +339,7 @@
   }
   .slide-fade-enter-active,
   .slide-fade-leave-active {
-    transition: all .5s ease;
+    transition: all .2s ease;
   }
 
   .slide-fade-enter {

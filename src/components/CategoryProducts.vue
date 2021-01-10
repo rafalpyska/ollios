@@ -4,7 +4,7 @@
 
       <div class="section__details">
         <h1 class="section__title">Products</h1>
-        <p class="section__category">{{ $route.name }}</p>
+        <p class="section__category" v-for="category in singleCategory" :key="category.id">{{ category.title }}</p>
       </div>
 
       <form class="search-local" @submit.prevent>
@@ -13,13 +13,19 @@
       </form>
 
         <transition-group
-          tag="section"
+          tag="div"
           class="products"
           name="list"
           v-for="products in singleCategory"
         >
-          <router-link to="/japs" tag="article" :data-product="product.title"  v-for="product in products.products" :key="product.id">
-            <img :src="product.image.url" class="products__image"/>
+          <router-link 
+            :to="{ name: 'ProductDetails', params: { productSlug: product.slug } }"
+            tag="article" :data-product="product.title" 
+            v-for="product in products.products"
+            :key="product.id"
+            class="products__item"
+          >
+            <img :src="`http://localhost:1337${product.image.url}`" class="products__image"/>
             <div class="products__info">
               <slot name="title">
                 <p class="products__name">{{ product.title }}</p>
@@ -29,6 +35,9 @@
               </slot>
               <slot name="price">
               </slot>
+              <!-- <router-link :to="{ name: "ProductDetails", params: { productSlug: product.slug } }">
+                CLICK
+              </router-link> -->
             </div>
           </router-link>
         </transition-group>
@@ -56,7 +65,11 @@
       }
     },
     computed: {
-      ...mapGetters(['singleCategoryLoadingStatus', 'singleCategoryError', 'singleCategory'])
+      ...mapGetters([
+        'singleCategoryLoadingStatus',
+        'singleCategoryError',
+        'singleCategory'
+      ]),
     },
     async created() {
       await this.$store.dispatch('fetchSingleCategory', this.categorySlug);
@@ -151,5 +164,8 @@
 
   .recommended__products {
     text-align: center;
+  }
+  .search-local {
+    margin-bottom: 5rem;
   }
 </style>

@@ -1,17 +1,17 @@
 <template lang="html">
   <transition name="slide-fade">
-    <section v-show="isToggle" class="cart-modal">
+    <section class="cart">
       <button @click="close()" class="close close-cart">X</button>
-      <!-- <transition-group tag="div" class="cart__wrapper" name="list">
-        <h1 :key="3213" class="section__title">Shopping Cart</h1>
-        <p :key="3214" class="cart__empty" v-if="empty">Your basket is empty!</p>
-        <div class="cart" v-for="(item, index) in cart" :key="item.id">
+      <transition-group tag="div" class="cart__wrapper" name="list" v-if="cart.length > 0">
+        <!-- <h1 :key="3213" class="section__title">Shopping Cart</h1>
+        <p :key="3214" class="cart__empty" v-if="empty">Your basket is empty!</p> -->
+        <div class="cart" v-for="(item, index) in cart" :key="index">
           <div class="cart__image-container">
-            <img class="cart__image" :src="getImgUrl(item.image)" alt="">
+            <!-- <img class="cart__image" :src="`http://localhost:1337${item.image.url}`" alt=""> -->
           </div>
           <div class="cart__product cart__product-info">
             <div class="cart__product cart__product-title">
-              <p class="item__title">Product: {{ item.title }}</p>
+              <p class="item__title">Product: {{ item.product.title }}</p>
             </div>
             <div class="cart__product cart__product-quantity">
               <label for="cart-quantity">Quantity</label>
@@ -21,49 +21,39 @@
             </div>
           </div>
           <div class="cart__product cart__product-price">
-            <p class="item__price">Price for a single item: ${{ item.price }}</p>
+            <p class="item__price">Price for a single item: ${{ item.product.price }}</p>
 
           </div>
           <div class="cart__product cart__product-price">
             <AppButton @click.native="removeItem(index)">Remove</AppButton>
           </div>
         </div>
-        <div :key="3215" v-if="!empty" class="cart__summary">
+        <!-- <div :key="3215" v-if="!empty" class="cart__summary">
           <p class="item__price">Total: ${{ totalPrice }}</p>
-        </div>
-      </transition-group> -->
+        </div> -->
+      </transition-group>
     </section>
   </transition>
 </template>
 
 <script>
-  import {EventBus} from "@/event-bus.js";
-  import AppButton from "./AppButton"
+  import { mapGetters } from 'vuex';
+  import AppButton from "@/components/AppButton"
 
   export default {
     name: "ShoppingCart",
     components: {
       AppButton
     },
-    data() {
-      return {
-        isToggle: false,
-      }
-    },
-    beforeDestroy() {
-      EventBus.$off('isActiveCart');
+    computed: {
+    ...mapGetters(['cart', 'cartTotalItemPrice'])
     },
     methods: {
-      removeItem(index) {
-        this.cart.splice(index, 1);
-        EventBus.$emit('productsInBasket', this.cart);
-        if (this.cart.length === 0) {
-          this.empty = true;
-        }
+      removeItemFromCart(item) {
+        this.$store.dispatch('removeItemFromCart', item);
       },
       close() {
-        this.isToggle = false;
-        EventBus.$emit('cartClosed', this.isToggle);
+        this.$router.go(-1);
       }
     }
   }
@@ -71,10 +61,17 @@
 
 <style lang="scss" scoped>
   .cart {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: var(--white);
+      font-weight: 300;
     &:nth-child(odd) {
       background-color: rgba(231, 231, 231, .3);
     }
-
     &__wrapper {
       display: flex;
       align-items: center;
@@ -88,12 +85,6 @@
         padding: 0 2rem;
       }
     }
-
-    display: flex;
-    width: 100%;
-    height: 20rem;
-    font-size: 1.8rem;
-    background-color: rgba(255, 255, 255, .9);
     @media only screen and (max-width: 48em) {
       flex-wrap: wrap;
     }

@@ -7,26 +7,30 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 62.5%;
   line-height: 1.67;
   -webkit-text-size-adjust: 100%;
-  @media screen and (min-width: 900px) {
-    font-size: 18px;
+  @media only screen and (max-width: 160.000em) {
+    font-size: 50.5%;
   }
-  @media screen and (min-width: 1200px) {
-    font-size: 18px;
+  @media only screen and (max-width: 105em) {
+    font-size: 42.5%;
   }
-  @media screen and (min-width: 2560px) {
-    font-size: 17px;
+  @media only screen and (max-width: 48em) {
   }
 }
 
 body {
+  font-family: 'Lato', sans-serif;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   box-sizing: border-box;
   margin: 0;
+}
+
+[v-cloak] {
+  display: none;
 }
 
 main {

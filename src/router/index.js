@@ -5,6 +5,7 @@ import Categories from '@/views/Categories'
 import AboutUs from '@/components/AboutUs'
 import CategoryProducts from '@/components/CategoryProducts'
 import ProductDetails from '@/components/ProductDetails'
+import Cart from '@/views/Cart'
 import Search from '@/components/Search'
 import NotFound from "../components/NotFound";
 
@@ -37,10 +38,15 @@ export default new Router({
       props: true
     },
     {
-      path: '/:productID',
+      path: '/:productSlug',
       component: ProductDetails,
       name: "ProductDetails",
       props: true,
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: Cart
     },
     {
       path: '/search',

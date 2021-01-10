@@ -5,7 +5,7 @@
         <ul class="categories__list">
           <li class="categories__item" v-for="category in categories" :key="category.id">
             <router-link :to="{ name: 'CategoryProducts', params: { categorySlug: category.slug } }" class="categories__link">{{ category.title }}        
-              <!-- <object class="categories__icons" :class="category.class" :data="getImgUrl(category.icon)" fill="#fff"></object> -->
+              <object class="categories__icons" :class="category.class" :data="getImgUrl(category.icon)" fill="#fff"></object>
               </router-link>
           </li>
         </ul>

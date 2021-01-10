@@ -21,7 +21,7 @@
           </router-link>
         </li>
         <li class="navigation__item">
-          <button @click="cartToggle" class="navigation__button navigation__button-basket">
+          <router-link :to="{ name: 'cart' }" class="navigation__button">
             <span aria-label="Basket">
               <svg class="navigation__icon icon__basket" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -45,7 +45,7 @@
 
               </transition>
             </span>
-          </button>
+          </router-link>
         </li>
         <li class="navigation__item">
           <router-link :to="{ name: 'search' }" class="navigation__button">
