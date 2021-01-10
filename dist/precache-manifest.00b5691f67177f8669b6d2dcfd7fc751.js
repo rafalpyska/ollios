@@ -1,6 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "24dc5a49c16b3561597b",
+    "revision": "6a02faf7ea2a9584134ffe15779a0e44",
+    "url": "/_redirects"
+  },
+  {
+    "revision": "ae747d5ccbc9cbd6ee98",
     "url": "/css/app.a1418595.css"
   },
   {
@@ -68,12 +72,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/woodendesk.28bcc1cd.jpg"
   },
   {
-    "revision": "cb19f4f11420662df70bfaa6ef6738a8",
+    "revision": "c9e6d33d6e4bf0c91168c5695fe8c096",
     "url": "/index.html"
   },
   {
-    "revision": "24dc5a49c16b3561597b",
-    "url": "/js/app.1e8c77ec.js"
+    "revision": "ae747d5ccbc9cbd6ee98",
+    "url": "/js/app.7a4ec331.js"
   },
   {
     "revision": "97d13c81acc7342ddb6c",
