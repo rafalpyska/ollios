@@ -213,10 +213,6 @@
         }
       }
     }
-
-    &__info {
-    }
-
     &__order {
       display: flex;
       flex-wrap: wrap;
@@ -267,8 +263,11 @@
           padding: 6rem;
         }
       }
-
       &__image {
+        transform: scale(1);
+        transition: .3s all;
+        max-width: 100%;
+        height: auto;
         &-container {
           position: relative;
           display: flex;
@@ -284,10 +283,6 @@
             width: 100%;
           }
         }
-
-        transform: scale(1);
-        transition: .3s all;
-        max-width: 100%;
       }
 
       &__price {
@@ -296,7 +291,6 @@
         justify-content: center;
       }
     }
-
     &__name {
       font-size: 7.2rem;
       font-weight: 300;

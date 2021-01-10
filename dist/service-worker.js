@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.00b5691f67177f8669b6d2dcfd7fc751.js"
+  "/precache-manifest.751c5935df092f89a60e2aa1e36fdf78.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "weeklywebdevchallange10"});

@@ -82,6 +82,7 @@
 
     &__image {
       max-width: 100%;
+      height: auto;
       transition: .3s all;
     }
 
