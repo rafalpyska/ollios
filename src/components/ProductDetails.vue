@@ -89,9 +89,9 @@
       },
       addToCart() {
         this.$store.dispatch('addItemToCart', {
-          product: this.singleProduct,
+          product: this.singleProduct[0],
           quantity: this.quantity,
-      });
+        });
       },
       zoomIn() {
         document.querySelector('.product-details__image').classList.add('zoom-in');

@@ -12,7 +12,7 @@ export default {
     cartTotalItemPrice(state) {
       let total = 0;
       state.cart.forEach(item => {
-        total += item.course.price * item.quantity;
+        total += item.product.price * item.quantity;
       });
       return total;
     }
@@ -20,7 +20,7 @@ export default {
   mutations: {
     ADD_TO_CART(state, { product, quantity }) {
       let itemInCart = state.cart.find(item => {
-        return item.product.title === product.title;
+        return item.product.id === product.id
       });
 
       if (itemInCart) {
