@@ -1,135 +1,100 @@
 <template lang="html">
-  <section class="slider">
-    <Slides :image="images[chosenImage]" />
-    <div class="pagination">
-      <div
-        v-for="image in images"
-        :key="image.id"
-        @click="pagination(image.id)"
-        class="pagination__dot"
-      ></div>
-    </div>
+  <section class="slider">  
+    <vueper-slides
+      fade
+      autoplay
+      @autoplay-pause="internalAutoPlaying = false"
+      @autoplay-resume="internalAutoPlaying = true"
+      fixed-height="100vh"
+      :touchable="false"
+    >
+      <vueper-slide
+        v-for="(slide, i) in slides"
+        :key="i"
+        :image="slide.image"
+        :title="slide.title"
+        :content="slide.content"
+      >
+        <template v-slot:content>
+          <div class="vueperslide__content-wrapper" style="justify-content: initial">
+            <h1 class="title">{{slide.title}}</h1>
+            <h2 class="subtitle">{{slide.content}}</h2>
+            <AppButton :to="'/about-us'" class="btn__view-more">
+              View More
+            </AppButton>
+          </div>
+        </template>
+      </vueper-slide>
+    </vueper-slides>
   </section>
 </template>
 
 <script>
-import Slides from '@/components/slider/Slides';
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import 'vueperslides/dist/vueperslides.css'
+import AppButton from '@/components/AppButton';
+
 
 export default {
   name: 'Home',
   components: {
-    Slides
+    VueperSlides,
+    VueperSlide,
+    AppButton
   },
   data() {
     return {
-      images: [
+      autoPlaying: true,
+      internalAutoPlaying: true,
+      slides: [
         {
-          id: 0,
           title: 'Ollios',
-          subtitle: 'Newest furniture shop',
-          url: 'background2.jpg'
+          content: 'Newest furniture shop',
+          image: require('@/assets/background2.jpg')
         },
         {
-          id: 1,
           title: 'Ollios',
-          subtitle: 'The coolest furniture shop in the world',
-          url: 'background.png'
+          content: 'The coolest furniture shop in the world',
+          image: require('@/assets/background.png')
         },
         {
-          id: 2,
           title: 'Ollios',
-          subtitle: 'Satisfaction of our clients is the most important thing',
-          url: 'background3.jpg'
+          content: 'Satisfaction of our clients is the most important thing',
+          image: require('@/assets/background3.jpg')
         }
       ],
-      chosenImage: 0,
-      intervalObject: null
     };
-  },
-  created() {
-    this.intervalObject = setInterval(() => {
-      this.move();
-    }, 5000);
-  },
-  methods: {
-    pagination(id) {
-      this.chosenImage = id;
-      clearInterval(this.intervalObject);
-      this.intervalObject = setInterval(() => {
-        this.move();
-      }, 5000);
-    },
-    move() {
-      let flag = this.chosenImage;
-      flag++;
-      if (flag >= this.images.length) {
-        flag = 0;
-      }
-      this.chosenImage = flag;
-    }
   }
 };
 </script>
 
 <style scoped lang="scss">
-.slider {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-}
-
-.pagination {
-  position: absolute;
-  bottom: 5rem;
-  right: 5rem;
-  height: 15px;
-  margin: auto;
-  text-align: center;
-  @media only screen and (max-width: 64em) {
-    bottom: 12rem;
-  }
-  @media only screen and (max-width: 34.125em) {
-    display: none;
-  }
-
-  &__dot {
-    position: relative;
-    width: 12px;
-    height: 12px;
-    border: 2px solid rgba(220, 220, 222, 1);
-    border-radius: 100px;
-    display: inline-block;
-    cursor: pointer;
-    margin: 0 4.5rem;
-    transition: 0.3s;
-    @media only screen and (max-width: 48em) {
-      border: 2px solid var(--blue);
-    }
-
-    &:not(:last-child) {
-      margin-right: 1rem;
-    }
-
-    &--active {
-      border-color: var(--blue);
-      background: var(--blue);
-    }
-
-    &:hover {
-      transition: 0.3s;
-      border-color: var(--blue);
-      background: var(--blue);
-
-      &:before {
-        top: -48px;
-        opacity: 1;
-      }
-
-      &:after {
-        top: -18px;
-        opacity: 1;
-      }
+  .slider {
+    padding-left: 14.5rem;
+    @media only screen and (max-width: 64em) {
+      padding-left: 0;
     }
   }
-}
+  .title,
+  .subtitle {
+    margin: 0;
+    padding: 0.75rem;
+    text-transform: uppercase;
+  }
+  .title {
+    font-size: 14rem;
+    font-weight: 300;
+    @media only screen and (max-width: 64em) {
+      padding-top: 8rem;
+      font-size: 7rem;
+    }
+  }
+  .subtitle {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    @media only screen and (max-width: 34.125em) {
+      font-size: 2.5rem;
+    }
+  }
 </style>

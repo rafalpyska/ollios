@@ -1,11 +1,8 @@
 <template lang="html">
-  <transition name="slide-fade">
-    <section
-      class="product-details"
-      v-for="product in singleProduct"
-      :key="product.id"
-    >
-      <div class="product-details__image-container">
+  <section class="product-details">
+    <AppLoadingSpinner v-if="singleProductLoadingStatus" />
+    <template v-for="(product, index) in singleProduct" v-else>
+      <div class="product-details__image-container" :key="index">
         <button @click="close()" class="close">X</button>
         <img
           :src="`http://localhost:1337${product.image.url}`"
@@ -13,13 +10,13 @@
           class="product-details__image"
         />
       </div>
-      <div class="product-details__container">
+      <div class="product-details__container" :key="product.id">
         <div class="product-details__description">
-          <section class="section__details">
+          <div class="section__details">
             <h1 class="heading section__title">Products</h1>
             <p class="section__category">Product id {{ product.id }}</p>
-          </section>
-          <section class="product__description-container">
+          </div>
+          <div class="product__description-container">
             <h2 class="heading product__name">{{ product.title }}</h2>
             <p class="product__description">{{ product.description }}</p>
             <div class="product__order">
@@ -49,32 +46,30 @@
                 >Add to cart
               </AppButton>
             </div>
-            <!-- <transition name="fade">
-              <p class="info" v-if="added">'{{ name }}' was added to cart!</p>
+            <transition name="fade">
+              <p class="info" v-if="added">'{{ product.title }}' was added to cart!</p>
             </transition>
             <transition name="fade">
               <p class="info" v-if="quantity > 10">You cannot buy more than 10 items! </p>
-            </transition> -->
-          </section>
+            </transition>
+          </div>
         </div>
-
-        <!-- <ProductRecommended
-            :products="products"
-          /> -->
       </div>
-    </section>
-  </transition>
+    </template>
+  </section>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import AppLoadingSpinner from './AppLoadingSpinner'
 import AppButton from './AppButton';
 // import ProductRecommended from "./ProductRecommended";
 
 export default {
   name: 'ProductDetails',
   components: {
-    AppButton
+    AppButton,
+    AppLoadingSpinner
     // ProductRecommended
   },
   props: {
@@ -85,7 +80,8 @@ export default {
   },
   data() {
     return {
-      quantity: 1
+      quantity: 1,
+      added: false
     };
   },
   computed: {
@@ -103,10 +99,14 @@ export default {
       this.$router.go(-1);
     },
     addToCart() {
+      this.added = true;
       this.$store.dispatch('addItemToCart', {
         product: this.singleProduct[0],
         quantity: this.quantity
       });
+      setTimeout(() => {
+        this.added = false;
+      }, 2000);
     }
   }
 };
@@ -270,6 +270,7 @@ export default {
 
 .btn__add-to-cart {
   padding: 1rem 5rem;
+  align-self: flex-end;
   @media only screen and (max-width: 34.125em) {
     margin-top: 4rem;
   }
@@ -299,18 +300,5 @@ export default {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.9);
   }
-}
-.slide-fade-enter-active,
-.slide-fade-leave-active {
-  transition: all 0.2s ease;
-}
-
-.slide-fade-enter {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-
-.slide-fade-leave-to {
-  transform: translateY(-100%);
 }
 </style>

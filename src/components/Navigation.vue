@@ -39,7 +39,7 @@
         </li>
         <li class="navigation__item">
           <router-link :to="{ name: 'cart' }" class="navigation__button">
-            <span aria-label="Basket">
+            <span aria-label="Basket" class="navigation__icon-container">
               <svg
                 class="navigation__icon icon__basket"
                 version="1.1"
@@ -70,10 +70,10 @@
               </svg>
               <transition name="fade">
                 <span
-                  class="navigation__products-in-basket"
-                  v-if="productsInBasket && productsInBasket.length"
+                  class="navigation__products-in-basket-count"
+                  v-if="cartItemCount > 0"
                 >
-                  {{ productsInBasket.length }}
+                  {{ cartItemCount }}
                 </span>
               </transition>
             </span>
@@ -116,6 +116,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { EventBus } from '@/event-bus.js';
 import preventScroll from '../mixins/preventScroll';
 
@@ -124,21 +125,14 @@ export default {
   mixins: [preventScroll],
   data() {
     return {
-      productsInBasket: null,
       toggleCart: false,
       toggleSearch: false
     };
   },
-  watch: {
-    productsInBasket: {
-      handler() {
-        localStorage.setItem(
-          'productsInBasket',
-          JSON.stringify(this.productsInBasket)
-        );
-      },
-      deep: true
-    }
+  computed: {
+    ...mapGetters([
+      'cartItemCount'
+    ])
   },
   created() {
     EventBus.$on('cartClosed', closed => {
@@ -148,13 +142,6 @@ export default {
     EventBus.$on('productsInBasket', item => {
       this.productsInBasket = item;
     });
-  },
-  mounted() {
-    if (localStorage.getItem('cart')) {
-      this.productsInBasket = JSON.parse(
-        localStorage.getItem('productsInBasket')
-      );
-    }
   },
   beforeDestroy() {
     EventBus.$off('cartClosed');
@@ -248,11 +235,15 @@ export default {
   &__icon {
     width: 3rem;
     height: 3rem;
+    &-container {
+      position: relative;
+    }
   }
-  &__products-in-basket {
+  &__products-in-basket-count {
     position: absolute;
-    right: -0.2rem;
-    bottom: -0.2rem;
+    bottom: -1rem;
+    right: -1rem;
+    font-size: 1.5rem;
     color: var(--blue);
     font-weight: 700;
   }
@@ -276,9 +267,6 @@ export default {
   }
   &__home {
     margin-left: 3px;
-  }
-  &__basket {
-    position: relative;
   }
 }
 

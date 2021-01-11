@@ -36,6 +36,9 @@ export default {
       state.cart = state.cart.filter(item => {
         return item.product.id !== product.id;
       });
+    },
+    CLEAR_CART(state) {
+      state.cart = [];
     }
   },
   actions: {
@@ -44,6 +47,9 @@ export default {
     },
     removeItemFromCart({ commit }, product) {
       commit('REMOVE_ITEM_FROM_CART', product);
+    },
+    clearCart({ commit }) {
+      commit('CLEAR_CART');
     }
   }
 };

@@ -7,7 +7,10 @@ export default {
     products: [],
     singleProductLoading: true,
     singleProductError: null,
-    singleProduct: []
+    singleProduct: [],
+    recommendedProductsLoading: true,
+    recommendedProductsError: null,
+    recomenndedProducts: []
   },
   getters: {
     productsLoadingStatus(state) {
@@ -27,6 +30,15 @@ export default {
     },
     singleProduct(state) {
       return state.singleProduct;
+    },
+    recommendedProductsLoadingStatus(state) {
+      return state.recommendedProductsLoading;
+    },
+    recommendedProductsError(state) {
+      return state.recommendedProductsError;
+    },
+    recommendedProducts(state) {
+      return state.recommendedProducts;
     }
   },
   mutations: {
@@ -47,6 +59,15 @@ export default {
     },
     SET_SINGLE_PRODUCT(state, singleProduct) {
       return (state.singleProduct = singleProduct);
+    },
+    SET_RECOMMENDED_PRODUCTS_LOADING(state, loadingStatus) {
+      return (state.recommendedProductsLoading = loadingStatus)
+    },
+    SET_RECOMMENDED_PRODUCTS_ERROR(state, error) {
+      return (state.recommendedProductsError = error)
+    },
+    SET_RECOMMENDED_PRODUCTS(state, recommendedProducts) {
+      return (state.recommendedProducts = recommendedProducts);
     }
   },
   actions: {

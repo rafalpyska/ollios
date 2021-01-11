@@ -192,7 +192,7 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.4s;
+  transition: opacity 0.3s;
 }
 
 .fade-enter,
@@ -216,7 +216,7 @@ export default {
 
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.4s ease;
 }
 
 .slide-fade-enter {
