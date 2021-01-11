@@ -5,11 +5,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'Categories'
-  };
+export default {
+  name: 'Categories'
+};
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

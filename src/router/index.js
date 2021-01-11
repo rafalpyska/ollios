@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '@/views/Home'
-import Categories from '@/views/Categories'
-import AboutUs from '@/components/AboutUs'
-import CategoryProducts from '@/components/CategoryProducts'
-import ProductDetails from '@/components/ProductDetails'
-import Cart from '@/views/Cart'
-import Search from '@/components/Search'
-import NotFound from "../components/NotFound";
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from '@/views/Home';
+import Categories from '@/views/Categories';
+import AboutUs from '@/components/AboutUs';
+import CategoryProducts from '@/components/CategoryProducts';
+import ProductDetails from '@/components/ProductDetails';
+import Cart from '@/views/Cart';
+import Search from '@/components/Search';
+import NotFound from '../components/NotFound';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -31,17 +31,17 @@ export default new Router({
         {
           path: ':categorySlug',
           component: CategoryProducts,
-          name: "CategoryProducts",
-          props: true,
+          name: 'CategoryProducts',
+          props: true
         }
       ],
       props: true
     },
     {
-      path: '/:productSlug',
+      path: '/product/:productSlug',
       component: ProductDetails,
-      name: "ProductDetails",
-      props: true,
+      name: 'ProductDetails',
+      props: true
     },
     {
       path: '/cart',
@@ -56,7 +56,7 @@ export default new Router({
         {
           path: '/:products',
           component: ProductDetails,
-          props: true,
+          props: true
         }
       ],
       props: true
@@ -65,8 +65,5 @@ export default new Router({
       path: '*',
       component: NotFound
     }
-  ],
-  scrollBehavior (to, from, savedPosition) {
-    return { x: 0, y: 0 }
-  }
-})
+  ]
+});

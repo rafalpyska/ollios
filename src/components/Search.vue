@@ -3,8 +3,16 @@
     <section class="search">
       <button @click="close()" class="close close-search">X</button>
       <form @submit.prevent class="search__controls">
-        <input class="search__input" id="search-input" type="search" name="search__input" v-model="searchValue">
-        <label class="search__label" for="search-input">Type product that you are looking for</label>
+        <input
+          class="search__input"
+          id="search-input"
+          type="search"
+          name="search__input"
+          v-model="searchValue"
+        />
+        <label class="search__label" for="search-input"
+          >Type product that you are looking for</label
+        >
       </form>
       <!-- <transition-group
         v-if="filterProducts.length < products.length"
@@ -33,64 +41,61 @@
 </template>
 
 <script>
-  import filterProducts from "../mixins/filterProducts";
-  import transitionFix from "../mixins/transitionFix";
+import filterProducts from '../mixins/filterProducts';
+import transitionFix from '../mixins/transitionFix';
 
-  export default {
-    name: "Search",
-    props: {
-      products: {
-        type: Array,
-        required: true
-      }
-    },
-    mixins: [filterProducts, transitionFix],
-    data() {
-      return {
-        searchValue: ''
-      }
-    },
-    methods: {
-      close() {
-        this.$router.go(-1);
-      },
+export default {
+  name: 'Search',
+  props: {
+    products: {
+      type: Array,
+      required: true
     }
-  };
-
+  },
+  mixins: [filterProducts, transitionFix],
+  data() {
+    return {
+      searchValue: ''
+    };
+  },
+  methods: {
+    close() {
+      this.$router.go(-1);
+    }
+  }
+};
 </script>
 
 <style lang="scss">
-
-  .search {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 100vh;
-    padding: 2rem 8rem 2rem 14.5rem;
-    background-color: rgba(240, 240, 240, .5);;
-    font-weight: 300;
-    @media only screen and (max-width: 62em) {
-      padding: 8rem 22rem 0 12.5rem;
-    }
-    @media only screen and (max-width: 48em) {
-      padding: 2rem 3rem 2rem 3rem;
-    }
-
-    &__controls {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 3rem;
-    }
-
-    &__controls {
-      width: 100%;
-      align-items: center;
-      @media only screen and (max-width: 62em) {
-        margin-top: 10rem;
-      }
-    }
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 8rem 2rem 14.5rem;
+  background-color: rgba(240, 240, 240, 0.5);
+  font-weight: 300;
+  @media only screen and (max-width: 62em) {
+    padding: 8rem 22rem 0 12.5rem;
+  }
+  @media only screen and (max-width: 48em) {
+    padding: 2rem 3rem 2rem 3rem;
   }
 
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+  }
+
+  &__controls {
+    width: 100%;
+    align-items: center;
+    @media only screen and (max-width: 62em) {
+      margin-top: 10rem;
+    }
+  }
+}
 </style>

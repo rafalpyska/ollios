@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   state: {
@@ -27,35 +27,36 @@ export default {
     },
     singleProduct(state) {
       return state.singleProduct;
-    },
+    }
   },
   mutations: {
     SET_PRODUCTS_LOADING(state, loadingStatus) {
-      return state.productsLoading = loadingStatus;
+      return (state.productsLoading = loadingStatus);
     },
     SET_PRODUCTS_ERROR(state, error) {
-      return state.productsError = error;
+      return (state.productsError = error);
     },
     SET_PRODUCTS(state, products) {
-      return state.products = products;
+      return (state.products = products);
     },
     SET_SINGLE_PRODUCT_LOADING(state, loadingStatus) {
-      return state.singleProductLoading = loadingStatus
+      return (state.singleProductLoading = loadingStatus);
     },
     SET_SINGLE_PRODUCT_ERROR(state, error) {
-      return state.singleProductError = error;
+      return (state.singleProductError = error);
     },
     SET_SINGLE_PRODUCT(state, singleProduct) {
-      return state.singleProduct = singleProduct;
-    },
+      return (state.singleProduct = singleProduct);
+    }
   },
   actions: {
     async fetchProducts({ commit }) {
       commit('SET_PRODUCTS_LOADING', true);
-      return await axios.get(`http://localhost:1337/products`)
-        .then(( { data } ) => {
+      return await axios
+        .get(`http://localhost:1337/products`)
+        .then(({ data }) => {
           commit('SET_PRODUCTS', data);
-          commit("SET_PRODUCTS_LOADING", false);
+          commit('SET_PRODUCTS_LOADING', false);
         })
         .catch(error => {
           commit('SET_PRODUCTS_ERROR', error);
@@ -63,14 +64,15 @@ export default {
     },
     async fetchSingleProduct({ commit }, productSlug) {
       commit('SET_SINGLE_PRODUCT_LOADING', true);
-      return await axios.get(`http://localhost:1337/products?slug=${productSlug}`)
-      .then(( { data } ) => {
-        commit('SET_SINGLE_PRODUCT', data);
-        commit("SET_SINGLE_PRODUCT_LOADING", false);
-      })
-      .catch(error => {
-        commit('SET_SINGLE_PRODUCT_ERROR', error);
-      });
+      return await axios
+        .get(`http://localhost:1337/products?slug=${productSlug}`)
+        .then(({ data }) => {
+          commit('SET_SINGLE_PRODUCT', data);
+          commit('SET_SINGLE_PRODUCT_LOADING', false);
+        })
+        .catch(error => {
+          commit('SET_SINGLE_PRODUCT_ERROR', error);
+        });
     }
   }
-}
+};

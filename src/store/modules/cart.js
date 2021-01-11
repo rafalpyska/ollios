@@ -20,7 +20,7 @@ export default {
   mutations: {
     ADD_TO_CART(state, { product, quantity }) {
       let itemInCart = state.cart.find(item => {
-        return item.product.id === product.id
+        return item.product.id === product.id;
       });
 
       if (itemInCart) {
@@ -39,7 +39,7 @@ export default {
     }
   },
   actions: {
-    addItemToCart({ commit }, { product, quantity  }) {
+    addItemToCart({ commit }, { product, quantity }) {
       commit('ADD_TO_CART', { product, quantity });
     },
     removeItemFromCart({ commit }, product) {

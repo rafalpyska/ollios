@@ -1,7 +1,6 @@
 <template functional>
   <div class="container">
     <main class="category__main">
-
       <section class="section__details">
         <h1 class="section__title">Page not found</h1>
       </section>
@@ -10,7 +9,7 @@
 </template>
 
 <script>
-  export default {
-    name: "NotFound"
-  }
+export default {
+  name: 'NotFound'
+};
 </script>
