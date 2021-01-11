@@ -7,7 +7,7 @@
     /> -->
 
     <transition name="slide-in" mode="out-in">
-      <router-view />
+      <router-view :key="$route.fullPath"/>
     </transition>
 
     <CategoriesMenuToggle />

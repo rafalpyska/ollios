@@ -1,0 +1,99 @@
+<template>
+  <router-link
+    :to="{
+      name: 'ProductDetails',
+      params: { productSlug: product.slug }
+    }"
+    tag="article"
+    :data-product="product.title"
+    class="product"
+  >
+    <figure class="product__image-container">
+      <img
+        :src="`http://localhost:1337${product.image.url}`"
+        class="products__image"
+      />
+    </figure>
+    <div class="product__info">
+      <p class="product__name">{{ product.title }}</p>
+      <p class="product__description">{{ product.description }}</p>
+      <p class="product__price">${{ product.price }}</p>
+    </div>
+  </router-link>
+</template>
+
+<script>
+export default {
+  name: 'CategoryProductItem',
+  props: {
+    product: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 4rem;
+    background-color: var(--white);
+    cursor: pointer;
+    @media only screen and (max-width: 34.125em) {
+      grid-column: 1 / -1;
+    }
+    @media only screen and (max-width: 48em) {
+      padding: 2rem 5rem 0 5rem;
+    }
+    &:last-child {
+      @media only screen and (max-width: 64em) {
+        margin-bottom: 8rem;
+      }
+    }
+    &__image {
+    max-width: 100%;
+    height: auto;
+    transition: 0.3s all;
+      &-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 36rem;
+      }
+    }
+    &__info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    &__name {
+      margin: 0.6rem 0;
+      font-size: 3rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      @media only screen and (max-width: 90em) {
+        font-size: 2rem;
+      }
+    }
+
+    &__description {
+      flex: 1;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: rgba(0, 0, 0, 0.8);
+      margin-bottom: 1.75rem;
+    }
+
+    &__price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+  }
+</style>

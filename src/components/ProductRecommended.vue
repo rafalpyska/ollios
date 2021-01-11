@@ -1,66 +1,39 @@
 <template lang="html">
   <section class="recommended">
     <h2 class="recommended__title">Recommended</h2>
-    <!-- <transition-group
-      tag="section"
-      class="products"
-      name="list"
-    >
-      <Product
-        v-for="item in recommendedItems"
-        :item="item"
-        :class="`products__item products__item--${item.id} recommended__products`"
-        :key="item.id"
-      >
-      </Product>
-
-      <router-view
-        v-for="item in products"
-        :item="item"
-        :key="item.id"
-        :products="products"
-      />
-    </transition-group> -->
+    <div class="recommended__product-list" v-for="recommended in recommendedProducts" :key="recommended.id">
+      <div class="recommended__product" v-for="product in recommended.products" :key="product.id" >
+        <router-link :to="{ name: 'ProductDetails', params: { productSlug: product.slug } }">
+          {{ product.title }}
+        </router-link>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
-import getImageUrl from '../mixins/getImageUrl';
-import ellipsify from '../mixins/ellipsify';
-
+// import CategoryProductItem from './CategoryProductItem'
 export default {
   name: 'RecommendedProducts',
+  components: {
+    // CategoryProductItem
+  },
   props: {
-    products: {
+    recommendedProducts: {
       type: Array,
       required: true
     }
   },
-  mixins: [getImageUrl, ellipsify],
   data() {
     return {
-      recommendedItems: null
+
     };
   },
   created() {
-    this.recommendedItems = this.getRandomArrItems(this.products, 3);
+
   },
   methods: {
-    getRandomArrItems(arr, n) {
-      let result = new Array(n),
-        len = arr.length,
-        taken = new Array(len);
-      if (n > len)
-        throw new RangeError(
-          'getRandomArrItems: more elements taken than available'
-        );
-      while (n--) {
-        let x = Math.floor(Math.random() * len);
-        result[n] = arr[x in taken ? taken[x] : x];
-        taken[x] = --len in taken ? taken[len] : len;
-      }
-      return result;
-    }
+
   }
 };
 </script>

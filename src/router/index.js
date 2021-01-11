@@ -3,7 +3,7 @@ import Router from 'vue-router';
 import Home from '@/views/Home';
 import Categories from '@/views/Categories';
 import AboutUs from '@/components/AboutUs';
-import CategoryProducts from '@/components/CategoryProducts';
+import CategoryProductsList from '@/components/CategoryProductsList';
 import ProductDetails from '@/components/ProductDetails';
 import Cart from '@/views/Cart';
 import Search from '@/components/Search';
@@ -30,8 +30,8 @@ export default new Router({
       children: [
         {
           path: ':categorySlug',
-          component: CategoryProducts,
-          name: 'CategoryProducts',
+          component: CategoryProductsList,
+          name: 'CategoryProductsList',
           props: true
         }
       ],

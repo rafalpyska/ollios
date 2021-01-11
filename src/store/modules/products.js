@@ -10,7 +10,7 @@ export default {
     singleProduct: [],
     recommendedProductsLoading: true,
     recommendedProductsError: null,
-    recomenndedProducts: []
+    recommendedProducts: []
   },
   getters: {
     productsLoadingStatus(state) {
@@ -94,6 +94,18 @@ export default {
         .catch(error => {
           commit('SET_SINGLE_PRODUCT_ERROR', error);
         });
-    }
+    },
+    async fetchRecommendedProducts({ commit }) {
+      commit('SET_RECOMMENDED_PRODUCTS_LOADING', true);
+      return await axios
+        .get(`http://localhost:1337/recommended-products`)
+        .then(({ data }) => {
+          commit('SET_RECOMMENDED_PRODUCTS', data);
+          commit('SET_RECOMMENDED_PRODUCTS_LOADING', false);
+        })
+        .catch(error => {
+          commit('SET_RECOMMENDED_PRODUCTS_ERROR', error);
+        });
+    },
   }
 };

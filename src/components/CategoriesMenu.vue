@@ -10,7 +10,7 @@
           >
             <router-link
               :to="{
-                name: 'CategoryProducts',
+                name: 'CategoryProductsList',
                 params: { categorySlug: category.slug }
               }"
               class="categories__link"

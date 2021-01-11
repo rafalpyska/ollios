@@ -54,6 +54,9 @@
             </transition>
           </div>
         </div>
+        <ProductRecommended
+          :recommendedProducts="recommendedProducts"
+        />
       </div>
     </template>
   </section>
@@ -63,14 +66,14 @@
 import { mapGetters } from 'vuex';
 import AppLoadingSpinner from './AppLoadingSpinner'
 import AppButton from './AppButton';
-// import ProductRecommended from "./ProductRecommended";
+import ProductRecommended from "./ProductRecommended";
 
 export default {
   name: 'ProductDetails',
   components: {
     AppButton,
-    AppLoadingSpinner
-    // ProductRecommended
+    AppLoadingSpinner,
+    ProductRecommended
   },
   props: {
     productSlug: {
@@ -88,11 +91,15 @@ export default {
     ...mapGetters([
       'singleProductLoadingStatus',
       'singleProductError',
-      'singleProduct'
+      'singleProduct',
+      'recommendedProductsLoadingStatus',
+      'recommendedProductsError',
+      'recommendedProducts'
     ])
   },
   async created() {
     await this.$store.dispatch('fetchSingleProduct', this.productSlug);
+    await this.$store.dispatch('fetchRecommendedProducts');
   },
   methods: {
     close() {
