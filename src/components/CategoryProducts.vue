@@ -1,5 +1,5 @@
 <template lang="html">
-  <section class="search__container">
+  <section class="products">
     <main class="category__main">
 
       <div class="section__details">
@@ -14,7 +14,7 @@
 
         <transition-group
           tag="div"
-          class="products"
+          class="products__list"
           name="list"
           v-for="products in singleCategory"
         >
@@ -80,14 +80,35 @@
 <style lang="scss">
 
   .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
-    grid-auto-rows: 1fr;
-    grid-gap: 4rem;
-    height: 100%;
-    pointer-events: none;
-    @media only screen and (max-width: 25em) {
-      grid-auto-rows: .5fr;
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+      grid-auto-rows: 1fr;
+      grid-gap: 4rem;
+      height: 100%;
+      pointer-events: none;
+      @media only screen and (max-width: 25em) {
+        grid-auto-rows: .5fr;
+      }
+      & > * {
+        pointer-events: auto;
+        transition: .3s opacity, .3s transform;
+      }
+
+      &:hover > *,
+      &:focus-within > * {
+        opacity: 0.4;
+      }
+
+      &:hover > :hover,
+      &:focus-within > :focus {
+        transform: scale(1.02);
+        opacity: 1;
+      }
+
+      &:hover > :focus:not(:hover) {
+        transform: scale(1.01);
+      }
     }
 
     &__item {
@@ -135,26 +156,6 @@
       font-size: 1.8rem;
       color: var(--blue);
       font-weight: 700;
-    }
-
-    & > * {
-      pointer-events: auto;
-      transition: .3s opacity, .3s transform;
-    }
-
-    &:hover > *,
-    &:focus-within > * {
-      opacity: 0.4;
-    }
-
-    &:hover > :hover,
-    &:focus-within > :focus {
-      transform: scale(1.02);
-      opacity: 1;
-    }
-
-    &:hover > :focus:not(:hover) {
-      transform: scale(1.01);
     }
   }
 

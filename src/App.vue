@@ -1,6 +1,6 @@
 <template>
 
-  <section id="app" v-cloak>
+  <div id="app" v-cloak>
 
     <Navigation/>
 
@@ -16,7 +16,7 @@
 
     <CategoriesMenu/>
 
-  </section>
+  </div>
 
 </template>
 
@@ -70,9 +70,9 @@
     }
 
     &__title {
-      font-size: 7.2rem;
+      font-size: 6.2rem;
       font-weight: 300;
-      margin: 0;
+      margin-right: 5rem;
       @media only screen and (max-width: 64em) {
         font-size: 5.2rem;
       }

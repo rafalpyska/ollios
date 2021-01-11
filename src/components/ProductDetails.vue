@@ -4,8 +4,6 @@
       <div class="product-details__image-container">
         <button @click="close()" class="close">X</button>
         <img :src="`http://localhost:1337${product.image.url}`" alt="" class="product-details__image">
-        <button @click="zoomIn" class="btn__zoom btn__zoom--in">+</button>
-        <button @click="zoomOut" class="btn__zoom btn__zoom--out">-</button>
       </div>
       <div class="product-details__container">
         <div class="product-details__description">
@@ -19,10 +17,8 @@
             <div class="product__order">
               <div class="product__info product__price">
                 <p class="product__price-title">Cost</p>
-                <div class="price__container">
-                  <span class="price">${{ product.price }}</span>
+                <span class="price">${{ product.price }}</span>
                   <!-- <span class="price-previous">${{ previousPrice }}</span> -->
-                </div>
               </div>
               <div class="product__info product__quantity">
                 <label for="quantity" class="product__price-title">Quantity</label>
@@ -105,42 +101,6 @@
 </script>
 
 <style scoped lang="scss">
-  .btn {
-    &__zoom {
-      display: flex;
-      justify-content: center;
-      width: 4rem;
-      height: 4rem;
-      font-size: 3rem;
-      background-color: transparent;
-      color: var(--blue);
-      border: 2px solid var(--blue);
-      border-radius: 50%;
-
-      &--in {
-        bottom: 4.25rem;
-        left: 8rem;
-        @media only screen and (max-width: 64em) {
-          display: none;
-        }
-      }
-
-      &--out {
-        bottom: 4.25rem;
-        left: 13rem;
-        @media only screen and (max-width: 64em) {
-          display: none;
-        }
-      }
-    }
-  }
-
-  .zoom {
-    &-in {
-      transform: scale(1.2) !important;
-    }
-  }
-
   .heading {
     line-height: 55px;
   }
@@ -154,9 +114,7 @@
 
   .section {
     &__title {
-      margin: 0;
       font-size: 4.8rem;
-      color: var(--black);
       @media only screen and (max-width: 90em) {
         font-size: 4rem;
       }
@@ -167,12 +125,12 @@
     &__description {
       font-size: 2.4rem;
       font-weight: 300;
-      margin-bottom: 8.5rem;
+      margin: 8.5rem 0;
       @media only screen and (max-width: 48em) {
         font-size: 2rem;
       }
       &-container {
-        margin-top: 15rem;
+        margin-top: 13rem;
         margin-bottom: 11rem;
         @media only screen and (max-width: 160em) {
           margin-top: 9rem;
@@ -188,22 +146,22 @@
       flex-wrap: wrap;
       margin: 2rem 0;
       font-size: 1.8rem;
+      line-height: 1;
     }
-
+    &__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
     &-details {
-      position: absolute;
-      top: 0;
-      left: 0;
       display: flex;
       width: 100%;
-      height: 100%;
-      z-index: 10;
+      height: 100vh;
       padding-left: 14.5rem;
       @media only screen and (max-width: 64em) {
         flex-direction: column;
         padding-left: 0;
       }
-
       &__container {
         display: flex;
         flex-direction: column;
@@ -215,7 +173,6 @@
           width: 100%;
         }
       }
-
       &__description {
         height: auto;
         padding: 8rem 37rem 0 12.5rem;
@@ -241,6 +198,7 @@
         &-container {
           position: relative;
           display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
           flex: 1 1 40%;
@@ -279,8 +237,6 @@
     }
 
     &__quantity {
-      display: flex;
-      flex-direction: column;
       margin-left: 15rem;
       margin-right: 5rem;
       @media only screen and (max-width: 48em) {
@@ -294,7 +250,7 @@
     &__price-title,
     &__quantity-title {
       text-transform: uppercase;
-      margin: 0 0 2.5rem 0;
+      margin-bottom: 2.5rem;
       font-weight: 400;
       color: var(--black);
     }
@@ -315,11 +271,6 @@
     @media only screen and (max-width: 48em) {
       font-size: 4rem;
     }
-    &__container {
-      display: flex;
-      align-items: center;
-    }
-
     &-previous {
       font-size: 2.4rem;
       font-weight: 400;
