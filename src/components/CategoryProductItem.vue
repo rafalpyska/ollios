@@ -5,19 +5,20 @@
       params: { productSlug: product.slug }
     }"
     tag="article"
-    :data-product="product.title"
     class="product"
   >
     <figure class="product__image-container">
       <img
         :src="`http://localhost:1337${product.image.url}`"
-        class="products__image"
+        class="product__image"
       />
     </figure>
     <div class="product__info">
       <p class="product__name">{{ product.title }}</p>
-      <p class="product__description">{{ product.description }}</p>
-      <p class="product__price">${{ product.price }}</p>
+      <slot name="description" :product="product">
+      </slot>
+      <slot name="price" :product="product"> 
+      </slot>
     </div>
   </router-link>
 </template>
@@ -34,7 +35,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
   .product {
     display: flex;
@@ -89,11 +90,14 @@ export default {
       color: rgba(0, 0, 0, 0.8);
       margin-bottom: 1.75rem;
     }
-
     &__price {
       font-size: 1.8rem;
       font-weight: 700;
       color: var(--blue);
-    }
+    }   
+  }
+  .recommended__product-list .product__image-container {
+    width: 40%;
+    height: 9rem;
   }
 </style>

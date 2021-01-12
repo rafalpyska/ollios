@@ -36,7 +36,14 @@
           v-for="product in products.products"
           :key="product.id"
           :product="product"
-        />
+        >
+          <template v-slot:price="category">
+            <p class="product__price">${{ category.product.price }}</p>
+          </template>
+          <template v-slot:description="category">
+            <p class="product__description">{{ category.product.description }}</p>
+          </template>
+        </CategoryProductItem>
       </transition-group>
     </main>
   </section>

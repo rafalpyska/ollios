@@ -198,7 +198,7 @@ export default {
       color: rgba(0, 0, 0, 0.9);
       font-weight: 100;
       @media only screen and (max-width: 90em) {
-        padding: 5rem 22rem 0 12.5rem;
+        padding: 5rem 8rem 0 12.5rem;
       }
       @media only screen and (max-width: 64em) {
         margin-bottom: 2rem;
