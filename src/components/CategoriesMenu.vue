@@ -35,6 +35,12 @@ import getImageUrl from '../mixins/getImageUrl';
 
 export default {
   name: 'CategoriesMenu',
+  props: {
+    categories: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {
       active: false
