@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import { EventBus } from '@/event-bus.js';
 import getImageUrl from '../mixins/getImageUrl';
 
@@ -47,12 +46,8 @@ export default {
     }
   },
   mixins: [getImageUrl],
-  computed: {
-    ...mapGetters(['categoriesLoadingStatus', 'categoriesError', 'categories'])
-  },
-  async created() {
-    if (this.products && this.products.length > 0) return;
-    await this.$store.dispatch('fetchCategories');
+
+  created() {
     EventBus.$on('toggleActive', active => {
       this.active = active;
     });

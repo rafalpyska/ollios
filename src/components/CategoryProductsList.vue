@@ -75,7 +75,15 @@ export default {
       'singleCategoryLoadingStatus',
       'singleCategoryError',
       'singleCategory'
-    ])
+    ]),
+    filteredProducts() {
+      return this.singleCategory.filter((el) => {
+        return el.products.filter((product) => {
+          console.log(product);
+        })
+      })
+
+    }
   },
   async created() {
     await this.$store.dispatch('fetchSingleCategory', this.categorySlug);

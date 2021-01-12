@@ -2,9 +2,9 @@
   <div id="app" v-cloak>
     <Navigation />
 
-    <!-- <AppLoadingSpinner
-      v-if="productsLoadingStatus"
-    /> -->
+    <AppLoadingSpinner
+      v-if="categoriesLoadingStatus"
+    />
 
     <transition name="slide-in" mode="out-in">
       <router-view :key="$route.fullPath"/>
@@ -12,12 +12,15 @@
 
     <CategoriesMenuToggle />
 
-    <CategoriesMenu />
+    <CategoriesMenu 
+      :categories="categories"
+    />
   </div>
 </template>
 
 <script>
-// import AppLoadingSpinner from './components/AppLoadingSpinner';
+import { mapGetters } from 'vuex';
+import AppLoadingSpinner from './components/AppLoadingSpinner';
 import Navigation from './components/Navigation';
 import CategoriesMenuToggle from './components/CategoriesMenuToggle';
 import CategoriesMenu from './components/CategoriesMenu';
@@ -25,11 +28,18 @@ import CategoriesMenu from './components/CategoriesMenu';
 export default {
   name: 'App',
   components: {
-    // AppLoadingSpinner,
+    AppLoadingSpinner,
     Navigation,
     CategoriesMenuToggle,
     CategoriesMenu
-  }
+  },
+  computed: {
+    ...mapGetters(['categoriesLoadingStatus', 'categoriesError', 'categories'])
+  },
+    async created() {
+      if (this.categories && this.categories.length > 0) return;
+      await this.$store.dispatch('fetchCategories');
+    }
 };
 </script>
 
