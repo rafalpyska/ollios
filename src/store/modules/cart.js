@@ -18,6 +18,11 @@ export default {
     }
   },
   mutations: {
+    INITIALISE_CART(state) {
+      if(localStorage.getItem('cart')) {
+        Object.assign(state.cart, JSON.parse(localStorage.getItem('cart')));
+      }
+    },
     ADD_TO_CART(state, { product, quantity }) {
       let itemInCart = state.cart.find(item => {
         return item.product.id === product.id;
@@ -31,7 +36,7 @@ export default {
         product,
         quantity
       });
-      this.commit('ADD_CART_TO_LOCAL_STORAGE');
+      
     },
     REMOVE_ITEM_FROM_CART(state, product) {
       state.cart = state.cart.filter(item => {
@@ -44,11 +49,6 @@ export default {
     },
     ADD_CART_TO_LOCAL_STORAGE(state) {
       localStorage.setItem('cart', JSON.stringify(state.cart));
-    },
-    INITIALISE_CART(state) {
-      if(localStorage.getItem('cart')) {
-        Object.assign(state.cart, JSON.parse(localStorage.getItem('cart')));
-      }
     }
   },
   actions: {
