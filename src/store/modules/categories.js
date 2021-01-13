@@ -27,15 +27,6 @@ export default {
     },
     singleCategory(state) {
       return state.singleCategory;
-    },
-    filteredProducts(state) {
-      if(state.singleCategory) {
-        state.singleCategory.filter((item) => {
-           item.products.filter((product) => {
-            return product
-          })
-        })
-      }
     }
   },
   mutations: {

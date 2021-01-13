@@ -13,16 +13,9 @@
               <p class="item__title">Product: {{ item.product.title }}</p>
             </div>
             <div class="cart__product cart__product-quantity">
-              <label for="cart-quantity">Quantity</label>
-              <input
-                class="input__quantity input__quantity--cart"
-                id="cart-quantity"
-                max="10"
-                min="1"
-                name="cart-quantity"
-                type="number"
-                v-model.number="item.quantity"
-              />
+              <p for="cart-quantity">Quantity:
+                <span>{{ item.quantity }}</span>
+              </p>
             </div>
           </div>
           <div class="cart__product cart__product-price">
@@ -72,17 +65,26 @@ export default {
   align-items: center;
   width: 100%;
   height: 100vh;
+  padding-left: 14.5rem;
   background-color: var(--white);
   font-weight: 300;
+  @media only screen and (max-width: 64em) {
+    padding-left: 0;
+  }
   @media only screen and (max-width: 48em) {
     flex-wrap: wrap;
+  }
+  &__wrapper {
+    width: 70%;
   }
   &__empty {
     font-size: 1.8rem;
   }
   &__item {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     padding: 4rem;
+    font-size: 2rem;
     &:nth-child(even) {
       background-color: rgba(231, 231, 231, 0.3);
     }
@@ -102,26 +104,11 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 1rem;
-
-    &-info {
-      @media only screen and (max-width: 48em) {
-        order: 1;
-      }
-    }
-
     &-quantity {
       display: flex;
       flex-direction: row;
       align-items: center;
       align-self: baseline;
-    }
-
-    &-price {
-      margin-left: auto;
-      @media only screen and (max-width: 48em) {
-        order: 3;
-      }
     }
   }
 }
@@ -132,7 +119,7 @@ export default {
   }
 
   &__price {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 }
 

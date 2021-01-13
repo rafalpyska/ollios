@@ -197,6 +197,7 @@ export default {
       padding: 8rem 37rem 0 12.5rem;
       color: rgba(0, 0, 0, 0.9);
       font-weight: 100;
+      flex: 1 1 60%;
       @media only screen and (max-width: 90em) {
         padding: 5rem 8rem 0 12.5rem;
       }
@@ -299,13 +300,6 @@ export default {
     @media only screen and (max-width: 48em) {
       font-size: 2.2rem;
     }
-  }
-}
-
-.recommended {
-  &__wrapper {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
   }
 }
 </style>

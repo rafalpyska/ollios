@@ -57,8 +57,6 @@ export default {
       }
     }
     &__image {
-    max-width: 100%;
-    height: auto;
     transition: 0.3s all;
       &-container {
         display: flex;
@@ -91,7 +89,8 @@ export default {
       margin-bottom: 1.75rem;
     }
     &__price {
-      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
       font-weight: 700;
       color: var(--blue);
     }   

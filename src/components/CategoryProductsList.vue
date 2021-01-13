@@ -29,7 +29,7 @@
         tag="div"
         class="products__list"
         name="list"
-        v-for="products in singleCategory"
+        v-for="products in filteredProducts"
         :key="products.id"
       >
         <CategoryProductItem
@@ -78,12 +78,18 @@ export default {
     ]),
     filteredProducts() {
       return this.singleCategory.filter((el) => {
-        return el.products.filter((product) => {
-          console.log(product);
+        return el.products.some((product) => {
+          return product.title.toLowerCase().match(this.searchValue.toLowerCase())
         })
       })
-
     }
+    //     filteredProducts() {
+    //   return this.singleCategory.filter((el) => {
+    //     return el.products.filter((product) => {
+    //       return product.title.toLowerCase().match(this.searchValue.toLowerCase())
+    //     }).length
+    //   })
+    // }
   },
   async created() {
     await this.$store.dispatch('fetchSingleCategory', this.categorySlug);

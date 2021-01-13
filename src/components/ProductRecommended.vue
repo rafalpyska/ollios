@@ -6,13 +6,17 @@
           :key="product.id"
           :product="product"
       >
+        <template v-slot:description="category">
+          <p class="product__description">{{ ellipsify(category.product.description, 100) }}</p>
+        </template>
       </CategoryProductItem>
     </div>
   </div>
 </template>
 
 <script>
-  import CategoryProductItem from './CategoryProductItem'
+import CategoryProductItem from './CategoryProductItem'
+import ellipsify from '@/mixins/ellipsify'
 export default {
   name: 'RecommendedProducts',
   components: {
@@ -23,12 +27,16 @@ export default {
       type: Array,
       required: true
     }
-  }
+  },
+  mixins: [ellipsify],
 };
 </script>
 
 <style lang="scss" scoped>
 .recommended {
+  display: flex;
+  align-items: center;
+  flex: 2;
   padding: 2rem 0;
   background-color: rgba(255, 255, 255, 0.9);
   font-size: 0.7rem;
@@ -36,7 +44,10 @@ export default {
     flex-direction: column;
     padding: 2rem;
   }
-
+  &__wrapper {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
   &__section-title {
     writing-mode: tb-rl;
     transform: rotate(180deg);
@@ -57,10 +68,14 @@ export default {
     &-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-      justify-items: center;
+      align-items: baseline;
       text-align: center;
       grid-auto-rows: 1fr;
     }
   }
+  & .product {
+  flex-direction: row;
+  }
 }
+
 </style>
