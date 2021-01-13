@@ -114,6 +114,7 @@ export default {
       setTimeout(() => {
         this.added = false;
       }, 2000);
+      this.$store.commit('ADD_CART_TO_LOCAL_STORAGE');
     }
   }
 };

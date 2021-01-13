@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="recommended">
+    <h2 class="recommended__section-title">Recommended</h2>
     <div class="recommended__product-list" v-for="products in recommendedProducts" :key="products.id">
       <CategoryProductItem 
           v-for="product in products.products"
@@ -51,7 +52,7 @@ export default {
   &__section-title {
     writing-mode: tb-rl;
     transform: rotate(180deg);
-    font-size: 3.66rem;
+    font-size: 2.756rem;
     font-weight: 300;
     text-transform: uppercase;
     padding: 0 8rem;
@@ -74,8 +75,12 @@ export default {
     }
   }
   & .product {
-  flex-direction: row;
+    flex-direction: row;
+    padding: 0;
+    
   }
+  & .product__info {
+      flex: auto;
+    }
 }
-
 </style>

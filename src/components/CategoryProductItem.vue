@@ -36,7 +36,6 @@ export default {
 </script>
 
 <style lang="scss">
-
   .product {
     display: flex;
     flex-direction: column;

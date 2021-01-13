@@ -36,10 +36,13 @@ export default {
   computed: {
     ...mapGetters(['categoriesLoadingStatus', 'categoriesError', 'categories'])
   },
-    async created() {
-      if (this.categories && this.categories.length > 0) return;
-      await this.$store.dispatch('fetchCategories');
-    }
+  beforeCreate() {
+    this.$store.commit('INITIALISE_CART');
+  },
+  async created() {
+    if (this.categories && this.categories.length > 0) return;
+    await this.$store.dispatch('fetchCategories');
+  }
 };
 </script>
 
