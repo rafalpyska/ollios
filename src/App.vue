@@ -21,7 +21,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import AppLoadingSpinner from './components/AppLoadingSpinner';
-import Navigation from './components/Navigation';
+const Navigation = () => import('./components/Navigation');
 import CategoriesMenuToggle from './components/CategoriesMenuToggle';
 import CategoriesMenu from './components/CategoriesMenu';
 

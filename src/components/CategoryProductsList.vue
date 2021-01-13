@@ -31,6 +31,7 @@
         name="list"
         v-for="products in filteredProducts"
         :key="products.id"
+        @before-leave="beforeLeave"
       >
         <CategoryProductItem
           v-for="product in products.products"
@@ -52,6 +53,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import AppLoadingSpinner from './AppLoadingSpinner'
+import transitionFix from '@/mixins/transitionFix';
 import CategoryProductItem from './CategoryProductItem'
 export default {
   name: 'CategoryProduct',
@@ -65,6 +67,7 @@ export default {
       required: true
     }
   },
+  mixins: [transitionFix],
   data() {
     return {
       searchValue: ''
@@ -77,19 +80,21 @@ export default {
       'singleCategory'
     ]),
     filteredProducts() {
-      return this.singleCategory.filter((el) => {
-        return el.products.some((product) => {
-          return product.title.toLowerCase().match(this.searchValue.toLowerCase())
-        })
-      })
-    }
-    //     filteredProducts() {
-    //   return this.singleCategory.filter((el) => {
-    //     return el.products.filter((product) => {
-    //       return product.title.toLowerCase().match(this.searchValue.toLowerCase())
-    //     }).length
-    //   })
-    // }
+      return this.singleCategory.reduce((output, category) => {
+        const filteredProducts = category.products.filter((product) => {
+          return product.title
+            .toLowerCase()
+            .includes(this.searchValue.toLowerCase());
+        });
+        if (filteredProducts.length) {
+          output.push({
+            ...category,
+            products: filteredProducts,
+          });
+        }
+        return output;
+      }, []);
+    },
   },
   async created() {
     await this.$store.dispatch('fetchSingleCategory', this.categorySlug);
@@ -139,6 +144,8 @@ export default {
   text-align: center;
 }
 .search-local {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 5rem;
 }
 </style>

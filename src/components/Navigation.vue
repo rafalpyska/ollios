@@ -38,7 +38,7 @@
           </router-link>
         </li>
         <li class="navigation__item">
-          <router-link :to="{ name: 'cart' }" class="navigation__button">
+          <router-link :to="{ name: 'Cart' }" class="navigation__button">
             <span aria-label="Basket" class="navigation__icon-container">
               <svg
                 class="navigation__icon icon__basket"
@@ -80,7 +80,7 @@
           </router-link>
         </li>
         <li class="navigation__item">
-          <router-link :to="{ name: 'search' }" class="navigation__button">
+          <router-link :to="{ name: 'Search' }" class="navigation__button">
             <span aria-label="Search">
               <svg
                 class="navigation__icon icon__search"
