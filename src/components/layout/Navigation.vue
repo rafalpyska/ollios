@@ -5,7 +5,7 @@
         <li class="navigation__item">
           <router-link :to="{ name: 'home' }" class="navigation__button">
             <img
-              src="../assets/navigation/logo.png"
+              src="@/assets/navigation/logo.png"
               alt=""
               class="navigation__icon icon__logo"
             />
@@ -118,7 +118,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { EventBus } from '@/event-bus.js';
-import preventScroll from '../mixins/preventScroll';
+import preventScroll from '@/mixins/preventScroll';
 
 export default {
   name: 'Navigation',

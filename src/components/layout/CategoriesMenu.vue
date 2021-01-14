@@ -31,7 +31,7 @@
 
 <script>
 import { EventBus } from '@/event-bus.js';
-import getImageUrl from '../mixins/getImageUrl';
+import getImageUrl from '@/mixins/getImageUrl';
 
 export default {
   name: 'CategoriesMenu',

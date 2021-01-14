@@ -38,7 +38,6 @@ export default {
   display: flex;
   align-items: center;
   flex: 2;
-  padding: 2rem 0;
   background-color: rgba(255, 255, 255, 0.9);
   font-size: 0.7rem;
   @media only screen and (max-width: 64em) {
@@ -70,8 +69,9 @@ export default {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
       align-items: baseline;
-      text-align: center;
-      grid-auto-rows: 1fr;
+    }
+    &-name {
+      font-size: 2rem;
     }
   }
   & .product {
@@ -81,6 +81,6 @@ export default {
   }
   & .product__info {
       flex: auto;
-    }
+  }
 }
 </style>

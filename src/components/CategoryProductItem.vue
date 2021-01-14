@@ -44,7 +44,7 @@ export default {
     padding: 4rem;
     background-color: var(--white);
     cursor: pointer;
-    @media only screen and (max-width: 34.125em) {
+    @media only screen and (max-width: 64em) {
       grid-column: 1 / -1;
     }
     @media only screen and (max-width: 48em) {
@@ -76,16 +76,24 @@ export default {
       font-weight: 300;
       text-transform: uppercase;
       @media only screen and (max-width: 90em) {
-        font-size: 2rem;
+        font-size: 3rem;
+      }
+      @media only screen and (max-width: 38em) {
+        font-size: 2.5rem;
       }
     }
-
     &__description {
       flex: 1;
       font-size: 1.8rem;
       font-weight: 300;
       color: rgba(0, 0, 0, 0.8);
       margin-bottom: 1.75rem;
+            @media only screen and (max-width: 90em) {
+        font-size: 2.25rem;
+      }
+      @media only screen and (max-width: 38em) {
+        font-size: 2rem;
+      }
     }
     &__price {
       margin-bottom: 2rem;
@@ -96,6 +104,5 @@ export default {
   }
   .recommended__product-list .product__image-container {
     width: 40%;
-    height: 9rem;
   }
 </style>

@@ -1,6 +1,6 @@
 <template lang="html">
   <section class="products">
-    <AppLoadingSpinner v-if="singleCategoryLoadingStatus"/>
+    <BaseLoadingSpinner v-if="singleCategoryLoadingStatus"/>
     <main class="category__main" v-else>
       <div class="section__details">
         <h1 class="section__title">Products</h1>
@@ -52,13 +52,11 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import AppLoadingSpinner from './AppLoadingSpinner'
 import transitionFix from '@/mixins/transitionFix';
 import CategoryProductItem from './CategoryProductItem'
 export default {
   name: 'CategoryProduct',
   components: {
-    AppLoadingSpinner,
     CategoryProductItem
   },
   props: {

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'AppLoadingSpinner',
+  name: 'BaseLoadingSpinner',
   computed: {
     spinner__styles() {
       return {

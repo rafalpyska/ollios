@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'AppButton',
+  name: 'BaseButton',
   props: {
     to: {
       required: false

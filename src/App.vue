@@ -2,7 +2,7 @@
   <div id="app" v-cloak>
     <Navigation />
 
-    <AppLoadingSpinner
+    <BaseLoadingSpinner
       v-if="categoriesLoadingStatus"
     />
 
@@ -20,15 +20,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import AppLoadingSpinner from './components/AppLoadingSpinner';
-const Navigation = () => import('./components/Navigation');
-import CategoriesMenuToggle from './components/CategoriesMenuToggle';
-import CategoriesMenu from './components/CategoriesMenu';
+const Navigation = () => import('./components/layout/Navigation');
+import CategoriesMenuToggle from './components/layout/CategoriesMenuToggle';
+import CategoriesMenu from './components/layout/CategoriesMenu';
 
 export default {
   name: 'App',
   components: {
-    AppLoadingSpinner,
     Navigation,
     CategoriesMenuToggle,
     CategoriesMenu

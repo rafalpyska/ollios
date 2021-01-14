@@ -19,9 +19,9 @@
           <div class="vueperslide__content-wrapper" style="justify-content: initial">
             <h1 class="title">{{slide.title}}</h1>
             <h2 class="subtitle">{{slide.content}}</h2>
-            <AppButton :to="'/about-us'" class="btn__view-more">
+            <BaseButton :to="'/about-us'" class="btn__view-more">
               View More
-            </AppButton>
+            </BaseButton>
           </div>
         </template>
       </vueper-slide>
@@ -32,15 +32,12 @@
 <script>
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
-import AppButton from '@/components/AppButton';
-
 
 export default {
   name: 'Home',
   components: {
     VueperSlides,
-    VueperSlide,
-    AppButton
+    VueperSlide
   },
   data() {
     return {

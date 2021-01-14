@@ -24,7 +24,7 @@
             </p>
           </div>
           <div class="cart__product cart__product-price">
-            <AppButton @click.native="removeItemFromCart(item.product)">Remove</AppButton>
+            <BaseButton @click.native="removeItemFromCart(item.product)">Remove</BaseButton>
           </div>
         </div>
         <div :key="3215" v-if="cart.length > 0" class="cart__summary">
@@ -36,13 +36,9 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import AppButton from '@/components/AppButton';
 
 export default {
   name: 'ShoppingCart',
-  components: {
-    AppButton
-  },
   computed: {
     ...mapGetters(['cart', 'cartTotalItemPrice'])
   },

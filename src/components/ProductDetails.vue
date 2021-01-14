@@ -1,6 +1,6 @@
 <template lang="html">
   <section class="product-details">
-    <AppLoadingSpinner v-if="singleProductLoadingStatus" />
+    <BaseLoadingSpinner v-if="singleProductLoadingStatus" />
     <template v-for="(product, index) in singleProduct" v-else>
       <div class="product-details__image-container" :key="index">
         <button @click="close()" class="close">X</button>
@@ -20,12 +20,12 @@
             <h2 class="heading product__name">{{ product.title }}</h2>
             <p class="product__description">{{ product.description }}</p>
             <div class="product__order">
-              <div class="product__info product__price">
+              <div class="product__order-info">
                 <p class="product__price-title">Cost</p>
                 <span class="price">${{ product.price }}</span>
                 <!-- <span class="price-previous">${{ previousPrice }}</span> -->
               </div>
-              <div class="product__info product__quantity">
+              <div class="product__order-info product__quantity">
                 <label for="quantity" class="product__price-title"
                   >Quantity</label
                 >
@@ -39,12 +39,12 @@
                   v-model.number="quantity"
                 />
               </div>
-              <AppButton
+              <BaseButton
                 @click.native="addToCart()"
                 :disabled="quantity > 10"
                 class="btn__add-to-cart"
                 >Add to cart
-              </AppButton>
+              </BaseButton>
             </div>
             <transition name="fade">
               <p class="info" v-if="added">'{{ product.title }}' was added to cart!</p>
@@ -64,15 +64,11 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import AppLoadingSpinner from './AppLoadingSpinner'
-import AppButton from './AppButton';
 import ProductRecommended from "./ProductRecommended";
 
 export default {
   name: 'ProductDetails',
   components: {
-    AppButton,
-    AppLoadingSpinner,
     ProductRecommended
   },
   props: {
@@ -122,7 +118,7 @@ export default {
 
 <style scoped lang="scss">
 .heading {
-  line-height: 55px;
+  line-height: 70px;
 }
 
 .info {
@@ -167,11 +163,11 @@ export default {
     margin: 2rem 0;
     font-size: 1.8rem;
     line-height: 1;
-  }
-  &__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    &-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   }
   &-details {
     display: flex;
@@ -214,7 +210,7 @@ export default {
     &__image {
       transform: scale(1);
       transition: 0.3s all;
-      max-width: 100%;
+      max-width: 80%;
       height: auto;
       &-container {
         position: relative;
@@ -232,12 +228,6 @@ export default {
           width: 100%;
         }
       }
-    }
-
-    &__price {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
   }
   &__name {

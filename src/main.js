@@ -5,6 +5,9 @@ import router from './router';
 import store from './store';
 import './assets/styles/reset.css';
 
+// Globally register all `Base`-prefixed components
+import '@/components/_globals'
+
 Vue.config.productionTip = false;
 
 new Vue({
