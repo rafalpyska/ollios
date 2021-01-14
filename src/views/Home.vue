@@ -19,7 +19,7 @@
           <div class="vueperslide__content-wrapper" style="justify-content: initial">
             <h1 class="title">{{slide.title}}</h1>
             <h2 class="subtitle">{{slide.content}}</h2>
-            <BaseButton :to="'/about-us'" class="btn__view-more">
+            <BaseButton :to="'/about-us'" class="btn--view-more">
               View More
             </BaseButton>
           </div>

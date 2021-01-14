@@ -43,13 +43,14 @@ export default {
   transform: scale(1);
   cursor: pointer;
   transition: 0.3s all;
-
   &:hover {
     transform: scale(1.03);
   }
-
   &:disabled {
     background-color: var(--blue-disabled);
+  }
+  &--view-more {
+    padding: 1rem 5rem;
   }
 }
 </style>

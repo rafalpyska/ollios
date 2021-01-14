@@ -7,8 +7,8 @@
           :key="product.id"
           :product="product"
       >
-        <template v-slot:description="category">
-          <p class="product__description">{{ ellipsify(category.product.description, 100) }}</p>
+        <template v-slot:title="category">
+          <p class="product__name">{{ category.product.title }}</p>
         </template>
       </CategoryProductItem>
     </div>
@@ -67,20 +67,45 @@ export default {
     cursor: pointer;
     &-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-      align-items: baseline;
+      grid-template-columns: repeat(4, 1fr);
+      & > * {
+        pointer-events: auto;
+        transition: 0.3s opacity, 0.3s transform;
+      }
+
+      &:hover > *,
+      &:focus-within > * {
+        opacity: 0.4;
+      }
+
+      &:hover > :hover,
+      &:focus-within > :focus {
+        transform: scale(1.02);
+        opacity: 1;
+      }
+
+      &:hover > :focus:not(:hover) {
+        transform: scale(1.01);
+      }
     }
     &-name {
       font-size: 2rem;
     }
   }
-  & .product {
+  & ::v-deep .product {
     flex-direction: row;
     padding: 0;
     
   }
-  & .product__info {
+  & ::v-deep .product__info {
       flex: auto;
+  }
+  & ::v-deep .product__image {
+    max-width: 20rem;
+    max-height: 15rem;
+  }
+  & ::v-deep .product__name {
+    font-size: 2rem;
   }
 }
 </style>

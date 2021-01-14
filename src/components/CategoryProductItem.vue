@@ -14,7 +14,8 @@
       />
     </figure>
     <div class="product__info">
-      <p class="product__name">{{ product.title }}</p>
+      <slot name="title" :product="product">
+      </slot>
       <slot name="description" :product="product">
       </slot>
       <slot name="price" :product="product"> 
@@ -56,12 +57,13 @@ export default {
       }
     }
     &__image {
+    max-width: 35rem;
+    max-height: 30rem;
     transition: 0.3s all;
       &-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 36rem;
       }
     }
     &__info {
@@ -88,7 +90,7 @@ export default {
       font-weight: 300;
       color: rgba(0, 0, 0, 0.8);
       margin-bottom: 1.75rem;
-            @media only screen and (max-width: 90em) {
+      @media only screen and (max-width: 90em) {
         font-size: 2.25rem;
       }
       @media only screen and (max-width: 38em) {
@@ -101,8 +103,5 @@ export default {
       font-weight: 700;
       color: var(--blue);
     }   
-  }
-  .recommended__product-list .product__image-container {
-    width: 40%;
   }
 </style>

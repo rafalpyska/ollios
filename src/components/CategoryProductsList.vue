@@ -38,6 +38,9 @@
           :key="product.id"
           :product="product"
         >
+          <template v-slot:title="category">
+            <p class="product__name">{{ category.product.title }}</p>
+          </template>
           <template v-slot:price="category">
             <p class="product__price">${{ category.product.price }}</p>
           </template>
@@ -132,10 +135,6 @@ export default {
       transform: scale(1.01);
     }
   }
-}
-
-.recommended__products .products__image {
-  max-width: 40%;
 }
 
 .recommended__products {

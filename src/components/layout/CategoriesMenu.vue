@@ -87,7 +87,7 @@ export default {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 0 7rem;
     z-index: 10;
-    @media only screen and (max-width: 64em) {
+    @media only screen and (max-width: 29.25em) {
       width: 100%;
       background-color: var(--white);
       z-index: 11;
