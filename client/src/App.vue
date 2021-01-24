@@ -60,7 +60,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     text-transform: uppercase;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
     @media only screen and (max-width: 48em) {
       flex-direction: column;
       align-items: flex-start;
@@ -75,16 +75,19 @@ export default {
     font-size: 6.2rem;
     font-weight: 300;
     margin-right: 5rem;
-    @media only screen and (max-width: 64em) {
+    @media only screen and (max-width: 160em) {
       font-size: 5.2rem;
     }
-    @media only screen and (max-width: 48em) {
+    @media only screen and (max-width: 64em) {
       font-size: 4.5rem;
+    }
+    @media only screen and (max-width: 48em) {
+      font-size: 4.25rem;
     }
   }
 
   &__category {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
     font-weight: 300;
     color: rgba(0, 0, 0, 1);
   }
@@ -92,16 +95,19 @@ export default {
 .category__main {
   width: 100%;
   min-height: 100vh;
-  padding: 8rem 40rem 2rem 40rem;
+  padding: 8rem 25rem 2rem 39.5rem;
   background-color: var(--gray);
   @media only screen and (max-width: 64em) {
-    padding: 8rem 17rem 8rem 17rem;
+    padding: 8rem 13rem;
+  }
+  @media only screen and (max-width: 48em) {
+    padding: 8rem 10rem;
   }
   @media only screen and (max-width: 34.125em) {
     padding: 8rem;
   }
   @media only screen and (max-width: 25em) {
-    padding: 8rem 10rem 8rem 10rem;
+    padding: 10rem 3rem;
   }
 }
 
