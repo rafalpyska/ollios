@@ -61,10 +61,10 @@ export default {
       return (state.singleProduct = singleProduct);
     },
     SET_RECOMMENDED_PRODUCTS_LOADING(state, loadingStatus) {
-      return (state.recommendedProductsLoading = loadingStatus)
+      return (state.recommendedProductsLoading = loadingStatus);
     },
     SET_RECOMMENDED_PRODUCTS_ERROR(state, error) {
-      return (state.recommendedProductsError = error)
+      return (state.recommendedProductsError = error);
     },
     SET_RECOMMENDED_PRODUCTS(state, recommendedProducts) {
       return (state.recommendedProducts = recommendedProducts);
@@ -106,6 +106,6 @@ export default {
         .catch(error => {
           commit('SET_RECOMMENDED_PRODUCTS_ERROR', error);
         });
-    },
+    }
   }
 };

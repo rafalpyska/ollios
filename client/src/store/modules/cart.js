@@ -19,7 +19,7 @@ export default {
   },
   mutations: {
     INITIALISE_CART(state) {
-      if(localStorage.getItem('cart')) {
+      if (localStorage.getItem('cart')) {
         Object.assign(state.cart, JSON.parse(localStorage.getItem('cart')));
       }
     },
@@ -36,7 +36,6 @@ export default {
         product,
         quantity
       });
-      
     },
     REMOVE_ITEM_FROM_CART(state, product) {
       state.cart = state.cart.filter(item => {

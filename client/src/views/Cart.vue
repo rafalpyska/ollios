@@ -1,36 +1,41 @@
 <template lang="html">
   <section class="cart">
     <button @click="close()" class="close close-cart">X</button>
-      <transition-group tag="div" class="cart__wrapper" name="list">
-        <h1 key="2121" class="section__title">Shopping Cart</h1>
-        <p key="2222" class="cart__empty" v-if="cart.length === 0">Your basket is empty!</p>
-        <div class="cart__item" v-for="item in cart" :key="item.product.id">
-          <div class="cart__image-container">
-            <img class="cart__image" :src="`${item.product.image.url}`" alt="">
+    <transition-group tag="div" class="cart__wrapper" name="list">
+      <h1 key="2121" class="section__title">Shopping Cart</h1>
+      <p key="2222" class="cart__empty" v-if="cart.length === 0">
+        Your basket is empty!
+      </p>
+      <div class="cart__item" v-for="item in cart" :key="item.product.id">
+        <div class="cart__image-container">
+          <img class="cart__image" :src="`${item.product.image.url}`" alt="" />
+        </div>
+        <div class="cart__product cart__product-info">
+          <div class="cart__product cart__product-title">
+            <p class="item__title">Product: {{ item.product.title }}</p>
           </div>
-          <div class="cart__product cart__product-info">
-            <div class="cart__product cart__product-title">
-              <p class="item__title">Product: {{ item.product.title }}</p>
-            </div>
-            <div class="cart__product cart__product-quantity">
-              <p for="cart-quantity">Quantity:
-                <span>{{ item.quantity }}</span>
-              </p>
-            </div>
-          </div>
-          <div class="cart__product cart__product-price">
-            <p class="item__price">
-              Price for a single item: ${{ item.product.price }}
+          <div class="cart__product cart__product-quantity">
+            <p for="cart-quantity">
+              Quantity:
+              <span>{{ item.quantity }}</span>
             </p>
           </div>
-          <div class="cart__product cart__product-price">
-            <BaseButton @click.native="removeItemFromCart(item.product)">Remove</BaseButton>
-          </div>
         </div>
-        <div :key="3215" v-if="cart.length > 0" class="cart__summary">
-          <p class="item__price">Total: ${{ cartTotalItemPrice }}</p>
+        <div class="cart__product cart__product-price">
+          <p class="item__price">
+            Price for a single item: ${{ item.product.price }}
+          </p>
         </div>
-      </transition-group>
+        <div class="cart__product cart__product-price">
+          <BaseButton @click.native="removeItemFromCart(item.product)"
+            >Remove</BaseButton
+          >
+        </div>
+      </div>
+      <div :key="3215" v-if="cart.length > 0" class="cart__summary">
+        <p class="item__price">Total: ${{ cartTotalItemPrice }}</p>
+      </div>
+    </transition-group>
   </section>
 </template>
 

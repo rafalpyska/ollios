@@ -6,7 +6,7 @@ import store from './store';
 import './assets/styles/reset.css';
 
 // Globally register all `Base`-prefixed components
-import '@/components/_globals'
+import '@/components/_globals';
 
 Vue.config.productionTip = false;
 

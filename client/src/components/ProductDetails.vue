@@ -47,16 +47,18 @@
               </BaseButton>
             </div>
             <transition name="fade">
-              <p class="info" v-if="added">'{{ product.title }}' was added to cart!</p>
+              <p class="info" v-if="added">
+                '{{ product.title }}' was added to cart!
+              </p>
             </transition>
             <transition name="fade">
-              <p class="info" v-if="quantity > 10">You cannot buy more than 10 items! </p>
+              <p class="info" v-if="quantity > 10">
+                You cannot buy more than 10 items!
+              </p>
             </transition>
           </div>
         </div>
-        <ProductRecommended
-          :recommendedProducts="recommendedProducts"
-        />
+        <ProductRecommended :recommendedProducts="recommendedProducts" />
       </div>
     </template>
   </section>
@@ -64,7 +66,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import ProductRecommended from "./ProductRecommended";
+import ProductRecommended from './ProductRecommended';
 
 export default {
   name: 'ProductDetails',

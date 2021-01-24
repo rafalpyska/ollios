@@ -1,6 +1,6 @@
 <template lang="html">
   <section class="products">
-    <BaseLoadingSpinner v-if="singleCategoryLoadingStatus"/>
+    <BaseLoadingSpinner v-if="singleCategoryLoadingStatus" />
     <main class="category__main" v-else>
       <div class="section__details">
         <h1 class="section__title">Products</h1>
@@ -45,7 +45,9 @@
             <p class="product__price">${{ category.product.price }}</p>
           </template>
           <template v-slot:description="category">
-            <p class="product__description">{{ category.product.description }}</p>
+            <p class="product__description">
+              {{ category.product.description }}
+            </p>
           </template>
         </CategoryProductItem>
       </transition-group>
@@ -56,7 +58,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import transitionFix from '@/mixins/transitionFix';
-import CategoryProductItem from './CategoryProductItem'
+import CategoryProductItem from './CategoryProductItem';
 export default {
   name: 'CategoryProduct',
   components: {
@@ -82,7 +84,7 @@ export default {
     ]),
     filteredProducts() {
       return this.singleCategory.reduce((output, category) => {
-        const filteredProducts = category.products.filter((product) => {
+        const filteredProducts = category.products.filter(product => {
           return product.title
             .toLowerCase()
             .includes(this.searchValue.toLowerCase());
@@ -90,12 +92,12 @@ export default {
         if (filteredProducts.length) {
           output.push({
             ...category,
-            products: filteredProducts,
+            products: filteredProducts
           });
         }
         return output;
       }, []);
-    },
+    }
   },
   async created() {
     await this.$store.dispatch('fetchSingleCategory', this.categorySlug);

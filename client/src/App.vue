@@ -2,19 +2,15 @@
   <div id="app" v-cloak>
     <Navigation />
 
-    <BaseLoadingSpinner
-      v-if="categoriesLoadingStatus"
-    />
+    <BaseLoadingSpinner v-if="categoriesLoadingStatus" />
 
     <transition name="slide-in" mode="out-in">
-      <router-view :key="$route.fullPath"/>
+      <router-view :key="$route.fullPath" />
     </transition>
 
     <CategoriesMenuToggle />
 
-    <CategoriesMenu 
-      :categories="categories"
-    />
+    <CategoriesMenu :categories="categories" />
   </div>
 </template>
 
