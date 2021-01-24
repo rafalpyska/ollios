@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recommended_products",
+  "info": {
+    "name": "RecommendedProduct",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "products": {
+      "collection": "product",
+      "via": "recommended_product"
+    }
+  }
+}
