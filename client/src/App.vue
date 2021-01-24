@@ -98,7 +98,7 @@ export default {
     padding: 8rem 17rem 8rem 17rem;
   }
   @media only screen and (max-width: 34.125em) {
-    padding: 8rem 13rem 8rem 13rem;
+    padding: 8rem;
   }
   @media only screen and (max-width: 25em) {
     padding: 8rem 10rem 8rem 10rem;

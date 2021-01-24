@@ -140,6 +140,7 @@ export default {
     align-items: center;
     margin-left: 3rem;
     fill: white;
+    pointer-events: none;
   }
 }
 
