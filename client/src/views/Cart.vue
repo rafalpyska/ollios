@@ -6,7 +6,7 @@
         <p key="2222" class="cart__empty" v-if="cart.length === 0">Your basket is empty!</p>
         <div class="cart__item" v-for="item in cart" :key="item.product.id">
           <div class="cart__image-container">
-            <img class="cart__image" :src="`http://localhost:1337${item.product.image.url}`" alt="">
+            <img class="cart__image" :src="`${item.product.image.url}`" alt="">
           </div>
           <div class="cart__product cart__product-info">
             <div class="cart__product cart__product-title">

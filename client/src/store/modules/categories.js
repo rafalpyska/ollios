@@ -53,7 +53,7 @@ export default {
     async fetchCategories({ commit }) {
       commit('SET_CATEGORIES_LOADING', true);
       return await axios
-        .get(`http://localhost:1337/categories`)
+        .get(`${process.env.VUE_APP_API_URL}/categories`)
         .then(({ data }) => {
           commit('SET_CATEGORIES', data);
           commit('SET_CATEGORIES_LOADING', false);
@@ -65,7 +65,7 @@ export default {
     async fetchSingleCategory({ commit }, categorySlug) {
       commit('SET_SINGLE_CATEGORY_LOADING', true);
       return await axios
-        .get(`http://localhost:1337/categories?slug=${categorySlug}`)
+        .get(`${process.env.VUE_APP_API_URL}/categories?slug=${categorySlug}`)
         .then(({ data }) => {
           commit('SET_SINGLE_CATEGORY', data);
           commit('SET_SINGLE_CATEGORY_LOADING', false);

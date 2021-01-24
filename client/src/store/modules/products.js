@@ -74,7 +74,7 @@ export default {
     async fetchProducts({ commit }) {
       commit('SET_PRODUCTS_LOADING', true);
       return await axios
-        .get(`http://localhost:1337/products`)
+        .get(`${process.env.VUE_APP_API_URL}/products`)
         .then(({ data }) => {
           commit('SET_PRODUCTS', data);
           commit('SET_PRODUCTS_LOADING', false);
@@ -86,7 +86,7 @@ export default {
     async fetchSingleProduct({ commit }, productSlug) {
       commit('SET_SINGLE_PRODUCT_LOADING', true);
       return await axios
-        .get(`http://localhost:1337/products?slug=${productSlug}`)
+        .get(`${process.env.VUE_APP_API_URL}/products?slug=${productSlug}`)
         .then(({ data }) => {
           commit('SET_SINGLE_PRODUCT', data);
           commit('SET_SINGLE_PRODUCT_LOADING', false);
@@ -98,7 +98,7 @@ export default {
     async fetchRecommendedProducts({ commit }) {
       commit('SET_RECOMMENDED_PRODUCTS_LOADING', true);
       return await axios
-        .get(`http://localhost:1337/recommended-products`)
+        .get(`${process.env.VUE_APP_API_URL}/recommended-products`)
         .then(({ data }) => {
           commit('SET_RECOMMENDED_PRODUCTS', data);
           commit('SET_RECOMMENDED_PRODUCTS_LOADING', false);
