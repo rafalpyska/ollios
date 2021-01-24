@@ -9,7 +9,7 @@
   >
     <figure class="product__image-container">
       <img
-        :src="`http://localhost:1337${product.image.url}`"
+        :src="`${product.image.url}`"
         class="product__image"
       />
     </figure>

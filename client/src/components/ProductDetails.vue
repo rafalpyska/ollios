@@ -5,7 +5,7 @@
       <div class="product-details__image-container" :key="index">
         <button @click="close()" class="close">X</button>
         <img
-          :src="`http://localhost:1337${product.image.url}`"
+          :src="`${product.image.url}`"
           alt=""
           class="product-details__image"
         />
