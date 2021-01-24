@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "name": "category",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "required": true
+    },
+    "class": {
+      "type": "string",
+      "required": true
+    },
+    "products": {
+      "via": "categories",
+      "collection": "product"
+    },
+    "slug": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
