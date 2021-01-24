@@ -8,28 +8,32 @@
         name="list"
         @before-leave="beforeLeave"
       >
-      <div class="search__form" :key="122222">
-        <form @submit.prevent class="search__controls" >
-          <input
-            class="search__input"
-            id="search-input"
-            type="search"
-            name="search__input"
-            v-model="searchValue"
+        <div class="search__form" :key="122222">
+          <form @submit.prevent class="search__controls">
+            <input
+              class="search__input"
+              id="search-input"
+              type="search"
+              name="search__input"
+              v-model="searchValue"
+            />
+            <label class="search__label" for="search-input"
+              >Type product that you are looking for</label
+            >
+          </form>
+        </div>
+        <div
+          class="products"
+          v-if="filteredProducts.length < products.length"
+          :key="filteredProducts.length"
+        >
+          <CategoryProductItem
+            v-for="product in filteredProducts"
+            :key="product.id"
+            :product="product"
+            class="products__item"
+            :class="'products__item--' + product.id"
           />
-          <label class="search__label" for="search-input"
-            >Type product that you are looking for</label
-          >
-        </form>
-      </div>
-      <div class="products" v-if="filteredProducts.length < products.length" :key="filteredProducts.length">
-        <CategoryProductItem
-          v-for="product in filteredProducts"
-          :key="product.id"
-          :product="product"
-          class="products__item"
-          :class="'products__item--' + product.id"
-        />
         </div>
       </transition-group>
     </section>
@@ -38,7 +42,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import CategoryProductItem from '@/components/CategoryProductItem'
+import CategoryProductItem from '@/components/CategoryProductItem';
 import transitionFix from '@/mixins/transitionFix';
 
 export default {
@@ -53,17 +57,13 @@ export default {
     };
   },
   computed: {
-    ...mapGetters([
-      'productsLoadingStatus',
-      'productsError',
-      'products'
-    ]),
+    ...mapGetters(['productsLoadingStatus', 'productsError', 'products']),
     filteredProducts() {
-      return this.products.filter((product) => {
-          return product.title
-            .toLowerCase()
-            .includes(this.searchValue.toLowerCase());
-        });
+      return this.products.filter(product => {
+        return product.title
+          .toLowerCase()
+          .includes(this.searchValue.toLowerCase());
+      });
     }
   },
   async created() {
@@ -92,7 +92,7 @@ export default {
     padding: 8rem 22rem 0 12.5rem;
   }
   @media only screen and (max-width: 48em) {
-    padding: 3rem
+    padding: 3rem;
   }
   &__content {
     width: 100%;
@@ -121,7 +121,7 @@ export default {
     padding: 2rem 5rem;
   }
   @media only screen and (max-width: 48em) {
-    padding: 2rem 3rem
+    padding: 2rem 3rem;
   }
 }
 </style>

@@ -1,11 +1,15 @@
 <template lang="html">
   <div class="recommended">
     <h2 class="recommended__section-title">Recommended</h2>
-    <div class="recommended__product-list" v-for="products in recommendedProducts" :key="products.id">
-      <CategoryProductItem 
-          v-for="product in products.products"
-          :key="product.id"
-          :product="product"
+    <div
+      class="recommended__product-list"
+      v-for="products in recommendedProducts"
+      :key="products.id"
+    >
+      <CategoryProductItem
+        v-for="product in products.products"
+        :key="product.id"
+        :product="product"
       >
         <template v-slot:title="category">
           <p class="product__name">{{ category.product.title }}</p>
@@ -16,8 +20,8 @@
 </template>
 
 <script>
-import CategoryProductItem from './CategoryProductItem'
-import ellipsify from '@/mixins/ellipsify'
+import CategoryProductItem from './CategoryProductItem';
+import ellipsify from '@/mixins/ellipsify';
 export default {
   name: 'RecommendedProducts',
   components: {
@@ -29,7 +33,7 @@ export default {
       required: true
     }
   },
-  mixins: [ellipsify],
+  mixins: [ellipsify]
 };
 </script>
 
@@ -95,10 +99,9 @@ export default {
   & ::v-deep .product {
     flex-direction: row;
     padding: 0;
-    
   }
   & ::v-deep .product__info {
-      flex: auto;
+    flex: auto;
   }
   & ::v-deep .product__image {
     max-width: 20rem;

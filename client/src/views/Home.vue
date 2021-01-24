@@ -1,5 +1,5 @@
 <template lang="html">
-  <section class="slider">  
+  <section class="slider">
     <vueper-slides
       fade
       autoplay
@@ -16,9 +16,12 @@
         :content="slide.content"
       >
         <template v-slot:content>
-          <div class="vueperslide__content-wrapper" style="justify-content: initial">
-            <h1 class="title">{{slide.title}}</h1>
-            <h2 class="subtitle">{{slide.content}}</h2>
+          <div
+            class="vueperslide__content-wrapper"
+            style="justify-content: initial"
+          >
+            <h1 class="title">{{ slide.title }}</h1>
+            <h2 class="subtitle">{{ slide.content }}</h2>
             <BaseButton :to="'/about-us'" class="btn--view-more">
               View More
             </BaseButton>
@@ -30,8 +33,8 @@
 </template>
 
 <script>
-import { VueperSlides, VueperSlide } from 'vueperslides'
-import 'vueperslides/dist/vueperslides.css'
+import { VueperSlides, VueperSlide } from 'vueperslides';
+import 'vueperslides/dist/vueperslides.css';
 
 export default {
   name: 'Home',
@@ -59,39 +62,39 @@ export default {
           content: 'Satisfaction of our clients is the most important thing',
           image: require('@/assets/background3.jpg')
         }
-      ],
+      ]
     };
   }
 };
 </script>
 
 <style scoped lang="scss">
-  .slider {
-    padding-left: 14.5rem;
-    @media only screen and (max-width: 64em) {
-      padding-left: 0;
-    }
+.slider {
+  padding-left: 14.5rem;
+  @media only screen and (max-width: 64em) {
+    padding-left: 0;
   }
-  .title,
-  .subtitle {
-    margin: 0;
-    padding: 0.75rem;
-    text-transform: uppercase;
+}
+.title,
+.subtitle {
+  margin: 0;
+  padding: 0.75rem;
+  text-transform: uppercase;
+}
+.title {
+  font-size: 14rem;
+  font-weight: 300;
+  @media only screen and (max-width: 64em) {
+    padding-top: 8rem;
+    font-size: 7rem;
   }
-  .title {
-    font-size: 14rem;
-    font-weight: 300;
-    @media only screen and (max-width: 64em) {
-      padding-top: 8rem;
-      font-size: 7rem;
-    }
+}
+.subtitle {
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  @media only screen and (max-width: 34.125em) {
+    font-size: 2.5rem;
   }
-  .subtitle {
-    font-size: 3rem;
-    font-weight: 300;
-    margin-bottom: 3rem;
-    @media only screen and (max-width: 34.125em) {
-      font-size: 2.5rem;
-    }
-  }
+}
 </style>

@@ -130,9 +130,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters([
-      'cartItemCount'
-    ])
+    ...mapGetters(['cartItemCount'])
   },
   created() {
     EventBus.$on('cartClosed', closed => {
