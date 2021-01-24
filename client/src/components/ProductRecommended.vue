@@ -1,31 +1,38 @@
 <template lang="html">
   <div class="recommended">
-    <h2 class="recommended__section-title">Recommended</h2>
-    <div
-      class="recommended__product-list"
-      v-for="products in recommendedProducts"
-      :key="products.id"
-    >
-      <CategoryProductItem
-        v-for="product in products.products"
-        :key="product.id"
-        :product="product"
-      >
-        <template v-slot:title="category">
-          <p class="product__name">{{ category.product.title }}</p>
-        </template>
-      </CategoryProductItem>
-    </div>
+    <!-- <h2 class="recommended__section-title">Recommended</h2> -->
+
+      <hooper :settings="hooperSettings" v-for="products in recommendedProducts" :key="products.id">
+        <slide v-for="product in products.products" :key="product.id">
+          <CategoryProductItem
+            :product="product"
+          >
+            <template v-slot:price="category">
+              <p class="product__price">${{ category.product.price }}</p>
+            </template>
+            <template v-slot:title="category">
+              <p class="product__name">{{ category.product.title }}</p>
+            </template>
+          </CategoryProductItem>
+        </slide>
+        <hooper-navigation slot="hooper-addons"></hooper-navigation>
+      </hooper>
+
   </div>
 </template>
 
 <script>
+import { Hooper, Slide, Navigation as HooperNavigation } from 'hooper';
+import '@/assets/styles/hooper.css';
 import CategoryProductItem from './CategoryProductItem';
 import ellipsify from '@/mixins/ellipsify';
 export default {
   name: 'RecommendedProducts',
   components: {
-    CategoryProductItem
+    CategoryProductItem,
+    Hooper,
+    Slide,
+    HooperNavigation
   },
   props: {
     recommendedProducts: {
@@ -33,7 +40,30 @@ export default {
       required: true
     }
   },
-  mixins: [ellipsify]
+  mixins: [ellipsify],
+  data() {
+    return {
+      hooperSettings: {
+        wheelControl: false,
+        mouseDrag: false,
+        breakpoints: {
+          200: {
+            itemsToShow: 1
+          },
+          600: {
+            itemsToShow: 2
+          },
+          768: {
+            itemsToShow: 3
+          },
+          2560: {
+            itemsToShow: 4,
+            pagination: "fraction"
+          }
+        }
+      }
+    }
+  }
 };
 </script>
 
@@ -42,6 +72,7 @@ export default {
   display: flex;
   align-items: center;
   flex: 2;
+  padding: 2rem;
   background-color: rgba(255, 255, 255, 0.9);
   font-size: 0.7rem;
   @media only screen and (max-width: 64em) {
@@ -96,12 +127,12 @@ export default {
       font-size: 2rem;
     }
   }
-  & ::v-deep .product {
-    flex-direction: row;
+  & ::v-deep .product { 
     padding: 0;
   }
   & ::v-deep .product__info {
     flex: auto;
+    text-align: center;
   }
   & ::v-deep .product__image {
     max-width: 20rem;

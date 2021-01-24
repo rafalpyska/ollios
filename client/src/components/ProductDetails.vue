@@ -5,7 +5,7 @@
       <div class="product-details__image-container" :key="index">
         <button @click="close()" class="close">X</button>
         <img
-          :src="`${product.image.url}`"
+          :src="`http://localhost:1337${product.image.url}`"
           alt=""
           class="product-details__image"
         />
@@ -132,9 +132,9 @@ export default {
 
 .section {
   &__title {
-    font-size: 4.8rem;
+    font-size: 3.8rem;
     @media only screen and (max-width: 90em) {
-      font-size: 4rem;
+      font-size: 3.5rem;
     }
   }
 }
@@ -144,14 +144,19 @@ export default {
     font-size: 2.4rem;
     font-weight: 300;
     margin: 8.5rem 0;
+    @media only screen and (max-width: 160em) {
+      margin: 4.5rem 0;
+    }
+    @media only screen and (max-width: 90em) {
+      margin: 4.5rem 0;
+    }
     @media only screen and (max-width: 48em) {
       font-size: 2rem;
     }
     &-container {
-      margin-top: 13rem;
-      margin-bottom: 11rem;
+      margin: 6rem 0;
       @media only screen and (max-width: 160em) {
-        margin-top: 9rem;
+        margin-top: 6rem;
         margin-bottom: 4rem;
       }
       @media only screen and (max-width: 48em) {
@@ -172,33 +177,34 @@ export default {
     }
   }
   &-details {
-    display: flex;
-    width: 100%;
-    height: 100vh;
+    // display: flex;
+    // width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    min-height: 100vh;
     padding-left: 14.5rem;
     @media only screen and (max-width: 64em) {
-      flex-direction: column;
+      // flex-direction: column;
       padding-left: 0;
     }
     &__container {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      flex: 1 1 60%;
+      // flex: 1 1 60%;
       background-color: rgba(240, 240, 240, 1);
-      @media only screen and (max-width: 64em) {
-        display: inline-block;
-        width: 100%;
+      @media only screen and (max-width: 80em) {
+        grid-column: 1/-1;
       }
     }
     &__description {
       height: auto;
-      padding: 8rem 37rem 0 12.5rem;
+      padding: 8rem 17rem 0 12.5rem;
       color: rgba(0, 0, 0, 0.9);
       font-weight: 100;
-      flex: 1 1 60%;
+      flex: 1 1 auto;
       @media only screen and (max-width: 90em) {
-        padding: 5rem 8rem 0 12.5rem;
+        padding: 5rem 8rem 0 6.5rem;
       }
       @media only screen and (max-width: 64em) {
         margin-bottom: 2rem;
@@ -220,26 +226,29 @@ export default {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        flex: 1 1 40%;
+        // flex: 1 1 40%;
         background-color: rgba(255, 255, 255, 1);
         box-shadow: 4px 0 5px -2px var(--shadow);
         z-index: 2;
         overflow: hidden;
+        @media only screen and (max-width: 80em) {
+          grid-column: 1/-1;
+        }
         @media only screen and (max-width: 64em) {
-          min-height: 55rem;
-          width: 100%;
+          // min-height: 55rem;
+          // width: 100%;
         }
       }
     }
   }
   &__name {
-    font-size: 7.2rem;
+    font-size: 5.2rem;
     font-weight: 300;
     color: var(--blue);
     text-transform: uppercase;
-    @media only screen and (max-width: 90em) {
-      font-size: 6rem;
-      margin-top: 0;
+    @media only screen and (max-width: 125em) {
+      font-size: 4.2rem;
+      
     }
     @media only screen and (max-width: 34.125em) {
       font-size: 5.2rem;
