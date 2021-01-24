@@ -248,13 +248,12 @@ export default {
     text-transform: uppercase;
     @media only screen and (max-width: 125em) {
       font-size: 4.2rem;
-      
     }
     @media only screen and (max-width: 34.125em) {
-      font-size: 5.2rem;
+      font-size: 4rem;
     }
     @media only screen and (max-width: 25em) {
-      font-size: 4rem;
+      font-size: 3.5rem;
     }
   }
 

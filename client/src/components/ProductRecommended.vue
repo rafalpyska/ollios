@@ -2,22 +2,23 @@
   <div class="recommended">
     <!-- <h2 class="recommended__section-title">Recommended</h2> -->
 
-      <hooper :settings="hooperSettings" v-for="products in recommendedProducts" :key="products.id">
-        <slide v-for="product in products.products" :key="product.id">
-          <CategoryProductItem
-            :product="product"
-          >
-            <template v-slot:price="category">
-              <p class="product__price">${{ category.product.price }}</p>
-            </template>
-            <template v-slot:title="category">
-              <p class="product__name">{{ category.product.title }}</p>
-            </template>
-          </CategoryProductItem>
-        </slide>
-        <hooper-navigation slot="hooper-addons"></hooper-navigation>
-      </hooper>
-
+    <hooper
+      :settings="hooperSettings"
+      v-for="products in recommendedProducts"
+      :key="products.id"
+    >
+      <slide v-for="product in products.products" :key="product.id">
+        <CategoryProductItem :product="product">
+          <template v-slot:price="category">
+            <p class="product__price">${{ category.product.price }}</p>
+          </template>
+          <template v-slot:title="category">
+            <p class="product__name">{{ category.product.title }}</p>
+          </template>
+        </CategoryProductItem>
+      </slide>
+      <hooper-navigation slot="hooper-addons"></hooper-navigation>
+    </hooper>
   </div>
 </template>
 
@@ -46,6 +47,7 @@ export default {
       hooperSettings: {
         wheelControl: false,
         mouseDrag: false,
+        infiniteScroll: true,
         breakpoints: {
           200: {
             itemsToShow: 1
@@ -58,11 +60,11 @@ export default {
           },
           2560: {
             itemsToShow: 4,
-            pagination: "fraction"
+            pagination: 'fraction'
           }
         }
       }
-    }
+    };
   }
 };
 </script>
@@ -127,7 +129,7 @@ export default {
       font-size: 2rem;
     }
   }
-  & ::v-deep .product { 
+  & ::v-deep .product {
     padding: 0;
   }
   & ::v-deep .product__info {
