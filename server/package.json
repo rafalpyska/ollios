@@ -12,7 +12,7 @@
   "devDependencies": {},
   "dependencies": {
     "slugify": "^1.4.6",
-    "strapi": "3.4.1",
+    "strapi": "3.6.8",
     "strapi-admin": "3.4.1",
     "strapi-connector-mongoose": "3.4.1",
     "strapi-plugin-content-manager": "3.4.1",
